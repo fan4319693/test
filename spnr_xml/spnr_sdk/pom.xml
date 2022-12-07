@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spnr_xml</artifactId>
+        <groupId>com.airchina.datacenter</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spnr_sdk</artifactId>
+    <version>1.0</version>
+
+    <properties>
+        <apache-collections4.version>4.1</apache-collections4.version>
+        <apache-commons-lang.version>3.12.0</apache-commons-lang.version>
+        <dom4j.version>1.6.1</dom4j.version>
+        <junit.version>4.12</junit.version>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <mockito-all.version>1.10.19</mockito-all.version>
+        <mybatis-generator.version>1.4.1</mybatis-generator.version>
+        <mybatis.version>2.2.0</mybatis.version>
+        <mysql-client.version>8.0.28</mysql-client.version>
+        <spring.boot.version>2.3.4.RELEASE</spring.boot.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <configuration>
+                    <!--mybatis的代码生成器的配置文件-->
+                    <configurationFile>src/main/resources/mybatis-generator-config.xml
+                    </configurationFile>
+                    <!-- 生成过程中是否输出详细信息 -->
+                    <overwrite>true</overwrite>
+                    <!-- 允许覆盖生成的Java文件，overwrite选项只能让java文件被覆盖，xml永远是merge追加，不可配置为overwrite -->
+                    <verbose>true</verbose>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <artifactId>mybatis-generator-core</artifactId>
+                        <groupId>org.mybatis.generator</groupId>
+                        <version>${mybatis-generator.version}</version>
+                    </dependency>
+                    <dependency>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <groupId>mysql</groupId>
+                        <version>${mysql-client.version}</version>
+                    </dependency>
+                </dependencies>
+                <groupId>org.mybatis.generator</groupId>
+                <version>${mybatis-generator.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <!-- spring -->
+        <dependency>
+            <artifactId>spring-boot-starter</artifactId>
+            <groupId>org.springframework.boot</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springframework.boot</groupId>
+        </dependency>
+
+        <!-- common组件 -->
+        <dependency>
+            <artifactId>commons-collections4</artifactId>
+            <groupId>org.apache.commons</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>commons-lang3</artifactId>
+            <groupId>org.apache.commons</groupId>
+        </dependency>
+
+        <!-- mybatis & mysql-->
+        <dependency>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <groupId>org.mybatis.spring.boot</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>mysql-connector-java</artifactId>
+            <groupId>mysql</groupId>
+        </dependency>
+        <!-- dom4j -->
+        <dependency>
+            <artifactId>dom4j</artifactId>
+            <groupId>dom4j</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>jaxen</artifactId>
+            <groupId>jaxen</groupId>
+            <version>1.2.0</version>
+        </dependency>
+        <!-- test -->
+        <dependency>
+            <artifactId>junit</artifactId>
+            <groupId>junit</groupId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- jaxb -->
+        <dependency>
+            <artifactId>jaxb-api</artifactId>
+            <groupId>javax.xml.bind</groupId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <artifactId>jaxb-core</artifactId>
+            <groupId>com.sun.xml.bind</groupId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <artifactId>jaxb-impl</artifactId>
+            <groupId>com.sun.xml.bind</groupId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <artifactId>activation</artifactId>
+            <groupId>javax.activation</groupId>
+            <version>1.1.1</version>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <scope>import</scope>
+                <type>pom</type>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <!-- mybatis & mysql-->
+            <dependency>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>mysql-connector-java</artifactId>
+                <groupId>mysql</groupId>
+                <version>${mysql-client.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>dom4j</artifactId>
+                <groupId>dom4j</groupId>
+                <version>${dom4j.version}</version>
+            </dependency>
+
+            <!-- apache common-->
+            <dependency>
+                <artifactId>commons-collections4</artifactId>
+                <groupId>org.apache.commons</groupId>
+                <version>${apache-collections4.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>commons-lang3</artifactId>
+                <groupId>org.apache.commons</groupId>
+                <version>${apache-commons-lang.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>junit</artifactId>
+                <groupId>junit</groupId>
+                <scope>test</scope>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>mockito-all</artifactId>
+                <groupId>org.mockito</groupId>
+                <scope>test</scope>
+                <version>${mockito-all.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

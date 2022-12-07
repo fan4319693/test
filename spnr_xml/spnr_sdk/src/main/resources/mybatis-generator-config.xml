@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="dw_fltdb" targetRuntime="MyBatis3Simple">
+        <!-- 自动界定sql关键词 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <!-- 生成的Java文件编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 生成注释 -->
+        <commentGenerator>
+            <property name="addRemarkComments" value="true"/>
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306?useSSL=false&amp;allowPublicKeyRetrieval=true"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <!-- 指定生成的类型为java类型，避免数据库中number等类型字段，是否使用bigDecimal，false可自动转化为其他类型(Long、Integer、Short等) -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.airchina.datacenter.spnr.dao.entity"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaModelGenerator>
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.airchina.datacenter.spnr.dao.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="MP_AirAirItinerary" domainObjectName="MP_AirAirItineraryPo" mapperName="MP_AirAirItineraryMapper"/>
+        <table tableName="MP_AirAirItinerary_baggage" domainObjectName="MP_AirAirItinerary_baggagePo" mapperName="MP_AirAirItinerary_baggageMapper"/>
+        <table tableName="MP_AirAirItinerary_segment" domainObjectName="MP_AirAirItinerary_segmentPo" mapperName="MP_AirAirItinerary_segmentMapper"/>
+        <table tableName="MP_AirPriceInfo_FareInfos" domainObjectName="MP_AirPriceInfo_FareInfosPo" mapperName="MP_AirPriceInfo_FareInfosMapper"/>
+        <table tableName="MP_AirPriceInfo_ItinTotalFare" domainObjectName="MP_AirPriceInfo_ItinTotalFarePo" mapperName="MP_AirPriceInfo_ItinTotalFareMapper"/>
+        <table tableName="MP_AirPriceInfo_PTCs" domainObjectName="MP_AirPriceInfo_PTCsPo" mapperName="MP_AirPriceInfo_PTCsMapper"/>
+        <table tableName="MP_AirPriceInfo_farefamily" domainObjectName="MP_AirPriceInfo_farefamilyPo" mapperName="MP_AirPriceInfo_farefamilyMapper"/>
+        <table tableName="MP_AirTicketing" domainObjectName="MP_AirTicketingPo" mapperName="MP_AirTicketingMapper"/>
+        <table tableName="MP_AirTravelerInfo" domainObjectName="MP_AirTravelerInfoPo" mapperName="MP_AirTravelerInfoMapper"/>
+        <table tableName="MP_AncillaryProduct" domainObjectName="MP_AncillaryProductPo" mapperName="MP_AncillaryProductMapper"/>
+        <table tableName="MP_itineraryreceipt" domainObjectName="MP_itineraryreceiptPo" mapperName="MP_itineraryreceiptMapper"/>
+        <table tableName="MP_Audits" domainObjectName="MP_AuditsPo" mapperName="MP_AuditsMapper"/>
+        <table tableName="MP_Baggage" domainObjectName="MP_BaggagePo" mapperName="MP_BaggageMapper"/>
+        <table tableName="MP_ModifyTypes" domainObjectName="MP_ModifyTypesPo" mapperName="MP_ModifyTypesMapper"/>
+        <table tableName="MP_PaymentRefs" domainObjectName="MP_PaymentRefsPo" mapperName="MP_PaymentRefsMapper"/>
+        <table tableName="MP_Pricing" domainObjectName="MP_PricingPo" mapperName="MP_PricingMapper"/>
+        <table tableName="MP_Pricing_AmendmentFee" domainObjectName="MP_Pricing_AmendmentFeePo" mapperName="MP_Pricing_AmendmentFeeMapper"/>
+        <table tableName="MP_Pricing_CancellationFees" domainObjectName="MP_Pricing_CancellationFeesPo" mapperName="MP_Pricing_CancellationFeesMapper"/>
+        <table tableName="MP_Pricing_CancellationRefunds" domainObjectName="MP_Pricing_CancellationRefundsPo" mapperName="MP_Pricing_CancellationRefundsMapper"/>
+        <table tableName="MP_Pricing_PriceAdjustments" domainObjectName="MP_Pricing_PriceAdjustmentsPo" mapperName="MP_Pricing_PriceAdjustmentsMapper"/>
+        <table tableName="MP_Ptcs" domainObjectName="MP_PtcsPo" mapperName="MP_PtcsMapper"/>
+        <table tableName="MP_Remarks" domainObjectName="MP_RemarksPo" mapperName="MP_RemarksMapper"/>
+        <table tableName="Spnr_AmendmentFee" domainObjectName="Spnr_AmendmentFeePo" mapperName="Spnr_AmendmentFeeMapper"/>
+        <table tableName="Spnr_AssociatedBooking" domainObjectName="Spnr_AssociatedBookingPo" mapperName="Spnr_AssociatedBookingMapper"/>
+        <table tableName="Spnr_Audits" domainObjectName="Spnr_AuditsPo" mapperName="Spnr_AuditsMapper"/>
+        <table tableName="Spnr_MP" domainObjectName="Spnr_MPPo" mapperName="Spnr_MPMapper"/>
+        <table tableName="Spnr_POS" domainObjectName="Spnr_POSPo" mapperName="Spnr_POSMapper"/>
+        <table tableName="Spnr_PaymentDetails" domainObjectName="Spnr_PaymentDetailsPo" mapperName="Spnr_PaymentDetailsMapper"/>
+        <table tableName="Spnr_Paymentinfo" domainObjectName="Spnr_PaymentinfoPo" mapperName="Spnr_PaymentinfoMapper"/>
+        <table tableName="Spnr_PriceAdjustment" domainObjectName="Spnr_PriceAdjustmentPo" mapperName="Spnr_PriceAdjustmentMapper"/>
+        <table tableName="Spnr_Pricing" domainObjectName="Spnr_PricingPo" mapperName="Spnr_PricingMapper"/>
+        <table tableName="Spnr_Queues" domainObjectName="Spnr_QueuesPo" mapperName="Spnr_QueuesMapper"/>
+        <table tableName="Spnr_contact" domainObjectName="Spnr_contactPo" mapperName="Spnr_contactMapper"/>
+        <table tableName="Spnr_passengers" domainObjectName="Spnr_passengersPo" mapperName="Spnr_passengersMapper"/>
+        <table tableName="Spnr_remarks" domainObjectName="Spnr_remarksPo" mapperName="Spnr_remarksMapper"/>
+        <table tableName="SuperPNR" domainObjectName="SuperPNRPo" mapperName="SuperPNRMapper"/>
+
+    </context>
+
+
+</generatorConfiguration>
