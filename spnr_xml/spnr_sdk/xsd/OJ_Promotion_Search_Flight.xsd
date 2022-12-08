@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by Eleanor Talbot (Openjaw Technologies Ltd.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- Flight Information -->
+	<xs:element name="FlightInformation">
+		<xs:annotation>
+			<xs:documentation>The criteria listed here can be changed to reflect the search options available in the IBE.  They should always match the product configuration options offerred to the user in the xPromotion editor.  These are configured in 'display\config\datalists\ProductParameters.xsl'.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="restrictionType">
+					<xs:annotation>
+						<xs:documentation>This choice is added simply to make this a valid restriction per the REC</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="airlinePrefs">
+					<xs:annotation>
+						<xs:documentation>Container for any prefences releated to the flight component.  e.g. direct/indirect, airlines, etc.  Should be updated to a capital AirlinePrefs</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="AirDirectOnly">
+					<xs:annotation>
+						<xs:documentation>Indicates whether only direct flights are to be returned or not..</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="seatClass">
+				<xs:annotation>
+					<xs:documentation>The type of cabin class preferred.  Should be moved under AirlinePrefs.  Only used if there is an air component to the searchType.</xs:documentation>
+				</xs:annotation>
+				</xs:element>
+				<xs:element ref="eticketDesired">
+					<xs:annotation>
+						<xs:documentation>eticket info.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="restrictionType">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="Restricted"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="airlinePrefs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="airlinePref"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="airlinePref">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="AirDirectOnly" type="xs:boolean"/>
+	<xs:element name="seatClass">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="eticketDesired">
+		<xs:complexType/>
+	</xs:element>
+</xs:schema>

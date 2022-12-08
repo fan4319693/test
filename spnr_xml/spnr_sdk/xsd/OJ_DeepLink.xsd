@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by Eleanor Talbot (Openjaw Technologies Ltd.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="LinkParams">
+		<xs:annotation>
+			<xs:documentation>Container for all of the XML submitted as part of an ibe search request or deep link.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Search" type="SearchType">
+					<xs:annotation>
+						<xs:documentation>The container for all of the search details.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Language" type="xs:language">
+					<xs:annotation>
+						<xs:documentation>2 letter IATA language code indicating the language that results should be requested and displayed in if configured.  </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="SearchType">
+		<xs:annotation>
+			<xs:documentation>The container for all of the search details.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="xPromotionId" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used for xPromotion deeplinking, identifies the unique promotion.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateInformation">
+				<xs:annotation>
+					<xs:documentation>Container for all of the search date criteria, regardless of search type.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="depart">
+							<xs:annotation>
+								<xs:documentation>The date of departure as displayed in the input box </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="departDate" type="xs:date">
+							<xs:annotation>
+								<xs:documentation>The required date of departure of the trip.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="departDay" type="xs:positiveInteger">
+							<xs:annotation>
+								<xs:documentation>The 2 digit day part of the depart date. e.g. 13</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="departMonth" type="xs:positiveInteger">
+							<xs:annotation>
+								<xs:documentation>The 2 digit month part of the depart date. e.g. 04</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="departYear" type="xs:positiveInteger">
+							<xs:annotation>
+								<xs:documentation>The 4 digit year part of the depart date. e.g. 2009</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="numNights" type="xs:nonNegativeInteger" minOccurs="0"/>
+						<xs:element name="return" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>The return date as displayed in the input box </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="returnDate" type="xs:date" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>The required return date of the trip.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="returnDay" type="xs:positiveInteger" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>The 2 digit day part of the return date. e.g. 13</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="returnMonth" type="xs:positiveInteger" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>The 2 digit month part of the return date. e.g. 04</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="returnYear" type="xs:positiveInteger" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>The 4 digit year part of the return date. e.g. 2009</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="index">
+						<xs:annotation>
+							<xs:documentation>Used to reference the leg in a multi city search</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="HotelInformation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container for all search criteria related specifically to the hotel component.  Used for both hotel only and hotel packages.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="hotelName" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>The name of the preferred hotel if any.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="locationType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Defines the type of area that the property is required in.  e.g. Beach, Airport or Lake.  Allowed values in this field are any configured in the LocationCategoryCodes itemlist used by xHotel.  By Default this will be configured in the "\itemlists\OTACodes" directory in the editor.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="numRooms" type="xs:nonNegativeInteger">
+							<xs:annotation>
+								<xs:documentation>The number of rooms requested.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="propertyType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Defines the type of prperty required. e.g. villa, aoartment, hotel... Allowed values in this field are any configured in the PropertyClassType itemlist used by xHotel.  By Default this will be configured in the "\itemlists\OTACodes" directory in the editor.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="roomRating" type="xs:nonNegativeInteger" minOccurs="0"/>
+						<xs:element name="roomType" minOccurs="0"/>
+						<xs:element name="RoomInformation" maxOccurs="9">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ChildAges">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="childAge" minOccurs="0" maxOccurs="5">
+													<xs:annotation>
+														<xs:documentation>The maximum number allowed is always the maximum number of children allowed in each room.  Default is: 5  The default maximum age allowed is less than 12.</xs:documentation>
+													</xs:annotation>
+													<xs:simpleType>
+														<xs:restriction base="xs:nonNegativeInteger">
+															<xs:enumeration value="0"/>
+															<xs:enumeration value="1"/>
+															<xs:enumeration value="2"/>
+															<xs:enumeration value="3"/>
+															<xs:enumeration value="4"/>
+															<xs:enumeration value="5"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="adults" type="xs:nonNegativeInteger"/>
+									<xs:element name="children" type="xs:nonNegativeInteger"/>
+									<xs:element name="infants" type="xs:nonNegativeInteger"/>
+								</xs:sequence>
+								<xs:attribute name="index" type="xs:nonNegativeInteger"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OriginDestinationInformation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container for all of the search criteria related to location.  Used for all product types except vehicle only.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Origin">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="Location">
+										<xs:attribute name="index">
+											<xs:annotation>
+												<xs:documentation>Only used in multi-city searches for ordering</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Destination">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="Location">
+										<xs:attribute name="index" type="xs:nonNegativeInteger">
+											<xs:annotation>
+												<xs:documentation>Only used in multi-city searches for ordering</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="FlightDetails" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Flight information. Used in Airline - IBE deeplink</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="FlightSegment" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="DepartureDateTime"/>
+												<xs:element name="ArrivalDateTime"/>
+												<xs:element name="FlightNumber"/>
+												<xs:element name="MarketingAirline"/>
+												<xs:element name="CabinCode"/>
+												<xs:element name="ResBookDesigCode"/>
+											</xs:sequence>
+											<xs:attribute name="index"/>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="index"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Passengers" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container for all of the details related to passengers and their ages.  Not required for Vehicle only searches.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ChildAges">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="childAge" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="5">
+										<xs:annotation>
+											<xs:documentation>The maximum number allowed is always the maximum number of children allowed.  Default is:5  The default maximum age allowed is less than 12.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="InfantAges">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="infantAge" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="5">
+										<xs:annotation>
+											<xs:documentation>The maximum number allowed is always the maximum number of infants allowed.  Every infant must be accompanied by at least one adult.  Default is:5  The default maximum age allowed is less than 6.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="adults"/>
+						<xs:element name="adult_FareBreakdown" minOccurs="0">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="PassengerFareBreakdown"/>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="children"/>
+						<xs:element name="child_FareBreakdown" minOccurs="0">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="PassengerFareBreakdown"/>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="infants"/>
+						<xs:element name="infant_FareBreakdown" minOccurs="0">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="PassengerFareBreakdown"/>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="airlinePrefs" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container for any prefences releated to the flight component.  e.g. direct/indirect, airlines, etc.  Should be updated to a capital AirlinePrefs</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="airlinePref" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The 2 digit airline code of the  preffered airline if running a flight only or packaging search.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="airlinePrefMulticity" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>The 2 digit airline code of the  preffered airline if running a flight only multi city search.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="flightType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>return, oneway and multi-city flight.  If it is a packaging search the type must be return.  Should be moved under AirlinePrefs.  Only used if there is an air component to the search type.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="return"/>
+						<xs:enumeration value="oneway"/>
+						<xs:enumeration value="multi-city"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="searchType">
+				<xs:annotation>
+					<xs:documentation>Identifier for the type of search to be run.  </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="H"/>
+						<xs:enumeration value="F"/>
+						<xs:enumeration value="V"/>
+						<xs:enumeration value="E"/>
+						<xs:enumeration value="HFV"/>
+						<xs:enumeration value="HF"/>
+						<xs:enumeration value="VH"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="searched" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates to the IBE whether a search has already been performed with the current set of parameters.  If true a new search will not be run when redisplaying the results page.  When the user is given a new opportunity to update their search parameters this is cleared or set to false.  It should be set to false for all deep links.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="seatClass" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The type of cabin class preferred.  Should be moved under AirlinePrefs.  Only used if there is an air component to the searchType.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AirDepartTime" type="xs:time" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The preferred departure time of the flight component.  Mandatory if there is an air component to the search type.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AirReturnTime" type="xs:time" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The preferred arrival time of the flight component.  Mandatory if there is an air component to the search type.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="VehicleInformation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Container for the vehicle location information and time.  Only needed for vehicle searches.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dropOffLocation" type="xs:string"/>
+						<xs:element name="dropOffLocation_input" type="xs:string"/>
+						<xs:element name="dropOffLocation_leg" type="xs:string"/>
+						<xs:element name="dropOffTime" type="xs:time"/>
+						<xs:element name="pickUpLocation" type="xs:string"/>
+						<xs:element name="pickUpLocation_input" type="xs:string"/>
+						<xs:element name="pickUpLocation_leg" type="xs:string"/>
+						<xs:element name="pickUpTime" type="xs:time"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AirDirectOnly" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates whether only direct flights are to be returned or not.  1 means that only direct flights will be returned. </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="calendarSearch" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Indicates whether a search for dates around the selcted dates should be run and a calendar of results displayed.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numCityPairs" type="xs:nonNegativeInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Only used in a multi-city flight only search</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Protocol">
+				<xs:annotation>
+					<xs:documentation>Used to set the http or https protocol to be used in the resulting deep link url.  Default is https.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="http"/>
+						<xs:enumeration value="https"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="airlineIBEIntegration" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="currency" minOccurs="0"/>
+						<xs:element name="crossSellType"/>
+						<xs:element name="canDelete" minOccurs="0"/>
+						<xs:element name="returnLink"/>
+						<xs:element name="pnr" minOccurs="0"/>
+						<xs:element name="totalFare"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Location">
+		<xs:sequence>
+			<xs:element name="location" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The xLocation code of the preferred location.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="location_input">
+				<xs:annotation>
+					<xs:documentation>The xLocation name of the preferred location.  </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="location_leg"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PassengerFareBreakdown">
+		<xs:sequence>
+			<xs:element name="BaseFare" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Total Base Fare for the passenger</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TaxAmount" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Total Tax for the passenger</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TotalFare" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Total Fare for the passenger</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

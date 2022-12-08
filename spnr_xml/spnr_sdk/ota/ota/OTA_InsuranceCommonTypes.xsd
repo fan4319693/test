@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.006" id="OTA2003A2006B">
+	<xs:include schemaLocation="OTA_SimpleTypes.xsd"/>
+	<xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+	<xs:include schemaLocation="OTA_AirCommonTypes.xsd"/>
+	<xs:include schemaLocation="OTA_Profile.xsd"/>
+	<xs:include schemaLocation="OTA_VehicleCommonTypes.xsd"/>
+	<xs:include schemaLocation="OTA_AirPreferences.xsd"/>
+	<xs:include schemaLocation="OTA_CommonPrefs.xsd"/>
+	<xs:include schemaLocation="OTA_HotelPreferences.xsd"/>
+	<xs:include schemaLocation="OTA_PenaltiesCommonTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">All Schema files in the OTA specification are made available according to the terms defined by the OTA License Agreement at http://www.opentravel.org/ota_downloads_form.cfm</xs:documentation>
+	</xs:annotation>
+	<xs:attributeGroup name="PlanID_Group">
+		<xs:attribute name="PlanID" type="StringLength1to16" use="required"/>
+		<xs:attribute name="Name" type="StringLength1to64" use="optional"/>
+		<xs:attribute name="Type" type="StringLength1to16" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Specifies the sub-plan or type of the insurance plan being purchased.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TypeID" type="StringLength1to16" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Unique ID for the sub-plan or type of the insurance plan being purchased (if known).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CodeContext" type="StringLength1to16" use="optional"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="InsuranceCoverageAttributesGroup">
+		<xs:attribute name="PricingBySegments" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>Whether the pricing by segment is activated or not</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BookPartSegments" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>Whether the book  by segment is activated or not</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SelectedByDefault" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>Whether the insurance product is selected by default or not</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MaximumAmountToBook" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation>The maximum amount of insurance products able to be booked</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TypeOfPassenger" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The type of passenger that is covered by the insurance product</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RefundInsuranceAlone" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>Whether the insurance can be refunded separately or not</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RefundAloneByAgent" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>Whether the insurance can be refunded separately by an agent or not</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RefundInsuranceWithAirTicket" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>Whether the insurance must be refunded with the air booking or not</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TimeToRefund" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Time to refund (in hours)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReshopRule" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Define how to deal with the insurance when do air ticket reshop</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReshopRuleUrl" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>URL to a descriptive page about the reshop terms and conditions</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Status" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>The real state of the insurance. The value could be Booking|Booked|FailedBook|Cancelling|Cancelled|FailedCancel</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ProtocolID" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>Insurance Protocol ID configured in table rule 'insurance_info'</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ProductID" type="StringLength1to32" use="optional">
+			<xs:annotation>
+				<xs:documentation>Insurance 32 digit ProductID</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SalesAgencyCode" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>Insurance SalesAgencyCode</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SegmentBased" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>A flag to indicate if the insurace is based on flight segment. If not, it will be assigned to th first flight segment</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:complexType name="BoundedAffiliationsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Defines an entity that provides travel services or benefits to a customer or company.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="AffiliationsType">
+				<xs:sequence>
+					<xs:element name="Organization" type="OrganizationType" minOccurs="0" maxOccurs="5"/>
+					<xs:element name="Employer" type="EmployerType" minOccurs="0" maxOccurs="5"/>
+					<xs:element name="TravelArranger" type="TravelArrangerType" minOccurs="0" maxOccurs="5"/>
+					<xs:element name="TravelClub" type="TravelClubType" minOccurs="0" maxOccurs="5"/>
+					<xs:element name="Insurance" type="InsuranceType" minOccurs="0" maxOccurs="5"/>
+					<xs:element ref="TPA_Extensions" minOccurs="0"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CoverageLimitType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Information about the insurance coverage limits that applies to all covered travelers</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Deductible" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The amount of out-of-pocket expense a covered individual must pay per claim.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="CurrencyAmountGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PolicyLimit" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The maximum currency amout of available coverage for the policy.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="CurrencyAmountGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="IndividualLimit" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The maximum amount of available coverage for a covered individual.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="CurrencyAmountGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="CoverageLevel" type="StringLength1to16" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates a level of coverage for the plan benefit e.g. Silver, Gold, Platinum</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CoverageType" type="OTA_CodeType" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Identifies the type of coverage or benefit requested by the covered individuals. Refer to OTA Code List Coverage Type (COV).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="UnlimitedCoverage" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Flag to indicate unlimited coverage for the specific benefit is available/requested</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Covered" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Flag to indicate coverage type is available/requested</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="EffectiveExpireOptionalDateGroup"/>
+	</xs:complexType>
+	<xs:complexType name="CoveredTravelerType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Contains identifying information as well as coverage requirements and journey information for each individual requesting coverage by the insurance plan.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CoveredPerson">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Identifies an individual requesting to be covered by the insurance policy.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="PersonNameType">
+							<xs:attribute name="Relation" type="StringLength1to16" use="required"/>
+							<xs:attributeGroup ref="BirthDateGroup"/>
+							<xs:attribute name="Age" type="xs:integer" use="optional"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Email" type="EmailType" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines an electronic mail address of the traveler.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Address" type="AddressInfoType" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines a physical address for the traveler.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Telephone" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Identifies a telephone number for the traveler.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="TelephoneInfoGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CitizenCountryName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Country of citizenship for the individual requesting to be covered by the insurance policy.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="CitizenCountryNameGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Document" type="DocumentType" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Contains information about documents used for travel, such as passports, driver's licenses or social security numbers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EmergencyContact" type="ContactPersonType" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines an emergency contact person for traveler.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Beneficiary" minOccurs="0" maxOccurs="5">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Name">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="PersonNameType">
+										<xs:attributeGroup ref="BirthDateGroup"/>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Address" type="AddressInfoType" minOccurs="0"/>
+					</xs:sequence>
+					<xs:attribute name="Relation" type="StringLength1to16"/>
+					<xs:attribute name="BenefitPercent" type="Percentage"/>
+					<xs:attributeGroup ref="ID_OptionalGroup">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Unique identifying code for beneficiary e.g. Social Security Number.</xs:documentation>
+						</xs:annotation>
+					</xs:attributeGroup>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="IndCoverageReqs" type="IndCoverageReqsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Contains certain traveler-specific information required for quoting or booking an insurance plan.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional"/>
+		<xs:attributeGroup ref="OJ_SuperPNR_RPH"/>
+		<xs:attribute name="PassengerTypeCode" type="AlphaLength3"/>
+	</xs:complexType>
+	<xs:complexType name="DistribPrefType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Type of ticket distribution to be used with this collection of preferences.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="StringLength0to64">
+				<xs:attributeGroup ref="PreferLevelGroup"/>
+				<xs:attribute name="DistribType" type="OTA_CodeType">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Ticket distribution method (e.g. Fax, Email, Courier, Mail, Airport_Pickup, City_Office, Hotel_Desk, WillCall). Refer to OTA Code List Distribution Type (DTB).</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="IndCoverageReqsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Contains certain traveler-specific information required for quoting or booking an insurance plan.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IndTripCost" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Estimated trip cost, or the total price of the journey for the traveler.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="CurrencyAmountGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FlightAccidentAmount" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Amount of flight accident protection (FAP) requested by the traveler (if offered by the insurance plan).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="CurrencyAmountGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CoveredLuggage" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Contains descriptions of luggage or equipment for which the traveler has requested additional baggage/equipment coverage (if offered by the insurance plan).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="LuggageItem" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Contains a description and estimated value for a specific piece of luggage/equipment for which the traveler would like additional insurance.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="LuggageDescription" type="FreeTextType">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">A detailed description of what the piece of luggage/equipment contains.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ItemDeclaredValue">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Estimated value of the piece of luggage/equipment.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:attributeGroup ref="CurrencyAmountGroup"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="LuggagePremium" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Additional cost to insure luggage/equipment.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:attributeGroup ref="CurrencyAmountGroup"/>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="LuggageType" type="StringLength1to16">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Category to describe the type of luggage e.g. Scuba, camera, computer.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PreexistingConditions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Contains a description of the traveler's pre-existing conditions, the diagnosis date of the condition, and the date of last treatment.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PreexistingCondition" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Contains information on a single pre-existing condition.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="FreeTextType">
+										<xs:attribute name="DiagnosisDate" type="xs:date">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Date first diagnosed with condition.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="LastTreatmentDate" type="xs:date">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">Most recent date treatment was received for condition.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InsCoverageDetailType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Provides vendor with information about the traveler(s)' requirements for insurance coverage.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CoverageRequirements" type="RequestedCoveragesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Container for any insurance coverage requirements shared by all travelers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TotalTripQuantity" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The number of trips the traveler(s) plan on taking during the period of coverage (Multi-Trip plans only).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="QuantityGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MaximumTripLength" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The maximum trip length the traveler(s) plan on taking during the period of coverage (Multi-Trip plans only).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+				<xs:attribute name="Minimum" type="xs:string"/>
+					<xs:attribute name="Maximum" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TotalTripCost" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Estimated trip cost, or the total price of the journey for the traveler(s).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="CurrencyAmountGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CoveredTrips" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Container for any information about the trip(s) for which the traveler(s) are requesting coverage.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CoveredTrip" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Information about a single trip for which the traveler(s) are requesting coverage.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="TripFeaturesType">
+										<xs:attributeGroup ref="DateTimeSpanGroup"/>
+										<xs:attribute name="DepositDate" type="xs:dateTime" use="optional"/>
+										<xs:attribute name="FinalPayDate" type="xs:dateTime" use="optional"/>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DeliveryPref" type="DistribPrefType" minOccurs="0" maxOccurs="5"/>
+			<xs:element name="FlightSegmentRefs" type="FlightSegmentRefsType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="EffectiveExpireOptionalDateGroup"/>
+		<xs:attribute name="Type" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="SingleTrip"/>
+					<xs:enumeration value="MultiTrip"/>
+					<xs:enumeration value="Other"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="AutoRenew" type="xs:boolean" use="optional"/>
+		<xs:attribute name="CoverageDays" type="xs:int" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Benefit days covered for the insurance</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="InsCoverageType">
+		<xs:sequence>
+			<xs:element name="CoveredTravelers">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Container for information about the travelers requesting coverage by the insurance plan</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CoveredTraveler" type="CoveredTravelerType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Contains identifying information, coverage requirements and journey information for each individual requesting coverage by the insurance plan.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InsCoverageDetail" type="InsCoverageDetailType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Provides vendor with information about the traveler(s)' requirements for insurance coverage.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CancellationPenalties" type="CancelPenaltiesType" minOccurs="0"/>
+			<xs:element name="AmendmentPenalties" type="OJ_AmendPenaltiesType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="PlanID_Group"/>
+		<xs:attributeGroup ref="InsuranceCoverageAttributesGroup"/>
+	</xs:complexType>
+	<xs:complexType name="InsuranceCustomerType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Contains data on the buyer and others covered by the requested insurance services.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CustomerType">
+				<xs:attributeGroup ref="ID_OptionalGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PlanCostType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Contains information about the total price of the insurance plan.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="BasePremium" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cost for the insurance coverage alone (excluding any fees/taxes).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="CurrencyAmountGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Charges" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A container for any additional charges to the cost of the insurance plan.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Charge" type="FeeType" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Contains a description and value of a single additional charge to the cost of the plan.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="CurrencyAmountGroup"/>
+		<xs:attribute name="DedicatePayment" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates whether a separate payment record needs to be created for an insurance purchase. Separate payment record is required for certain types of insurances.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PlanRestrictionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Contains all restrictions to coverage by the quoted or booked plan.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PlanRestriction" maxOccurs="99">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="FlightSegmentRefs" type="FlightSegmentRefsType" minOccurs="0"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="LanguageGroup"/>
+					<xs:attributeGroup ref="OptionalCodeOptionalNameGroup"/>
+					<xs:attribute name="CodeContext" type="StringLength1to32" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FlightSegmentRefsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Collection of flight segments references related to the plan</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="FlightSegmentRef" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The particular flight segment reference related to the plan</xs:documentation>
+					</xs:annotation>
+					<xs:attribute name="FlightSegmentRPH" type="RPH_Type"/>
+					<xs:attribute name="OriginDestinationRPH" type="RPH_Type"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequestedCoveragesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Collection of insurance coverage requirements from the individuals requesting coverage.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CoverageRequirement" type="CoverageLimitType" maxOccurs="20">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Insurance coverage requirements shared by all travelers.</xs:documentation>
+					<xs:documentation xml:lang="en">Insurance coverage requirements from the individuals requesting coverage.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SearchTravelerType">
+		<xs:sequence>
+			<xs:element name="Address" type="AddressInfoType" minOccurs="0"/>
+			<xs:element name="CitizenCountryName" minOccurs="0">
+				<xs:complexType>
+					<xs:attributeGroup ref="CitizenCountryNameGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="IndCoverageReqs" type="IndCoverageReqsType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="BirthDateGroup"/>
+		<xs:attribute name="Age" type="xs:positiveInteger" use="optional"/>
+		<xs:attribute name="Relation" type="StringLength0to32" use="optional"/>
+		<xs:attribute name="Gender" type="AlphaLength1" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="TripFeaturesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Information about the traveler(s) journey that is necessary for quoting/booking the insurance.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Destinations" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Container for any number of destinations that the traveler(s) will reach during their journey. </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Destination" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Identifies a single destination point of the traveler(s) journey as well as arrival and departure dates.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="AddressType">
+										<xs:attribute name="ArrivalDate" type="xs:date" use="optional"/>
+										<xs:attribute name="DepartureDate" type="xs:date" use="optional"/>
+										<xs:attributeGroup ref="AreaID_Group"/>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Activities" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Container for any number of activities that traveler(s) will engage in while on their journey.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Activity" type="StringLength1to32" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Identifies a single Activity that traveler(s) will engage in while on their journey.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Operators" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Container for any number of companies or organizations operating the trips, tours or cruises included in the traveler(s) journey</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Operator" type="CompanyNameType" maxOccurs="99">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Company or organization operating the trip/tour/cruise</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PolicyDetail_Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Contains such specific, policy-identifying details such as policy number, reference number, effective and expiration dates.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PolicyNumber" type="UniqueID_Type">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Unique policy number assigned by the insurance company upon issuing the policy.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RefNumber" type="UniqueID_Type" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Internal vendor reference number for policy.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PlanRestrictions" type="PlanRestrictionType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Container for any restrictions to coverage of the insurance plan.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PolicyDetailURL" type="URL_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies the location of a file containing policy coverage details.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="OrderDate" type="xs:date" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The date the insurance booking occured on.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="EffectiveExpireOptionalDateGroup"/>
+	</xs:complexType>
+	<xs:complexType name="Result_Type">
+		<xs:annotation>
+			<xs:documentation>It contains the data needed to send a message (SMS, email, ...)when an insurance booking or refund is done</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="PassengerName"/>
+		<xs:attribute name="InsuranceCompanyName"/>
+		<xs:attribute name="InsuranceProductName"/>
+		<xs:attribute name="OriginDestination"/>
+		<xs:attribute name="PolicyNumber"/>
+		<xs:attribute name="AirlineName"/>
+		<xs:attribute name="HistoryID"/>
+	</xs:complexType>
+	<xs:complexType name="PlanForBookRQType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Contains a booking request for a single insurance plan</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="InsCoverageType">
+				<xs:sequence>
+					<xs:element name="InsuranceCustomer" type="InsuranceCustomerType" minOccurs="0"/>
+					<xs:element name="PlanCost" type="PlanCostType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Cost of insurance plan from initial quote (allows for price validation)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="UniqueID" type="UniqueID_Type" minOccurs="0" maxOccurs="2">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Unique identifier associated with booking request message</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="OJT_Extensions" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="FlightSegment" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">
+												A container for necessary data to describe one or more legs of a single flight number.
+														</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:complexContent>
+											<xs:extension base="BookFlightSegmentType">
+												<xs:attribute name="days">
+													<xs:annotation>
+														<xs:documentation>indicate if the date changes during the flight</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="Mileage">
+													<xs:annotation>
+														<xs:documentation>mileage earned</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="Duration">
+													<xs:annotation>
+														<xs:documentation>duration of the flight</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+												<xs:attribute name="OriginDestinationRPH">
+													<xs:annotation>
+														<xs:documentation>RPH of upper element OriginDestinationOption</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:extension>
+										</xs:complexContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="InsuranceQuantity" type="xs:string" minOccurs="0" maxOccurs="1">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">Unique identifier associated with booking request message</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Ticketing" type="TicketingFullInfo_Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Information used to specify the ticketing arrangement.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="HistoryID" use="optional"/>
+				<xs:attribute name="SupplierCode" type="xs:string" use="optional">
+					<xs:annotation>
+						<xs:documentation>Supplier code</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PlanForQuoteRSType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Contains a quote response for a single insurance plan.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="QuoteDetail">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Contains the information about the plan, such as the name of the insurance company and restrictions, specific to the quote.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ProviderCompany" type="CompanyNameType">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Identifies the company providing the insurance product quoted in this response message.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="QuoteDetailURL" type="URL_Type" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Specifies the location of a file containing specific details regarding this quote. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="PlanRestrictions" type="PlanRestrictionType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Container for any restrictions to coverage of the quoted plan.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="BookingDetailURL" type="URL_Type" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Specifies the location of a file containing booking details</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="EffectiveExpireOptionalDateGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InsCoverageDetail" type="InsCoverageDetailType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Allows vendor to echo back  information about the traveler(s)' requirements for insurance coverage.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PlanCost">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Contains information about the total price of the insurance plan.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="PlanCostType">
+							<xs:sequence>
+								<xs:element name="ExchangeRate" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Stores the exchange rate between vendor and supplier currencies</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:attributeGroup ref="ExchangeRateGroup"/>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="ReportingExchangeRates" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>To store exchange rates for backoffice reporting tools, where the reporting tool demands a different currency from the supplier currency</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:attributeGroup ref="ExchangeRateGroup"/>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="IncrementalPrices" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">For the insurance quotes where price can increase based on number of days travelling, this element provides the information on how the price should increases.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="IncrementalPrice" minOccurs="1" maxOccurs="unbounded">
+												<xs:complexType>
+													<xs:attributeGroup ref="CurrencyAmountGroup"/>
+													<xs:attribute name="Frequency" type="xs:positiveInteger" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Frequency combined with FrequencyType are the timeframe used to apply the charge (e.g. every 3 days, every 5 hours). This attribute indicates the number of units, e.g. 3 or 5.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+													<xs:attribute name="FrequencyType" type="TimeUnitType" use="optional">
+														<xs:annotation>
+															<xs:documentation xml:lang="en">Frequency combined with FrequencyType are the timeframe used to apply the charge (e.g. every 3 days, every 5 hours). This attribute indicates the unit, e.g. days or hours.</xs:documentation>
+														</xs:annotation>
+													</xs:attribute>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Contact" type="ContactPersonType" minOccurs="0" maxOccurs="9">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines contact information for an individual or company (for example, the provider's callcenter number or claims hotline).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>A description of the insurance plan</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Name">
+								<xs:annotation>
+									<xs:documentation>The name of the insurance plan</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="Language">
+								<xs:annotation>
+									<xs:documentation>The language of the insurance plan description and name</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CancellationPenalties" type="CancelPenaltiesType" minOccurs="0"/>
+			<xs:element name="BiasingInfos" type="BiasingInfos" minOccurs="0">
+				<xs:annotation >
+					<xs:documentation xml:lang="en">Biasing and AdvBiasing information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="PlanID_Group"/>
+		<xs:attributeGroup ref="InsuranceCoverageAttributesGroup"/>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional"/>
+		<xs:attribute name="ComboCode" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>Identify the combination of the modular product, which is sold in combination mode.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="InsuranceID" type="xs:int" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Internal ID used for relate insurance table rules</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SupplierCode" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>Supplier code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MinAge" type="xs:nonNegativeInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>Minimum age the passenger needs to meet to be covered by this quote.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MaxAge" type="xs:nonNegativeInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation>Maximum age the passenger needs to meet to be covered by this quote.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="AvailablePlansType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Collection of plan that meet the search request requirements</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AvailablePlan" maxOccurs="999">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Container for information about a single insurance plan.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PlanDetail" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Container for detailed descriptions and URLs associated with the insurance product.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="PlanDescription" type="FormattedTextType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Detailed description of insurance product.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="QuoteDetailURL" type="URL_Type" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">URL where user may get more information about quoting this product.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="BookingDetailURL" type="URL_Type" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">URL where user may get more information about purchasing this product.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ProviderDetail" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Container for the name and detailed description of the insurance company offering the product.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ProviderCompany" type="CompanyNameType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Name of the insurance company offering the product.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ProviderDescription" type="FormattedTextType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Detailed description of the insurance company.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="UnderwriterDetail" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Container for the name and detailed description of the company underwriting the insurance product.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="UnderwriterCompany" type="CompanyNameType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Name of the company underwriting the insurance product.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="UnderwriterDescription" type="FormattedTextType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation xml:lang="en">Detailed description of the underwriter.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PlanRestrictions" type="PlanRestrictionType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Collection of restrictions associated with purchasing this insurance product.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="Featured" type="xs:boolean" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates if plan has been marked as a featured product by the insurance company or 3rd party vendor</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="PreferLevel" type="PreferLevelType" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">May be used to indicate how well the plan matches the original search request parameters.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attributeGroup ref="PlanID_Group"/>
+					<xs:attribute name="InsuranceID" type="xs:int" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Internal ID used for relate insurance table rules</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attributeGroup ref="EffectiveExpireOptionalDateGroup">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Indicates for how long plan information is valid.</xs:documentation>
+						</xs:annotation>
+					</xs:attributeGroup>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="QuoteDetail_Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Contains the information about the plan, such as the name of the insurance company and restrictions, specific to the quote.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ProviderCompany" type="CompanyNameType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Identifies the company providing the insurance product quoted in this response message.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="QuoteDetailURL" type="URL_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies the location of a file containing specific details regarding this quote. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PlanRestrictions" type="PlanRestrictionType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Container for any restrictions to coverage of the quoted plan.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BookingDetailURL" type="URL_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies the location of a file containing booking details</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="EffectiveExpireOptionalDateGroup"/>
+	</xs:complexType>
+</xs:schema>

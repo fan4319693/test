@@ -1,0 +1,36 @@
+<jxb:bindings 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+    version="2.1">
+     <jxb:bindings schemaLocation="OJ_DestActivityCommonTypes.xsd">
+        <jxb:bindings node="//xs:element[@name='PTCs']">
+            <jxb:class name="PTCsFromDestActivityCommonTypes"/>
+        </jxb:bindings>
+    </jxb:bindings>
+    <jxb:bindings schemaLocation="OJ_PromotionCommonTypes.xsd">
+        <jxb:bindings node="//xs:element[@name='Status']">
+            <jxb:class name="StatusFromPromotionCommonTypes"/>
+        </jxb:bindings>
+        <jxb:bindings node="//xs:complexType[@name='FromPrice']">
+            <jxb:class name="MainFromPrice"/>
+        </jxb:bindings>
+        <jxb:bindings node="//xs:complexType[@name='Group']">
+            <jxb:class name="ComplexGroup"/>
+        </jxb:bindings>
+    </jxb:bindings>
+    <jxb:bindings schemaLocation="OTA_HotelContentDescription.xsd">
+        <jxb:bindings node="//xs:complexType[@name='DescriptionType']">
+            <jxb:class name="DescriptionFromHotelContentDescription"/>
+        </jxb:bindings>
+    </jxb:bindings>
+    <jxb:bindings schemaLocation="OJ_Promotion_Search_Hotel.xsd">
+        <jxb:bindings node="//xs:element[@name='locationType']">
+            <jxb:class name="LocationTypeFromSearchHotel"/>
+        </jxb:bindings>
+    </jxb:bindings>
+    <jxb:bindings schemaLocation="OJ_DeepLink.xsd">
+        <jxb:bindings node="//xs:complexType[@name='Location']">
+            <jxb:class name="LocationFromSearchHotel"/>
+        </jxb:bindings>
+    </jxb:bindings>
+</jxb:bindings>

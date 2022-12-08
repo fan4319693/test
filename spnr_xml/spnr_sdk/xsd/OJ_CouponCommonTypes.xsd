@@ -1,0 +1,562 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:ota="http://www.opentravel.org/OTA/2003/05" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified">
+	<xs:include schemaLocation="OJ_CommonTypes.xsd"/>
+	<xs:complexType name="CouponUsageRulesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Represents a list of usage rules of an coupon.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="UsageRule" type="CouponRuleType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CouponPurchaseRulesType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Represents a list of purchase rules of an coupon.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PurchaseRule" type="CouponRuleType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CouponValueType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Defines the redemption value of a coupon. It can be a fixed amount or a percentage off from total price.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Percent" type="Percentage" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The percentage off when redeeming the coupon.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Amount" type="xs:float" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The fixed amount the coupon can be redeemed for.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="CurrencyCodeGroup"/>		
+		<xs:attribute name="DiscountCalcType" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The discount calculation type of this coupon.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CouponType">
+		<xs:sequence>
+			<xs:element name="Value" type="CouponValueType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines the value of a coupon. It can be a fixed amount or a percentage off from total price.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UsageRules" type="CouponUsageRulesType" minOccurs="0"/>
+			<xs:element name="PurchaseRules" type="CouponPurchaseRulesType" minOccurs="0"/>
+			<xs:element name="RefundRules" type="CouponRefundRulesType" minOccurs="0"/>
+			<xs:element name="ChangeRules" type="CouponChangeRulesType" minOccurs="0"/>
+			<xs:element name="RedemptionInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Information about the coupon redemption.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CrossRefs" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Booking references which use this coupon.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="UniqueID" type="UniqueID_Type" minOccurs="0" maxOccurs="1"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Travelers" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Traveler" type="AirTravelerType" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="EMD_Info" type="EMD_Type" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Provides the electronic miscellaneous document information for a previously issued EMD.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Ticketing" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="eTicketNumber"/>
+					<xs:attribute name="TicketingStatus" type="xs:string" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Code for setting and displaying detailed ticketing information.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="TicketTime" type="xs:dateTime" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">TicketTime - Indicates the date and time that an coupon was ticketed.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Endorsements" type="FareInfoEndorsementsType" minOccurs="0"/>
+			<xs:element name="Points" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Defines the redemption points of a coupon. It can be a fixed amount or a percentage off from total price.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="Percent" type="Percentage" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The percentage off when redeeming the coupon.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="Amount" type="xs:float" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The fixed amount the coupon can be redeemed for.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Loyalty" type="LoyaltyProductType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Code">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Coupon code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SeqNo" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The coupon sequence No. is used to track the coupon hand out status.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TimeZone" type="StringLength1to64" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The time zone for the Coupon effective/expire date.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>		
+		<xs:attribute name="Name">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Coupon name</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Description">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Coupon description</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Number">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Coupon number</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PromotionCode">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Promotion code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Category">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Coupon category</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SubCategory">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Coupon sub category, for example: indicate flight coupon, seat coupon, luggage coupon, meal coupon or others</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BookkeepingType" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The bookkeeping type.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Status">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Coupon status</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CouponsRPH" type="RPH_Type">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Reference ID to parent Coupons element</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ActivateDate" type="xs:dateTime">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Start date of a coupon being active</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ExpiryDate" type="xs:dateTime">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">End date of a coupon being active</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Group">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Which coupons group this coupon belongs to.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BatchId" type="NumericStringLength1to19" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The batch ID of the coupon, e.g. INIT160505755222985. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BeneficiaryIDs" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Allowed beneficiary IDs (e.g.,1|2|3). Support to fill in multiple beneficiary IDs, separated by pipe.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Password" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The password of the coupon.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AccountBound" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates whether the coupon is bound to a particular account.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PaymentDetailRPH" type="RPH_Type">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Reference to PaymentDetail of this coupon.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DisplayValueInd" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Whether to show percent/amount of this coupon.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DisplayPromotionCodeInd" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Whether to show promotion code of this coupon.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CouponPriceType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Provides a monetary value, which can be either a cash price or loyalty point price.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Quantity" type="xs:integer" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Number of loyalty units for the price</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Amount" type="xs:float" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Cash price</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="CurrencyCodeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="CouponsType">
+		<xs:sequence>
+			<xs:element name="Content" type="ProductContentType" minOccurs="0"/>
+			<xs:element name="Pricing" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Pricing information of a coupon product (which may contain multiple coupons). It represents individual price, not total price if multiple products are included.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Price" type="CurrencyAmountType" minOccurs="0"/>
+						<xs:element name="Loyalty" type="LoyaltyProductType" minOccurs="0"/>
+						<xs:element name="Discount" type="CouponPriceType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Provides a discounted monetary amount, which can be either a discounted cash price or discounted loyalty point price.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="OriginalTotal" type="CouponPriceType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">If a discount is applied, this element will be used to capture original monetary value, which can be either a cash price or loyalty point price.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BookingReferenceID" type="UniqueID_Type" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Order reference ID of the coupon product from an external coupon system.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Coupon" type="CouponType" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="Beneficiary" type="BeneficiaryType" minOccurs="0" maxOccurs="10"/>
+			<xs:element name="TravelerInfo" type="TravelerInfoType" minOccurs="0" maxOccurs="9"/>
+			<xs:element name="PaymentDetails" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Container for Payment Detail.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PaymentDetail" type="PaymentDetailType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Coupon payment detail.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ReferenceID">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Reference ID of a coupon product (which may contain multiple coupons)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SupplierCode">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Supplier code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ProductCode" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Code of coupon product</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Name" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Name of the coupon product</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ExpiryDate" type="xs:dateTime">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The date to which the coupon product is valid</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Status" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Coupon product status</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Quantity" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Multiple items of the same coupon product (which may contain multiple coupons) can be added. This attribute represents the quantity of a coupon product</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PassengerRPH" type="RPH_Type">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">RPH attribute from Traveler section on which the coupon is applied.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FlightSegmentRPH" type="RPH_Type">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">RPH attribute from  Flight segment section on which the coupon is applied.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PolicyNumber" type="NumericStringLength1to8" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The policy number for coupons. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="InfoSource" type="InfoSourceType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to specify the source of the data being exchanged as determined by trading partners. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ActivityCode" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The activity code of the coupon. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SourceCode" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Coupon source.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Batch" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates whether the coupon was created in batches.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Channel" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates the coupon issuing channel.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CouponRequestCommonType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">contains coupon required info collection for creating or updating a coupon.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Post" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="airline" type="xs:string"/>
+						<xs:element name="userId" type="xs:string"/>
+						<xs:element name="userType" type="xs:string"/>
+						<xs:element name="version" type="xs:string"/>
+						<xs:element name="appUserId" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Orgid" type="xs:string" minOccurs="0"/>
+			<xs:element name="Owner" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Owner of the coupon. It can be user/member id.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SuperPNR_ID" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The ID of OJ SuperPNR to be passed to external system.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AirItinerary" type="AirItineraryType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of all flight segments requested for booking.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AirReservation" type="AirReservationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of original booking information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PriceInfo" type="BookingPriceInfoType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Pricing information for the air itinerary to be booked e.g. this data could come from the OTA_AirPriceRS data.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TravelerInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">All traveler information relevant to a booking request.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="TravelerInfoType">
+							<xs:attribute name="AllTravellerIncl" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">indicates if all traveler in the PNR is included.
+				True means all traveller store in AirTraveller nodes; False means only specified air traveller store in AirTraveller node.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Customer" type="OJ_CustomerPrimaryAdditionalType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Holds contact details about the user who made the booking</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Payments" type="PaymentsType">
+				<xs:annotation>
+					<xs:documentation>The history of all payments on this product</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Ticketing" type="TicketingInfoType" minOccurs="0" maxOccurs="99">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Information used to specify the ticketing arrangement.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Type" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="BankFavorType">
+		<xs:sequence>
+			<xs:element name="AddQueryInfo" type="AddQueryInfoType" minOccurs="0"/>
+			<xs:element name="BankFavorInfos" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BankFavorInfo" type="BankFavorInfoType" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attribute name="CountRecord" use="optional"/>
+					<xs:attribute name="PageRecord" use="optional"/>
+					<xs:attribute name="CurrPage" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="TPA_Extensions" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Type" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="BankFavorInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The informations of a bank favor.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="0"/>
+			<xs:element name="ActiveName" type="xs:string" minOccurs="0"/>
+			<xs:element name="ActiveCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ActiveLink" type="xs:string" minOccurs="0"/>
+			<xs:element name="BankName" type="xs:string" minOccurs="0"/>
+			<xs:element name="BankCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ActiveStartDate" type="xs:string" minOccurs="0"/>
+			<xs:element name="ActiveEndDate" type="xs:string" minOccurs="0"/>
+			<xs:element name="ActiveStartTime" type="xs:string" minOccurs="0"/>
+			<xs:element name="ActiveEndTime" type="xs:string" minOccurs="0"/>
+			<xs:element name="ActiveCount" type="xs:string" minOccurs="0"/>
+			<xs:element name="EachDayCount" type="xs:string" minOccurs="0"/>
+			<xs:element name="Amount" type="xs:string" minOccurs="0"/>
+			<xs:element name="LimitCabin" type="xs:string" minOccurs="0"/>
+			<xs:element name="LimitBrand" type="xs:string" minOccurs="0"/>
+			<xs:element name="Status" type="xs:string" minOccurs="0"/>
+			<xs:element name="CreateAuthor" type="xs:string" minOccurs="0"/>
+			<xs:element name="CreateTime" type="xs:string" minOccurs="0"/>
+			<xs:element name="UpdateTime" type="xs:string" minOccurs="0"/>
+			<xs:element name="UpdateAuthor" type="xs:string" minOccurs="0"/>
+			<xs:element ref="TPA_Extensions" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AddQueryInfoType">
+		<xs:sequence>
+			<xs:element name="Banks" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Bank" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="BankName" minOccurs="0"/>
+									<xs:element name="BankCode" minOccurs="0"/>
+									<xs:element ref="TPA_Extensions" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Cabins" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Cabin" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="CabinName" minOccurs="0"/>
+									<xs:element name="CabinCode" minOccurs="0"/>
+									<xs:element ref="TPA_Extensions" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Brands" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Brand" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="BrandName" minOccurs="0"/>
+									<xs:element name="BrandCode" minOccurs="0"/>
+									<xs:element ref="TPA_Extensions" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SearchBankType">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" minOccurs="0"/>
+			<xs:element name="Status" type="xs:string" minOccurs="0"/>
+			<xs:element name="ActiveStartTime" type="xs:string" minOccurs="0"/>
+			<xs:element name="ActiveEndTime" type="xs:string" minOccurs="0"/>
+			<xs:element name="BankName" type="xs:string" minOccurs="0"/>
+			<xs:element name="BankCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ActiveName" type="xs:string" minOccurs="0"/>
+			<xs:element name="CabinCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="BrandName" type="xs:string" minOccurs="0"/>
+			<xs:element name="CurrTime" type="xs:string" minOccurs="0"/>
+			<xs:element ref="TPA_Extensions" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="CountRecord"/>
+		<xs:attribute name="PageRecord"/>
+		<xs:attribute name="CurrPage"/>
+	</xs:complexType>
+	<xs:complexType name="BankFavorRequestType">
+		<xs:sequence>
+			<xs:element name="SearchBank" type="SearchBankType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Type" use="required"/>
+	</xs:complexType>
+</xs:schema>

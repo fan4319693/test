@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="OTA_SimpleTypes.xsd"/>
+	<xs:include schemaLocation="OTA_CommonTypes.xsd"/>
+	<xs:complexType name="CorporateActionType">
+		<xs:annotation>
+			<xs:documentation>Element used to control which action is performed by the request.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Action" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Action to be performed by request.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PageSize" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Used to set the page size when using paging to segment the response.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Page" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Index for page required.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="HierarchyID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Id for the hierarchy to which the action should be performed.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="OJ_CorporateHierarchy" type="CorporateHierarchiesType">
+		<xs:annotation>
+			<xs:documentation>Representation of the entire corporate hierarchy including agency/organisation hiearchies, company, user info.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="UserType">
+		<xs:annotation>
+			<xs:documentation>Used to describe user details.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Grade" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Grade held by user</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Status" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>Current status of the user</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CorporateNodeID" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>The hierarchy node ID to which this user corresponds.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="UserID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>UniqueID used to identify user.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ProfileID" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Soft link to profile information.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Name" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Name of user</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Email" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Email address of user.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Role" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Role held within associated corporation.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="UsersType">
+		<xs:annotation>
+			<xs:documentation>Group of users associtated with a corporate hierarchy or subdivision.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="User" type="UserType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CorporateNode">
+		<xs:annotation>
+			<xs:documentation>Representation of a subdivision of a corporation.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CorporateDetails" type="CorporateDetailsType">
+				<xs:annotation>
+					<xs:documentation>Corporate details  name, contact etc. corresponding to this CorporateHierarchyNode</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CorporateNode" type="CorporateNode" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Users" type="UsersType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Status" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>Signifies if a corp node has been deleted. 0 for active,1 for deleted.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Enabled" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>Enabled boolean value true or false</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReadOnly">
+			<xs:annotation>
+				<xs:documentation>Used to signify user access</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="LastModified" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>OJ_Timstamp, last time a node was updated.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Version" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>Version relating to a given node, incremented on DB write</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>UniqueID used to reference corporate hierarchy node.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ParentID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Unique ID used to reference parent node.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="LastRefreshed" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Refresh interval uswed to control updates of a given node</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="HierarchyID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Name of the hierarchy to which this node belongs.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CorporateDetailsType">
+		<xs:annotation>
+			<xs:documentation>Used to describe details of the CorporateHierarchyNode to which this corresponds.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CompanyName" type="CompanyNameType"/>
+			<xs:element name="Address" type="AddressInfoType" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Information about an address that identifies a location for a specific purposes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Telephone" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Information about a telephone number, including the actual number and its usage</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Email" type="EmailType" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Electronic email addresses, in IETF specified format.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="URL" type="URL_Type" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Web site address, in IETF specified format.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="TaxID">
+			<xs:annotation>
+				<xs:documentation>Government issued tax ID i.e. The organisations VAT number for example</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PricingCurrency">
+			<xs:annotation>
+				<xs:documentation>Currency to use when quoting travel booking prices to organisation</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReportingCurrency">
+			<xs:annotation>
+				<xs:documentation>Currency to use in back office / invoice to organisation</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Type"/>
+	</xs:complexType>
+	<xs:complexType name="CorporateHierarchyType">
+		<xs:annotation>
+			<xs:documentation>Representation of individual corporations.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CorporateNode" type="CorporateNode">
+				<xs:annotation>
+					<xs:documentation>Representation of a subdivisioin within a corporation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Unique ID used to identify this hierarchy.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Type" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Type of hierarchy .i.e agency/organisation</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Name" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Name of hierarchy.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CorporateHierarchiesType">
+		<xs:annotation>
+			<xs:documentation>Group of hierarchies that belong to OJ_CorporateHierarchy</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CorporateHierarchy" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="CorporateHierarchyType"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Users" type="UsersType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CorporatePolicyType">
+		<xs:annotation>
+			<xs:documentation>Used to hold filter parameters for a given corporate policy.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="FilterID" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Unique identifier used to </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CorporateNodeID" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Corporate node ID to which this policy is applied.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Status" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>Integer value representing the enabled/disabled param</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ApplicationOrder" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>Order in which the policy is applied.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FilterValue" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Value passed to the rule filter.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PermissionType">
+		<xs:annotation>
+			<xs:documentation>Used to describe the permissions granted by a given user.</xs:documentation>
+		</xs:annotation>
+			<xs:attribute name="Code" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Short hand code used to identify a given permission</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CorpNodeIDList" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>List of pipe-delimited corporate node ids where the user holds the permission</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PermissionsType">
+		<xs:annotation>
+			<xs:documentation>Used to hold the permissions granted by a given user.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Permission" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="PermissionType"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CorporatePoliciesType">
+		<xs:annotation>
+			<xs:documentation>Used to hold the permissions granted by a given user.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PolicyParam" type="CorporatePoliciesType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

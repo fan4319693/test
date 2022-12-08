@@ -1,0 +1,3628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by ﻿Brian Lewis (Openjaw Technologies Ltd.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2.000" id="OTA2005B">
+	<xs:include schemaLocation="OTA_PkgCommonTypes.xsd"/>
+	<xs:include schemaLocation="OTA_CommonPrefs.xsd"/>
+	<xs:attributeGroup name="FerryPayloadStdAttributes">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Based on the OTA_PayloadStdAttributes which defines the standard attributes that appear on the root element for all OTA payloads.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="EchoToken" type="StringLength1to128" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A reference for additional message identification, assigned by the requesting host system. When a request message includes an echo token the corresponding response message MUST include an echo token with an identical value.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TimeStamp" type="xs:dateTime" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates the creation date and time of the message in UTC using the following format specified by ISO 8601; YYYY-MM-DDThh:mm:ssZ with time values using the 24 hour clock (e.g. 20 November 2003, 1:59:38 pm UTC becomes 2003-11-20T13:59:38Z).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Target" use="optional" default="Production">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to indicate whether the request is for the Test or Production system.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="Test"/>
+					<xs:enumeration value="Production"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Version" type="xs:decimal" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">For all OTA versioned messages, the version of the message is indicated by a decimal value.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TransactionIdentifier" type="StringLength1to32" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A unique identifier to relate all messages within a transaction (e.g. this would be sent in all request and response messages that are part of an on-going transaction).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SequenceNmbr" type="xs:nonNegativeInteger" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to identify the sequence number of the transaction as assigned by the sending system; allows for an application to process messages in a certain order or to request a resynchronization of messages in the event that a system has been off-line and needs to retrieve messages that were missed. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TransactionStatusCode" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">This indicates where this message falls within a sequence of messages. Absence of the TransactionStatusCode indicates that the transaction is not 'Sessioned'.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="Start">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This is the first message within a transaction.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="End">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This is the last message within a transaction.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Rollback">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This indicates that all messages within the current transaction must be ignored.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="InSeries">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This is any message that is not the first or last message within a transaction.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="Continuation">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Specifies that this is a followup request asking for more of what was requested in the previous request.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attributeGroup ref="PrimaryLangID_Group"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="Dimensions">
+		<xs:attribute name="Height" type="xs:integer" use="optional"/>
+		<xs:attribute name="Length" type="xs:integer" use="optional"/>
+		<xs:attribute name="Width" type="xs:integer" use="optional"/>
+		<xs:attribute name="Units" default="Centimetres">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Feet"/>
+					<xs:enumeration value="Inches"/>
+					<xs:enumeration value="Centimetres"/>
+					<xs:enumeration value="Metres"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:simpleType name="StringLength1to4">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 4</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength1to10">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 10</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength1to17">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 17</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="17"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength1to20">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 20</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="17"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength1to25">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 25</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="25"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringLength1to35">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used for Character Strings, length 1 to 35</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TrailerTypeCode">
+		<xs:annotation>
+			<xs:documentation xml:lang="en"> Code used to identify a type of vehicle trailer.  Based on Unicorn codeset U286. </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="StringLength1to8">
+			<xs:enumeration value="BGT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Baggage Trailer </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BTT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Boat trailer
+</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="COT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Coach trailer
+</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CRV">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Caravan </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FVT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en"> Freight vehicle trailer </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GLT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Glider trailer </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MBT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Minibus trailer </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TRT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Trailer tent </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VehicleTypeCode">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Code used to identify a type of vehicle.  Based on Unicorn codeset U294. </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="StringLength1to8">
+			<xs:enumeration value="BIC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bicycle</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CAR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Car</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CMB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Camper with rear-mounted bicycle carrier </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CMP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Camper </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="COA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Coach </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="COM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Motorcycle and sidecar combination </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CRB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Car with rear-mounted bicycle carrier </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MBB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Minibus with rear-mounted bicycle carrier </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MBS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Minibus </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MPV">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Multi-passenger vehicle For example an Espace</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MTC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Motorcycle </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RHV">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Road haulage vehicle </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SHC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Short car For example a "Smart" car. </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SLV">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sports leisure vehicle For example 4x4 vehicles</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VAN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Van</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  Complex Types ============================================================================================================================-->
+	<xs:complexType name="AccomType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Details of a type of onboard accommodation, or of a specific unit of onboard accommodation.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Places">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Number and characteristics of available or requested places (berths, seats) in the accommodation</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="AvailableQty" type="Numeric1to99" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Number of cabins, seats or berths available. Normally only present in a response.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="RequiredQty" type="Numeric1to99" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Number of cabins, seats or berths required</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="OccupancyMode" type="OccupancyModeType" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The form of accommodation occupancy: B = by berth; C = complete unit or seat </xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attributeGroup ref="GenderGroup">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Identifies the sex of the occupants of a cabin i.e. M = all male, F = all female; U = mixed or unknown. Not required for Seats. </xs:documentation>
+						</xs:annotation>
+					</xs:attributeGroup>
+					<xs:attribute name="Characteristic" type="AlphaLength1" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Normally used with a value of 'D' to request accommodation suitable for disabled passengers. Name changed from 'Type' for version 2 - tw 4Nov05</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AccomRef" minOccurs="0" maxOccurs="999">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">References to specific accommodation units requested or offered  e.g. seat numbers </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="StartAccomID" type="StringLength1to8" use="required">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Identity of the first accommodation unit requested or offered. If only a single accommodation reference is being suppplied, EndAccomID will be omitted. </xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="EndAccomID" type="StringLength1to8" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Identity of the last accommodation unit requested or offered. </xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="BerthID" type="AlphaLength1" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A place holder to enable this occurrence to be referenced from another element. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Type" type="FerryAccomType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The type of accommodation: B = bedded cabin; C = couchette; S = Seat.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AccomCode" type="StringLength1to8" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The identity of a specific accommodation unit.  If it is supplied, then the other attributes are not normally required.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Description" type="StringLength1to32" use="optional"/>
+		<xs:attribute name="Occupancy" type="Numeric0to99" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the number of berths in a cabin; it is normally set to 1 for seats. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Quality" type="AccomQualityType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates the quality of the accommodation:  L=Luxe N=Normal P=Pullman Seat R=Reclining Seat S=Special T=Tourist V=De Luxe X=Super de Luxe Y=Economy</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Sanitary" type="AccomSanitaryType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The type of sanitary arrangements provided:	B=Bath and WC H=Shower and WC I=Bath Shower and WC V=Washbasin and WC W=Washbasin Y=WC</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Position" type="AccomPositionType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The area in which the on-board accommodation: is located: I=Inner O=Outer</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Deck" type="AlphaLength1" use="optional"/>
+		<xs:attribute name="Location" type="FerryLocationType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The section in which the on-board accommodation: is located: P=Port S=Starboard F=Forward A=Aft</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Class" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Class code for travel or service: 1= 1st class 2=2nd class 3=3rd Class C=Business/Club class U=Shuttle service.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="1"/>
+					<xs:enumeration value="2"/>
+					<xs:enumeration value="3"/>
+					<xs:enumeration value="C"/>
+					<xs:enumeration value="U"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ItineraryRQ_Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Itinerary information provided in a booking or amendment request</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Depart" type="LocationTimeType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Departure port details</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Arrive" type="PortLocationType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Arrival port details</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Accommodation" type="AccomType" minOccurs="0" maxOccurs="25"/>
+		</xs:sequence>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A place holder to enable this occurrence to be referenced from another element. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="DepartType">
+		<xs:simpleContent>
+			<xs:extension base="LocationTimeType">
+				<xs:attribute name="NonStandardDateTime" type="xs:dateTime" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The actual operation date and time for the sailing, e.g for tidal changes. </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ReportingDateTime" type="xs:dateTime" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The date and/or time at which the travelers should check in for a sailing.  Only applicable to a departure location. </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="ArriveType">
+		<xs:simpleContent>
+			<xs:extension base="LocationTimeType">
+				<xs:attribute name="NonStandardDateTime" type="xs:dateTime" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The actual operation date and time for the sailing, e.g for tidal changes. </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="BaseItineraryType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Itinerary information provided in a response</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Depart" type="DepartType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Departure port details</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Arrive" type="ArriveType">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Arrival port details</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="RPH" type="RPH_Type" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A place holder to enable this occurrence to be referenced from another element. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ShipName" type="StringLength1to32" use="required">
+			<xs:annotation>
+				<xs:documentation>Name of ship for this leg</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PaxInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When 'true', passenger space is available; when 'false', passenger space is not available.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="StandardUnitsInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When 'true', space for standard vehicles is available; when 'false', space for standard vehicles is not available.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="HighUnitsInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When 'true', space for high vehicles is available; when 'false', space for high vehicles is not available.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CabinsInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When 'true', cabins are available; when 'false', cabins are not available.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SeatsInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When 'true', seating space is available; when 'false', seating space is not available.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AccomMandatoryInd" type="xs:boolean" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When 'true', accommodation must be booked on the sailing. When 'false', accommodation is optional on the sailing. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="StandbyInd" type="xs:boolean" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When 'true', this leg has been created using standby availability.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="StandbyRPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">If this is a standby leg being created as a replacement for an existing leg in the booking then this attribute holds the RPH of the leg being replaced.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="BookingSummaryType">
+		<xs:sequence>
+			<xs:element name="BookingRef" type="FerryUniqueID_Type"/>
+		</xs:sequence>
+		<xs:attribute name="BookedDateTime" type="DateOrDateTimeType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The date and/or time the booking was made.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BookingStatus" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Coded status of requested or actual booking: C Cancelled; F Firm; H On Hold; O On Request; P Provisional (Option); T Firm and Ticketed</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="C"/>
+					<xs:enumeration value="F"/>
+					<xs:enumeration value="H"/>
+					<xs:enumeration value="O"/>
+					<xs:enumeration value="P"/>
+					<xs:enumeration value="T"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="ExpiryDateTime" type="DateOrDateTimeType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The date and/or time at which a provisional (option) booking will expire or lapse.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AgentRef" type="StringLength1to20" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The reference given to the booking by the agent..</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ItineraryType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Details of a ferry sailing provided in a response message</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="BaseItineraryType">
+				<xs:sequence>
+					<xs:element name="Accommodation" type="AccomType" minOccurs="0" maxOccurs="25"/>
+				</xs:sequence>
+			</xs:extension>
+			<!--<xs:extension base="ItineraryRS_Type"> -->
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="LocationTimeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Provides the location and time(s) for a sailing departure or arrival.  temporarily? added tw 05Dec05 </xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="PortLocationType">
+				<xs:attribute name="ScheduledDateTime" type="xs:dateTime" use="required">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The scheduled date and time for the sailing as published in brochure etc.. </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="OnboardAccomType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Details of onboard accommodation (cabins or seats) available of requested on a vessel or sailing.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional"/>
+		<xs:attribute name="Type" type="StringLength1to16" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Describes the type of cabin or seat requested or available. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="CodeListGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Provides attributes for the code value and source and the quantity for the cabin or seat type.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
+		<xs:attribute name="ID" type="StringLength1to16" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A string value representing the unique identification of a cabin or seat.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Description" type="StringLength1to64" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A string value representing the description of a cabin or seat.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Deck" type="Numeric1to4" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates the deck on which the accommodation is placed. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PassengerDetailType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Details of a travelling passenger.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="FerryPersonNameType"/>
+			<xs:element name="SpecialNeed" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A special requirement e.g. wheelchair or vegetarian meal. </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="StringLength0to64">
+							<xs:attribute name="Code" type="StringLength1to8" use="optional"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Age" type="Numeric0to999" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">This is used to specify age in years.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Code" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Identifies a passenger age band.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="A">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Adult</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="C">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Child</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="I">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Infant</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="S">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Senior</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="O">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Other</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">(Reference Place Holder) - an index code to identify an instance in a collection of like items.. For example,  used to assign individual passengers or clients to particular itinerary items.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="InsuranceRPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to associate this passenger with their insurance cover provided by the supplier.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="GenderGroup"/>
+		<xs:attribute name="Nationality" type="ISO3166" use="optional"/>
+		<xs:attributeGroup ref="BirthDateGroup"/>
+		<xs:attribute name="LeadCustomerInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When 'true', indicates that this is the 'lead' passenger (i.e., the primary contact making the booking).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ItineraryRPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to indicate on which leg(s) of the booking the passenger is travelling.  If not supplied then 'all legs' is assumed.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CabinDetailsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Information on the vehicle and optionally trailer to be carried.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OccupancyCount" type="FerryTravellerCountType" maxOccurs="5"/>
+		</xs:sequence>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A place holder to enable this occurrence to be referenced from another element. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ItineraryRPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to indicate on which leg(s) of the booking the vehicle is travelling.  If not supplied then 'all legs' is assumed.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="QuotationType">
+		<xs:sequence>
+			<xs:element name="Tariff" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">This may be specified to request the supplier system to apply a charging basis other than the default for the account number being used</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="Promotion" type="StringLength1to10" use="required">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The promotional code used to price a booking.  'Use' changed to required for vn 2.0 tw 12Dec05</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<!-- remaining attributes removed for Vn 2.0 tw 12Dec05
+					<xs:attribute name="Type" type="StringLength1to8" use="optional"/>
+					<xs:attribute name="TypeDesc" type="StringLength1to35" use="optional"/>
+					<xs:attribute name="Band" type="StringLength1to4" use="optional"/>
+					<xs:attribute name="BandDesc" type="StringLength1to35" use="optional"/>
+					<xs:attribute name="PromotionDesc" type="StringLength1to35" use="optional"/>
+					-->
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Scheme" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The Scheme element allows details of promotional schemes such as frequent traveller clubs to be specified. At least one of Identifiaction and Authorisation elements should be present.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="Authorisation" type="StringLength1to25" use="required">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This is used typically to supply the membership number.  Use changed to required for Vn 2.0 tw 12Dec05</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="Category" use="optional" default="Member">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The category of scheme membership.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="StringLength1to35">
+								<xs:enumeration value="Member"/>
+								<xs:enumeration value="Guest"/>
+								<xs:enumeration value="Associate"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<!--Remaining attributes rremoved for Vn2.0 tw 12Dec05
+					<xs:attribute name="Identification" type="StringLength1to17" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This is used to identify the promotional scheme</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="TransactionUnits" type="xs:integer" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This can be used to specify a number of scheme points to be use in payment or part payment of the booking</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="BandDesc" type="StringLength1to35" use="optional"/>
+					<xs:attribute name="Description" type="StringLength1to35" use="optional"/>
+					<xs:attribute name="Level" type="StringLength1to35" use="optional"/>
+					<xs:attribute name="CarriedUnits" type="xs:integer" use="optional"/>
+					-->
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OccupancyCountType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Information on the vehicle and optionally trailer to be carried.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OccupancyCount" type="FerryTravellerCountType" maxOccurs="5"/>
+		</xs:sequence>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A place holder to enable this occurrence to be referenced from another element. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ItineraryRPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to indicate on which leg(s) of the booking the vehicle is travelling.  If not supplied then 'all legs' is assumed.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="VehicleDetailsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Information on the vehicle and optionally trailer to be carried.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Vehicle">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Identifies a towing vehicle, including attributes for dimensions</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="VehicleBaseType">
+							<xs:sequence>
+								<xs:element name="VehiclePricing" minOccurs="0">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="OriginalUnitPrice" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Original default price</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:attributeGroup ref="CurrencyAmountGroup"/>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="UnitPrice" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Price of each Vehicle of this type</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:attributeGroup ref="CurrencyAmountGroup"/>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="TotalPrice">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Total price of all vehicles of this type</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:attributeGroup ref="CurrencyAmountGroup"/>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+							<xs:attribute name="Code" type="StringLength1to4" use="required">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The vehicle class (see Unicorn dataset U294)</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="BikesOnBackIndicator" type="xs:boolean" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">When 'true', indicates that the vehicle is longer than standard because it is carrying bicycles on the rear.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Trailer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Identifies a towed vehicle, including attributes for dimensions</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="VehicleBaseType">
+							<xs:sequence>
+								<xs:element name="TrailerPricing" minOccurs="0">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="OriginalUnitPrice" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Original default price</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:attributeGroup ref="CurrencyAmountGroup"/>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="UnitPrice" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Price of each Trailer of this type</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:attributeGroup ref="CurrencyAmountGroup"/>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="TotalPrice">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Total price of all Trailers of this type</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:attributeGroup ref="CurrencyAmountGroup"/>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+							<xs:attribute name="Code" type="StringLength1to4" use="required">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The vehicle class (see Unicorn dataset U286). </xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="BulkVehicleInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">When 'true', no individual vehicle information is present; the vehicle class and number of vehicles are contained in the Code and Quantity attributes of this element.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Quantity" type="Numeric1to999" use="optional"/>
+		<xs:attribute name="RPH" type="RPH_Type" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A place holder to enable this occurrence to be referenced from another element. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ItineraryRPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to indicate on which leg(s) of the booking the vehicle is travelling.  If not supplied then 'all legs' is assumed.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="VehicleBaseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Identifies a vehicle, including  attributes for dimensions</xs:documentation>
+		</xs:annotation>
+		<xs:attributeGroup ref="Dimensions"/>
+		<xs:attribute name="Registration" type="StringLength0to32" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The registration number of a vehicle. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MakeModel" type="StringLength1to16" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Added by Pharos Datacom pending adoption by TTI.  The make/model of a vehicle. </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Weight" type="xs:integer" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="FerryPOS_Type">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Point of Sale (POS) is the details identifying the party or connection channel making the request.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Source" type="FerrySourceType" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">This holds details regarding the requestor. It may be repeated to also accommodate the delivery systems.</xs:documentation>
+				</xs:annotation>
+				<!--			<xs:element name="Source" type="FerrySourceType" maxOccurs="5"> -->
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FerryTravellerCountBaseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Restricts OTA TravelerCountType to Ferry requirements</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="TravelerCountType">
+				<xs:attribute name="CodeContext" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Identifies the source authority for the code. </xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="StringLength1to32"/>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="URI" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Identifies the location of the code table</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:anyURI"/>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FerryTravellerCountType">
+		<xs:annotation>
+			<xs:documentation>Provides the number of travelers of a specific type (e.g.  Adult, Child).</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="FerryTravellerCountBaseType">
+				<xs:attribute name="RPH" type="RPH_Type" use="required">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A place holder to enable this occurrence to be referenced from another element. </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ItineraryRPH" type="RPH_Type" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Used to indicate on which leg(s) of the booking the passengers party is travelling.  If not supplied then 'all legs' is assumed.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="TravelStatus">
+					<xs:annotation>
+						<xs:documentation>Used to indicate the status of a travellers trip. It indicates if a passenger has completed a trip.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Berthed" type="xs:boolean" use="optional">
+					<xs:annotation>
+						<xs:documentation>Used to indicate if the infant is in a Berth or not</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FerryErrorType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Standard way to indicate that an error occurred during the processing of an OTA message</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="ErrorType">
+				<xs:attribute name="RPH" type="RPH_Type" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">In conjunction with the RPH_Context attribute, allows the source of the error to be identified.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="RPH_Context" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="FerryPersonNameType">
+		<xs:complexContent>
+			<xs:restriction base="PersonNameType">
+				<xs:sequence>
+					<xs:element name="NamePrefix" type="StringLength1to16" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Salutation of honorific. (e.g., Mr. Mrs., Ms., Miss, Dr.) </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="GivenName" type="SimplifiedStringType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Given name, first name or names</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MiddleName" type="SimplifiedStringType" minOccurs="0" maxOccurs="3">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The middle name of the person name</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Surname" type="SimplifiedStringType">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Family name, last name.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FerryPaymentCardBaseType">
+		<xs:complexContent>
+			<xs:restriction base="PaymentCardType">
+				<xs:sequence>
+					<xs:element name="CardHolderName" type="StringLength1to128" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="MaskedCardNumber" type="StringLength1to32" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">May be used to send a concealed credit card number (e.g., xxxxxxxxxxxx9922).</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FerryAddressType">
+		<xs:complexContent>
+			<xs:restriction base="AddressType">
+				<xs:sequence>
+					<xs:element name="StateProv" type="StateProvType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">State or Province name (e.g., Texas).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FerryCompanyNameType">
+		<xs:annotation>
+			<xs:documentation>The provider of the ferry services.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="CompanyNameType">
+				<xs:attribute name="TravelSector" type="OTA_CodeType" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+Refer to OTA Code List Travel Sector (TVS).
+		</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="CodeContext" type="StringLength1to32" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Identifies the context of the identifying code, such as DUNS, IATA or internal code, etc.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="FerryPaymentCardType">
+		<xs:annotation>
+			<xs:documentation>Identification for a specific credit card</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="FerryPaymentCardBaseType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FerryPaymentDetailType">
+		<xs:annotation>
+			<xs:documentation>Details of the method and amount of payment.  NOTE: if additional attributes/elements are required for this complexType, first check against PaymentDetailType in OTA_CommonTypes.xsd</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PaymentCard" type="FerryPaymentCardType"/>
+			<xs:element name="PaymentAmount" minOccurs="0">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="CurrencyAmountType">
+							<xs:attribute name="ApprovalCode" type="StringLength1to16" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The approval code returned as part of an authorization process.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="CostCenterID" type="StringLength1to32" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A reference to identify the billing department for allocating cost of travel to company account.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional"/>
+		<xs:attribute name="PaymentTransactionTypeCode" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">This is used to indicate either a charge or reserve (deposit).</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="charge">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This indicates that an actual payment has been made.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="reserve">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This indicates that a hold for the indicated amount has been placed on a credit card or that a cash amount has been taken from the customer to guarantee final payment.</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="FerryReservationRequest">
+		<xs:annotation>
+			<xs:documentation>Common reservation details for booking and amendment messages</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PassengerDetails" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A collection of individual passenger details.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PassengerDetail" type="PassengerDetailType" maxOccurs="19"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ContactDetail" type="FerryContactPersonType" minOccurs="0"/>
+			<xs:element name="ItineraryLeg" type="ItineraryRQ_Type" maxOccurs="2">
+				<xs:annotation>
+					<xs:documentation>Details of a ferry sailing.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PassengerCount" minOccurs="0" maxOccurs="12">
+				<xs:annotation>
+					<xs:documentation>Describes the numbers of passengers by category, e.g. Adults, Children.   </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="FerryTravellerCountType">
+							<xs:sequence>
+								<xs:element name="SpecialNeed" minOccurs="0" maxOccurs="5">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">A special requirement e.g. wheelchair or vegetarian meal. </xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:simpleContent>
+											<xs:extension base="StringLength0to64">
+												<xs:attribute name="Code" type="StringLength1to8" use="required"/>
+											</xs:extension>
+										</xs:simpleContent>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="VehicleDetail" minOccurs="0" maxOccurs="2">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Details of the vehicle and trailer (if any) on the itinerary. </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="VehicleDetailsType"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PetCount" type="PetCountType" minOccurs="0" maxOccurs="4">
+				<xs:annotation>
+					<xs:documentation>A count of the number of pets by type on each itinerary leg.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="OwnInsuranceChoices" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">A collection of insurance policy details supplied by the customers.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="OwnInsuranceChoice" type="OwnInsuranceChoiceType" maxOccurs="9"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Insurance" type="TPA_Extensions_Type" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Details of the insurance provided by the booking supplier.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="Quotation" type="QuotationType" minOccurs="0"/>
+			<xs:element name="Payment" type="FerryPaymentDetailType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Details of the method and amount of payment.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FerryBookingCore">
+		<xs:annotation>
+			<xs:documentation>Standard Supplier/Originator/Booking Ref elements</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Supplier" type="CompanyNameType" minOccurs="0"/>
+			<xs:element name="Originator" type="FerryPOS_Type">
+				<xs:annotation>
+					<xs:documentation>Identifies the party or connection channel making the request.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BookingRef" type="FerryUniqueID_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used to supply a booking reference.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FerryContactPersonType">
+		<xs:annotation>
+			<xs:documentation>Name of an individual and appropriate contact information.  May be contact information for the customer or someone affiliated with the customer.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="ContactPersonType">
+				<xs:sequence>
+					<xs:element name="PersonName" type="PersonNameType"/>
+					<xs:element name="Telephone" type="TelephoneInfoType" maxOccurs="2"/>
+					<xs:element name="Address" type="AddressInfoType" minOccurs="0"/>
+					<xs:element name="Email" type="EmailType" minOccurs="0"/>
+					<xs:element name="URL" type="URL_Type" minOccurs="0"/>
+					<xs:element name="CompanyName" type="CompanyNameType" minOccurs="0"/>
+					<xs:element name="EmployeeInfo" type="EmployeeInfoType" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="DefaultInd" type="xs:boolean" use="prohibited"/>
+				<xs:attribute name="ContactType" type="StringLength1to32" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Type of contact in the context of use for the travel experience; such as permanent, temporary, affiliation,
+					 travel arranger, etc.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Relation" type="StringLength1to32" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates the type of relationship with the person or company in the profile, such as Spouse, Child, Family, Business Associate, Interest Group, Medical, Security,Other, etc.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="EmergencyFlag" type="xs:boolean" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Indicates if this contact should be used in the case of an emergency.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FerrySourceType">
+		<xs:complexContent>
+			<xs:restriction base="SourceType">
+				<xs:sequence/>
+				<xs:attribute name="PseudoCityCode" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">An identification code assigned to an office/agency by a reservation system.</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="StringLength1to16"/>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="ISOCurrency" type="AlphaLength3" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The currency code in which the reservation will be ticketed.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="AirlineVendorID" type="UpperCaseAlphaNumericLength2to3" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The IATA assigned airline code.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="AirportCode" type="UpperCaseAlphaNumericLength3to5" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The IATA assigned airport code.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="FirstDepartPoint" type="StringLength3" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The point of first departure in a trip.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ERSP_UserID" type="StringLength1to16" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Electronic Reservation Service Provider (ERSP) assigned identifier used to identify the individual using the ERSP system.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="TerminalID" type="StringLength1to32" use="prohibited">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">This is the electronic address of the device from which information is entered.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FerryUniqueID_Type">
+		<xs:annotation>
+			<xs:documentation>UniqueID restricted for Ferry XML use</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="UniqueID_Type">
+				<xs:attribute name="URL" type="xs:anyURI" use="prohibited"/>
+				<xs:attribute name="ID_Context" type="StringLength1to32" use="prohibited"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AmadeusWarningsType">
+		<xs:sequence>
+			<xs:element name="Warning" type="AmadeusWarningType" maxOccurs="99"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AmadeusWarningType">
+		<xs:complexContent>
+			<xs:extension base="WarningType">
+				<xs:attribute name="ItineraryRPH" type="RPH_Type" use="optional">
+					<xs:annotation>
+						<xs:documentation>When present, indicates the specific itinerary item for which the warning has been issued.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="InventoryItemRPH" type="RPH_Type" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">When present, indicates the specific inventory item for which the warning has been issued.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="PassengerRPH" type="RPH_Type" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">When present, indicates the specific passenger item for which the warning has been issued.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FerryWarningsType">
+		<xs:sequence>
+			<xs:element name="Warning" type="FerryWarningType" maxOccurs="99"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FerryWarningType">
+		<xs:simpleContent>
+			<xs:extension base="WarningType">
+				<xs:attribute name="ItineraryRPH" type="RPH_Type" use="optional">
+					<xs:annotation>
+						<xs:documentation>When present, indicates the specific itinerary item for which the warning has been issued.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="InventoryItemRPH" type="RPH_Type" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">When present, indicates the specific inventory item for which the warning has been issued.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="PassengerRPH" type="RPH_Type" use="optional">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">When present, indicates the specific passenger item for which the warning has been issued.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="PetCountType">
+		<xs:annotation>
+			<xs:documentation>A count of the number of pets by type on each itinerary leg.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Code" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="SmallDog"/>
+					<xs:enumeration value="LargeDog"/>
+					<xs:enumeration value="Cat"/>
+					<xs:enumeration value="S"/>
+					<xs:enumeration value="M"/>
+					<xs:enumeration value="L"/>
+					<xs:enumeration value="PEV"/>
+					<xs:enumeration value="PET"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Quantity" type="Numeric1to99" use="required">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The number of pets of this type.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RPH" type="RPH_Type" use="required"/>
+		<xs:attribute name="ItineraryRPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used to indicate on which leg(s) of the booking the pets are travelling.  If not supplied then 'all legs' is assumed.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PortLocationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Code and optional string to describe a location point.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="LocationCode" type="PortCode" use="required">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">Code used to identify a ferry port. </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="PortCode">
+		<xs:annotation>
+			<xs:documentation>Based on Unicorn codeset U271</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="StringLength1to8">
+			<xs:enumeration value="ABER">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Aberdeen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AJAC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ajaccio</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ALEX">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Alexandrie</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ALGE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Algeciras</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ALGI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Algiers</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ALIC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Alicante</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ALKE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Alken</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ALME">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Almeria</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ALON">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Alonissos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AMOR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Amorgos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AMRU">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Amrum</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AMST">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Amsterdam (Ijmuiden)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ANAF">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Anafi</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ANCI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ancona Assigned by START for superfast ferries on special sailings but not used at present (vn 6.2).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ANCO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ancona</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ANDE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Andernach</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ANDR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Andros</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ANNA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Annaba</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ARBA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Arbatax</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ARDR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ardrossan UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ARGO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Argostoli</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ARRE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Arrecife</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ASSM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Assmannsh.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ASTY">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Astypalaia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BACH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bacharach</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BALY">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ballycastle UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BAR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BARC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Barcelona</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BARI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bari</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BAST">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bastia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BEJA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bejaia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BELF">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Belfast UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BELH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Belfast UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BENI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Benidorm</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BERG">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bergen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BILB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Santurtce, Bilbao UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BING">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bingen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BIZE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bizerte</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BOJD">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bojden</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BONI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bonifacio</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BONN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bonn</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BOPP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Boppard</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BOUL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Boulogne sur Mer UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BOZA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bozava</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BRAT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bratislava</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BRAU">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Braubach</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BREI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bad Breisig</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BRIN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Brindisi</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BROD">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Brodenbach</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BUDA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Budapest</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BURG">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Burgstaaken</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CADI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cadiz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CAEN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Caen, Ouistreham UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CAGL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cagliari</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CAIR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cairnryan UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CALA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Calais UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CALL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Calais UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CALV">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Calvi</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CAMP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Campbeltown UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CART">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Carteret</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CATA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Catania</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CESM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cesme</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CEUT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ceuta</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CHAL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Chalki</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CHAN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Chania</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CHER">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cherbourg UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CHIO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Chios</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CIVI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Civitavecchia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="COCH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cochem</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CORK">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cork UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CRIS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Los Cristia.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CUXH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cuxhaven</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DENI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Denia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DGSA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Douglas</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DIEL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dielette</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DIEP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dieppe UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DIPE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dieppe UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DIPL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dieppe UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DONO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Donousa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DOVE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dover, Eastern Docks UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DOVL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dover, Eastern Dock Fast Ferry UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DOVW">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dover, Western Docks/Hoverport UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DRAG">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dragoer</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DUBL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dublin</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DUBN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dublin UNICORN - pre UN/LOCODES. No longer used?</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DUBR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dubrovnik</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DUBS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dublin Swift</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DUGI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dugi Otok</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DUNH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dun Laoghaire (fast) UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DUNK">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Gravelines, Dunkerque Ouest UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DUNL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dun Laoghaire UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DUNY">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Dun Laoghaire</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DURR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Durres</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EGER">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Egersund</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EGIA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Egiali</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ELBA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ile D'elbe</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ELTV">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Eltville</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ESBJ">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Esbjerg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EVDI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Evdilos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FANO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fanoe</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FILL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fishguard Lynx</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FISH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fishguard UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FISL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fishguard UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FIUM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fiumicino</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FLEE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fleetwood UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FOLE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Folegandros</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FOLK">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Folkestone UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FORM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Formentera</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FOUR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fourni</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FRDH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Frederikshavn</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FRDS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Frederikshavn</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FYNS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Fynshav</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GAND">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Gandia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GDYN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Gdynia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GEDS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Gedser</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GENU">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Genoa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GODE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bn.Bad Godesburg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GOES">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Goeteborg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GOET">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Gothenburg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GOLF">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Golfo Aranci</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GOME">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Gomera</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GOTS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Gothenburg (fast)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GRAN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Granville</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GREN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Grenaa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GRJI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ikaria</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GUER">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Guernsey</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HALM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Halmstad</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HALS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Halsskov</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HAMB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Hamburg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HANK">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Hanko</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HANS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Hanstholm</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HARH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Harwich, Parkeston Quay UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HARW">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Harwich, Parkeston Quay UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HAUG">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Haugesund</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HAVN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Havneby</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HEBO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Helsingborg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HEKI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Helsinki</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HELG">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Helgoland</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HELI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Porto heli</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HEOR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Helsingoer</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HERA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Heraklion</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HEYS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Heysham UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HIR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Hirtshals</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HIRT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Hirtshals</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HOEH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Hoek van Holland UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HOEK">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Hoek van Holland UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HOEN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">B.Hoenningen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HOLH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Holyhead UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HOLL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Holyhead Lynx</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HOLS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Holyhead</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HOLY">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Holyhead UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HONN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bad Honnef</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HULL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Hull UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HVAR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Hvar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IBIZ">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ibiza</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IGOU">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Igoumenitsa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ILER">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ile Rousse</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IOS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ios</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IRAK">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Heraklion</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ITHA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ithaca</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="JERS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Jersey St.Helier</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KALO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Karlovasi</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KALY">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kalymnos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KAMP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kamp-bornh.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KAPP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kapellskaer</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KARL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Karlskrona</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KARP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Karpathos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KASS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kassos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KATA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Katapola</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KAUB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kaub</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KEPH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Cefalonia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KEL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kiel</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KIEL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kiel</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KILL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Killini</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KIMO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kimolos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KIRI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kirikos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KLAI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Klaipeda</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KNUD">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Knudshoved</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KOBE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kobern-gond.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KOBL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Koblenz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KOEL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Koeln</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KOEN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Koenigswint</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KOPE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Copenhagen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KORC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Korcula</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KORF">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Corfu</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KOS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KOUF">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Koufonisia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KRS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kristiansand</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KRIS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kristiansand</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KUSA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kusadasi</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KYTH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Kythnos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LANG">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Langnaes</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LAPA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Las Palmas</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LARN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Larne UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LAR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Larvik</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LARV">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Larvik</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LASP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">La Spezia Corsica ferries port</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LEHA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Le Havre</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LERO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Leros</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LERW">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Lerwick</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LEVK">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Lefkas</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LIMH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Limhamn</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LINR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Linz/rhein</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LIST">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">List</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LIVE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Liverpool</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LIVO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Livorno</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LORC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Lorch</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LUEB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Luebeck</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MAHO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Mahon</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MAIN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Mainz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MALA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Malaga</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MALI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Mali Losinj</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MALT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Malta</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MARI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Mariehamn</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MARS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Marseille</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MELI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Melilla</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MILO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Milos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MORR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Morro Jable</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MOSK">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Moselkern</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MOSS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Moss</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MOSW">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Moselweiss</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MUKR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sassnitz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MYKO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Mykonos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MYTI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Mytiline</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NAAN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Naantali</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NADO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Nador</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NAPL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Naples</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NAXO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Naxos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NEAP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Neapel</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NEUW">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Neuwied</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NEWC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Newcastle</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NEWH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Newhaven UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NEWL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Newhaven UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NEWN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Newhaven UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NIEH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Niederheimb.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NIEL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Niederlahns.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NIZZ">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Nice</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OBLA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Oberlahnst.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OBWE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Oberwesel</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OLBI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Olbia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OLIB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Olib</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OOST">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ostend</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ORAN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Oran</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OSL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Oslo</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OSLO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Oslo</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PALE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Palermo</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PALM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Palma Mallorca</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PARO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Paros</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PATM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Patmos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PATR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Patras</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PAXI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Paxi</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PEMB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Pembroke</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PESC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Pescara</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PIOM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Piombino</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PIRA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Piraeus</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PLYM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Plymouth UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="POOL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Poole UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PORB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Portbail</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PORO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Poros</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PORS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Portsmouth, Continental Ferry Terminal UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PORT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Porto Ferraio</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PORV">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Porto Vecchio</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PORZ">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Porz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PREM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Premuda</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PRIM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Primosten</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PROP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Propriano</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PTOR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Porto Torres</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PUER">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Pto.rosario</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PUTT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Puttgarden</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RAB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Rab</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RAFI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Rafina</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RAVE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ravenna</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="REMA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Remagen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RETH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Rethimnon</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RHEN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Rhens</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RHOD">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Rhodes</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RIJE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Rijeka</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ROED">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Roedby</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ROEN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Roenne</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ROLL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Rosslare Lynx</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ROSC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Roscoff UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ROSL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Rosslare UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ROSS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Rosslare UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ROST">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Rostock</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ROTT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Rotterdam UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RUED">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ruedesheim</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RUEG">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ruegen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SALZ">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bad Salzig</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SAMI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sami</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SAMO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Samos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SANA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">San Antonio</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SAD">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sandefjord</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SAND">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sandefjord</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SANT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Santander</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SARK">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sark</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SASS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sassnitz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SATA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Santander</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SAVO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Savona</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SCPA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">S/c La Palma</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SCRA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Scrabster</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SERI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Serifos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SETE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sete</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SEVI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sevilla</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SEYD">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Seydisfjord.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SFAX">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sfax</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SHIN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Schinousa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SIBE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sibenik</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SIFN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sifnos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SIKI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sikinos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SILB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Silba</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SIRO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Siros</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SITI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sitia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SKAG">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Skagen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SKIA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Skiathos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SKIK">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Skikda</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SKOP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Skopelos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SOBR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sobra</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SODE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Soedertaelje</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SOUS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sousse</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SOUT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Southampton</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SPLI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Split</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SPOD">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Spodsbjerg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STAR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Starigrad</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STAV">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Stavenger</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STET">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Stettin</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STGH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">St.Goarshaus</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STGR">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">St.Goar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STMA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">St Malo UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STOC">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Stockholm</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STQP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">St.Quay Por.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STRA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Stranraer UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STRH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Stranraer UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SMD">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Stromstad</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STRM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Stromstad</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STRN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Stranraer UNICORN - pre UN/LOCODES.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STRO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Stromness</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STTE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">S. Teresa di Gallura</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SWIN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Swinemuende</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SYLT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sylt</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SYMI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Symi</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SYRO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Syros</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TALL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Tallin</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TANG">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Tangier</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TARS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Tars</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TENE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Tenerife</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TINO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Tinos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TORS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Torshavn</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TOUL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Toulon</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TRAP">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Trapani</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TRAV">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Travemunde</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TREI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Treis-karden</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TREL">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Trelleborg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TRON">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Troon</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TRST">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Triest</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TUNI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Tunis</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TURK">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Turku</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UBLI">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ubli</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UMEA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Umeaa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UNKE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Unkel</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VAAS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Vaasa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VALE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Valencia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VALV">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Valverde</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VARB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Varberg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VATH">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Vathi</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VELA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Vela Luka</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VENE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Venedig</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VIS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Vis</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VOLO">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Volos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WARN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Warnemuende</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WEDE">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Wedel</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WESS">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Wesseling</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WIEN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Wien</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WIES">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Wiesbaden-b.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WINN">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Winningen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WISM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Wismar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="YSTA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Ystad</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZADA">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Zadar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZAKY">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Zakynthos</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZANT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Zante</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZEEB">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Zeebrugge</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OccupancyModeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The form of accommodation occupancy: B = by berth; C = complete unit or seat </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="B">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">By berth</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Complete unit or seat</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FerryAccomType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The type of accommodation: B = bedded cabin; C = couchette; S = Seat.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="B">
+				<xs:annotation>
+					<xs:documentation xml:lang="En">Bedded cabin</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Couchette</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="S">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Seat</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AccomQualityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Indicates the quality of the accommodation:  L=Luxe N=Normal P=Pullman Seat R=Reclining Seat S=Special T=Tourist V=De Luxe X=Super de Luxe Y=Economy</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="L">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Luxe</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="N">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Normal</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="P">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Pullman Seat</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="R">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Reclining Seat</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="S">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Special</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Tourist</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="V">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">De Luxe</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="X">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Super de Luxe</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Y">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Economy</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AccomSanitaryType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The type of sanitary arrangements provided:	B=Bath and WC H=Shower and WC I=Bath Shower and WC V=Washbasin and WC W=Washbasin Y=WC</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="B">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bath and WC</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="H">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Shower and WC</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="I">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Bath Shower and WC</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="V">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Washbasin and WC</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="W">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Washbasin</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Y">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">WC</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AccomPositionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The area in which the on-board accommodation: is located: I=Inner O=Outer</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="I">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Inner</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="O">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Outer</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FerryLocationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The section in which the on-board accommodation: is located: P=Port S=Starboard F=Forward A=Aft</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="P">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Port</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="S">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Starboard</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="F">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Forward</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="A">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Aft</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FerryClassType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Class code for travel or service: 1= 1st class 2=2nd class 3=3rd Class C=Business/Club class U=Shuttle service.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">1st class</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">2nd class</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">3rd class</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Business/Club class</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="U">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Shuttle service</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="FerryInvoiceDetail">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A list of all the items making up a costed booking</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CostingItems" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of invoice item lines.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CostingItem" maxOccurs="99">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="CostingItemType">
+										<xs:attribute name="Tag" type="xs:string" use="optional">
+											<xs:annotation>
+												<xs:documentation xml:lang="en">If present, this attribute may identify the booking item being priiced. It is recommended that the Tag attribute use XPath notation to identify the location of a tag in the event that more than one tag of the same name is present in the document.</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="GrossAmount" type="CurrencyAmountType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The total booking cost to the customer.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DepositAmount" type="CurrencyAmountType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The amount payable at the time of booking to secure the booking.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AgentCommission" type="AgentCommissionType" minOccurs="0" maxOccurs="8">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The total fee earned by the agent for the booking.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NetAmount" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The amount payable by the agent, i.e. GrossAmount less Commission less Tax.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="CurrencyAmountType">
+							<xs:attribute name="PaymentDueDate" type="xs:date" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Date on which payment must be received.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TaxItems" type="TaxesType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of tax item lines.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BalanceDueAmount" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The amount remaining to be paid by the customer i.e. GrossAmount less the greater of DepositAmount and Amount Received.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="CurrencyAmountType">
+							<xs:attribute name="PaymentDueDate" type="xs:date" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Date on which payment must be received.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AmountReceived" type="CurrencyAmountType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The payment amount received against the reservation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

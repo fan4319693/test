@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by Eleanor Talbot (Openjaw Technologies Ltd.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- Vehicle Information -->
+	<xs:element name="VehicleInformation">
+		<xs:annotation>
+			<xs:documentation>The criteria listed here can be changed to reflect the search options available in the IBE.  They should always match the product configuration options offerred to the user in the xPromotion editor.  These are configured in 'display\config\datalists\ProductParameters.xsl'.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="carType"/>
+				<xs:element ref="driverAge"/>
+				<xs:element ref="carCompany"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="driverAge">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="carType">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="carCompany">
+		<xs:complexType/>
+	</xs:element>
+</xs:schema>

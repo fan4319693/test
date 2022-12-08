@@ -1,0 +1,125 @@
+<jxb:bindings
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+        version="2.1">
+    <jxb:bindings schemaLocation="OJ_DestActivityCommonTypes.xsd">
+        <jxb:bindings node="//xs:element[@name='PTCs']">
+            <jxb:class name="PTCsFromDestActivityCommonTypes"/>
+        </jxb:bindings>
+        <jxb:bindings node="//xs:attributeGroup[@name='DestActivityReferenceGroup']">
+            <jxb:bindings node=".//xs:attribute[@name='Exclusive']">
+                <jxb:property name="ExclusiveAttr"/>
+            </jxb:bindings>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="OJ_PromotionCommonTypes.xsd">
+        <jxb:bindings node="//xs:element[@name='Status']">
+            <jxb:class name="StatusFromPromotionCommonTypes"/>
+        </jxb:bindings>
+        <jxb:bindings node="//xs:complexType[@name='FromPrice']">
+            <jxb:class name="MainFromPrice"/>
+        </jxb:bindings>
+        <jxb:bindings node="//xs:complexType[@name='Group']">
+            <jxb:class name="ComplexGroup"/>
+        </jxb:bindings>
+        <jxb:bindings node="//xs:complexType[@name='PromotionProfileType']">
+            <jxb:bindings node=".//xs:attribute[@name='Status']">
+                <jxb:property name="StatusAttr"/>
+            </jxb:bindings>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="OJ_Promotion_Search_Hotel.xsd">
+        <jxb:bindings node="//xs:element[@name='locationType']">
+            <jxb:class name="LocationTypeFromSearchHotel"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="OJ_DeepLink.xsd">
+        <jxb:bindings node="//xs:complexType[@name='Location']">
+            <jxb:class name="LocationFromSearchHotel"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="OJ_CommonTypes.xsd">
+        <jxb:bindings node="//xs:complexType[@name='VehAvailType']">
+            <jxb:bindings node=".//xs:attribute[@name='Reference']">
+                <jxb:property name="ReferenceAttr"/>
+            </jxb:bindings>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="OJ_SuperPNR.xsd">
+        <jxb:bindings node="//xs:complexType[@name='ProductBase']">
+            <jxb:bindings node=".//xs:element[@name='Vehicle']">
+                <jxb:bindings node=".//xs:extension[@base='VehicleReservationType']">
+                    <jxb:bindings node="./xs:attribute[@name='BookingReferenceID']">
+                        <jxb:property name="BookingReferenceIDAttr2"/>
+                    </jxb:bindings>
+                    <jxb:bindings node=".//xs:element[@name='BookingReferenceID']">
+                        <jxb:bindings node=".//xs:attribute[@name='BookingReferenceID']">
+                            <jxb:property name="BookingReferenceIDAttr"/>
+                        </jxb:bindings>
+                    </jxb:bindings>
+                </jxb:bindings>
+            </jxb:bindings>
+        </jxb:bindings>
+        <!-- 注意这里最后要加一个complexType https://stackoverflow.com/questions/32716132/nested-elements-in-xsd-cause-illegal-class-inheritance-loop-exception-in-jaxb-h -->
+        <jxb:bindings node="//xs:complexType[@name='ProductBase']/xs:choice/xs:element[@name='Baggage']/xs:complexType">
+            <jxb:class name="ProductBaseBaggage"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="OTA_CommonTypes.xsd">
+        <jxb:bindings node="//xs:attributeGroup[@name='TelephoneAttributesGroup']">
+            <jxb:bindings node=".//xs:attribute[@name='PhoneNumber']">
+                <jxb:property name="PhoneNumberAttr"/>
+            </jxb:bindings>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="OTA_AirCommonTypes.xsd">
+        <jxb:bindings node="//xs:complexType[@name='AirReservationType']">
+            <jxb:bindings node=".//xs:attribute[@name='BookingReferenceID']">
+                <jxb:property name="BookingReferenceIDAttr"/>
+            </jxb:bindings>
+        </jxb:bindings>
+        <jxb:bindings node="//xs:element[@name='APISInformation']">
+            <jxb:bindings node=".//xs:attribute[@name='type']">
+                <jxb:property name="typeAttr"/>
+            </jxb:bindings>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="OTA_HotelContentDescription.xsd">
+        <jxb:bindings node="//xs:complexType[@name='DescriptionType']">
+            <jxb:class name="DescriptionFromHotelContentDescription"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="OTA_HotelCommonTypes.xsd">
+        <jxb:bindings node="//xs:complexType[@name='RatePlanType']">
+            <jxb:bindings node=".//xs:attribute[@name='PaymentModel']">
+                <jxb:property name="PaymentModelAttr"/>
+            </jxb:bindings>
+        </jxb:bindings>
+        <jxb:bindings node="//xs:attributeGroup[@name='OJ_RatePlanAttributeGroup']">
+            <jxb:bindings node=".//xs:attribute[@name='PaymentType']">
+                <jxb:property name="PaymentTypeAttr"/>
+            </jxb:bindings>
+        </jxb:bindings>
+        <jxb:bindings node="//xs:complexType[@name='PhonesType']">
+            <jxb:bindings node=".//xs:element[@name='PhoneNumber']">
+                <jxb:class name="PhoneNumberFromHotelCommon"/>
+            </jxb:bindings>
+        </jxb:bindings>
+    </jxb:bindings>
+
+
+    <!-- Raise theEnumMemberSizeCap limit -->
+    <jxb:bindings>
+        <jxb:globalBindings typesafeEnumMaxMembers="2000"/>
+    </jxb:bindings>
+
+</jxb:bindings>

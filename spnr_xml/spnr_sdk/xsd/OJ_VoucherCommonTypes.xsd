@@ -1,0 +1,191 @@
+<!-- edited with XMLSpy v2015 rel. 3 sp1 (x64) (http://www.altova.com) by Wojciech Krok (OpenJaw Technologies Polska Sp. z o.o.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:ota="http://www.opentravel.org/OTA/2003/05" targetNamespace="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified">
+	<xs:include schemaLocation="OJ_CommonTypes.xsd"/>
+	<xs:complexType name="OJVoucherInfosType">
+		<xs:sequence>
+			<xs:element name="Info" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Voucher additional info.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Type" type="xs:string" use="required">
+								<xs:annotation>
+									<xs:documentation>Unique type of info.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OJVoucherBaseType">
+		<xs:annotation>
+			<xs:documentation>Voucher data type.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Infos" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Voucher additional infos.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="OJVoucherInfosType"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OJVoucherType">
+		<xs:annotation>
+			<xs:documentation>Valid voucher data type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="OJVoucherBaseType">
+				<xs:attribute name="SupplierCode" type="xs:string" use="required">
+					<xs:annotation>
+						<xs:documentation>Unique voucher supplier code.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ProductTypeCode" type="xs:string" use="required">
+					<xs:annotation>
+						<xs:documentation>Product type code of a product for which voucher is defined.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="VoucherNo" type="xs:string" use="required">
+					<xs:annotation>
+						<xs:documentation>Unique voucher number.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ExpiryDate" type="xs:date" use="required">
+					<xs:annotation>
+						<xs:documentation>Voucher expiry date.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="SupplierProductCode" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Unique product code within supplier context.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Password" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Voucher password.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OJFailedVoucherType">
+		<xs:annotation>
+			<xs:documentation>Failed voucher data type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="OJVoucherBaseType">
+				<xs:attribute name="SupplierCode" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Unique voucher supplier code.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ProductTypeCode" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Product type code of a product for which voucher is defined.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="VoucherNo" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Unique voucher number.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ExpiryDate" type="xs:date">
+					<xs:annotation>
+						<xs:documentation>Voucher expiry date.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="SupplierProductCode" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Unique product code within supplier context.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Password" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Voucher password.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Reason" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Reason of failed voucher import.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OJVoucherImportHistoryType">
+		<xs:annotation>
+			<xs:documentation>Voucher import history type.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="ImportId" type="xs:long" use="required">
+			<xs:annotation>
+				<xs:documentation>ID of the import.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FileName" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Name of the imported file.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Imported" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>Successfully imported rows count.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Failed" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>Failed rows count.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Duplicated" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>Duplicated rows count.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SearchCriteriaType">
+		<xs:attribute name="SupplierCode" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Unique voucher supplier code.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SupplierProductCode" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Unique product code within supplier context.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ProductType" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Product type for which voucher is defined.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ExpirationDate" type="xs:date" use="required">
+			<xs:annotation>
+				<xs:documentation>Expiration date to which vouchers will be search.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="OJVoucherHistorySearchType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SUCCEEDED"/>
+			<xs:enumeration value="FAILED"/>
+			<xs:enumeration value="DUPLICATED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OJVoucherStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ACTIVE"/>
+			<xs:enumeration value="USED"/>
+			<xs:enumeration value="EXPIRED"/>
+			<xs:enumeration value="DELETED"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

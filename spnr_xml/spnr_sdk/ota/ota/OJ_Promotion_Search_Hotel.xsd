@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by Eleanor Talbot (Openjaw Technologies Ltd.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- Hotel Information -->
+	<xs:element name="HotelInformation">
+		<xs:annotation>
+			<xs:documentation>The criteria listed here can be changed to reflect the search options available in the IBE.  They should always match the product configuration options offerred to the user in the xPromotion editor.  These are configured in 'display\config\datalists\ProductParameters.xsl'.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="propertyType">
+					<xs:annotation>
+							<xs:documentation>Defines the type of property required. e.g. villa, aoartment, hotel... Allowed values in this field are any configured in the PropertyClassType itemlist used by xHotel.  By Default this will be configured in the "\itemlists\OTACodes" directory in the editor.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="hotelName">
+					<xs:annotation>
+						<xs:documentation>The name of the preferred hotel if any.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="locationType">
+					<xs:annotation>
+						<xs:documentation>Defines the type of area that the property is required in.  e.g. Beach, Airport or Lake.  Allowed values in this field are any configured in the LocationCategoryCodes itemlist used by xHotel.  By Default this will be configured in the "\itemlists\OTACodes" directory in the editor.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="roomRating">
+					<xs:annotation>
+						<xs:documentation>Rate from 0 - 5. 5 means you are very satisfied</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="hotelChain">
+					<xs:annotation>
+						<xs:documentation>If hotel is chain hotel. Will require a chain code to proceed.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="propertyType">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="locationType">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="hotelName">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="hotelChain">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="roomRating">
+		<xs:simpleType>
+			<xs:restriction base="xs:byte">
+				<xs:enumeration value="3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

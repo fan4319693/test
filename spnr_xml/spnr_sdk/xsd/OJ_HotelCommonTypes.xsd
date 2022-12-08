@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2015 rel. 3 sp1 (x64) (http://www.altova.com) by Krzysztof Ulman (OpenJaw Technologies Polska Sp. z o.o.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="4.001" id="OTA2003A2006B">
+	<xs:include schemaLocation="OTA_SimpleTypes.xsd"/>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Contains OpenJaw hotel schema customisations</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="Specials">
+		<xs:annotation>
+			<xs:documentation>Specials</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="Special" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Special</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence minOccurs="0">
+						<xs:element name="RoomTypes">
+							<xs:complexType>
+								<xs:sequence maxOccurs="unbounded">
+									<xs:element name="RoomType">
+										<xs:complexType>
+											<xs:attribute name="Code" type="xs:string" use="required"/>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="StayDates" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Stay dates of the booking.Stay dates must be BETWEEN From and To.  At least one StayDate should be fulfiled in order to apply this rule.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence minOccurs="0" maxOccurs="unbounded">
+									<xs:element name="StayDate" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="BookingDates" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Booking dates. The rule will be applied if booking is done within one of the BookingDate's From and To.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence minOccurs="0" maxOccurs="unbounded">
+															<xs:element name="BookingDate" minOccurs="0">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="DOW">
+																			<xs:complexType>
+																				<xs:attribute name="Mon" type="xs:boolean" use="required"/>
+																				<xs:attribute name="Tue" type="xs:boolean" use="required"/>
+																				<xs:attribute name="Weds" type="xs:boolean" use="required"/>
+																				<xs:attribute name="Thur" type="xs:boolean" use="required"/>
+																				<xs:attribute name="Fri" type="xs:boolean" use="required"/>
+																				<xs:attribute name="Sat" type="xs:boolean" use="required"/>
+																				<xs:attribute name="Sun" type="xs:boolean" use="required"/>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																	<xs:attribute name="From" type="xs:date" use="optional"/>
+																	<xs:attribute name="To" type="xs:date" use="optional"/>
+																	<xs:attribute name="AdvancedBookingOffset">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:int">
+																				<xs:minInclusive value="1"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:attribute>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="DOW">
+													<xs:complexType>
+														<xs:attribute name="Mon" type="xs:boolean" use="required"/>
+														<xs:attribute name="Tue" type="xs:boolean" use="required"/>
+														<xs:attribute name="Weds" type="xs:boolean" use="required"/>
+														<xs:attribute name="Thur" type="xs:boolean" use="required"/>
+														<xs:attribute name="Fri" type="xs:boolean" use="required"/>
+														<xs:attribute name="Sat" type="xs:boolean" use="required"/>
+														<xs:attribute name="Sun" type="xs:boolean" use="required"/>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="ArrivalDaysOfWeek" minOccurs="0">
+													<xs:complexType>
+														<xs:attribute name="Mon" type="xs:boolean" use="required"/>
+														<xs:attribute name="Tue" type="xs:boolean" use="required"/>
+														<xs:attribute name="Weds" type="xs:boolean" use="required"/>
+														<xs:attribute name="Thur" type="xs:boolean" use="required"/>
+														<xs:attribute name="Fri" type="xs:boolean" use="required"/>
+														<xs:attribute name="Sat" type="xs:boolean" use="required"/>
+														<xs:attribute name="Sun" type="xs:boolean" use="required"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="From" type="xs:date" use="required"/>
+											<xs:attribute name="To" type="xs:date" use="required"/>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Discount">
+							<xs:complexType>
+								<xs:sequence minOccurs="0">
+									<xs:element name="Description" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence minOccurs="0" maxOccurs="unbounded">
+												<xs:element name="Text" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="xs:string">
+																<xs:attribute name="Language" use="required">
+																	<xs:annotation>
+																		<xs:documentation>ISO lanuage code.</xs:documentation>
+																	</xs:annotation>
+																</xs:attribute>
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="ContractMinStay">
+									<xs:annotation>
+										<xs:documentation>The min number of stay days using this contract.</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:int">
+											<xs:minInclusive value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="ContractMaxStay">
+									<xs:annotation>
+										<xs:documentation>The max number of stay days using this contract.</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:int">
+											<xs:minInclusive value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="Code" use="required">
+									<xs:annotation>
+										<xs:documentation>Rule code. 1 - Discount Percent for All Nights;
+2 - Discount Percent for All Nights Over
+3 - Discount Percent for First
+4 - Discount Amount for All Nights
+5 - Discount Amount for All Nights Over
+6 - Discount Amount for First
+7 - Discount Amount per Person for All Nights
+8 - Discount Amount per Person for All Nights Over
+9 - Discount Amount per Person for First
+10 - Set Amount per Person per Night</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Amount" type="xs:float" use="required">
+									<xs:annotation>
+										<xs:documentation>An float (integer) (interpretation of the number depends on the @Code</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="ApplyType" use="required">
+									<xs:annotation>
+										<xs:documentation>How to apply the rule - visible to the end user, etc. 1- apply and show to user. 2- no discount(pay supplier for 4 nights, charge user 6). 3- apply and don't show to end user.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Nights">
+									<xs:annotation>
+										<xs:documentation>Number of nights.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="MinNumOfRooms">
+									<xs:annotation>
+										<xs:documentation>The min number of rooms required.</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:int">
+											<xs:minInclusive value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="MaxNumOfRooms">
+									<xs:annotation>
+										<xs:documentation>The max number of rooms required.</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:int">
+											<xs:minInclusive value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="MinNumOfGuests">
+									<xs:annotation>
+										<xs:documentation>The min number of guests (adults plus children) required.</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:int">
+											<xs:minInclusive value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="MaxNumOfGuests">
+									<xs:annotation>
+										<xs:documentation>The max number of guests (adults plus children) required.</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:int">
+											<xs:minInclusive value="1"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="Code" use="required">
+						<xs:annotation>
+							<xs:documentation>Special code.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:minLength value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="ApplyOrder" use="required">
+						<xs:annotation>
+							<xs:documentation>Apply order. Two specials cannot have the same order.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:int">
+								<xs:minInclusive value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="Enabled" use="required">
+						<xs:annotation>
+							<xs:documentation>Determines whether the special is enabled/disabled.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="Combinable" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>Determines if special is combinable. If not present, the application  should assume it is combinable.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="ApplyCheapest" type="xs:boolean" use="optional">
+						<xs:annotation>
+							<xs:documentation>Determines whether we apply the special to the cheapest NightlyRates first.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:attributeGroup name="SellingPrices">
+		<xs:annotation>
+			<xs:documentation>The RatePlan Selling Prices</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="SellAmountBeforeTax" type="xs:float" use="optional"/>
+		<xs:attribute name="SellAmountAfterTax" type="xs:float" use="optional"/>
+		<xs:attribute name="SellMealPriceBeforeTax" type="xs:float" use="optional"/>
+		<xs:attribute name="SellMealPriceAfterTax" type="xs:float" use="optional"/>
+		<xs:attribute name="SellAmount" type="xs:float" use="optional"/>
+	</xs:attributeGroup>
+	<xs:element name="RatePlans">
+		<xs:annotation>
+			<xs:documentation>Temporary element to cover calendar avail for xHotel.  This element will be removed in future versions</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="RatePlan" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="InvCounts">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="InvCount">
+											<xs:complexType>
+												<xs:attribute name="Available" type="xs:int" use="required"/>
+												<xs:attribute name="Blocked" type="xs:boolean" use="required"/>
+												<xs:attribute name="ForDate" type="xs:date" use="required"/>
+												<xs:attribute name="LocallyBooked" type="xs:int" use="required"/>
+												<xs:attribute name="TotallyAvailable" type="xs:int" use="required"/>
+												<xs:attribute name="RatePlanEnabled" type="xs:int" use="required"/>
+												<xs:attribute name="Status"/>
+												<xs:attribute name="MinLOS"/>
+												<xs:attribute name="FullPatternLOS"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Start" type="xs:date" use="required"/>
+						<xs:attribute name="End" type="xs:date" use="required"/>
+						<xs:attribute name="RatePlanCode" type="xs:string" use="required"/>
+						<xs:attribute name="RatePlanName" type="xs:string"/>
+						<xs:attribute name="SupplierCode" type="xs:string" use="required"/>
+						<xs:attribute name="SupplierName" type="xs:string"/>
+						<xs:attribute name="RatePlanCategory"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="SpecialType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Applicable special element. It shows what specials have been applied to the RoomRate.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="Special">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="Text">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="xs:string">
+										<xs:attribute name="Language">
+											<xs:annotation>
+												<xs:documentation>Lanuage code (ISO).</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="ApplyType" type="xs:int" use="required">
+						<xs:annotation>
+							<xs:documentation>How to apply the rule - visible to the end user, etc. 1- apply and show to user. 2- no discount(pay supplier for 4 nights, charge user 6). 3- apply and don't show to end user.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="Code" type="xs:string" use="required">
+						<xs:annotation>
+							<xs:documentation>Special code.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="RatePlanCode" type="xs:string" use="required">
+						<xs:annotation>
+							<xs:documentation>Rate plan code.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="ApplyOrder" use="required">
+						<xs:annotation>
+							<xs:documentation>Apply order as defined in the special.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:int">
+								<xs:minInclusive value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="AppliedOrder" use="required">
+						<xs:annotation>
+							<xs:documentation>The actual applied order.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:int">
+								<xs:minInclusive value="1"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="ApplyCheapest" type="xs:boolean"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
