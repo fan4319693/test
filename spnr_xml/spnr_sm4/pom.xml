@@ -50,11 +50,6 @@
             <artifactId>lombok</artifactId>
             <version>1.16.16</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.28</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -90,6 +85,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <finalName>${project.name}-${project.version}</finalName>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <shadedClassifierName>case</shadedClassifierName>
                             <filters>
