@@ -1,10 +1,7 @@
 package com.airchina.datacenter.spnr.sm4.util;
 
 import java.nio.charset.StandardCharsets;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.Security;
+import java.security.*;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -24,6 +21,9 @@ import org.bouncycastle.util.encoders.Base64;
 @Slf4j
 public class Sm4Utils {
     private Sm4Utils() {};
+    static {
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+    }
 
     private static final String IV = "99aa3e68ed8173a0eed06684eed06684";
     // 填充模式
@@ -38,7 +38,7 @@ public class Sm4Utils {
      * @param data 明文
      * @return 密文
      */
-    public static String cbcEncrypt(String key, String data, String algorithm_mode) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException {
+    public static String cbcEncrypt(String key, String data, String algorithm_mode) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException, NoSuchProviderException {
         byte[] keyData = key.getBytes(StandardCharsets.UTF_8);
         byte[] srcData = data.getBytes(StandardCharsets.UTF_8);
         byte[] encryptMode = encryptMode(keyData, srcData, algorithm_mode);
@@ -51,7 +51,7 @@ public class Sm4Utils {
      * @param data 密文
      * @return 明文
      */
-    public static String cbcDecrypt(String key, String data, String algorithm_mode) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException {
+    public static String cbcDecrypt(String key, String data, String algorithm_mode) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException, NoSuchProviderException {
         byte[] keyData = key.getBytes(StandardCharsets.UTF_8);
         byte[] srcData = Base64.decode(data);
         byte[] decryptMode = decryptMode(keyData, srcData, algorithm_mode);
@@ -64,7 +64,7 @@ public class Sm4Utils {
      * @param data 明文
      * @return 密文
      */
-    public static String ecbEncrypt(String key, String data, String algorithm_mode) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException {
+    public static String ecbEncrypt(String key, String data, String algorithm_mode) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException, NoSuchProviderException {
         byte[] keyData = key.getBytes(StandardCharsets.UTF_8);
         byte[] srcData = data.getBytes(StandardCharsets.UTF_8);
         byte[] encryptMode = encryptMode(keyData, srcData, algorithm_mode);
@@ -77,15 +77,8 @@ public class Sm4Utils {
      * @param data 密文
      * @return 明文
      */
-    public static String ecbDecrypt(String key, String data, String algorithm_mode) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException {
+    public static String ecbDecrypt(String key, String data, String algorithm_mode) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException, NoSuchProviderException {
         byte[] keyData = key.getBytes(StandardCharsets.UTF_8);
-        byte[] srcData = Base64.decode(data);
-        byte[] decryptMode = decryptMode(keyData, srcData, algorithm_mode);
-        return new String(decryptMode, StandardCharsets.UTF_8);
-    }
-
-    public static String ecbHexDecrypt(String key, String data, String algorithm_mode) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException {
-        byte[] keyData = ByteUtils.fromHexString(key);
         byte[] srcData = Base64.decode(data);
         byte[] decryptMode = decryptMode(keyData, srcData, algorithm_mode);
         return new String(decryptMode, StandardCharsets.UTF_8);
@@ -111,14 +104,13 @@ public class Sm4Utils {
      * 初始化Cipher
      * 生成国密Key：SM4，密钥为 128bit， 16byte
     * */
-    private static Cipher initCipher(int mode, byte[] key, String algorithm_mode) throws InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException {
-        Security.addProvider(new BouncyCastleProvider());
+    private static Cipher initCipher(int mode, byte[] key, String algorithm_mode) throws InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException, NoSuchProviderException {
         if (key.length != 16) {
             log.error("SM4's key should be 16bytes, 128bits.");
         }
         SecretKeySpec secretKeySpec = new SecretKeySpec(key, SM4);
         String param = SM4 + "/" + algorithm_mode + "/" + PADMODE;
-        Cipher cipher = Cipher.getInstance(param);
+        Cipher cipher = Cipher.getInstance(param, BouncyCastleProvider.PROVIDER_NAME);
         if (ECB.equals(algorithm_mode)) {
             cipher.init(mode, secretKeySpec);
         }else {
@@ -133,7 +125,7 @@ public class Sm4Utils {
      * @param key
      * @param data
      */
-    private static byte[] encryptMode(byte[] key, byte[] data, String algorithm_mode) throws InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, NoSuchPaddingException, DecoderException {
+    private static byte[] encryptMode(byte[] key, byte[] data, String algorithm_mode) throws InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, NoSuchPaddingException, DecoderException, NoSuchProviderException {
         Cipher cipher = initCipher(Cipher.ENCRYPT_MODE, key, algorithm_mode);
         return cipher.doFinal(data);
     }
@@ -143,7 +135,7 @@ public class Sm4Utils {
      * @param key
      * @param data
      */
-    private static byte[] decryptMode(byte[] key, byte[] data, String algorithm_mode) throws InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, NoSuchPaddingException, DecoderException {
+    private static byte[] decryptMode(byte[] key, byte[] data, String algorithm_mode) throws InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, NoSuchPaddingException, DecoderException, NoSuchProviderException {
         Cipher cipher = initCipher(Cipher.DECRYPT_MODE, key, algorithm_mode);
         return cipher.doFinal(data);
     }

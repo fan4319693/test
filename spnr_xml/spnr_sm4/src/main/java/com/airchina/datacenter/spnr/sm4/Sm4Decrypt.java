@@ -16,9 +16,10 @@ import javax.crypto.NoSuchPaddingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 
 /*
-* SM4 CBC ECB
+* SM4 秘钥的秘钥解密秘钥后，再解密密文
 * */
 @Description(name = "Sm4Encrypt",
             value = "_FUNC_(column, keyByKey, key, algorithm), algorithm{CBC,ECB}" +
@@ -78,8 +79,7 @@ public class Sm4Decrypt extends GenericUDF {
         try {
             String ecbKey = Sm4Utils.ecbDecrypt(keyByKey, key, algorithm);
             return Sm4Utils.ecbDecrypt(ecbKey, column, algorithm);
-        } catch (IllegalBlockSizeException | BadPaddingException | InvalidAlgorithmParameterException
-                | InvalidKeyException | NoSuchPaddingException | NoSuchAlgorithmException | DecoderException e) {
+        } catch (IllegalBlockSizeException | BadPaddingException | InvalidAlgorithmParameterException | InvalidKeyException | NoSuchPaddingException | NoSuchAlgorithmException | DecoderException | NoSuchProviderException e) {
             throw new HiveException("There is something wrong, see ", e);
         }
     }
