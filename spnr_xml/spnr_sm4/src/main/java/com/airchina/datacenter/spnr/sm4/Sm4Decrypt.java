@@ -2,6 +2,7 @@ package com.airchina.datacenter.spnr.sm4;
 
 import com.airchina.datacenter.spnr.sm4.util.Sm4Utils;
 import org.apache.commons.codec.DecoderException;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDFArgumentException;
 import org.apache.hadoop.hive.ql.metadata.HiveException;
@@ -76,11 +77,14 @@ public class Sm4Decrypt extends GenericUDF {
         String key = this.key.getPrimitiveJavaObject(deferredObjects[2].get());
         String algorithm = this.algorithm.getPrimitiveJavaObject(deferredObjects[3].get());
 
-        try {
+        if (StringUtils.isEmpty(column)) {
+            return column;
+        }
+        try{
             String ecbKey = Sm4Utils.ecbDecrypt(keyByKey, key, algorithm);
             return Sm4Utils.ecbDecrypt(ecbKey, column, algorithm);
         } catch (IllegalBlockSizeException | BadPaddingException | InvalidAlgorithmParameterException | InvalidKeyException | NoSuchPaddingException | NoSuchAlgorithmException | DecoderException | NoSuchProviderException e) {
-            throw new HiveException("There is something wrong, see ", e);
+            throw new HiveException("There is something wrong, column = " + column, e);
         }
     }
 
