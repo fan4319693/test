@@ -8,17 +8,14 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.pqc.math.linearalgebra.ByteUtils;
 import org.bouncycastle.util.encoders.Base64;
 
 /**
  * SM4 对称、分组加密：置换替换
  */
-@Slf4j
 public class Sm4Utils {
     private Sm4Utils() {};
     static {
@@ -78,8 +75,19 @@ public class Sm4Utils {
      * @return 明文
      */
     public static String ecbDecrypt(String key, String data, String algorithm_mode) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException, NoSuchProviderException {
+        if (!ECB.equals(algorithm_mode)) {
+            throw new NoSuchAlgorithmException("The algorithm only accepts ECB, but receives " + algorithm_mode);
+        }
         byte[] keyData = key.getBytes(StandardCharsets.UTF_8);
-        byte[] srcData = Base64.decode(data);
+        if (keyData.length != 16) {
+            throw new InvalidKeyException("SM4's key should be 16bytes, 128bits, receive " + key);
+        }
+        byte[] srcData;
+        try {
+            srcData = Base64.decode(data);
+        } catch (org.bouncycastle.util.encoders.DecoderException e) {
+            throw new DecoderException("The column can`t be decode to Base64, please check it " + data);
+        }
         byte[] decryptMode = decryptMode(keyData, srcData, algorithm_mode);
         return new String(decryptMode, StandardCharsets.UTF_8);
     }
@@ -105,9 +113,6 @@ public class Sm4Utils {
      * 生成国密Key：SM4，密钥为 128bit， 16byte
     * */
     private static Cipher initCipher(int mode, byte[] key, String algorithm_mode) throws InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, DecoderException, NoSuchProviderException {
-        if (key.length != 16) {
-            log.error("SM4's key should be 16bytes, 128bits.");
-        }
         SecretKeySpec secretKeySpec = new SecretKeySpec(key, SM4);
         String param = SM4 + "/" + algorithm_mode + "/" + PADMODE;
         Cipher cipher = Cipher.getInstance(param, BouncyCastleProvider.PROVIDER_NAME);

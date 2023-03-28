@@ -12,7 +12,6 @@
         <module>spnr_sdk</module>
         <module>spnr_udtf</module>
         <module>spnr_sm4</module>
-        <module>kafka_udaf</module>
     </modules>
 
     <properties>
