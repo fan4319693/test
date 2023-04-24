@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -133,8 +133,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrivacyGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PaymentCardDateGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrivacyGroup"/>
  *       &lt;attribute name="CardType" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
  *       &lt;attribute name="CardCode" type="{http://www.opentravel.org/OTA/2003/05}PaymentCardCodeType" />
  *       &lt;attribute name="CardNumber" type="{http://www.opentravel.org/OTA/2003/05}NumericStringLength1to19" />
@@ -201,16 +201,16 @@ public class PaymentCardType {
     protected String cardHolderRPH;
     @XmlAttribute(name = "IssueNumber")
     protected Integer issueNumber;
+    @XmlAttribute(name = "EffectiveDate")
+    protected String effectiveDate;
+    @XmlAttribute(name = "ExpireDate")
+    protected String expireDate;
     @XmlAttribute(name = "ShareSynchInd")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String shareSynchInd;
     @XmlAttribute(name = "ShareMarketInd")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String shareMarketInd;
-    @XmlAttribute(name = "EffectiveDate")
-    protected String effectiveDate;
-    @XmlAttribute(name = "ExpireDate")
-    protected String expireDate;
 
     /**
      * 获取cardHolderName属性的值。
@@ -626,54 +626,6 @@ public class PaymentCardType {
     }
 
     /**
-     * 获取shareSynchInd属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getShareSynchInd() {
-        return shareSynchInd;
-    }
-
-    /**
-     * 设置shareSynchInd属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setShareSynchInd(String value) {
-        this.shareSynchInd = value;
-    }
-
-    /**
-     * 获取shareMarketInd属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getShareMarketInd() {
-        return shareMarketInd;
-    }
-
-    /**
-     * 设置shareMarketInd属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setShareMarketInd(String value) {
-        this.shareMarketInd = value;
-    }
-
-    /**
      * 获取effectiveDate属性的值。
      * 
      * @return
@@ -721,6 +673,54 @@ public class PaymentCardType {
         this.expireDate = value;
     }
 
+    /**
+     * 获取shareSynchInd属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getShareSynchInd() {
+        return shareSynchInd;
+    }
+
+    /**
+     * 设置shareSynchInd属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setShareSynchInd(String value) {
+        this.shareSynchInd = value;
+    }
+
+    /**
+     * 获取shareMarketInd属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getShareMarketInd() {
+        return shareMarketInd;
+    }
+
+    /**
+     * 设置shareMarketInd属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setShareMarketInd(String value) {
+        this.shareMarketInd = value;
+    }
+
 
     /**
      * <p>anonymous complex type的 Java 类。
@@ -749,6 +749,8 @@ public class PaymentCardType {
         @XmlAttribute(name = "ShareMarketInd")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         protected String shareMarketInd;
+        @XmlAttribute(name = "FormattedInd")
+        protected Boolean formattedInd;
         @XmlAttribute(name = "PhoneLocationType")
         protected String phoneLocationType;
         @XmlAttribute(name = "PhoneTechType")
@@ -765,8 +767,6 @@ public class PaymentCardType {
         protected String extension;
         @XmlAttribute(name = "PIN")
         protected String pin;
-        @XmlAttribute(name = "FormattedInd")
-        protected Boolean formattedInd;
 
         /**
          * 获取shareSynchInd属性的值。
@@ -814,6 +814,34 @@ public class PaymentCardType {
          */
         public void setShareMarketInd(String value) {
             this.shareMarketInd = value;
+        }
+
+        /**
+         * 获取formattedInd属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link Boolean }
+         *     
+         */
+        public boolean isFormattedInd() {
+            if (formattedInd == null) {
+                return false;
+            } else {
+                return formattedInd;
+            }
+        }
+
+        /**
+         * 设置formattedInd属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Boolean }
+         *     
+         */
+        public void setFormattedInd(Boolean value) {
+            this.formattedInd = value;
         }
 
         /**
@@ -1008,34 +1036,6 @@ public class PaymentCardType {
             this.pin = value;
         }
 
-        /**
-         * 获取formattedInd属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link Boolean }
-         *     
-         */
-        public boolean isFormattedInd() {
-            if (formattedInd == null) {
-                return false;
-            } else {
-                return formattedInd;
-            }
-        }
-
-        /**
-         * 设置formattedInd属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Boolean }
-         *     
-         */
-        public void setFormattedInd(Boolean value) {
-            this.formattedInd = value;
-        }
-
     }
 
 
@@ -1134,6 +1134,12 @@ public class PaymentCardType {
         @XmlAttribute(name = "SignupDate")
         @XmlSchemaType(name = "date")
         protected XMLGregorianCalendar signupDate;
+        @XmlAttribute(name = "EffectiveDate")
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar effectiveDate;
+        @XmlAttribute(name = "ExpireDate")
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar expireDate;
         @XmlAttribute(name = "LoyalLevel")
         protected String loyalLevel;
         @XmlAttribute(name = "LoyalLevelCode")
@@ -1144,12 +1150,6 @@ public class PaymentCardType {
         @XmlAttribute(name = "ShareMarketInd")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         protected String shareMarketInd;
-        @XmlAttribute(name = "EffectiveDate")
-        @XmlSchemaType(name = "date")
-        protected XMLGregorianCalendar effectiveDate;
-        @XmlAttribute(name = "ExpireDate")
-        @XmlSchemaType(name = "date")
-        protected XMLGregorianCalendar expireDate;
 
         /**
          * 获取programID属性的值。
@@ -1421,6 +1421,54 @@ public class PaymentCardType {
         }
 
         /**
+         * 获取effectiveDate属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public XMLGregorianCalendar getEffectiveDate() {
+            return effectiveDate;
+        }
+
+        /**
+         * 设置effectiveDate属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public void setEffectiveDate(XMLGregorianCalendar value) {
+            this.effectiveDate = value;
+        }
+
+        /**
+         * 获取expireDate属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public XMLGregorianCalendar getExpireDate() {
+            return expireDate;
+        }
+
+        /**
+         * 设置expireDate属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public void setExpireDate(XMLGregorianCalendar value) {
+            this.expireDate = value;
+        }
+
+        /**
          * 获取loyalLevel属性的值。
          * 
          * @return
@@ -1514,54 +1562,6 @@ public class PaymentCardType {
          */
         public void setShareMarketInd(String value) {
             this.shareMarketInd = value;
-        }
-
-        /**
-         * 获取effectiveDate属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public XMLGregorianCalendar getEffectiveDate() {
-            return effectiveDate;
-        }
-
-        /**
-         * 设置effectiveDate属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public void setEffectiveDate(XMLGregorianCalendar value) {
-            this.effectiveDate = value;
-        }
-
-        /**
-         * 获取expireDate属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public XMLGregorianCalendar getExpireDate() {
-            return expireDate;
-        }
-
-        /**
-         * 设置expireDate属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public void setExpireDate(XMLGregorianCalendar value) {
-            this.expireDate = value;
         }
 
     }

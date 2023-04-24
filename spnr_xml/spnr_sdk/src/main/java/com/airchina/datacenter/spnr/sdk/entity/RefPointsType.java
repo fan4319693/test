@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -51,9 +51,9 @@ import javax.xml.bind.annotation.XmlType;
  *                   &lt;/element>
  *                   &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *                 &lt;/sequence>
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PositionGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PositionGroup"/>
  *                 &lt;attribute name="RefPointCategoryCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
  *                 &lt;attribute name="Proximity" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                 &lt;attribute name="CityCode" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -139,9 +139,9 @@ public class RefPointsType {
      *         &lt;/element>
      *         &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
      *       &lt;/sequence>
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PositionGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PositionGroup"/>
      *       &lt;attribute name="RefPointCategoryCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
      *       &lt;attribute name="Proximity" type="{http://www.w3.org/2001/XMLSchema}string" />
      *       &lt;attribute name="CityCode" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -183,14 +183,6 @@ public class RefPointsType {
         protected String stateProv;
         @XmlAttribute(name = "CountryCode")
         protected String countryCode;
-        @XmlAttribute(name = "Latitude")
-        protected String latitude;
-        @XmlAttribute(name = "Longitude")
-        protected String longitude;
-        @XmlAttribute(name = "Altitude")
-        protected String altitude;
-        @XmlAttribute(name = "AltitudeUnitOfMeasureCode")
-        protected String altitudeUnitOfMeasureCode;
         @XmlAttribute(name = "URI")
         @XmlSchemaType(name = "anyURI")
         protected String uri;
@@ -205,6 +197,14 @@ public class RefPointsType {
         protected String codeDetail;
         @XmlAttribute(name = "Removal")
         protected Boolean removal;
+        @XmlAttribute(name = "Latitude")
+        protected String latitude;
+        @XmlAttribute(name = "Longitude")
+        protected String longitude;
+        @XmlAttribute(name = "Altitude")
+        protected String altitude;
+        @XmlAttribute(name = "AltitudeUnitOfMeasureCode")
+        protected String altitudeUnitOfMeasureCode;
 
         /**
          * 获取descriptions属性的值。
@@ -423,102 +423,6 @@ public class RefPointsType {
         }
 
         /**
-         * 获取latitude属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getLatitude() {
-            return latitude;
-        }
-
-        /**
-         * 设置latitude属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setLatitude(String value) {
-            this.latitude = value;
-        }
-
-        /**
-         * 获取longitude属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getLongitude() {
-            return longitude;
-        }
-
-        /**
-         * 设置longitude属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setLongitude(String value) {
-            this.longitude = value;
-        }
-
-        /**
-         * 获取altitude属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getAltitude() {
-            return altitude;
-        }
-
-        /**
-         * 设置altitude属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setAltitude(String value) {
-            this.altitude = value;
-        }
-
-        /**
-         * 获取altitudeUnitOfMeasureCode属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getAltitudeUnitOfMeasureCode() {
-            return altitudeUnitOfMeasureCode;
-        }
-
-        /**
-         * 设置altitudeUnitOfMeasureCode属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setAltitudeUnitOfMeasureCode(String value) {
-            this.altitudeUnitOfMeasureCode = value;
-        }
-
-        /**
          * 获取uri属性的值。
          * 
          * @return
@@ -664,6 +568,102 @@ public class RefPointsType {
          */
         public void setRemoval(Boolean value) {
             this.removal = value;
+        }
+
+        /**
+         * 获取latitude属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getLatitude() {
+            return latitude;
+        }
+
+        /**
+         * 设置latitude属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setLatitude(String value) {
+            this.latitude = value;
+        }
+
+        /**
+         * 获取longitude属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getLongitude() {
+            return longitude;
+        }
+
+        /**
+         * 设置longitude属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setLongitude(String value) {
+            this.longitude = value;
+        }
+
+        /**
+         * 获取altitude属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getAltitude() {
+            return altitude;
+        }
+
+        /**
+         * 设置altitude属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setAltitude(String value) {
+            this.altitude = value;
+        }
+
+        /**
+         * 获取altitudeUnitOfMeasureCode属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getAltitudeUnitOfMeasureCode() {
+            return altitudeUnitOfMeasureCode;
+        }
+
+        /**
+         * 设置altitudeUnitOfMeasureCode属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setAltitudeUnitOfMeasureCode(String value) {
+            this.altitudeUnitOfMeasureCode = value;
         }
 
 

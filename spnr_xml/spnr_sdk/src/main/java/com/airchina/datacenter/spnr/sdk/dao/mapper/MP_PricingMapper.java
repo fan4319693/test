@@ -1,6 +1,6 @@
 package com.airchina.datacenter.spnr.sdk.dao.mapper;
 
-import com.airchina.datacenter.spnr.sdk.dao.entity.MP_PricingPo;
+import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_PricingPo;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;

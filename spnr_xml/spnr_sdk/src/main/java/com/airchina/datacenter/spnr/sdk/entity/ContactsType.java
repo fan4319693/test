@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -48,8 +48,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *                   &lt;/element>
  *                 &lt;/sequence>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}GenderGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}GenderGroup"/>
  *                 &lt;attribute name="SrvcCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
  *                 &lt;attribute name="Location" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
  *                 &lt;attribute name="CorporatePosition" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -129,8 +129,8 @@ public class ContactsType {
      *         &lt;/element>
      *       &lt;/sequence>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}GenderGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}GenderGroup"/>
      *       &lt;attribute name="SrvcCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
      *       &lt;attribute name="Location" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
      *       &lt;attribute name="CorporatePosition" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -173,11 +173,11 @@ public class ContactsType {
         protected String codeDetail;
         @XmlAttribute(name = "Removal")
         protected Boolean removal;
+        @XmlAttribute(name = "ID")
+        protected String id;
         @XmlAttribute(name = "Gender")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         protected String gender;
-        @XmlAttribute(name = "ID")
-        protected String id;
 
         /**
          * Gets the value of the jobTitle property.
@@ -429,30 +429,6 @@ public class ContactsType {
         }
 
         /**
-         * 获取gender属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getGender() {
-            return gender;
-        }
-
-        /**
-         * 设置gender属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setGender(String value) {
-            this.gender = value;
-        }
-
-        /**
          * 获取id属性的值。
          * 
          * @return
@@ -474,6 +450,30 @@ public class ContactsType {
          */
         public void setID(String value) {
             this.id = value;
+        }
+
+        /**
+         * 获取gender属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getGender() {
+            return gender;
+        }
+
+        /**
+         * 设置gender属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setGender(String value) {
+            this.gender = value;
         }
 
 

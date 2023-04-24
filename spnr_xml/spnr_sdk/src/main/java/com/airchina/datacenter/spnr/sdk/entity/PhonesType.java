@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -41,8 +41,8 @@ import javax.xml.namespace.QName;
  *                 &lt;sequence>
  *                   &lt;element name="PhoneNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *                 &lt;/sequence>
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}TelephoneInfoGroup"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -106,8 +106,8 @@ public class PhonesType {
      *       &lt;sequence>
      *         &lt;element name="PhoneNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
      *       &lt;/sequence>
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}TelephoneInfoGroup"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -123,8 +123,6 @@ public class PhonesType {
 
         @XmlElementRef(name = "PhoneNumber", namespace = "http://www.opentravel.org/OTA/2003/05", type = PhonesType.Phone.PhoneNumberFromHotelCommon.class, required = false)
         protected PhonesType.Phone.PhoneNumberFromHotelCommon phoneNumber;
-        @XmlAttribute(name = "ID")
-        protected String id;
         @XmlAttribute(name = "RPH")
         protected String rph;
         @XmlAttribute(name = "index")
@@ -139,6 +137,8 @@ public class PhonesType {
         @XmlAttribute(name = "ShareMarketInd")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         protected String shareMarketInd;
+        @XmlAttribute(name = "FormattedInd")
+        protected Boolean formattedInd;
         @XmlAttribute(name = "PhoneLocationType")
         protected String phoneLocationType;
         @XmlAttribute(name = "PhoneTechType")
@@ -155,8 +155,8 @@ public class PhonesType {
         protected String extension;
         @XmlAttribute(name = "PIN")
         protected String pin;
-        @XmlAttribute(name = "FormattedInd")
-        protected Boolean formattedInd;
+        @XmlAttribute(name = "ID")
+        protected String id;
 
         /**
          * 获取phoneNumber属性的值。
@@ -180,30 +180,6 @@ public class PhonesType {
          */
         public void setPhoneNumber(PhonesType.Phone.PhoneNumberFromHotelCommon value) {
             this.phoneNumber = value;
-        }
-
-        /**
-         * 获取id属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getID() {
-            return id;
-        }
-
-        /**
-         * 设置id属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setID(String value) {
-            this.id = value;
         }
 
         /**
@@ -352,6 +328,34 @@ public class PhonesType {
          */
         public void setShareMarketInd(String value) {
             this.shareMarketInd = value;
+        }
+
+        /**
+         * 获取formattedInd属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link Boolean }
+         *     
+         */
+        public boolean isFormattedInd() {
+            if (formattedInd == null) {
+                return false;
+            } else {
+                return formattedInd;
+            }
+        }
+
+        /**
+         * 设置formattedInd属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Boolean }
+         *     
+         */
+        public void setFormattedInd(Boolean value) {
+            this.formattedInd = value;
         }
 
         /**
@@ -547,31 +551,27 @@ public class PhonesType {
         }
 
         /**
-         * 获取formattedInd属性的值。
+         * 获取id属性的值。
          * 
          * @return
          *     possible object is
-         *     {@link Boolean }
+         *     {@link String }
          *     
          */
-        public boolean isFormattedInd() {
-            if (formattedInd == null) {
-                return false;
-            } else {
-                return formattedInd;
-            }
+        public String getID() {
+            return id;
         }
 
         /**
-         * 设置formattedInd属性的值。
+         * 设置id属性的值。
          * 
          * @param value
          *     allowed object is
-         *     {@link Boolean }
+         *     {@link String }
          *     
          */
-        public void setFormattedInd(Boolean value) {
-            this.formattedInd = value;
+        public void setID(String value) {
+            this.id = value;
         }
 
         public static class PhoneNumberFromHotelCommon

@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -96,6 +96,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *                 &lt;attribute name="HotelType" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *                 &lt;attribute name="RatingMax" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *                 &lt;attribute name="RatingMin" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                 &lt;attribute name="RatingProvider" type="{http://www.w3.org/2001/XMLSchema}string" />
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -583,6 +584,7 @@ public class ItemSearchCriterionType {
      *       &lt;attribute name="HotelType" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
      *       &lt;attribute name="RatingMax" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
      *       &lt;attribute name="RatingMin" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+     *       &lt;attribute name="RatingProvider" type="{http://www.w3.org/2001/XMLSchema}string" />
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -618,6 +620,8 @@ public class ItemSearchCriterionType {
         @XmlAttribute(name = "RatingMin")
         @XmlSchemaType(name = "anySimpleType")
         protected String ratingMin;
+        @XmlAttribute(name = "RatingProvider")
+        protected String ratingProvider;
         @XmlAttribute(name = "BookingOfficeCode")
         protected String bookingOfficeCode;
         @XmlAttribute(name = "ChainCode")
@@ -628,6 +632,8 @@ public class ItemSearchCriterionType {
         protected String hotelCode;
         @XmlAttribute(name = "HotelCityCode")
         protected String hotelCityCode;
+        @XmlAttribute(name = "HotelCityCodeContext")
+        protected String hotelCityCodeContext;
         @XmlAttribute(name = "HotelName")
         protected String hotelName;
         @XmlAttribute(name = "HotelCodeContext")
@@ -636,8 +642,12 @@ public class ItemSearchCriterionType {
         protected String chainName;
         @XmlAttribute(name = "BrandName")
         protected String brandName;
+        @XmlAttribute(name = "InvoiceIssuer")
+        protected String invoiceIssuer;
         @XmlAttribute(name = "AreaID")
         protected String areaID;
+        @XmlAttribute(name = "StayType")
+        protected String stayType;
 
         /**
          * 获取segmentCategoryCode属性的值。
@@ -856,6 +866,30 @@ public class ItemSearchCriterionType {
         }
 
         /**
+         * 获取ratingProvider属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getRatingProvider() {
+            return ratingProvider;
+        }
+
+        /**
+         * 设置ratingProvider属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setRatingProvider(String value) {
+            this.ratingProvider = value;
+        }
+
+        /**
          * 获取bookingOfficeCode属性的值。
          * 
          * @return
@@ -976,6 +1010,30 @@ public class ItemSearchCriterionType {
         }
 
         /**
+         * 获取hotelCityCodeContext属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getHotelCityCodeContext() {
+            return hotelCityCodeContext;
+        }
+
+        /**
+         * 设置hotelCityCodeContext属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setHotelCityCodeContext(String value) {
+            this.hotelCityCodeContext = value;
+        }
+
+        /**
          * 获取hotelName属性的值。
          * 
          * @return
@@ -1072,6 +1130,30 @@ public class ItemSearchCriterionType {
         }
 
         /**
+         * 获取invoiceIssuer属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getInvoiceIssuer() {
+            return invoiceIssuer;
+        }
+
+        /**
+         * 设置invoiceIssuer属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setInvoiceIssuer(String value) {
+            this.invoiceIssuer = value;
+        }
+
+        /**
          * 获取areaID属性的值。
          * 
          * @return
@@ -1093,6 +1175,30 @@ public class ItemSearchCriterionType {
          */
         public void setAreaID(String value) {
             this.areaID = value;
+        }
+
+        /**
+         * 获取stayType属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getStayType() {
+            return stayType;
+        }
+
+        /**
+         * 设置stayType属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setStayType(String value) {
+            this.stayType = value;
         }
 
     }
@@ -1727,6 +1833,8 @@ public class ItemSearchCriterionType {
         @XmlAttribute(name = "ShareMarketInd")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         protected String shareMarketInd;
+        @XmlAttribute(name = "FormattedInd")
+        protected Boolean formattedInd;
         @XmlAttribute(name = "PhoneLocationType")
         protected String phoneLocationType;
         @XmlAttribute(name = "PhoneTechType")
@@ -1743,8 +1851,6 @@ public class ItemSearchCriterionType {
         protected String extension;
         @XmlAttribute(name = "PIN")
         protected String pin;
-        @XmlAttribute(name = "FormattedInd")
-        protected Boolean formattedInd;
 
         /**
          * 获取shareSynchInd属性的值。
@@ -1792,6 +1898,34 @@ public class ItemSearchCriterionType {
          */
         public void setShareMarketInd(String value) {
             this.shareMarketInd = value;
+        }
+
+        /**
+         * 获取formattedInd属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link Boolean }
+         *     
+         */
+        public boolean isFormattedInd() {
+            if (formattedInd == null) {
+                return false;
+            } else {
+                return formattedInd;
+            }
+        }
+
+        /**
+         * 设置formattedInd属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Boolean }
+         *     
+         */
+        public void setFormattedInd(Boolean value) {
+            this.formattedInd = value;
         }
 
         /**
@@ -1984,34 +2118,6 @@ public class ItemSearchCriterionType {
          */
         public void setPIN(String value) {
             this.pin = value;
-        }
-
-        /**
-         * 获取formattedInd属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link Boolean }
-         *     
-         */
-        public boolean isFormattedInd() {
-            if (formattedInd == null) {
-                return false;
-            } else {
-                return formattedInd;
-            }
-        }
-
-        /**
-         * 设置formattedInd属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Boolean }
-         *     
-         */
-        public void setFormattedInd(Boolean value) {
-            this.formattedInd = value;
         }
 
     }

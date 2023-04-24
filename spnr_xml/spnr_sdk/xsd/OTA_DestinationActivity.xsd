@@ -38,7 +38,7 @@
 									<xs:element name="Vehicles" minOccurs="0">
 										<xs:complexType>
 											<xs:sequence>
-												<xs:element name="Vehicle" type="VehicleType">
+												<xs:element name="Vehicle" type="VehicleType" maxOccurs="unbounded">
 													<xs:annotation>
 														<xs:documentation xml:lang="en">Information on one specific vehicle along with detailed information on the charges associated with this vehicle.</xs:documentation>
 													</xs:annotation>
@@ -247,7 +247,7 @@
 			<xs:element name="Vehicles" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Vehicle" type="VehicleType">
+						<xs:element name="Vehicle" type="VehicleType" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation xml:lang="en">Information on one specific vehicle along with detailed information on the charges associated with this vehicle.</xs:documentation>
 							</xs:annotation>

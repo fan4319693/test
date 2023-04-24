@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -38,8 +38,8 @@ import javax.xml.bind.annotation.XmlType;
  *                 &lt;sequence>
  *                   &lt;element name="Information" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" minOccurs="0"/>
  *                 &lt;/sequence>
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}LocationGroup"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
  *                 &lt;attribute name="LocationName" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to64" />
  *               &lt;/extension>
  *             &lt;/complexContent>
@@ -344,8 +344,8 @@ public class CruisePackageType {
      *       &lt;sequence>
      *         &lt;element name="Information" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" minOccurs="0"/>
      *       &lt;/sequence>
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}LocationGroup"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
      *       &lt;attribute name="LocationName" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to64" />
      *     &lt;/extension>
      *   &lt;/complexContent>
@@ -366,6 +366,12 @@ public class CruisePackageType {
         protected ParagraphType information;
         @XmlAttribute(name = "LocationName")
         protected String locationName;
+        @XmlAttribute(name = "LocationCode", required = true)
+        protected String locationCode;
+        @XmlAttribute(name = "CodeContext")
+        protected String codeContext;
+        @XmlAttribute(name = "HaulZone")
+        protected String haulZone;
         @XmlAttribute(name = "Start")
         protected String start;
         @XmlAttribute(name = "Duration")
@@ -376,12 +382,6 @@ public class CruisePackageType {
         protected BigInteger rangeNum;
         @XmlAttribute(name = "SearchTimeZone")
         protected String searchTimeZone;
-        @XmlAttribute(name = "LocationCode", required = true)
-        protected String locationCode;
-        @XmlAttribute(name = "CodeContext")
-        protected String codeContext;
-        @XmlAttribute(name = "HaulZone")
-        protected String haulZone;
 
         /**
          * 获取information属性的值。
@@ -429,6 +429,86 @@ public class CruisePackageType {
          */
         public void setLocationName(String value) {
             this.locationName = value;
+        }
+
+        /**
+         * 获取locationCode属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getLocationCode() {
+            return locationCode;
+        }
+
+        /**
+         * 设置locationCode属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setLocationCode(String value) {
+            this.locationCode = value;
+        }
+
+        /**
+         * 获取codeContext属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getCodeContext() {
+            if (codeContext == null) {
+                return "IATA";
+            } else {
+                return codeContext;
+            }
+        }
+
+        /**
+         * 设置codeContext属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setCodeContext(String value) {
+            this.codeContext = value;
+        }
+
+        /**
+         * 获取haulZone属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getHaulZone() {
+            if (haulZone == null) {
+                return "GB";
+            } else {
+                return haulZone;
+            }
+        }
+
+        /**
+         * 设置haulZone属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setHaulZone(String value) {
+            this.haulZone = value;
         }
 
         /**
@@ -549,86 +629,6 @@ public class CruisePackageType {
          */
         public void setSearchTimeZone(String value) {
             this.searchTimeZone = value;
-        }
-
-        /**
-         * 获取locationCode属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getLocationCode() {
-            return locationCode;
-        }
-
-        /**
-         * 设置locationCode属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setLocationCode(String value) {
-            this.locationCode = value;
-        }
-
-        /**
-         * 获取codeContext属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getCodeContext() {
-            if (codeContext == null) {
-                return "IATA";
-            } else {
-                return codeContext;
-            }
-        }
-
-        /**
-         * 设置codeContext属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setCodeContext(String value) {
-            this.codeContext = value;
-        }
-
-        /**
-         * 获取haulZone属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getHaulZone() {
-            if (haulZone == null) {
-                return "GB";
-            } else {
-                return haulZone;
-            }
-        }
-
-        /**
-         * 设置haulZone属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setHaulZone(String value) {
-            this.haulZone = value;
         }
 
     }

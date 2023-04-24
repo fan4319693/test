@@ -168,6 +168,7 @@
 			<xs:documentation xml:lang="en">The Reservation class contains the current reservation being created or altered.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+		    <xs:element name="Air" type="AirReservationType" minOccurs="0"/>
 			<xs:element name="Notifications" type="NotificationsType" minOccurs="0"/>
 			<xs:element name="UniqueID" minOccurs="0">
 				<xs:complexType>
@@ -202,6 +203,7 @@
 			</xs:element>
 			<xs:element ref="TPA_Extensions" minOccurs="0"/>
 			<xs:element name="ReservationDetails" type="ReservationDetailsType" minOccurs="0"/>
+			<xs:element name="ReservationRestrictions" type="HotelReservationRestrictionsType" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="RoomStayReservation" type="xs:boolean" use="optional">
 			<xs:annotation>

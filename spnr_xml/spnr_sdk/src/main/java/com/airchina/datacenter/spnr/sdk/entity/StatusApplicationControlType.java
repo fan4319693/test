@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -35,10 +35,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *       &lt;sequence>
  *         &lt;element name="DestinationSystemCodes" type="{http://www.opentravel.org/OTA/2003/05}DestinationSystemCodesType" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}StatusApplicationGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}InvBlockCodeApplyGroup"/>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DOW_PatternGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}RatePlanCodeTypeGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}StatusApplicationGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DOW_PatternGroup"/>
  *       &lt;attribute name="RateTier" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to64" />
  *       &lt;attribute name="AllRateCode" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *       &lt;attribute name="AllInvCode" type="{http://www.w3.org/2001/XMLSchema}boolean" />
@@ -78,6 +78,22 @@ public class StatusApplicationControlType {
     protected String quoteID;
     @XmlAttribute(name = "SubBlockCode")
     protected String subBlockCode;
+    @XmlAttribute(name = "InvBlockCodeApply")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String invBlockCodeApply;
+    @XmlAttribute(name = "RatePlanCodeType")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String ratePlanCodeType;
+    @XmlAttribute(name = "Start")
+    protected String start;
+    @XmlAttribute(name = "Duration")
+    protected BigInteger duration;
+    @XmlAttribute(name = "End")
+    protected String end;
+    @XmlAttribute(name = "RangeNum")
+    protected BigInteger rangeNum;
+    @XmlAttribute(name = "SearchTimeZone")
+    protected String searchTimeZone;
     @XmlAttribute(name = "InvCodeApplication")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String invCodeApplication;
@@ -105,19 +121,6 @@ public class StatusApplicationControlType {
     protected String promotionCode;
     @XmlAttribute(name = "PromotionVendorCode")
     protected List<String> promotionVendorCode;
-    @XmlAttribute(name = "Start")
-    protected String start;
-    @XmlAttribute(name = "Duration")
-    protected BigInteger duration;
-    @XmlAttribute(name = "End")
-    protected String end;
-    @XmlAttribute(name = "RangeNum")
-    protected BigInteger rangeNum;
-    @XmlAttribute(name = "SearchTimeZone")
-    protected String searchTimeZone;
-    @XmlAttribute(name = "InvBlockCodeApply")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String invBlockCodeApply;
     @XmlAttribute(name = "Mon")
     protected Boolean mon;
     @XmlAttribute(name = "Tue")
@@ -132,9 +135,6 @@ public class StatusApplicationControlType {
     protected Boolean sat;
     @XmlAttribute(name = "Sun")
     protected Boolean sun;
-    @XmlAttribute(name = "RatePlanCodeType")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String ratePlanCodeType;
 
     /**
      * 获取destinationSystemCodes属性的值。
@@ -326,6 +326,174 @@ public class StatusApplicationControlType {
      */
     public void setSubBlockCode(String value) {
         this.subBlockCode = value;
+    }
+
+    /**
+     * 获取invBlockCodeApply属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getInvBlockCodeApply() {
+        return invBlockCodeApply;
+    }
+
+    /**
+     * 设置invBlockCodeApply属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setInvBlockCodeApply(String value) {
+        this.invBlockCodeApply = value;
+    }
+
+    /**
+     * 获取ratePlanCodeType属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRatePlanCodeType() {
+        return ratePlanCodeType;
+    }
+
+    /**
+     * 设置ratePlanCodeType属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRatePlanCodeType(String value) {
+        this.ratePlanCodeType = value;
+    }
+
+    /**
+     * 获取start属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStart() {
+        return start;
+    }
+
+    /**
+     * 设置start属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStart(String value) {
+        this.start = value;
+    }
+
+    /**
+     * 获取duration属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getDuration() {
+        return duration;
+    }
+
+    /**
+     * 设置duration属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setDuration(BigInteger value) {
+        this.duration = value;
+    }
+
+    /**
+     * 获取end属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEnd() {
+        return end;
+    }
+
+    /**
+     * 设置end属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEnd(String value) {
+        this.end = value;
+    }
+
+    /**
+     * 获取rangeNum属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getRangeNum() {
+        return rangeNum;
+    }
+
+    /**
+     * 设置rangeNum属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setRangeNum(BigInteger value) {
+        this.rangeNum = value;
+    }
+
+    /**
+     * 获取searchTimeZone属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSearchTimeZone() {
+        return searchTimeZone;
+    }
+
+    /**
+     * 设置searchTimeZone属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSearchTimeZone(String value) {
+        this.searchTimeZone = value;
     }
 
     /**
@@ -646,150 +814,6 @@ public class StatusApplicationControlType {
     }
 
     /**
-     * 获取start属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStart() {
-        return start;
-    }
-
-    /**
-     * 设置start属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStart(String value) {
-        this.start = value;
-    }
-
-    /**
-     * 获取duration属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getDuration() {
-        return duration;
-    }
-
-    /**
-     * 设置duration属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setDuration(BigInteger value) {
-        this.duration = value;
-    }
-
-    /**
-     * 获取end属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEnd() {
-        return end;
-    }
-
-    /**
-     * 设置end属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEnd(String value) {
-        this.end = value;
-    }
-
-    /**
-     * 获取rangeNum属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getRangeNum() {
-        return rangeNum;
-    }
-
-    /**
-     * 设置rangeNum属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setRangeNum(BigInteger value) {
-        this.rangeNum = value;
-    }
-
-    /**
-     * 获取searchTimeZone属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSearchTimeZone() {
-        return searchTimeZone;
-    }
-
-    /**
-     * 设置searchTimeZone属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSearchTimeZone(String value) {
-        this.searchTimeZone = value;
-    }
-
-    /**
-     * 获取invBlockCodeApply属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getInvBlockCodeApply() {
-        return invBlockCodeApply;
-    }
-
-    /**
-     * 设置invBlockCodeApply属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setInvBlockCodeApply(String value) {
-        this.invBlockCodeApply = value;
-    }
-
-    /**
      * 获取mon属性的值。
      * 
      * @return
@@ -955,30 +979,6 @@ public class StatusApplicationControlType {
      */
     public void setSun(Boolean value) {
         this.sun = value;
-    }
-
-    /**
-     * 获取ratePlanCodeType属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRatePlanCodeType() {
-        return ratePlanCodeType;
-    }
-
-    /**
-     * 设置ratePlanCodeType属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRatePlanCodeType(String value) {
-        this.ratePlanCodeType = value;
     }
 
 }

@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -702,13 +702,13 @@ public class VehicleSegmentCoreType {
             protected VehicleChargeType charge;
             @XmlAttribute(name = "Action")
             protected ActionType action;
+            @XmlAttribute(name = "PreferLevel")
+            protected PreferLevelType preferLevel;
             @XmlAttribute(name = "EquipType", required = true)
             protected String equipType;
             @XmlAttribute(name = "Quantity")
             @XmlSchemaType(name = "positiveInteger")
             protected BigInteger quantity;
-            @XmlAttribute(name = "PreferLevel")
-            protected PreferLevelType preferLevel;
 
             /**
              * 获取charge属性的值。
@@ -759,6 +759,34 @@ public class VehicleSegmentCoreType {
             }
 
             /**
+             * 获取preferLevel属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link PreferLevelType }
+             *     
+             */
+            public PreferLevelType getPreferLevel() {
+                if (preferLevel == null) {
+                    return PreferLevelType.PREFERRED;
+                } else {
+                    return preferLevel;
+                }
+            }
+
+            /**
+             * 设置preferLevel属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link PreferLevelType }
+             *     
+             */
+            public void setPreferLevel(PreferLevelType value) {
+                this.preferLevel = value;
+            }
+
+            /**
              * 获取equipType属性的值。
              * 
              * @return
@@ -804,34 +832,6 @@ public class VehicleSegmentCoreType {
              */
             public void setQuantity(BigInteger value) {
                 this.quantity = value;
-            }
-
-            /**
-             * 获取preferLevel属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link PreferLevelType }
-             *     
-             */
-            public PreferLevelType getPreferLevel() {
-                if (preferLevel == null) {
-                    return PreferLevelType.PREFERRED;
-                } else {
-                    return preferLevel;
-                }
-            }
-
-            /**
-             * 设置preferLevel属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link PreferLevelType }
-             *     
-             */
-            public void setPreferLevel(PreferLevelType value) {
-                this.preferLevel = value;
             }
 
         }

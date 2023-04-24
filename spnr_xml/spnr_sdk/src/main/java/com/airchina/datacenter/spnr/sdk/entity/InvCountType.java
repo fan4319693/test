@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -14,7 +14,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -31,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="UniqueID" type="{http://www.opentravel.org/OTA/2003/05}UniqueID_Type" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}HotelReferenceGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeStampGroup"/>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -59,6 +62,8 @@ public class InvCountType {
     protected String hotelCode;
     @XmlAttribute(name = "HotelCityCode")
     protected String hotelCityCode;
+    @XmlAttribute(name = "HotelCityCodeContext")
+    protected String hotelCityCodeContext;
     @XmlAttribute(name = "HotelName")
     protected String hotelName;
     @XmlAttribute(name = "HotelCodeContext")
@@ -67,8 +72,22 @@ public class InvCountType {
     protected String chainName;
     @XmlAttribute(name = "BrandName")
     protected String brandName;
+    @XmlAttribute(name = "InvoiceIssuer")
+    protected String invoiceIssuer;
     @XmlAttribute(name = "AreaID")
     protected String areaID;
+    @XmlAttribute(name = "StayType")
+    protected String stayType;
+    @XmlAttribute(name = "CreateDateTime")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar createDateTime;
+    @XmlAttribute(name = "CreatorID")
+    protected String creatorID;
+    @XmlAttribute(name = "LastModifyDateTime")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar lastModifyDateTime;
+    @XmlAttribute(name = "LastModifierID")
+    protected String lastModifierID;
 
     /**
      * Gets the value of the inventory property.
@@ -244,6 +263,30 @@ public class InvCountType {
     }
 
     /**
+     * 获取hotelCityCodeContext属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getHotelCityCodeContext() {
+        return hotelCityCodeContext;
+    }
+
+    /**
+     * 设置hotelCityCodeContext属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setHotelCityCodeContext(String value) {
+        this.hotelCityCodeContext = value;
+    }
+
+    /**
      * 获取hotelName属性的值。
      * 
      * @return
@@ -340,6 +383,30 @@ public class InvCountType {
     }
 
     /**
+     * 获取invoiceIssuer属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getInvoiceIssuer() {
+        return invoiceIssuer;
+    }
+
+    /**
+     * 设置invoiceIssuer属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setInvoiceIssuer(String value) {
+        this.invoiceIssuer = value;
+    }
+
+    /**
      * 获取areaID属性的值。
      * 
      * @return
@@ -361,6 +428,126 @@ public class InvCountType {
      */
     public void setAreaID(String value) {
         this.areaID = value;
+    }
+
+    /**
+     * 获取stayType属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStayType() {
+        return stayType;
+    }
+
+    /**
+     * 设置stayType属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStayType(String value) {
+        this.stayType = value;
+    }
+
+    /**
+     * 获取createDateTime属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getCreateDateTime() {
+        return createDateTime;
+    }
+
+    /**
+     * 设置createDateTime属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setCreateDateTime(XMLGregorianCalendar value) {
+        this.createDateTime = value;
+    }
+
+    /**
+     * 获取creatorID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCreatorID() {
+        return creatorID;
+    }
+
+    /**
+     * 设置creatorID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCreatorID(String value) {
+        this.creatorID = value;
+    }
+
+    /**
+     * 获取lastModifyDateTime属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getLastModifyDateTime() {
+        return lastModifyDateTime;
+    }
+
+    /**
+     * 设置lastModifyDateTime属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setLastModifyDateTime(XMLGregorianCalendar value) {
+        this.lastModifyDateTime = value;
+    }
+
+    /**
+     * 获取lastModifierID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLastModifierID() {
+        return lastModifierID;
+    }
+
+    /**
+     * 设置lastModifierID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLastModifierID(String value) {
+        this.lastModifierID = value;
     }
 
 }

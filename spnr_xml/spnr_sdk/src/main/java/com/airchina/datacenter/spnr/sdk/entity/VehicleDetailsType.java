@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -583,15 +583,15 @@ public class VehicleDetailsType {
                 protected Float amount;
                 @XmlAttribute(name = "PrePayInd")
                 protected Boolean prePayInd;
-                @XmlAttribute(name = "OriginalAmount")
-                protected Float originalAmount;
-                @XmlAttribute(name = "OriginalCurrencyCode")
-                protected String originalCurrencyCode;
                 @XmlAttribute(name = "CurrencyCode")
                 protected String currencyCode;
                 @XmlAttribute(name = "DecimalPlaces")
                 @XmlSchemaType(name = "nonNegativeInteger")
                 protected BigInteger decimalPlaces;
+                @XmlAttribute(name = "OriginalAmount")
+                protected Float originalAmount;
+                @XmlAttribute(name = "OriginalCurrencyCode")
+                protected String originalCurrencyCode;
 
                 /**
                  * 获取amount属性的值。
@@ -642,54 +642,6 @@ public class VehicleDetailsType {
                 }
 
                 /**
-                 * 获取originalAmount属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Float }
-                 *     
-                 */
-                public Float getOriginalAmount() {
-                    return originalAmount;
-                }
-
-                /**
-                 * 设置originalAmount属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Float }
-                 *     
-                 */
-                public void setOriginalAmount(Float value) {
-                    this.originalAmount = value;
-                }
-
-                /**
-                 * 获取originalCurrencyCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getOriginalCurrencyCode() {
-                    return originalCurrencyCode;
-                }
-
-                /**
-                 * 设置originalCurrencyCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setOriginalCurrencyCode(String value) {
-                    this.originalCurrencyCode = value;
-                }
-
-                /**
                  * 获取currencyCode属性的值。
                  * 
                  * @return
@@ -735,6 +687,54 @@ public class VehicleDetailsType {
                  */
                 public void setDecimalPlaces(BigInteger value) {
                     this.decimalPlaces = value;
+                }
+
+                /**
+                 * 获取originalAmount属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link Float }
+                 *     
+                 */
+                public Float getOriginalAmount() {
+                    return originalAmount;
+                }
+
+                /**
+                 * 设置originalAmount属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link Float }
+                 *     
+                 */
+                public void setOriginalAmount(Float value) {
+                    this.originalAmount = value;
+                }
+
+                /**
+                 * 获取originalCurrencyCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getOriginalCurrencyCode() {
+                    return originalCurrencyCode;
+                }
+
+                /**
+                 * 设置originalCurrencyCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setOriginalCurrencyCode(String value) {
+                    this.originalCurrencyCode = value;
                 }
 
             }
@@ -765,15 +765,15 @@ public class VehicleDetailsType {
                 protected Float amount;
                 @XmlAttribute(name = "PrePayInd")
                 protected Boolean prePayInd;
-                @XmlAttribute(name = "OriginalAmount")
-                protected Float originalAmount;
-                @XmlAttribute(name = "OriginalCurrencyCode")
-                protected String originalCurrencyCode;
                 @XmlAttribute(name = "CurrencyCode")
                 protected String currencyCode;
                 @XmlAttribute(name = "DecimalPlaces")
                 @XmlSchemaType(name = "nonNegativeInteger")
                 protected BigInteger decimalPlaces;
+                @XmlAttribute(name = "OriginalAmount")
+                protected Float originalAmount;
+                @XmlAttribute(name = "OriginalCurrencyCode")
+                protected String originalCurrencyCode;
 
                 /**
                  * 获取amount属性的值。
@@ -824,54 +824,6 @@ public class VehicleDetailsType {
                 }
 
                 /**
-                 * 获取originalAmount属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Float }
-                 *     
-                 */
-                public Float getOriginalAmount() {
-                    return originalAmount;
-                }
-
-                /**
-                 * 设置originalAmount属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Float }
-                 *     
-                 */
-                public void setOriginalAmount(Float value) {
-                    this.originalAmount = value;
-                }
-
-                /**
-                 * 获取originalCurrencyCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getOriginalCurrencyCode() {
-                    return originalCurrencyCode;
-                }
-
-                /**
-                 * 设置originalCurrencyCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setOriginalCurrencyCode(String value) {
-                    this.originalCurrencyCode = value;
-                }
-
-                /**
                  * 获取currencyCode属性的值。
                  * 
                  * @return
@@ -917,6 +869,54 @@ public class VehicleDetailsType {
                  */
                 public void setDecimalPlaces(BigInteger value) {
                     this.decimalPlaces = value;
+                }
+
+                /**
+                 * 获取originalAmount属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link Float }
+                 *     
+                 */
+                public Float getOriginalAmount() {
+                    return originalAmount;
+                }
+
+                /**
+                 * 设置originalAmount属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link Float }
+                 *     
+                 */
+                public void setOriginalAmount(Float value) {
+                    this.originalAmount = value;
+                }
+
+                /**
+                 * 获取originalCurrencyCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getOriginalCurrencyCode() {
+                    return originalCurrencyCode;
+                }
+
+                /**
+                 * 设置originalCurrencyCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setOriginalCurrencyCode(String value) {
+                    this.originalCurrencyCode = value;
                 }
 
             }
@@ -947,15 +947,15 @@ public class VehicleDetailsType {
                 protected Float amount;
                 @XmlAttribute(name = "PrePayInd")
                 protected Boolean prePayInd;
-                @XmlAttribute(name = "OriginalAmount")
-                protected Float originalAmount;
-                @XmlAttribute(name = "OriginalCurrencyCode")
-                protected String originalCurrencyCode;
                 @XmlAttribute(name = "CurrencyCode")
                 protected String currencyCode;
                 @XmlAttribute(name = "DecimalPlaces")
                 @XmlSchemaType(name = "nonNegativeInteger")
                 protected BigInteger decimalPlaces;
+                @XmlAttribute(name = "OriginalAmount")
+                protected Float originalAmount;
+                @XmlAttribute(name = "OriginalCurrencyCode")
+                protected String originalCurrencyCode;
 
                 /**
                  * 获取amount属性的值。
@@ -1006,54 +1006,6 @@ public class VehicleDetailsType {
                 }
 
                 /**
-                 * 获取originalAmount属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Float }
-                 *     
-                 */
-                public Float getOriginalAmount() {
-                    return originalAmount;
-                }
-
-                /**
-                 * 设置originalAmount属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Float }
-                 *     
-                 */
-                public void setOriginalAmount(Float value) {
-                    this.originalAmount = value;
-                }
-
-                /**
-                 * 获取originalCurrencyCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getOriginalCurrencyCode() {
-                    return originalCurrencyCode;
-                }
-
-                /**
-                 * 设置originalCurrencyCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setOriginalCurrencyCode(String value) {
-                    this.originalCurrencyCode = value;
-                }
-
-                /**
                  * 获取currencyCode属性的值。
                  * 
                  * @return
@@ -1099,6 +1051,54 @@ public class VehicleDetailsType {
                  */
                 public void setDecimalPlaces(BigInteger value) {
                     this.decimalPlaces = value;
+                }
+
+                /**
+                 * 获取originalAmount属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link Float }
+                 *     
+                 */
+                public Float getOriginalAmount() {
+                    return originalAmount;
+                }
+
+                /**
+                 * 设置originalAmount属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link Float }
+                 *     
+                 */
+                public void setOriginalAmount(Float value) {
+                    this.originalAmount = value;
+                }
+
+                /**
+                 * 获取originalCurrencyCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getOriginalCurrencyCode() {
+                    return originalCurrencyCode;
+                }
+
+                /**
+                 * 设置originalCurrencyCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setOriginalCurrencyCode(String value) {
+                    this.originalCurrencyCode = value;
                 }
 
             }
@@ -1411,15 +1411,15 @@ public class VehicleDetailsType {
                 protected Float amount;
                 @XmlAttribute(name = "PrePayInd")
                 protected Boolean prePayInd;
-                @XmlAttribute(name = "OriginalAmount")
-                protected Float originalAmount;
-                @XmlAttribute(name = "OriginalCurrencyCode")
-                protected String originalCurrencyCode;
                 @XmlAttribute(name = "CurrencyCode")
                 protected String currencyCode;
                 @XmlAttribute(name = "DecimalPlaces")
                 @XmlSchemaType(name = "nonNegativeInteger")
                 protected BigInteger decimalPlaces;
+                @XmlAttribute(name = "OriginalAmount")
+                protected Float originalAmount;
+                @XmlAttribute(name = "OriginalCurrencyCode")
+                protected String originalCurrencyCode;
 
                 /**
                  * 获取amount属性的值。
@@ -1470,54 +1470,6 @@ public class VehicleDetailsType {
                 }
 
                 /**
-                 * 获取originalAmount属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Float }
-                 *     
-                 */
-                public Float getOriginalAmount() {
-                    return originalAmount;
-                }
-
-                /**
-                 * 设置originalAmount属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Float }
-                 *     
-                 */
-                public void setOriginalAmount(Float value) {
-                    this.originalAmount = value;
-                }
-
-                /**
-                 * 获取originalCurrencyCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getOriginalCurrencyCode() {
-                    return originalCurrencyCode;
-                }
-
-                /**
-                 * 设置originalCurrencyCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setOriginalCurrencyCode(String value) {
-                    this.originalCurrencyCode = value;
-                }
-
-                /**
                  * 获取currencyCode属性的值。
                  * 
                  * @return
@@ -1563,6 +1515,54 @@ public class VehicleDetailsType {
                  */
                 public void setDecimalPlaces(BigInteger value) {
                     this.decimalPlaces = value;
+                }
+
+                /**
+                 * 获取originalAmount属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link Float }
+                 *     
+                 */
+                public Float getOriginalAmount() {
+                    return originalAmount;
+                }
+
+                /**
+                 * 设置originalAmount属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link Float }
+                 *     
+                 */
+                public void setOriginalAmount(Float value) {
+                    this.originalAmount = value;
+                }
+
+                /**
+                 * 获取originalCurrencyCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getOriginalCurrencyCode() {
+                    return originalCurrencyCode;
+                }
+
+                /**
+                 * 设置originalCurrencyCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setOriginalCurrencyCode(String value) {
+                    this.originalCurrencyCode = value;
                 }
 
             }
@@ -1593,15 +1593,15 @@ public class VehicleDetailsType {
                 protected Float amount;
                 @XmlAttribute(name = "PrePayInd")
                 protected Boolean prePayInd;
-                @XmlAttribute(name = "OriginalAmount")
-                protected Float originalAmount;
-                @XmlAttribute(name = "OriginalCurrencyCode")
-                protected String originalCurrencyCode;
                 @XmlAttribute(name = "CurrencyCode")
                 protected String currencyCode;
                 @XmlAttribute(name = "DecimalPlaces")
                 @XmlSchemaType(name = "nonNegativeInteger")
                 protected BigInteger decimalPlaces;
+                @XmlAttribute(name = "OriginalAmount")
+                protected Float originalAmount;
+                @XmlAttribute(name = "OriginalCurrencyCode")
+                protected String originalCurrencyCode;
 
                 /**
                  * 获取amount属性的值。
@@ -1652,54 +1652,6 @@ public class VehicleDetailsType {
                 }
 
                 /**
-                 * 获取originalAmount属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Float }
-                 *     
-                 */
-                public Float getOriginalAmount() {
-                    return originalAmount;
-                }
-
-                /**
-                 * 设置originalAmount属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Float }
-                 *     
-                 */
-                public void setOriginalAmount(Float value) {
-                    this.originalAmount = value;
-                }
-
-                /**
-                 * 获取originalCurrencyCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getOriginalCurrencyCode() {
-                    return originalCurrencyCode;
-                }
-
-                /**
-                 * 设置originalCurrencyCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setOriginalCurrencyCode(String value) {
-                    this.originalCurrencyCode = value;
-                }
-
-                /**
                  * 获取currencyCode属性的值。
                  * 
                  * @return
@@ -1745,6 +1697,54 @@ public class VehicleDetailsType {
                  */
                 public void setDecimalPlaces(BigInteger value) {
                     this.decimalPlaces = value;
+                }
+
+                /**
+                 * 获取originalAmount属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link Float }
+                 *     
+                 */
+                public Float getOriginalAmount() {
+                    return originalAmount;
+                }
+
+                /**
+                 * 设置originalAmount属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link Float }
+                 *     
+                 */
+                public void setOriginalAmount(Float value) {
+                    this.originalAmount = value;
+                }
+
+                /**
+                 * 获取originalCurrencyCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getOriginalCurrencyCode() {
+                    return originalCurrencyCode;
+                }
+
+                /**
+                 * 设置originalCurrencyCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setOriginalCurrencyCode(String value) {
+                    this.originalCurrencyCode = value;
                 }
 
             }
@@ -1775,15 +1775,15 @@ public class VehicleDetailsType {
                 protected Float amount;
                 @XmlAttribute(name = "PrePayInd")
                 protected Boolean prePayInd;
-                @XmlAttribute(name = "OriginalAmount")
-                protected Float originalAmount;
-                @XmlAttribute(name = "OriginalCurrencyCode")
-                protected String originalCurrencyCode;
                 @XmlAttribute(name = "CurrencyCode")
                 protected String currencyCode;
                 @XmlAttribute(name = "DecimalPlaces")
                 @XmlSchemaType(name = "nonNegativeInteger")
                 protected BigInteger decimalPlaces;
+                @XmlAttribute(name = "OriginalAmount")
+                protected Float originalAmount;
+                @XmlAttribute(name = "OriginalCurrencyCode")
+                protected String originalCurrencyCode;
 
                 /**
                  * 获取amount属性的值。
@@ -1834,54 +1834,6 @@ public class VehicleDetailsType {
                 }
 
                 /**
-                 * 获取originalAmount属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Float }
-                 *     
-                 */
-                public Float getOriginalAmount() {
-                    return originalAmount;
-                }
-
-                /**
-                 * 设置originalAmount属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Float }
-                 *     
-                 */
-                public void setOriginalAmount(Float value) {
-                    this.originalAmount = value;
-                }
-
-                /**
-                 * 获取originalCurrencyCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getOriginalCurrencyCode() {
-                    return originalCurrencyCode;
-                }
-
-                /**
-                 * 设置originalCurrencyCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setOriginalCurrencyCode(String value) {
-                    this.originalCurrencyCode = value;
-                }
-
-                /**
                  * 获取currencyCode属性的值。
                  * 
                  * @return
@@ -1927,6 +1879,54 @@ public class VehicleDetailsType {
                  */
                 public void setDecimalPlaces(BigInteger value) {
                     this.decimalPlaces = value;
+                }
+
+                /**
+                 * 获取originalAmount属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link Float }
+                 *     
+                 */
+                public Float getOriginalAmount() {
+                    return originalAmount;
+                }
+
+                /**
+                 * 设置originalAmount属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link Float }
+                 *     
+                 */
+                public void setOriginalAmount(Float value) {
+                    this.originalAmount = value;
+                }
+
+                /**
+                 * 获取originalCurrencyCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getOriginalCurrencyCode() {
+                    return originalCurrencyCode;
+                }
+
+                /**
+                 * 设置originalCurrencyCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setOriginalCurrencyCode(String value) {
+                    this.originalCurrencyCode = value;
                 }
 
             }

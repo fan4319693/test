@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -33,8 +33,8 @@ import javax.xml.bind.annotation.XmlType;
  *           &lt;complexType>
  *             &lt;simpleContent>
  *               &lt;extension base="&lt;http://www.opentravel.org/OTA/2003/05>EmailType">
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}RemovalGroup"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
  *               &lt;/extension>
  *             &lt;/simpleContent>
  *           &lt;/complexType>
@@ -95,8 +95,8 @@ public class EmailsType {
      * &lt;complexType>
      *   &lt;simpleContent>
      *     &lt;extension base="&lt;http://www.opentravel.org/OTA/2003/05>EmailType">
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}RemovalGroup"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
      *     &lt;/extension>
      *   &lt;/simpleContent>
      * &lt;/complexType>
@@ -110,34 +110,10 @@ public class EmailsType {
         extends EmailType
     {
 
-        @XmlAttribute(name = "ID")
-        protected String id;
         @XmlAttribute(name = "Removal")
         protected Boolean removal;
-
-        /**
-         * 获取id属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getID() {
-            return id;
-        }
-
-        /**
-         * 设置id属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setID(String value) {
-            this.id = value;
-        }
+        @XmlAttribute(name = "ID")
+        protected String id;
 
         /**
          * 获取removal属性的值。
@@ -165,6 +141,30 @@ public class EmailsType {
          */
         public void setRemoval(Boolean value) {
             this.removal = value;
+        }
+
+        /**
+         * 获取id属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getID() {
+            return id;
+        }
+
+        /**
+         * 设置id属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setID(String value) {
+            this.id = value;
         }
 
     }

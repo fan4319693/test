@@ -1,12 +1,8 @@
 package com.airchina.datacenter.spnr.udf;
 
-import com.airchina.datacenter.spnr.sdk.SPNRContext;
-import com.airchina.datacenter.spnr.sdk.SuperPNRJAXBProcessor;
-import java.util.ArrayList;
-import java.util.List;
-import org.apache.commons.lang.exception.ExceptionUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import com.airchina.datacenter.spnr.sdk.facade.UdtfFacade;
+import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
+import com.airchina.datacenter.spnr.sdk.parser.ParserProvider;
 import org.apache.hadoop.hive.ql.exec.UDFArgumentException;
 import org.apache.hadoop.hive.ql.metadata.HiveException;
 import org.apache.hadoop.hive.ql.udf.generic.GenericUDTF;
@@ -19,171 +15,108 @@ import org.apache.hadoop.hive.serde2.objectinspector.StructObjectInspector;
 import org.apache.hadoop.hive.serde2.objectinspector.primitive.StringObjectInspector;
 import org.apache.hadoop.hive.serde2.objectinspector.primitive.WritableConstantStringObjectInspector;
 import org.apache.hadoop.io.Text;
-import com.airchina.datacenter.spnr.udf.pojo.KafkaLogs;
-import com.airchina.datacenter.spnr.udf.pojo.XmlParserEx;
-import com.airchina.datacenter.spnr.udf.processor.Dispatcher;
-import com.airchina.datacenter.spnr.udf.processor.XmlProcessor;
-import com.airchina.datacenter.spnr.udf.utils.KafkaDao;
 
+import java.util.List;
+
+/**
+ * <p>Class Name: com.airchina.datacenter.spnr.udf.XmlTabUDTF </p>
+ * <p>Description: 将xml文本解析为Hive表中的字段 </p>
+ * <p>Sample: new XmlPathUDTF() </p>
+ * <p>Author: FanShuai </p>
+ * <p>Date: 2023/4/20 </p>
+ * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
+ */
 public class XmlTabUDTF extends GenericUDTF {
 
-    private static final Log log = LogFactory.getLog(XmlTabUDTF.class);
-    private static final SuperPNRJAXBProcessor spnrExtractprocessor = SuperPNRJAXBProcessor.getInstance();
-    private StringObjectInspector soi;
-    private XmlProcessor xmlProcessor;
-    private String tb_lc;
-    private boolean kfLogFlag;
-    private KafkaLogs kafkaLogs;
+    /**
+     * 功能说明: 提取String的文本
+     * 最后修改时间: 2023/04/20
+     */
+    private StringObjectInspector StringObjectInspector;
+
+    /**
+     * 功能说明: 特定的Hive表对应的转换器
+     * 最后修改时间: 2023/04/20
+     */
+    private AbstractParser parser;
+
+    /**
+     * Description: 将UDTF传入的参数转换为java的String
+     * Parameter:
+     *  @param oi: Hive传入的参数, 不能为null
+     *  @param parmaName: 参数名
+     * Return: java String
+     * Throws: UDFArgumentException, 类型非法或参数为空时抛出, 能导致任务失败
+     */
+    public String asConstantNonNullString(final ObjectInspector oi, final String parmaName)
+            throws UDFArgumentException {
+        if (!(oi instanceof WritableConstantStringObjectInspector)) {
+            throw new UDFArgumentException(parmaName + " must be a constant string.");
+        }
+        final Text text = ((WritableConstantStringObjectInspector) oi).getWritableConstantValue();
+        //参数不能为null
+        if (text == null) {
+            throw new UDFArgumentException(parmaName + " must not be NULL.");
+        }
+        return text.toString();
+    }
+
+    /**
+     * Description: 验证参数类型为String
+     * Parameter:
+     *  @param field: 待检验的Hive参数, 不能为null
+     * Return: 无
+     * Throws: UDFArgumentException, 参数类型非法时抛出, 能导致任务失败
+     */
+    private void checkStringType(StructField field) throws UDFArgumentException {
+        ObjectInspector inspector = field.getFieldObjectInspector();
+        String name = field.getFieldName();
+        if (inspector.getCategory() != Category.PRIMITIVE) {
+            throw new UDFArgumentException("The input param " + name + " must be primitive");
+        }
+        PrimitiveObjectInspector category = (PrimitiveObjectInspector) (inspector);
+        //非String类型则抛异常
+        if (category.getPrimitiveCategory() != PrimitiveCategory.STRING) {
+            throw new UDFArgumentException("The input param " + name + " must be string type");
+        }
+    }
 
     @Override
     public StructObjectInspector initialize(StructObjectInspector argOIs) throws UDFArgumentException {
-        if (argOIs.getAllStructFieldRefs().size() < 2) {
+        List<? extends StructField> fieldRefs = argOIs.getAllStructFieldRefs();
+        int argsNum = fieldRefs.size();
+        if (argsNum == 2) {
+            //参数1: 待解析的xml文本, 参数2: 待解析的Hive表对应转换器的名称
+            checkStringType(fieldRefs.get(0));
+
+            StringObjectInspector = (StringObjectInspector)fieldRefs.get(0).getFieldObjectInspector();
+
+            checkStringType(fieldRefs.get(1));
+            ObjectInspector inspector = fieldRefs.get(1).getFieldObjectInspector();
+            //获取转换器
+            String tableName = asConstantNonNullString(inspector, "table_name");
+            parser = ParserProvider.provide(tableName);
+        } else {
             throw new UDFArgumentException("We need 2 params:xml content and corresponding table name.");
         }
 
-        StructField xmlContentParam = argOIs.getAllStructFieldRefs().get(0);
-        StructField tableNameParam = argOIs.getAllStructFieldRefs().get(1);
-
-        // check fist param
-        if (xmlContentParam.getFieldObjectInspector().getCategory() != Category.PRIMITIVE) {
-            throw new UDFArgumentException("First parma must Primitive(String).");
-        }
-        PrimitiveObjectInspector xmlContentPrimitiveOI = (PrimitiveObjectInspector) xmlContentParam.getFieldObjectInspector();
-        if (xmlContentPrimitiveOI.getPrimitiveCategory() != PrimitiveCategory.STRING) {
-            throw new UDFArgumentException("Fist param must String");
-        }
-        this.soi = (StringObjectInspector) xmlContentParam.getFieldObjectInspector();
-
-        // check second param
-        if (tableNameParam.getFieldObjectInspector().getCategory() != Category.PRIMITIVE) {
-            throw new UDFArgumentException("Second param must Primitive(String).");
-        }
-        PrimitiveObjectInspector tableNamePrimitiveOI = (PrimitiveObjectInspector) tableNameParam.getFieldObjectInspector();
-        if (tableNamePrimitiveOI.getPrimitiveCategory() != PrimitiveCategory.STRING) {
-            throw new UDFArgumentException("Second param must String");
-        }
-
-        // check table name in list
-        String tableName_lc = Arguments
-            .asConstantNonNullString(tableNameParam.getFieldObjectInspector(), "table_name")
-            .toLowerCase();
-        if (!Dispatcher.contains(tableName_lc)) {
-            throw new UDFArgumentException("Can not process table " + tableName_lc);
-        }
-        this.xmlProcessor = Dispatcher.getProcessor(tableName_lc);
-        this.tb_lc = tableName_lc;
-        this.kfLogFlag = false;
-        if (argOIs.getAllStructFieldRefs().size() > 2 && argOIs.getAllStructFieldRefs().size() != 4) {
-            throw new UDFArgumentException("Or use kafka log ex need bt and topic!");
-        } else if (argOIs.getAllStructFieldRefs().size() == 4) {
-            StructField btParam = argOIs.getAllStructFieldRefs().get(2);
-            StructField topicParam = argOIs.getAllStructFieldRefs().get(3);
-            // pass check
-            String bt = Arguments.asConstantNonNullString(btParam.getFieldObjectInspector(), "bt");
-            String topic = Arguments.asConstantNonNullString(topicParam.getFieldObjectInspector(), "topic");
-            this.kafkaLogs = new KafkaLogs();
-            this.kafkaLogs.setBt(bt);
-            this.kafkaLogs.setTopic(topic);
-            this.kfLogFlag = true;
-        }
-        return xmlProcessor.transformJavaToHive();
+        return parser.getStructObjectInspector();
     }
 
-
-    /**
-     * 1. 先 SDK 转 xml 为 pojo
-     * 2. 然后 pojo 打平到字段
-     * 字段信息 initialize 中已经根据传进来的函数参数初始化好了，所有的参数到字段信息初始化在 Dispatcher 中静态初始化的
-     * 带入这里的 pojo （不同参数应该取 pojo 哪个 obj 也是 Dispatcher 静态初始化好的）取值
-     * 3. 最后 forward
-     * @param args
-     *          object array of arguments
-     * @throws HiveException
-     */
     @Override
     public void process(Object[] args) throws HiveException {
-        if (args == null || args[0] == null) {
-            return;
-        }
-        String xmlText = this.soi.getPrimitiveJavaObject(args[0]);
-        List<Object[]> data = javaProcess(xmlText);
-        if (data == null || data.isEmpty()) {
-            return;
-        }
-
-        for (Object[] row : data) {
-            forward(row);
-        }
-    }
-
-    public List<Object[]> javaProcess(String xmlText) {
-        SPNRContext context = null;
-        XmlParserEx exData = new XmlParserEx();
-
-        try {
-            context = spnrExtractprocessor.process(xmlText);
-        } catch (Exception e) {
-            // TODO: 2022/7/15 Log some full stacktrace
-            if (kfLogFlag) {
-                exData.setXml(xmlText);
-                exData.setFullStack(ExceptionUtils.getFullStackTrace(e));
-                exData.setLog("St.1");
-                kafkaLogs.setXmlParserEx(exData);
-
-                KafkaDao.insert(kafkaLogs);
+        //待解析的xml文本
+        String xmlContent = StringObjectInspector.getPrimitiveJavaObject(args[0]);
+        //解析出的Hive记录
+        List<? extends Object> results = UdtfFacade.process(xmlContent, parser);
+        if (results != null) {
+            for (Object row : results) {
+                forward(row);
             }
         }
-        if (context != null) {
-            if (kfLogFlag) {
-                return this.xmlProcessor.process(context, this.tb_lc, kafkaLogs);
-            } else {
-                return this.xmlProcessor.process(context, this.tb_lc);
-            }
-        }
-        return null;
-    }
-
-    public void setter(String tb_lc) {
-        this.xmlProcessor = Dispatcher.getProcessor(tb_lc);
-        this.tb_lc = tb_lc;
     }
 
     @Override
-    public void close() throws HiveException {
-        if (kfLogFlag) {
-            KafkaDao.close(this.kafkaLogs);
-        }
-    }
+    public void close() {}
 
-    private static class Arguments {
-
-        public static String asConstantNonNullString(final ObjectInspector oi, final String parmaName)
-            throws UDFArgumentException {
-            if (!(oi instanceof WritableConstantStringObjectInspector)) {
-                throw new UDFArgumentException(parmaName + " must be a constant string.");
-            }
-            final Text text = ((WritableConstantStringObjectInspector) oi).getWritableConstantValue();
-            if (text == null) {
-                throw new UDFArgumentException(parmaName + " must not be NULL.");
-            }
-            return text.toString();
-        }
-
-        public static List<String> asConstantNonNullStrings(final List<ObjectInspector> ois, final String name)
-            throws UDFArgumentException {
-            final List<String> strs = new ArrayList<>();
-            for (final ObjectInspector oi : ois) {
-                strs.add(asConstantNonNullString(oi, name));
-            }
-            return strs;
-        }
-
-        public static StringObjectInspector asString(final ObjectInspector oi, final String name)
-            throws UDFArgumentException {
-            if (!(oi instanceof StringObjectInspector)) {
-                throw new UDFArgumentException(name + " must be of string type.");
-            }
-            return (StringObjectInspector) oi;
-        }
-    }
 }

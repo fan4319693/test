@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -158,6 +158,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="Content" type="{http://www.opentravel.org/OTA/2003/05}AirAncillaryProductLocalisedContentType" minOccurs="0"/>
  *         &lt;element name="CarbonOffsets" type="{http://www.opentravel.org/OTA/2003/05}AirAncillaryOffsetProductType" minOccurs="0"/>
  *         &lt;element name="DefaultContent" type="{http://www.opentravel.org/OTA/2003/05}AirAncillaryProductLocalisedContentType" minOccurs="0"/>
+ *         &lt;element name="EligibleItem" type="{http://www.opentravel.org/OTA/2003/05}AirAncillaryEligibleItemType" minOccurs="0"/>
  *         &lt;element name="Lounge" type="{http://www.opentravel.org/OTA/2003/05}AirAncillaryLoungeProductType" minOccurs="0"/>
  *         &lt;element name="AncillaryProducts" type="{http://www.opentravel.org/OTA/2003/05}AncillaryProductsType" minOccurs="0"/>
  *         &lt;element name="Prices" type="{http://www.opentravel.org/OTA/2003/05}AirAncillaryProductPricesType" minOccurs="0"/>
@@ -331,6 +332,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "content",
     "carbonOffsets",
     "defaultContent",
+    "eligibleItem",
     "lounge",
     "ancillaryProducts",
     "prices",
@@ -362,6 +364,8 @@ public class AirAncillaryProductType {
     protected AirAncillaryOffsetProductType carbonOffsets;
     @XmlElement(name = "DefaultContent")
     protected AirAncillaryProductLocalisedContentType defaultContent;
+    @XmlElement(name = "EligibleItem")
+    protected AirAncillaryEligibleItemType eligibleItem;
     @XmlElement(name = "Lounge")
     protected AirAncillaryLoungeProductType lounge;
     @XmlElement(name = "AncillaryProducts")
@@ -616,6 +620,30 @@ public class AirAncillaryProductType {
      */
     public void setDefaultContent(AirAncillaryProductLocalisedContentType value) {
         this.defaultContent = value;
+    }
+
+    /**
+     * 获取eligibleItem属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link AirAncillaryEligibleItemType }
+     *     
+     */
+    public AirAncillaryEligibleItemType getEligibleItem() {
+        return eligibleItem;
+    }
+
+    /**
+     * 设置eligibleItem属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AirAncillaryEligibleItemType }
+     *     
+     */
+    public void setEligibleItem(AirAncillaryEligibleItemType value) {
+        this.eligibleItem = value;
     }
 
     /**

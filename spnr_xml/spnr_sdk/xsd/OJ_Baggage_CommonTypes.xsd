@@ -9980,66 +9980,6 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="ProductContentType">
-		<xs:sequence>
-			<xs:element name="ProductName" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Name of product in defined language</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="ShortContent" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Short description of product</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="LongContent" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Long description of product</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="Image" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>Information about images connected with this product</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="ImageURL" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>URL to image (internal or external)</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="ImageThumbnailURL" type="xs:string" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>URL to tumbnail image (internal or external)</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-					</xs:sequence>
-					<xs:attribute name="ID" type="xs:int" use="required">
-						<xs:annotation>
-							<xs:documentation>Key of image in AAM database</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="ContentData" type="ContentDataType">
-						<xs:annotation>
-							<xs:documentation>The ContentData attribute is necessary to indicate if the image is 'local' or 'remote'.
-								local: image is uploaded and stored on our server.
-								remote: image is a URL to an external site. </xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="ProductTag" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Tag of/for the product.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-		<xs:attribute name="Language" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Code of language</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-	</xs:complexType>
 	<xs:complexType name="BaggageDimensionsType">
 		<xs:sequence>
 			<xs:element name="Length" type="xs:decimal">

@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -54,9 +54,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="SpecRequestPref" type="{http://www.opentravel.org/OTA/2003/05}SpecRequestPrefType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.opentravel.org/OTA/2003/05}TPA_Extensions" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrivacyGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PreferLevelGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}SmokingIndicatorGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrivacyGroup"/>
  *       &lt;attribute name="RatePlanCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to128" />
  *       &lt;attribute name="HotelGuestType" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
  *     &lt;/restriction>
@@ -141,16 +141,16 @@ public class HotelPrefType {
     protected String ratePlanCode;
     @XmlAttribute(name = "HotelGuestType")
     protected String hotelGuestType;
+    @XmlAttribute(name = "PreferLevel")
+    protected PreferLevelType preferLevel;
+    @XmlAttribute(name = "SmokingAllowed")
+    protected Boolean smokingAllowed;
     @XmlAttribute(name = "ShareSynchInd")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String shareSynchInd;
     @XmlAttribute(name = "ShareMarketInd")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String shareMarketInd;
-    @XmlAttribute(name = "PreferLevel")
-    protected PreferLevelType preferLevel;
-    @XmlAttribute(name = "SmokingAllowed")
-    protected Boolean smokingAllowed;
 
     /**
      * Gets the value of the loyaltyPref property.
@@ -834,54 +834,6 @@ public class HotelPrefType {
     }
 
     /**
-     * 获取shareSynchInd属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getShareSynchInd() {
-        return shareSynchInd;
-    }
-
-    /**
-     * 设置shareSynchInd属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setShareSynchInd(String value) {
-        this.shareSynchInd = value;
-    }
-
-    /**
-     * 获取shareMarketInd属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getShareMarketInd() {
-        return shareMarketInd;
-    }
-
-    /**
-     * 设置shareMarketInd属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setShareMarketInd(String value) {
-        this.shareMarketInd = value;
-    }
-
-    /**
      * 获取preferLevel属性的值。
      * 
      * @return
@@ -935,6 +887,54 @@ public class HotelPrefType {
      */
     public void setSmokingAllowed(Boolean value) {
         this.smokingAllowed = value;
+    }
+
+    /**
+     * 获取shareSynchInd属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getShareSynchInd() {
+        return shareSynchInd;
+    }
+
+    /**
+     * 设置shareSynchInd属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setShareSynchInd(String value) {
+        this.shareSynchInd = value;
+    }
+
+    /**
+     * 获取shareMarketInd属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getShareMarketInd() {
+        return shareMarketInd;
+    }
+
+    /**
+     * 设置shareMarketInd属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setShareMarketInd(String value) {
+        this.shareMarketInd = value;
     }
 
 }

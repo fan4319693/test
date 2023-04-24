@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -681,6 +681,12 @@ public class ContactPersonType {
         @XmlAttribute(name = "SignupDate")
         @XmlSchemaType(name = "date")
         protected XMLGregorianCalendar signupDate;
+        @XmlAttribute(name = "EffectiveDate")
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar effectiveDate;
+        @XmlAttribute(name = "ExpireDate")
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar expireDate;
         @XmlAttribute(name = "LoyalLevel")
         protected String loyalLevel;
         @XmlAttribute(name = "LoyalLevelCode")
@@ -691,12 +697,6 @@ public class ContactPersonType {
         @XmlAttribute(name = "ShareMarketInd")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         protected String shareMarketInd;
-        @XmlAttribute(name = "EffectiveDate")
-        @XmlSchemaType(name = "date")
-        protected XMLGregorianCalendar effectiveDate;
-        @XmlAttribute(name = "ExpireDate")
-        @XmlSchemaType(name = "date")
-        protected XMLGregorianCalendar expireDate;
 
         /**
          * 获取programID属性的值。
@@ -968,6 +968,54 @@ public class ContactPersonType {
         }
 
         /**
+         * 获取effectiveDate属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public XMLGregorianCalendar getEffectiveDate() {
+            return effectiveDate;
+        }
+
+        /**
+         * 设置effectiveDate属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public void setEffectiveDate(XMLGregorianCalendar value) {
+            this.effectiveDate = value;
+        }
+
+        /**
+         * 获取expireDate属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public XMLGregorianCalendar getExpireDate() {
+            return expireDate;
+        }
+
+        /**
+         * 设置expireDate属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public void setExpireDate(XMLGregorianCalendar value) {
+            this.expireDate = value;
+        }
+
+        /**
          * 获取loyalLevel属性的值。
          * 
          * @return
@@ -1061,54 +1109,6 @@ public class ContactPersonType {
          */
         public void setShareMarketInd(String value) {
             this.shareMarketInd = value;
-        }
-
-        /**
-         * 获取effectiveDate属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public XMLGregorianCalendar getEffectiveDate() {
-            return effectiveDate;
-        }
-
-        /**
-         * 设置effectiveDate属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public void setEffectiveDate(XMLGregorianCalendar value) {
-            this.effectiveDate = value;
-        }
-
-        /**
-         * 获取expireDate属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public XMLGregorianCalendar getExpireDate() {
-            return expireDate;
-        }
-
-        /**
-         * 设置expireDate属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public void setExpireDate(XMLGregorianCalendar value) {
-            this.expireDate = value;
         }
 
     }

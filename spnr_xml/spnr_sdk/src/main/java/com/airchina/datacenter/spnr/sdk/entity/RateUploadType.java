@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -114,9 +114,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="UniqueID" type="{http://www.opentravel.org/OTA/2003/05}UniqueID_Type" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DOW_PatternGroup"/>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}AgeQualifyingGroup"/>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyCodeGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyCodeGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}AgeQualifyingGroup"/>
  *       &lt;attribute name="NumberOfUnits" type="{http://www.opentravel.org/OTA/2003/05}Numeric1to9999" />
  *       &lt;attribute name="RateTimeUnit" type="{http://www.opentravel.org/OTA/2003/05}TimeUnitType" />
  *       &lt;attribute name="UnitMultiplier" type="{http://www.opentravel.org/OTA/2003/05}Numeric1to999" />
@@ -198,21 +198,6 @@ public class RateUploadType {
     protected Boolean sat;
     @XmlAttribute(name = "Sun")
     protected Boolean sun;
-    @XmlAttribute(name = "AgeQualifyingCode")
-    protected String ageQualifyingCode;
-    @XmlAttribute(name = "MinAge")
-    protected Integer minAge;
-    @XmlAttribute(name = "MaxAge")
-    protected Integer maxAge;
-    @XmlAttribute(name = "AgeTimeUnit")
-    protected String ageTimeUnit;
-    @XmlAttribute(name = "RuleCode")
-    protected String ruleCode;
-    @XmlAttribute(name = "CurrencyCode")
-    protected String currencyCode;
-    @XmlAttribute(name = "DecimalPlaces")
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger decimalPlaces;
     @XmlAttribute(name = "Start")
     protected String start;
     @XmlAttribute(name = "Duration")
@@ -223,6 +208,21 @@ public class RateUploadType {
     protected BigInteger rangeNum;
     @XmlAttribute(name = "SearchTimeZone")
     protected String searchTimeZone;
+    @XmlAttribute(name = "CurrencyCode")
+    protected String currencyCode;
+    @XmlAttribute(name = "DecimalPlaces")
+    @XmlSchemaType(name = "nonNegativeInteger")
+    protected BigInteger decimalPlaces;
+    @XmlAttribute(name = "AgeQualifyingCode")
+    protected String ageQualifyingCode;
+    @XmlAttribute(name = "MinAge")
+    protected Integer minAge;
+    @XmlAttribute(name = "MaxAge")
+    protected Integer maxAge;
+    @XmlAttribute(name = "AgeTimeUnit")
+    protected String ageTimeUnit;
+    @XmlAttribute(name = "RuleCode")
+    protected String ruleCode;
 
     /**
      * Gets the value of the baseByGuestAmts property.
@@ -811,174 +811,6 @@ public class RateUploadType {
     }
 
     /**
-     * 获取ageQualifyingCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAgeQualifyingCode() {
-        return ageQualifyingCode;
-    }
-
-    /**
-     * 设置ageQualifyingCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAgeQualifyingCode(String value) {
-        this.ageQualifyingCode = value;
-    }
-
-    /**
-     * 获取minAge属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getMinAge() {
-        return minAge;
-    }
-
-    /**
-     * 设置minAge属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setMinAge(Integer value) {
-        this.minAge = value;
-    }
-
-    /**
-     * 获取maxAge属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getMaxAge() {
-        return maxAge;
-    }
-
-    /**
-     * 设置maxAge属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setMaxAge(Integer value) {
-        this.maxAge = value;
-    }
-
-    /**
-     * 获取ageTimeUnit属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAgeTimeUnit() {
-        return ageTimeUnit;
-    }
-
-    /**
-     * 设置ageTimeUnit属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAgeTimeUnit(String value) {
-        this.ageTimeUnit = value;
-    }
-
-    /**
-     * 获取ruleCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRuleCode() {
-        return ruleCode;
-    }
-
-    /**
-     * 设置ruleCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRuleCode(String value) {
-        this.ruleCode = value;
-    }
-
-    /**
-     * 获取currencyCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCurrencyCode() {
-        return currencyCode;
-    }
-
-    /**
-     * 设置currencyCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCurrencyCode(String value) {
-        this.currencyCode = value;
-    }
-
-    /**
-     * 获取decimalPlaces属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getDecimalPlaces() {
-        return decimalPlaces;
-    }
-
-    /**
-     * 设置decimalPlaces属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setDecimalPlaces(BigInteger value) {
-        this.decimalPlaces = value;
-    }
-
-    /**
      * 获取start属性的值。
      * 
      * @return
@@ -1096,6 +928,174 @@ public class RateUploadType {
      */
     public void setSearchTimeZone(String value) {
         this.searchTimeZone = value;
+    }
+
+    /**
+     * 获取currencyCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    /**
+     * 设置currencyCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCurrencyCode(String value) {
+        this.currencyCode = value;
+    }
+
+    /**
+     * 获取decimalPlaces属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getDecimalPlaces() {
+        return decimalPlaces;
+    }
+
+    /**
+     * 设置decimalPlaces属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setDecimalPlaces(BigInteger value) {
+        this.decimalPlaces = value;
+    }
+
+    /**
+     * 获取ageQualifyingCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAgeQualifyingCode() {
+        return ageQualifyingCode;
+    }
+
+    /**
+     * 设置ageQualifyingCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAgeQualifyingCode(String value) {
+        this.ageQualifyingCode = value;
+    }
+
+    /**
+     * 获取minAge属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getMinAge() {
+        return minAge;
+    }
+
+    /**
+     * 设置minAge属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setMinAge(Integer value) {
+        this.minAge = value;
+    }
+
+    /**
+     * 获取maxAge属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getMaxAge() {
+        return maxAge;
+    }
+
+    /**
+     * 设置maxAge属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setMaxAge(Integer value) {
+        this.maxAge = value;
+    }
+
+    /**
+     * 获取ageTimeUnit属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAgeTimeUnit() {
+        return ageTimeUnit;
+    }
+
+    /**
+     * 设置ageTimeUnit属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAgeTimeUnit(String value) {
+        this.ageTimeUnit = value;
+    }
+
+    /**
+     * 获取ruleCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRuleCode() {
+        return ruleCode;
+    }
+
+    /**
+     * 设置ruleCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRuleCode(String value) {
+        this.ruleCode = value;
     }
 
 
@@ -1244,15 +1244,15 @@ public class RateUploadType {
             protected Float amount;
             @XmlAttribute(name = "PrePayInd")
             protected Boolean prePayInd;
-            @XmlAttribute(name = "OriginalAmount")
-            protected Float originalAmount;
-            @XmlAttribute(name = "OriginalCurrencyCode")
-            protected String originalCurrencyCode;
             @XmlAttribute(name = "CurrencyCode")
             protected String currencyCode;
             @XmlAttribute(name = "DecimalPlaces")
             @XmlSchemaType(name = "nonNegativeInteger")
             protected BigInteger decimalPlaces;
+            @XmlAttribute(name = "OriginalAmount")
+            protected Float originalAmount;
+            @XmlAttribute(name = "OriginalCurrencyCode")
+            protected String originalCurrencyCode;
             @XmlAttribute(name = "AgeQualifyingCode")
             protected String ageQualifyingCode;
             @XmlAttribute(name = "MinAge")
@@ -1510,54 +1510,6 @@ public class RateUploadType {
             }
 
             /**
-             * 获取originalAmount属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link Float }
-             *     
-             */
-            public Float getOriginalAmount() {
-                return originalAmount;
-            }
-
-            /**
-             * 设置originalAmount属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link Float }
-             *     
-             */
-            public void setOriginalAmount(Float value) {
-                this.originalAmount = value;
-            }
-
-            /**
-             * 获取originalCurrencyCode属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getOriginalCurrencyCode() {
-                return originalCurrencyCode;
-            }
-
-            /**
-             * 设置originalCurrencyCode属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setOriginalCurrencyCode(String value) {
-                this.originalCurrencyCode = value;
-            }
-
-            /**
              * 获取currencyCode属性的值。
              * 
              * @return
@@ -1603,6 +1555,54 @@ public class RateUploadType {
              */
             public void setDecimalPlaces(BigInteger value) {
                 this.decimalPlaces = value;
+            }
+
+            /**
+             * 获取originalAmount属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link Float }
+             *     
+             */
+            public Float getOriginalAmount() {
+                return originalAmount;
+            }
+
+            /**
+             * 设置originalAmount属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link Float }
+             *     
+             */
+            public void setOriginalAmount(Float value) {
+                this.originalAmount = value;
+            }
+
+            /**
+             * 获取originalCurrencyCode属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getOriginalCurrencyCode() {
+                return originalCurrencyCode;
+            }
+
+            /**
+             * 设置originalCurrencyCode属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setOriginalCurrencyCode(String value) {
+                this.originalCurrencyCode = value;
             }
 
             /**

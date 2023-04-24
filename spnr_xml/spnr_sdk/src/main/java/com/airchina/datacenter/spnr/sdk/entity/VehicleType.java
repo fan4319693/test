@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -10,6 +10,8 @@ package com.airchina.datacenter.spnr.sdk.entity;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -36,6 +38,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="Content" type="{http://www.opentravel.org/OTA/2003/05}VehicleModelContent" minOccurs="0"/>
+ *                   &lt;element name="DefaultContent" type="{http://www.opentravel.org/OTA/2003/05}VehicleModelContent" minOccurs="0"/>
+ *                 &lt;/sequence>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}VehicleMakeModelGroup"/>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -51,9 +57,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
+ *         &lt;element name="RentalRate" type="{http://www.opentravel.org/OTA/2003/05}VehicleRentalRateType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}UnitsOfMeasureGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}UnitsOfMeasureGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
  *       &lt;attribute name="PassengerQuantity" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to8" />
  *       &lt;attribute name="BaggageQuantity" type="{http://www.w3.org/2001/XMLSchema}integer" />
@@ -69,7 +76,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "VehicleType", propOrder = {
     "vehMakeModel",
     "pictureURL",
-    "vehIdentity"
+    "vehIdentity",
+    "rentalRate"
 })
 @XmlSeeAlso({
     com.airchina.datacenter.spnr.sdk.entity.VehicleLocationVehiclesType.Vehicle.class,
@@ -87,22 +95,24 @@ public class VehicleType
     protected String pictureURL;
     @XmlElement(name = "VehIdentity")
     protected VehicleType.VehIdentity vehIdentity;
+    @XmlElement(name = "RentalRate")
+    protected List<VehicleRentalRateType> rentalRate;
     @XmlAttribute(name = "PassengerQuantity")
     protected String passengerQuantity;
     @XmlAttribute(name = "BaggageQuantity")
     protected BigInteger baggageQuantity;
     @XmlAttribute(name = "VendorCarType")
     protected String vendorCarType;
+    @XmlAttribute(name = "Code")
+    protected String code;
+    @XmlAttribute(name = "CodeContext")
+    protected String codeContext;
     @XmlAttribute(name = "UnitOfMeasureQuantity")
     protected BigDecimal unitOfMeasureQuantity;
     @XmlAttribute(name = "UnitOfMeasure")
     protected String unitOfMeasure;
     @XmlAttribute(name = "UnitOfMeasureCode")
     protected String unitOfMeasureCode;
-    @XmlAttribute(name = "Code")
-    protected String code;
-    @XmlAttribute(name = "CodeContext")
-    protected String codeContext;
     @XmlAttribute(name = "Start")
     protected String start;
     @XmlAttribute(name = "Duration")
@@ -187,6 +197,35 @@ public class VehicleType
     }
 
     /**
+     * Gets the value of the rentalRate property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the rentalRate property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getRentalRate().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link VehicleRentalRateType }
+     * 
+     * 
+     */
+    public List<VehicleRentalRateType> getRentalRate() {
+        if (rentalRate == null) {
+            rentalRate = new ArrayList<VehicleRentalRateType>();
+        }
+        return this.rentalRate;
+    }
+
+    /**
      * 获取passengerQuantity属性的值。
      * 
      * @return
@@ -259,6 +298,54 @@ public class VehicleType
     }
 
     /**
+     * 获取code属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * 设置code属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCode(String value) {
+        this.code = value;
+    }
+
+    /**
+     * 获取codeContext属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCodeContext() {
+        return codeContext;
+    }
+
+    /**
+     * 设置codeContext属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCodeContext(String value) {
+        this.codeContext = value;
+    }
+
+    /**
      * 获取unitOfMeasureQuantity属性的值。
      * 
      * @return
@@ -328,54 +415,6 @@ public class VehicleType
      */
     public void setUnitOfMeasureCode(String value) {
         this.unitOfMeasureCode = value;
-    }
-
-    /**
-     * 获取code属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * 设置code属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCode(String value) {
-        this.code = value;
-    }
-
-    /**
-     * 获取codeContext属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCodeContext() {
-        return codeContext;
-    }
-
-    /**
-     * 设置codeContext属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCodeContext(String value) {
-        this.codeContext = value;
     }
 
     /**
@@ -689,6 +728,10 @@ public class VehicleType
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="Content" type="{http://www.opentravel.org/OTA/2003/05}VehicleModelContent" minOccurs="0"/>
+     *         &lt;element name="DefaultContent" type="{http://www.opentravel.org/OTA/2003/05}VehicleModelContent" minOccurs="0"/>
+     *       &lt;/sequence>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}VehicleMakeModelGroup"/>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -698,9 +741,16 @@ public class VehicleType
      * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "")
+    @XmlType(name = "", propOrder = {
+        "content",
+        "defaultContent"
+    })
     public static class VehMakeModel {
 
+        @XmlElement(name = "Content")
+        protected VehicleModelContent content;
+        @XmlElement(name = "DefaultContent")
+        protected VehicleModelContent defaultContent;
         @XmlAttribute(name = "ModelYear")
         @XmlSchemaType(name = "gYear")
         protected XMLGregorianCalendar modelYear;
@@ -710,6 +760,54 @@ public class VehicleType
         protected String code;
         @XmlAttribute(name = "Name")
         protected String name;
+
+        /**
+         * 获取content属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link VehicleModelContent }
+         *     
+         */
+        public VehicleModelContent getContent() {
+            return content;
+        }
+
+        /**
+         * 设置content属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link VehicleModelContent }
+         *     
+         */
+        public void setContent(VehicleModelContent value) {
+            this.content = value;
+        }
+
+        /**
+         * 获取defaultContent属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link VehicleModelContent }
+         *     
+         */
+        public VehicleModelContent getDefaultContent() {
+            return defaultContent;
+        }
+
+        /**
+         * 设置defaultContent属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link VehicleModelContent }
+         *     
+         */
+        public void setDefaultContent(VehicleModelContent value) {
+            this.defaultContent = value;
+        }
 
         /**
          * 获取modelYear属性的值。

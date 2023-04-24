@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -97,7 +97,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="Vehicle" type="{http://www.opentravel.org/OTA/2003/05}VehicleType"/>
+ *                   &lt;element name="Vehicle" type="{http://www.opentravel.org/OTA/2003/05}VehicleType" maxOccurs="unbounded"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -680,6 +680,8 @@ public class ItemType {
         protected String hotelCode;
         @XmlAttribute(name = "HotelCityCode")
         protected String hotelCityCode;
+        @XmlAttribute(name = "HotelCityCodeContext")
+        protected String hotelCityCodeContext;
         @XmlAttribute(name = "HotelName")
         protected String hotelName;
         @XmlAttribute(name = "HotelCodeContext")
@@ -688,8 +690,12 @@ public class ItemType {
         protected String chainName;
         @XmlAttribute(name = "BrandName")
         protected String brandName;
+        @XmlAttribute(name = "InvoiceIssuer")
+        protected String invoiceIssuer;
         @XmlAttribute(name = "AreaID")
         protected String areaID;
+        @XmlAttribute(name = "StayType")
+        protected String stayType;
 
         /**
          * 获取bookingOfficeCode属性的值。
@@ -812,6 +818,30 @@ public class ItemType {
         }
 
         /**
+         * 获取hotelCityCodeContext属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getHotelCityCodeContext() {
+            return hotelCityCodeContext;
+        }
+
+        /**
+         * 设置hotelCityCodeContext属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setHotelCityCodeContext(String value) {
+            this.hotelCityCodeContext = value;
+        }
+
+        /**
          * 获取hotelName属性的值。
          * 
          * @return
@@ -908,6 +938,30 @@ public class ItemType {
         }
 
         /**
+         * 获取invoiceIssuer属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getInvoiceIssuer() {
+            return invoiceIssuer;
+        }
+
+        /**
+         * 设置invoiceIssuer属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setInvoiceIssuer(String value) {
+            this.invoiceIssuer = value;
+        }
+
+        /**
          * 获取areaID属性的值。
          * 
          * @return
@@ -929,6 +983,30 @@ public class ItemType {
          */
         public void setAreaID(String value) {
             this.areaID = value;
+        }
+
+        /**
+         * 获取stayType属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getStayType() {
+            return stayType;
+        }
+
+        /**
+         * 设置stayType属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setStayType(String value) {
+            this.stayType = value;
         }
 
     }
@@ -1356,7 +1434,7 @@ public class ItemType {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="Vehicle" type="{http://www.opentravel.org/OTA/2003/05}VehicleType"/>
+     *         &lt;element name="Vehicle" type="{http://www.opentravel.org/OTA/2003/05}VehicleType" maxOccurs="unbounded"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -1372,30 +1450,35 @@ public class ItemType {
     public static class Vehicles {
 
         @XmlElement(name = "Vehicle", required = true)
-        protected VehicleType vehicle;
+        protected List<VehicleType> vehicle;
 
         /**
-         * 获取vehicle属性的值。
+         * Gets the value of the vehicle property.
          * 
-         * @return
-         *     possible object is
-         *     {@link VehicleType }
-         *     
-         */
-        public VehicleType getVehicle() {
-            return vehicle;
-        }
-
-        /**
-         * 设置vehicle属性的值。
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the vehicle property.
          * 
-         * @param value
-         *     allowed object is
-         *     {@link VehicleType }
-         *     
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getVehicle().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link VehicleType }
+         * 
+         * 
          */
-        public void setVehicle(VehicleType value) {
-            this.vehicle = value;
+        public List<VehicleType> getVehicle() {
+            if (vehicle == null) {
+                vehicle = new ArrayList<VehicleType>();
+            }
+            return this.vehicle;
         }
 
     }

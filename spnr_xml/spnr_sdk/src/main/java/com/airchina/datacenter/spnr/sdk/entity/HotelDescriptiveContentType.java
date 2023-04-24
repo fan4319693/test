@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -105,9 +106,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;/element>
  *         &lt;element name="AssociatedProducts" type="{http://www.opentravel.org/OTA/2003/05}AssociatedProductsType" minOccurs="0"/>
  *       &lt;/sequence>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}UnitsOfMeasureGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyCodeGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}UnitsOfMeasureGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeStampGroup"/>
  *       &lt;attribute name="LanguageCode" type="{http://www.w3.org/2001/XMLSchema}language" />
  *       &lt;attribute name="TimeZone" use="required" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to64" />
  *       &lt;attribute name="DistanceUnitOfMeasureCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
@@ -159,6 +161,12 @@ public class HotelDescriptiveContentType {
     protected String areaUnitOfMeasureCode;
     @XmlAttribute(name = "WeightUnitOfMeasureCode")
     protected String weightUnitOfMeasureCode;
+    @XmlAttribute(name = "UnitOfMeasureQuantity")
+    protected BigDecimal unitOfMeasureQuantity;
+    @XmlAttribute(name = "UnitOfMeasure")
+    protected String unitOfMeasure;
+    @XmlAttribute(name = "UnitOfMeasureCode")
+    protected String unitOfMeasureCode;
     @XmlAttribute(name = "CurrencyCode")
     protected String currencyCode;
     @XmlAttribute(name = "DecimalPlaces")
@@ -174,12 +182,16 @@ public class HotelDescriptiveContentType {
     protected BigInteger rangeNum;
     @XmlAttribute(name = "SearchTimeZone")
     protected String searchTimeZone;
-    @XmlAttribute(name = "UnitOfMeasureQuantity")
-    protected BigDecimal unitOfMeasureQuantity;
-    @XmlAttribute(name = "UnitOfMeasure")
-    protected String unitOfMeasure;
-    @XmlAttribute(name = "UnitOfMeasureCode")
-    protected String unitOfMeasureCode;
+    @XmlAttribute(name = "CreateDateTime")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar createDateTime;
+    @XmlAttribute(name = "CreatorID")
+    protected String creatorID;
+    @XmlAttribute(name = "LastModifyDateTime")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar lastModifyDateTime;
+    @XmlAttribute(name = "LastModifierID")
+    protected String lastModifierID;
 
     /**
      * Gets the value of the destinationSystemsCodeAndHotelInfoAndFacilityInfo property.
@@ -345,6 +357,78 @@ public class HotelDescriptiveContentType {
      */
     public void setWeightUnitOfMeasureCode(String value) {
         this.weightUnitOfMeasureCode = value;
+    }
+
+    /**
+     * 获取unitOfMeasureQuantity属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public BigDecimal getUnitOfMeasureQuantity() {
+        return unitOfMeasureQuantity;
+    }
+
+    /**
+     * 设置unitOfMeasureQuantity属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public void setUnitOfMeasureQuantity(BigDecimal value) {
+        this.unitOfMeasureQuantity = value;
+    }
+
+    /**
+     * 获取unitOfMeasure属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUnitOfMeasure() {
+        return unitOfMeasure;
+    }
+
+    /**
+     * 设置unitOfMeasure属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUnitOfMeasure(String value) {
+        this.unitOfMeasure = value;
+    }
+
+    /**
+     * 获取unitOfMeasureCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUnitOfMeasureCode() {
+        return unitOfMeasureCode;
+    }
+
+    /**
+     * 设置unitOfMeasureCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUnitOfMeasureCode(String value) {
+        this.unitOfMeasureCode = value;
     }
 
     /**
@@ -516,75 +600,99 @@ public class HotelDescriptiveContentType {
     }
 
     /**
-     * 获取unitOfMeasureQuantity属性的值。
+     * 获取createDateTime属性的值。
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public BigDecimal getUnitOfMeasureQuantity() {
-        return unitOfMeasureQuantity;
+    public XMLGregorianCalendar getCreateDateTime() {
+        return createDateTime;
     }
 
     /**
-     * 设置unitOfMeasureQuantity属性的值。
+     * 设置createDateTime属性的值。
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setUnitOfMeasureQuantity(BigDecimal value) {
-        this.unitOfMeasureQuantity = value;
+    public void setCreateDateTime(XMLGregorianCalendar value) {
+        this.createDateTime = value;
     }
 
     /**
-     * 获取unitOfMeasure属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getUnitOfMeasure() {
-        return unitOfMeasure;
-    }
-
-    /**
-     * 设置unitOfMeasure属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUnitOfMeasure(String value) {
-        this.unitOfMeasure = value;
-    }
-
-    /**
-     * 获取unitOfMeasureCode属性的值。
+     * 获取creatorID属性的值。
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getUnitOfMeasureCode() {
-        return unitOfMeasureCode;
+    public String getCreatorID() {
+        return creatorID;
     }
 
     /**
-     * 设置unitOfMeasureCode属性的值。
+     * 设置creatorID属性的值。
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setUnitOfMeasureCode(String value) {
-        this.unitOfMeasureCode = value;
+    public void setCreatorID(String value) {
+        this.creatorID = value;
+    }
+
+    /**
+     * 获取lastModifyDateTime属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getLastModifyDateTime() {
+        return lastModifyDateTime;
+    }
+
+    /**
+     * 设置lastModifyDateTime属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setLastModifyDateTime(XMLGregorianCalendar value) {
+        this.lastModifyDateTime = value;
+    }
+
+    /**
+     * 获取lastModifierID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLastModifierID() {
+        return lastModifierID;
+    }
+
+    /**
+     * 设置lastModifierID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLastModifierID(String value) {
+        this.lastModifierID = value;
     }
 
 

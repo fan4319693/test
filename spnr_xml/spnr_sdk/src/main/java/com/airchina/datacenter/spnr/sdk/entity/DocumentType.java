@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -61,8 +61,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrivacyGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}GenderGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrivacyGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}BirthDateGroup"/>
  *       &lt;attribute name="DocIssueAuthority" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to64" />
@@ -134,15 +134,15 @@ public class DocumentType {
     protected String remark;
     @XmlAttribute(name = "DocHolderNationality")
     protected String docHolderNationality;
+    @XmlAttribute(name = "Gender")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String gender;
     @XmlAttribute(name = "ShareSynchInd")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String shareSynchInd;
     @XmlAttribute(name = "ShareMarketInd")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String shareMarketInd;
-    @XmlAttribute(name = "Gender")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String gender;
     @XmlAttribute(name = "EffectiveDate")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar effectiveDate;
@@ -572,6 +572,30 @@ public class DocumentType {
     }
 
     /**
+     * 获取gender属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getGender() {
+        return gender;
+    }
+
+    /**
+     * 设置gender属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setGender(String value) {
+        this.gender = value;
+    }
+
+    /**
      * 获取shareSynchInd属性的值。
      * 
      * @return
@@ -617,30 +641,6 @@ public class DocumentType {
      */
     public void setShareMarketInd(String value) {
         this.shareMarketInd = value;
-    }
-
-    /**
-     * 获取gender属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getGender() {
-        return gender;
-    }
-
-    /**
-     * 设置gender属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setGender(String value) {
-        this.gender = value;
     }
 
     /**

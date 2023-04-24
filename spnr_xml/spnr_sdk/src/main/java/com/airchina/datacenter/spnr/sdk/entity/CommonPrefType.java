@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -50,10 +50,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="LanguagePref" type="{http://www.opentravel.org/OTA/2003/05}LanguagePrefType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://www.opentravel.org/OTA/2003/05}TPA_Extensions" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}AltLangID_Group"/>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrimaryLangID_Group"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrivacyGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}AltLangID_Group"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}SmokingIndicatorGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrimaryLangID_Group"/>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -117,22 +117,22 @@ public class CommonPrefType {
     protected List<LanguagePrefType> languagePref;
     @XmlElement(name = "TPA_Extensions")
     protected TPAExtensionsType tpaExtensions;
-    @XmlAttribute(name = "AltLangID")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "language")
-    protected String altLangID;
-    @XmlAttribute(name = "PrimaryLangID")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "language")
-    protected String primaryLangID;
     @XmlAttribute(name = "ShareSynchInd")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String shareSynchInd;
     @XmlAttribute(name = "ShareMarketInd")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String shareMarketInd;
+    @XmlAttribute(name = "AltLangID")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "language")
+    protected String altLangID;
     @XmlAttribute(name = "SmokingAllowed")
     protected Boolean smokingAllowed;
+    @XmlAttribute(name = "PrimaryLangID")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "language")
+    protected String primaryLangID;
 
     /**
      * Gets the value of the namePref property.
@@ -623,54 +623,6 @@ public class CommonPrefType {
     }
 
     /**
-     * 获取altLangID属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAltLangID() {
-        return altLangID;
-    }
-
-    /**
-     * 设置altLangID属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAltLangID(String value) {
-        this.altLangID = value;
-    }
-
-    /**
-     * 获取primaryLangID属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPrimaryLangID() {
-        return primaryLangID;
-    }
-
-    /**
-     * 设置primaryLangID属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPrimaryLangID(String value) {
-        this.primaryLangID = value;
-    }
-
-    /**
      * 获取shareSynchInd属性的值。
      * 
      * @return
@@ -719,6 +671,30 @@ public class CommonPrefType {
     }
 
     /**
+     * 获取altLangID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAltLangID() {
+        return altLangID;
+    }
+
+    /**
+     * 设置altLangID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAltLangID(String value) {
+        this.altLangID = value;
+    }
+
+    /**
      * 获取smokingAllowed属性的值。
      * 
      * @return
@@ -744,6 +720,30 @@ public class CommonPrefType {
      */
     public void setSmokingAllowed(Boolean value) {
         this.smokingAllowed = value;
+    }
+
+    /**
+     * 获取primaryLangID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPrimaryLangID() {
+        return primaryLangID;
+    }
+
+    /**
+     * 设置primaryLangID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPrimaryLangID(String value) {
+        this.primaryLangID = value;
     }
 
 }

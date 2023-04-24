@@ -759,6 +759,7 @@
 											<xs:documentation>Descriptive text that describes the guest room.</xs:documentation>
 										</xs:annotation>
 									</xs:element>
+									<xs:element ref="AltRoomTypeNames" minOccurs="0"/>
 									<xs:element name="Description" type="MultimediaDescriptionsType" minOccurs="0"/>
 									<xs:element name="ShortDescription" type="MultimediaDescriptionsType" minOccurs="0"/>
 								</xs:sequence>
@@ -993,6 +994,11 @@
 				<xs:documentation xml:lang="en">Provides the unit of measure in which weight is provided in this message. Refer to OTA Code List Unit of Measure (UOM).</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+		<xs:attributeGroup ref="DateTimeStampGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The timestamp of the hotel content is created or changed.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="HotelInfoType">
 		<xs:annotation>

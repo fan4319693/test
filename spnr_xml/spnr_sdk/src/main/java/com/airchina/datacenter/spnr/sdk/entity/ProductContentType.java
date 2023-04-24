@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -44,7 +45,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="ProductTag" type="{http://www.w3.org/2001/XMLSchema}anyType" minOccurs="0"/>
+ *         &lt;element name="ProductTag" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="Language" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
@@ -62,6 +63,9 @@ import javax.xml.bind.annotation.XmlType;
     "image",
     "productTag"
 })
+@XmlSeeAlso({
+    InsuranceProductContentType.class
+})
 public class ProductContentType {
 
     @XmlElement(name = "ProductName", required = true)
@@ -73,7 +77,7 @@ public class ProductContentType {
     @XmlElement(name = "Image")
     protected List<ProductContentType.Image> image;
     @XmlElement(name = "ProductTag")
-    protected Object productTag;
+    protected String productTag;
     @XmlAttribute(name = "Language", required = true)
     protected String language;
 
@@ -183,10 +187,10 @@ public class ProductContentType {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public Object getProductTag() {
+    public String getProductTag() {
         return productTag;
     }
 
@@ -195,10 +199,10 @@ public class ProductContentType {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link String }
      *     
      */
-    public void setProductTag(Object value) {
+    public void setProductTag(String value) {
         this.productTag = value;
     }
 

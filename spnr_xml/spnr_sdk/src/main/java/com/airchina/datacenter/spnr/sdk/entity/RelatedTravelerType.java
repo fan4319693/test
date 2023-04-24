@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -36,8 +36,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="PersonName" type="{http://www.opentravel.org/OTA/2003/05}PersonNameType" minOccurs="0"/>
  *         &lt;element name="Email" type="{http://www.opentravel.org/OTA/2003/05}EmailType" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrivacyGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}BirthDateGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrivacyGroup"/>
  *       &lt;attribute name="Relation" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to32" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -66,15 +66,15 @@ public class RelatedTravelerType {
     protected EmailType email;
     @XmlAttribute(name = "Relation")
     protected String relation;
+    @XmlAttribute(name = "BirthDate")
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar birthDate;
     @XmlAttribute(name = "ShareSynchInd")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String shareSynchInd;
     @XmlAttribute(name = "ShareMarketInd")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String shareMarketInd;
-    @XmlAttribute(name = "BirthDate")
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar birthDate;
 
     /**
      * 获取uniqueID属性的值。
@@ -173,6 +173,30 @@ public class RelatedTravelerType {
     }
 
     /**
+     * 获取birthDate属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getBirthDate() {
+        return birthDate;
+    }
+
+    /**
+     * 设置birthDate属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setBirthDate(XMLGregorianCalendar value) {
+        this.birthDate = value;
+    }
+
+    /**
      * 获取shareSynchInd属性的值。
      * 
      * @return
@@ -218,30 +242,6 @@ public class RelatedTravelerType {
      */
     public void setShareMarketInd(String value) {
         this.shareMarketInd = value;
-    }
-
-    /**
-     * 获取birthDate属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getBirthDate() {
-        return birthDate;
-    }
-
-    /**
-     * 设置birthDate属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setBirthDate(XMLGregorianCalendar value) {
-        this.birthDate = value;
     }
 
 }

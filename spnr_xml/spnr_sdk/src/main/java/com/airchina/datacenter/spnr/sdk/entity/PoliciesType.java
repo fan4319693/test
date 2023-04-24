@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -63,8 +63,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                     &lt;sequence>
  *                                       &lt;element name="Description" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" maxOccurs="5" minOccurs="0"/>
  *                                     &lt;/sequence>
- *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
  *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+ *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
  *                                     &lt;attribute name="Name">
  *                                       &lt;simpleType>
  *                                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}NMTOKEN">
@@ -101,8 +101,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                     &lt;sequence>
  *                                       &lt;element name="Description" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" maxOccurs="5" minOccurs="0"/>
  *                                     &lt;/sequence>
- *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyAmountGroup"/>
  *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+ *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyAmountGroup"/>
  *                                     &lt;attribute name="Percent" type="{http://www.opentravel.org/OTA/2003/05}Percentage" />
  *                                     &lt;attribute name="Type">
  *                                       &lt;simpleType>
@@ -429,10 +429,85 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
  *                   &lt;/element>
+ *                   &lt;element name="BookPolicy" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;sequence>
+ *                             &lt;element name="BookRestriction" maxOccurs="unbounded" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="Distance" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                               &lt;attribute name="Quantity" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+ *                                               &lt;attribute name="Unit" type="{http://www.opentravel.org/OTA/2003/05}DistanceUnitNameType" />
+ *                                             &lt;/restriction>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                     &lt;/sequence>
+ *                                     &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                           &lt;/sequence>
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                   &lt;element name="ExtraChargePolicy" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;sequence>
+ *                             &lt;element name="ExtraChargePenalty" maxOccurs="unbounded" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence minOccurs="0">
+ *                                       &lt;element name="TimeSlotCharge" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="AmountPercent" type="{http://www.opentravel.org/OTA/2003/05}AmountPercentType" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                               &lt;attribute name="Start" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+ *                                               &lt;attribute name="End" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+ *                                               &lt;attribute name="StepSize" type="{http://www.w3.org/2001/XMLSchema}decimal" />
+ *                                               &lt;attribute name="Unit" type="{http://www.opentravel.org/OTA/2003/05}TimeUnitType" />
+ *                                               &lt;attribute name="ChargeType">
+ *                                                 &lt;simpleType>
+ *                                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *                                                     &lt;enumeration value="Fixed"/>
+ *                                                     &lt;enumeration value="Tiered"/>
+ *                                                   &lt;/restriction>
+ *                                                 &lt;/simpleType>
+ *                                               &lt;/attribute>
+ *                                             &lt;/restriction>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                     &lt;/sequence>
+ *                                     &lt;attribute name="PolicyCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to16" />
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                           &lt;/sequence>
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
  *                 &lt;/sequence>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DOW_PatternGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DOW_PatternGroup"/>
  *                 &lt;attribute name="DefaultValidBookingMinOffset" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
  *                 &lt;attribute name="Code" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                 &lt;attribute name="LastUpdated" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
@@ -522,8 +597,8 @@ public class PoliciesType {
      *                           &lt;sequence>
      *                             &lt;element name="Description" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" maxOccurs="5" minOccurs="0"/>
      *                           &lt;/sequence>
-     *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
      *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+     *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
      *                           &lt;attribute name="Name">
      *                             &lt;simpleType>
      *                               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}NMTOKEN">
@@ -560,8 +635,8 @@ public class PoliciesType {
      *                           &lt;sequence>
      *                             &lt;element name="Description" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" maxOccurs="5" minOccurs="0"/>
      *                           &lt;/sequence>
-     *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyAmountGroup"/>
      *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+     *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyAmountGroup"/>
      *                           &lt;attribute name="Percent" type="{http://www.opentravel.org/OTA/2003/05}Percentage" />
      *                           &lt;attribute name="Type">
      *                             &lt;simpleType>
@@ -888,10 +963,85 @@ public class PoliciesType {
      *             &lt;/complexContent>
      *           &lt;/complexType>
      *         &lt;/element>
+     *         &lt;element name="BookPolicy" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;sequence>
+     *                   &lt;element name="BookRestriction" maxOccurs="unbounded" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="Distance" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                                     &lt;attribute name="Quantity" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+     *                                     &lt;attribute name="Unit" type="{http://www.opentravel.org/OTA/2003/05}DistanceUnitNameType" />
+     *                                   &lt;/restriction>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                           &lt;/sequence>
+     *                           &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                 &lt;/sequence>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="ExtraChargePolicy" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;sequence>
+     *                   &lt;element name="ExtraChargePenalty" maxOccurs="unbounded" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence minOccurs="0">
+     *                             &lt;element name="TimeSlotCharge" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="AmountPercent" type="{http://www.opentravel.org/OTA/2003/05}AmountPercentType" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                     &lt;attribute name="Start" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+     *                                     &lt;attribute name="End" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+     *                                     &lt;attribute name="StepSize" type="{http://www.w3.org/2001/XMLSchema}decimal" />
+     *                                     &lt;attribute name="Unit" type="{http://www.opentravel.org/OTA/2003/05}TimeUnitType" />
+     *                                     &lt;attribute name="ChargeType">
+     *                                       &lt;simpleType>
+     *                                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+     *                                           &lt;enumeration value="Fixed"/>
+     *                                           &lt;enumeration value="Tiered"/>
+     *                                         &lt;/restriction>
+     *                                       &lt;/simpleType>
+     *                                     &lt;/attribute>
+     *                                   &lt;/restriction>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                           &lt;/sequence>
+     *                           &lt;attribute name="PolicyCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to16" />
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                 &lt;/sequence>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
      *       &lt;/sequence>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DOW_PatternGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DOW_PatternGroup"/>
      *       &lt;attribute name="DefaultValidBookingMinOffset" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
      *       &lt;attribute name="Code" type="{http://www.w3.org/2001/XMLSchema}string" />
      *       &lt;attribute name="LastUpdated" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
@@ -914,7 +1064,9 @@ public class PoliciesType {
         "petsPolicies",
         "stayRequirements",
         "commissionPolicy",
-        "feePolicies"
+        "feePolicies",
+        "bookPolicy",
+        "extraChargePolicy"
     })
     public static class Policy {
 
@@ -940,6 +1092,10 @@ public class PoliciesType {
         protected PoliciesType.Policy.CommissionPolicy commissionPolicy;
         @XmlElement(name = "FeePolicies")
         protected PoliciesType.Policy.FeePolicies feePolicies;
+        @XmlElement(name = "BookPolicy")
+        protected PoliciesType.Policy.BookPolicy bookPolicy;
+        @XmlElement(name = "ExtraChargePolicy")
+        protected PoliciesType.Policy.ExtraChargePolicy extraChargePolicy;
         @XmlAttribute(name = "DefaultValidBookingMinOffset")
         @XmlSchemaType(name = "nonNegativeInteger")
         protected BigInteger defaultValidBookingMinOffset;
@@ -952,6 +1108,16 @@ public class PoliciesType {
         protected String codeDetail;
         @XmlAttribute(name = "Removal")
         protected Boolean removal;
+        @XmlAttribute(name = "Start")
+        protected String start;
+        @XmlAttribute(name = "Duration")
+        protected BigInteger duration;
+        @XmlAttribute(name = "End")
+        protected String end;
+        @XmlAttribute(name = "RangeNum")
+        protected BigInteger rangeNum;
+        @XmlAttribute(name = "SearchTimeZone")
+        protected String searchTimeZone;
         @XmlAttribute(name = "Mon")
         protected Boolean mon;
         @XmlAttribute(name = "Tue")
@@ -966,16 +1132,6 @@ public class PoliciesType {
         protected Boolean sat;
         @XmlAttribute(name = "Sun")
         protected Boolean sun;
-        @XmlAttribute(name = "Start")
-        protected String start;
-        @XmlAttribute(name = "Duration")
-        protected BigInteger duration;
-        @XmlAttribute(name = "End")
-        protected String end;
-        @XmlAttribute(name = "RangeNum")
-        protected BigInteger rangeNum;
-        @XmlAttribute(name = "SearchTimeZone")
-        protected String searchTimeZone;
 
         /**
          * Gets the value of the cancelPolicy property.
@@ -1262,6 +1418,54 @@ public class PoliciesType {
         }
 
         /**
+         * 获取bookPolicy属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link PoliciesType.Policy.BookPolicy }
+         *     
+         */
+        public PoliciesType.Policy.BookPolicy getBookPolicy() {
+            return bookPolicy;
+        }
+
+        /**
+         * 设置bookPolicy属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link PoliciesType.Policy.BookPolicy }
+         *     
+         */
+        public void setBookPolicy(PoliciesType.Policy.BookPolicy value) {
+            this.bookPolicy = value;
+        }
+
+        /**
+         * 获取extraChargePolicy属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link PoliciesType.Policy.ExtraChargePolicy }
+         *     
+         */
+        public PoliciesType.Policy.ExtraChargePolicy getExtraChargePolicy() {
+            return extraChargePolicy;
+        }
+
+        /**
+         * 设置extraChargePolicy属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link PoliciesType.Policy.ExtraChargePolicy }
+         *     
+         */
+        public void setExtraChargePolicy(PoliciesType.Policy.ExtraChargePolicy value) {
+            this.extraChargePolicy = value;
+        }
+
+        /**
          * 获取defaultValidBookingMinOffset属性的值。
          * 
          * @return
@@ -1383,6 +1587,126 @@ public class PoliciesType {
          */
         public void setRemoval(Boolean value) {
             this.removal = value;
+        }
+
+        /**
+         * 获取start属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getStart() {
+            return start;
+        }
+
+        /**
+         * 设置start属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setStart(String value) {
+            this.start = value;
+        }
+
+        /**
+         * 获取duration属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link BigInteger }
+         *     
+         */
+        public BigInteger getDuration() {
+            return duration;
+        }
+
+        /**
+         * 设置duration属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link BigInteger }
+         *     
+         */
+        public void setDuration(BigInteger value) {
+            this.duration = value;
+        }
+
+        /**
+         * 获取end属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getEnd() {
+            return end;
+        }
+
+        /**
+         * 设置end属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setEnd(String value) {
+            this.end = value;
+        }
+
+        /**
+         * 获取rangeNum属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link BigInteger }
+         *     
+         */
+        public BigInteger getRangeNum() {
+            return rangeNum;
+        }
+
+        /**
+         * 设置rangeNum属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link BigInteger }
+         *     
+         */
+        public void setRangeNum(BigInteger value) {
+            this.rangeNum = value;
+        }
+
+        /**
+         * 获取searchTimeZone属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getSearchTimeZone() {
+            return searchTimeZone;
+        }
+
+        /**
+         * 设置searchTimeZone属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setSearchTimeZone(String value) {
+            this.searchTimeZone = value;
         }
 
         /**
@@ -1553,124 +1877,255 @@ public class PoliciesType {
             this.sun = value;
         }
 
-        /**
-         * 获取start属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getStart() {
-            return start;
-        }
 
         /**
-         * 设置start属性的值。
+         * <p>anonymous complex type的 Java 类。
          * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
+         * <p>以下模式片段指定包含在此类中的预期内容。
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;sequence>
+         *         &lt;element name="BookRestriction" maxOccurs="unbounded" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="Distance" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                           &lt;attribute name="Quantity" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+         *                           &lt;attribute name="Unit" type="{http://www.opentravel.org/OTA/2003/05}DistanceUnitNameType" />
+         *                         &lt;/restriction>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                 &lt;/sequence>
+         *                 &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}string" />
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *       &lt;/sequence>
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
          */
-        public void setStart(String value) {
-            this.start = value;
-        }
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "bookRestriction"
+        })
+        public static class BookPolicy {
 
-        /**
-         * 获取duration属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigInteger }
-         *     
-         */
-        public BigInteger getDuration() {
-            return duration;
-        }
+            @XmlElement(name = "BookRestriction")
+            protected List<PoliciesType.Policy.BookPolicy.BookRestriction> bookRestriction;
 
-        /**
-         * 设置duration属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigInteger }
-         *     
-         */
-        public void setDuration(BigInteger value) {
-            this.duration = value;
-        }
+            /**
+             * Gets the value of the bookRestriction property.
+             * 
+             * <p>
+             * This accessor method returns a reference to the live list,
+             * not a snapshot. Therefore any modification you make to the
+             * returned list will be present inside the JAXB object.
+             * This is why there is not a <CODE>set</CODE> method for the bookRestriction property.
+             * 
+             * <p>
+             * For example, to add a new item, do as follows:
+             * <pre>
+             *    getBookRestriction().add(newItem);
+             * </pre>
+             * 
+             * 
+             * <p>
+             * Objects of the following type(s) are allowed in the list
+             * {@link PoliciesType.Policy.BookPolicy.BookRestriction }
+             * 
+             * 
+             */
+            public List<PoliciesType.Policy.BookPolicy.BookRestriction> getBookRestriction() {
+                if (bookRestriction == null) {
+                    bookRestriction = new ArrayList<PoliciesType.Policy.BookPolicy.BookRestriction>();
+                }
+                return this.bookRestriction;
+            }
 
-        /**
-         * 获取end属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getEnd() {
-            return end;
-        }
 
-        /**
-         * 设置end属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setEnd(String value) {
-            this.end = value;
-        }
+            /**
+             * <p>anonymous complex type的 Java 类。
+             * 
+             * <p>以下模式片段指定包含在此类中的预期内容。
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="Distance" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *                 &lt;attribute name="Quantity" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+             *                 &lt;attribute name="Unit" type="{http://www.opentravel.org/OTA/2003/05}DistanceUnitNameType" />
+             *               &lt;/restriction>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *       &lt;/sequence>
+             *       &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}string" />
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "distance"
+            })
+            public static class BookRestriction {
 
-        /**
-         * 获取rangeNum属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigInteger }
-         *     
-         */
-        public BigInteger getRangeNum() {
-            return rangeNum;
-        }
+                @XmlElement(name = "Distance")
+                protected PoliciesType.Policy.BookPolicy.BookRestriction.Distance distance;
+                @XmlAttribute(name = "ID")
+                protected String id;
 
-        /**
-         * 设置rangeNum属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigInteger }
-         *     
-         */
-        public void setRangeNum(BigInteger value) {
-            this.rangeNum = value;
-        }
+                /**
+                 * 获取distance属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link PoliciesType.Policy.BookPolicy.BookRestriction.Distance }
+                 *     
+                 */
+                public PoliciesType.Policy.BookPolicy.BookRestriction.Distance getDistance() {
+                    return distance;
+                }
 
-        /**
-         * 获取searchTimeZone属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getSearchTimeZone() {
-            return searchTimeZone;
-        }
+                /**
+                 * 设置distance属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link PoliciesType.Policy.BookPolicy.BookRestriction.Distance }
+                 *     
+                 */
+                public void setDistance(PoliciesType.Policy.BookPolicy.BookRestriction.Distance value) {
+                    this.distance = value;
+                }
 
-        /**
-         * 设置searchTimeZone属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setSearchTimeZone(String value) {
-            this.searchTimeZone = value;
+                /**
+                 * 获取id属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getID() {
+                    return id;
+                }
+
+                /**
+                 * 设置id属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setID(String value) {
+                    this.id = value;
+                }
+
+
+                /**
+                 * <p>anonymous complex type的 Java 类。
+                 * 
+                 * <p>以下模式片段指定包含在此类中的预期内容。
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                 *       &lt;attribute name="Quantity" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+                 *       &lt;attribute name="Unit" type="{http://www.opentravel.org/OTA/2003/05}DistanceUnitNameType" />
+                 *     &lt;/restriction>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "")
+                public static class Distance {
+
+                    @XmlAttribute(name = "Quantity")
+                    @XmlSchemaType(name = "nonNegativeInteger")
+                    protected BigInteger quantity;
+                    @XmlAttribute(name = "Unit")
+                    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+                    protected String unit;
+
+                    /**
+                     * 获取quantity属性的值。
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link BigInteger }
+                     *     
+                     */
+                    public BigInteger getQuantity() {
+                        return quantity;
+                    }
+
+                    /**
+                     * 设置quantity属性的值。
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link BigInteger }
+                     *     
+                     */
+                    public void setQuantity(BigInteger value) {
+                        this.quantity = value;
+                    }
+
+                    /**
+                     * 获取unit属性的值。
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnit() {
+                        return unit;
+                    }
+
+                    /**
+                     * 设置unit属性的值。
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnit(String value) {
+                        this.unit = value;
+                    }
+
+                }
+
+            }
+
         }
 
 
@@ -1691,8 +2146,8 @@ public class PoliciesType {
          *                 &lt;sequence>
          *                   &lt;element name="Description" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" maxOccurs="5" minOccurs="0"/>
          *                 &lt;/sequence>
-         *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyAmountGroup"/>
          *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+         *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyAmountGroup"/>
          *                 &lt;attribute name="Percent" type="{http://www.opentravel.org/OTA/2003/05}Percentage" />
          *                 &lt;attribute name="Type">
          *                   &lt;simpleType>
@@ -1768,8 +2223,8 @@ public class PoliciesType {
              *       &lt;sequence>
              *         &lt;element name="Description" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" maxOccurs="5" minOccurs="0"/>
              *       &lt;/sequence>
-             *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyAmountGroup"/>
              *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+             *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyAmountGroup"/>
              *       &lt;attribute name="Percent" type="{http://www.opentravel.org/OTA/2003/05}Percentage" />
              *       &lt;attribute name="Type">
              *         &lt;simpleType>
@@ -1809,23 +2264,23 @@ public class PoliciesType {
                 protected String existsCode;
                 @XmlAttribute(name = "BalanceOfStayInd")
                 protected Boolean balanceOfStayInd;
+                @XmlAttribute(name = "CodeDetail")
+                protected String codeDetail;
+                @XmlAttribute(name = "Removal")
+                protected Boolean removal;
                 @XmlAttribute(name = "Amount")
                 protected Float amount;
                 @XmlAttribute(name = "PrePayInd")
                 protected Boolean prePayInd;
-                @XmlAttribute(name = "OriginalAmount")
-                protected Float originalAmount;
-                @XmlAttribute(name = "OriginalCurrencyCode")
-                protected String originalCurrencyCode;
                 @XmlAttribute(name = "CurrencyCode")
                 protected String currencyCode;
                 @XmlAttribute(name = "DecimalPlaces")
                 @XmlSchemaType(name = "nonNegativeInteger")
                 protected BigInteger decimalPlaces;
-                @XmlAttribute(name = "CodeDetail")
-                protected String codeDetail;
-                @XmlAttribute(name = "Removal")
-                protected Boolean removal;
+                @XmlAttribute(name = "OriginalAmount")
+                protected Float originalAmount;
+                @XmlAttribute(name = "OriginalCurrencyCode")
+                protected String originalCurrencyCode;
 
                 /**
                  * Gets the value of the description property.
@@ -1977,6 +2432,58 @@ public class PoliciesType {
                 }
 
                 /**
+                 * 获取codeDetail属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getCodeDetail() {
+                    return codeDetail;
+                }
+
+                /**
+                 * 设置codeDetail属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setCodeDetail(String value) {
+                    this.codeDetail = value;
+                }
+
+                /**
+                 * 获取removal属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link Boolean }
+                 *     
+                 */
+                public boolean isRemoval() {
+                    if (removal == null) {
+                        return false;
+                    } else {
+                        return removal;
+                    }
+                }
+
+                /**
+                 * 设置removal属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link Boolean }
+                 *     
+                 */
+                public void setRemoval(Boolean value) {
+                    this.removal = value;
+                }
+
+                /**
                  * 获取amount属性的值。
                  * 
                  * @return
@@ -2022,54 +2529,6 @@ public class PoliciesType {
                  */
                 public void setPrePayInd(Boolean value) {
                     this.prePayInd = value;
-                }
-
-                /**
-                 * 获取originalAmount属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Float }
-                 *     
-                 */
-                public Float getOriginalAmount() {
-                    return originalAmount;
-                }
-
-                /**
-                 * 设置originalAmount属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Float }
-                 *     
-                 */
-                public void setOriginalAmount(Float value) {
-                    this.originalAmount = value;
-                }
-
-                /**
-                 * 获取originalCurrencyCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getOriginalCurrencyCode() {
-                    return originalCurrencyCode;
-                }
-
-                /**
-                 * 设置originalCurrencyCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setOriginalCurrencyCode(String value) {
-                    this.originalCurrencyCode = value;
                 }
 
                 /**
@@ -2121,55 +2580,51 @@ public class PoliciesType {
                 }
 
                 /**
-                 * 获取codeDetail属性的值。
+                 * 获取originalAmount属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link Float }
+                 *     
+                 */
+                public Float getOriginalAmount() {
+                    return originalAmount;
+                }
+
+                /**
+                 * 设置originalAmount属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link Float }
+                 *     
+                 */
+                public void setOriginalAmount(Float value) {
+                    this.originalAmount = value;
+                }
+
+                /**
+                 * 获取originalCurrencyCode属性的值。
                  * 
                  * @return
                  *     possible object is
                  *     {@link String }
                  *     
                  */
-                public String getCodeDetail() {
-                    return codeDetail;
+                public String getOriginalCurrencyCode() {
+                    return originalCurrencyCode;
                 }
 
                 /**
-                 * 设置codeDetail属性的值。
+                 * 设置originalCurrencyCode属性的值。
                  * 
                  * @param value
                  *     allowed object is
                  *     {@link String }
                  *     
                  */
-                public void setCodeDetail(String value) {
-                    this.codeDetail = value;
-                }
-
-                /**
-                 * 获取removal属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Boolean }
-                 *     
-                 */
-                public boolean isRemoval() {
-                    if (removal == null) {
-                        return false;
-                    } else {
-                        return removal;
-                    }
-                }
-
-                /**
-                 * 设置removal属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Boolean }
-                 *     
-                 */
-                public void setRemoval(Boolean value) {
-                    this.removal = value;
+                public void setOriginalCurrencyCode(String value) {
+                    this.originalCurrencyCode = value;
                 }
 
             }
@@ -2327,6 +2782,402 @@ public class PoliciesType {
                  */
                 public void setName(String value) {
                     this.name = value;
+                }
+
+            }
+
+        }
+
+
+        /**
+         * <p>anonymous complex type的 Java 类。
+         * 
+         * <p>以下模式片段指定包含在此类中的预期内容。
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;sequence>
+         *         &lt;element name="ExtraChargePenalty" maxOccurs="unbounded" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence minOccurs="0">
+         *                   &lt;element name="TimeSlotCharge" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                           &lt;sequence>
+         *                             &lt;element name="AmountPercent" type="{http://www.opentravel.org/OTA/2003/05}AmountPercentType" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                           &lt;attribute name="Start" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+         *                           &lt;attribute name="End" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+         *                           &lt;attribute name="StepSize" type="{http://www.w3.org/2001/XMLSchema}decimal" />
+         *                           &lt;attribute name="Unit" type="{http://www.opentravel.org/OTA/2003/05}TimeUnitType" />
+         *                           &lt;attribute name="ChargeType">
+         *                             &lt;simpleType>
+         *                               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+         *                                 &lt;enumeration value="Fixed"/>
+         *                                 &lt;enumeration value="Tiered"/>
+         *                               &lt;/restriction>
+         *                             &lt;/simpleType>
+         *                           &lt;/attribute>
+         *                         &lt;/restriction>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                 &lt;/sequence>
+         *                 &lt;attribute name="PolicyCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to16" />
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *       &lt;/sequence>
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "extraChargePenalty"
+        })
+        public static class ExtraChargePolicy {
+
+            @XmlElement(name = "ExtraChargePenalty")
+            protected List<PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty> extraChargePenalty;
+
+            /**
+             * Gets the value of the extraChargePenalty property.
+             * 
+             * <p>
+             * This accessor method returns a reference to the live list,
+             * not a snapshot. Therefore any modification you make to the
+             * returned list will be present inside the JAXB object.
+             * This is why there is not a <CODE>set</CODE> method for the extraChargePenalty property.
+             * 
+             * <p>
+             * For example, to add a new item, do as follows:
+             * <pre>
+             *    getExtraChargePenalty().add(newItem);
+             * </pre>
+             * 
+             * 
+             * <p>
+             * Objects of the following type(s) are allowed in the list
+             * {@link PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty }
+             * 
+             * 
+             */
+            public List<PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty> getExtraChargePenalty() {
+                if (extraChargePenalty == null) {
+                    extraChargePenalty = new ArrayList<PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty>();
+                }
+                return this.extraChargePenalty;
+            }
+
+
+            /**
+             * <p>anonymous complex type的 Java 类。
+             * 
+             * <p>以下模式片段指定包含在此类中的预期内容。
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence minOccurs="0">
+             *         &lt;element name="TimeSlotCharge" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *                 &lt;sequence>
+             *                   &lt;element name="AmountPercent" type="{http://www.opentravel.org/OTA/2003/05}AmountPercentType" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *                 &lt;attribute name="Start" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+             *                 &lt;attribute name="End" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+             *                 &lt;attribute name="StepSize" type="{http://www.w3.org/2001/XMLSchema}decimal" />
+             *                 &lt;attribute name="Unit" type="{http://www.opentravel.org/OTA/2003/05}TimeUnitType" />
+             *                 &lt;attribute name="ChargeType">
+             *                   &lt;simpleType>
+             *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+             *                       &lt;enumeration value="Fixed"/>
+             *                       &lt;enumeration value="Tiered"/>
+             *                     &lt;/restriction>
+             *                   &lt;/simpleType>
+             *                 &lt;/attribute>
+             *               &lt;/restriction>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *       &lt;/sequence>
+             *       &lt;attribute name="PolicyCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to16" />
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "timeSlotCharge"
+            })
+            public static class ExtraChargePenalty {
+
+                @XmlElement(name = "TimeSlotCharge")
+                protected PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty.TimeSlotCharge timeSlotCharge;
+                @XmlAttribute(name = "PolicyCode")
+                protected String policyCode;
+
+                /**
+                 * 获取timeSlotCharge属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty.TimeSlotCharge }
+                 *     
+                 */
+                public PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty.TimeSlotCharge getTimeSlotCharge() {
+                    return timeSlotCharge;
+                }
+
+                /**
+                 * 设置timeSlotCharge属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty.TimeSlotCharge }
+                 *     
+                 */
+                public void setTimeSlotCharge(PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty.TimeSlotCharge value) {
+                    this.timeSlotCharge = value;
+                }
+
+                /**
+                 * 获取policyCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getPolicyCode() {
+                    return policyCode;
+                }
+
+                /**
+                 * 设置policyCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setPolicyCode(String value) {
+                    this.policyCode = value;
+                }
+
+
+                /**
+                 * <p>anonymous complex type的 Java 类。
+                 * 
+                 * <p>以下模式片段指定包含在此类中的预期内容。
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                 *       &lt;sequence>
+                 *         &lt;element name="AmountPercent" type="{http://www.opentravel.org/OTA/2003/05}AmountPercentType" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *       &lt;attribute name="Start" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+                 *       &lt;attribute name="End" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+                 *       &lt;attribute name="StepSize" type="{http://www.w3.org/2001/XMLSchema}decimal" />
+                 *       &lt;attribute name="Unit" type="{http://www.opentravel.org/OTA/2003/05}TimeUnitType" />
+                 *       &lt;attribute name="ChargeType">
+                 *         &lt;simpleType>
+                 *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+                 *             &lt;enumeration value="Fixed"/>
+                 *             &lt;enumeration value="Tiered"/>
+                 *           &lt;/restriction>
+                 *         &lt;/simpleType>
+                 *       &lt;/attribute>
+                 *     &lt;/restriction>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "amountPercent"
+                })
+                public static class TimeSlotCharge {
+
+                    @XmlElement(name = "AmountPercent")
+                    protected AmountPercentType amountPercent;
+                    @XmlAttribute(name = "Start")
+                    @XmlSchemaType(name = "nonNegativeInteger")
+                    protected BigInteger start;
+                    @XmlAttribute(name = "End")
+                    @XmlSchemaType(name = "nonNegativeInteger")
+                    protected BigInteger end;
+                    @XmlAttribute(name = "StepSize")
+                    protected BigDecimal stepSize;
+                    @XmlAttribute(name = "Unit")
+                    protected String unit;
+                    @XmlAttribute(name = "ChargeType")
+                    protected String chargeType;
+
+                    /**
+                     * 获取amountPercent属性的值。
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link AmountPercentType }
+                     *     
+                     */
+                    public AmountPercentType getAmountPercent() {
+                        return amountPercent;
+                    }
+
+                    /**
+                     * 设置amountPercent属性的值。
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link AmountPercentType }
+                     *     
+                     */
+                    public void setAmountPercent(AmountPercentType value) {
+                        this.amountPercent = value;
+                    }
+
+                    /**
+                     * 获取start属性的值。
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link BigInteger }
+                     *     
+                     */
+                    public BigInteger getStart() {
+                        return start;
+                    }
+
+                    /**
+                     * 设置start属性的值。
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link BigInteger }
+                     *     
+                     */
+                    public void setStart(BigInteger value) {
+                        this.start = value;
+                    }
+
+                    /**
+                     * 获取end属性的值。
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link BigInteger }
+                     *     
+                     */
+                    public BigInteger getEnd() {
+                        return end;
+                    }
+
+                    /**
+                     * 设置end属性的值。
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link BigInteger }
+                     *     
+                     */
+                    public void setEnd(BigInteger value) {
+                        this.end = value;
+                    }
+
+                    /**
+                     * 获取stepSize属性的值。
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link BigDecimal }
+                     *     
+                     */
+                    public BigDecimal getStepSize() {
+                        return stepSize;
+                    }
+
+                    /**
+                     * 设置stepSize属性的值。
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link BigDecimal }
+                     *     
+                     */
+                    public void setStepSize(BigDecimal value) {
+                        this.stepSize = value;
+                    }
+
+                    /**
+                     * 获取unit属性的值。
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnit() {
+                        return unit;
+                    }
+
+                    /**
+                     * 设置unit属性的值。
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnit(String value) {
+                        this.unit = value;
+                    }
+
+                    /**
+                     * 获取chargeType属性的值。
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getChargeType() {
+                        return chargeType;
+                    }
+
+                    /**
+                     * 设置chargeType属性的值。
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setChargeType(String value) {
+                        this.chargeType = value;
+                    }
+
                 }
 
             }
@@ -5221,8 +6072,8 @@ public class PoliciesType {
          *                 &lt;sequence>
          *                   &lt;element name="Description" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" maxOccurs="5" minOccurs="0"/>
          *                 &lt;/sequence>
-         *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
          *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+         *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
          *                 &lt;attribute name="Name">
          *                   &lt;simpleType>
          *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}NMTOKEN">
@@ -5301,8 +6152,8 @@ public class PoliciesType {
              *       &lt;sequence>
              *         &lt;element name="Description" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" maxOccurs="5" minOccurs="0"/>
              *       &lt;/sequence>
-             *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
              *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+             *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
              *       &lt;attribute name="Name">
              *         &lt;simpleType>
              *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}NMTOKEN">
@@ -5338,6 +6189,10 @@ public class PoliciesType {
                 protected String name;
                 @XmlAttribute(name = "ExistsCode")
                 protected String existsCode;
+                @XmlAttribute(name = "CodeDetail")
+                protected String codeDetail;
+                @XmlAttribute(name = "Removal")
+                protected Boolean removal;
                 @XmlAttribute(name = "URI")
                 @XmlSchemaType(name = "anyURI")
                 protected String uri;
@@ -5348,10 +6203,6 @@ public class PoliciesType {
                 protected String code;
                 @XmlAttribute(name = "CodeContext")
                 protected String codeContext;
-                @XmlAttribute(name = "CodeDetail")
-                protected String codeDetail;
-                @XmlAttribute(name = "Removal")
-                protected Boolean removal;
 
                 /**
                  * Gets the value of the description property.
@@ -5428,6 +6279,58 @@ public class PoliciesType {
                  */
                 public void setExistsCode(String value) {
                     this.existsCode = value;
+                }
+
+                /**
+                 * 获取codeDetail属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getCodeDetail() {
+                    return codeDetail;
+                }
+
+                /**
+                 * 设置codeDetail属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setCodeDetail(String value) {
+                    this.codeDetail = value;
+                }
+
+                /**
+                 * 获取removal属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link Boolean }
+                 *     
+                 */
+                public boolean isRemoval() {
+                    if (removal == null) {
+                        return false;
+                    } else {
+                        return removal;
+                    }
+                }
+
+                /**
+                 * 设置removal属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link Boolean }
+                 *     
+                 */
+                public void setRemoval(Boolean value) {
+                    this.removal = value;
                 }
 
                 /**
@@ -5524,58 +6427,6 @@ public class PoliciesType {
                  */
                 public void setCodeContext(String value) {
                     this.codeContext = value;
-                }
-
-                /**
-                 * 获取codeDetail属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getCodeDetail() {
-                    return codeDetail;
-                }
-
-                /**
-                 * 设置codeDetail属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setCodeDetail(String value) {
-                    this.codeDetail = value;
-                }
-
-                /**
-                 * 获取removal属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Boolean }
-                 *     
-                 */
-                public boolean isRemoval() {
-                    if (removal == null) {
-                        return false;
-                    } else {
-                        return removal;
-                    }
-                }
-
-                /**
-                 * 设置removal属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Boolean }
-                 *     
-                 */
-                public void setRemoval(Boolean value) {
-                    this.removal = value;
                 }
 
             }

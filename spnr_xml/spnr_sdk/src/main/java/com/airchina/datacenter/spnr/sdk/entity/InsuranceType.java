@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -35,8 +35,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="InsuranceCompany" type="{http://www.opentravel.org/OTA/2003/05}CompanyNameType" minOccurs="0"/>
  *         &lt;element name="Underwriter" type="{http://www.opentravel.org/OTA/2003/05}CompanyNameType" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrivacyGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrivacyGroup"/>
  *       &lt;attribute name="InsuranceType" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to32" />
  *       &lt;attribute name="PolicyNumber" use="required" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to32" />
  *       &lt;attribute name="RPH" type="{http://www.opentravel.org/OTA/2003/05}RPH_Type" />
@@ -67,18 +67,18 @@ public class InsuranceType {
     protected String policyNumber;
     @XmlAttribute(name = "RPH")
     protected String rph;
-    @XmlAttribute(name = "ShareSynchInd")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String shareSynchInd;
-    @XmlAttribute(name = "ShareMarketInd")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String shareMarketInd;
     @XmlAttribute(name = "EffectiveDate")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar effectiveDate;
     @XmlAttribute(name = "ExpireDate")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar expireDate;
+    @XmlAttribute(name = "ShareSynchInd")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String shareSynchInd;
+    @XmlAttribute(name = "ShareMarketInd")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String shareMarketInd;
 
     /**
      * 获取insuredName属性的值。
@@ -225,54 +225,6 @@ public class InsuranceType {
     }
 
     /**
-     * 获取shareSynchInd属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getShareSynchInd() {
-        return shareSynchInd;
-    }
-
-    /**
-     * 设置shareSynchInd属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setShareSynchInd(String value) {
-        this.shareSynchInd = value;
-    }
-
-    /**
-     * 获取shareMarketInd属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getShareMarketInd() {
-        return shareMarketInd;
-    }
-
-    /**
-     * 设置shareMarketInd属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setShareMarketInd(String value) {
-        this.shareMarketInd = value;
-    }
-
-    /**
      * 获取effectiveDate属性的值。
      * 
      * @return
@@ -318,6 +270,54 @@ public class InsuranceType {
      */
     public void setExpireDate(XMLGregorianCalendar value) {
         this.expireDate = value;
+    }
+
+    /**
+     * 获取shareSynchInd属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getShareSynchInd() {
+        return shareSynchInd;
+    }
+
+    /**
+     * 设置shareSynchInd属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setShareSynchInd(String value) {
+        this.shareSynchInd = value;
+    }
+
+    /**
+     * 获取shareMarketInd属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getShareMarketInd() {
+        return shareMarketInd;
+    }
+
+    /**
+     * 设置shareMarketInd属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setShareMarketInd(String value) {
+        this.shareMarketInd = value;
     }
 
 }

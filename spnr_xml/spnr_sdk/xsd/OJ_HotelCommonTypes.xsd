@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2015 rel. 3 sp1 (x64) (http://www.altova.com) by Krzysztof Ulman (OpenJaw Technologies Polska Sp. z o.o.) -->
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (x64) (http://www.altova.com) by Andrew Kelly (Openjaw Technologies) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="4.001" id="OTA2003A2006B">
 	<xs:include schemaLocation="OTA_SimpleTypes.xsd"/>
 	<xs:annotation>
@@ -283,11 +283,14 @@
 												<xs:attribute name="Blocked" type="xs:boolean" use="required"/>
 												<xs:attribute name="ForDate" type="xs:date" use="required"/>
 												<xs:attribute name="LocallyBooked" type="xs:int" use="required"/>
+												<xs:attribute name="InitiallyAvailable"/>
+												<xs:attribute name="AdjustmentToAvailability"/>
 												<xs:attribute name="TotallyAvailable" type="xs:int" use="required"/>
 												<xs:attribute name="RatePlanEnabled" type="xs:int" use="required"/>
 												<xs:attribute name="Status"/>
 												<xs:attribute name="MinLOS"/>
 												<xs:attribute name="FullPatternLOS"/>
+												<xs:attribute name="AvailableOverCap"/>
 											</xs:complexType>
 										</xs:element>
 									</xs:sequence>

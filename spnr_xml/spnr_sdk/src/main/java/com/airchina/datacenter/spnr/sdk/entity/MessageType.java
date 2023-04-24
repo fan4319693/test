@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -44,8 +44,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;/element>
  *         &lt;element name="MessageContent" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}HotelReferenceGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
  *       &lt;attribute name="StartSeqNmbr" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
  *       &lt;attribute name="EndSeqNmbr" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
  *       &lt;attribute name="MessageType" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to8" />
@@ -96,16 +96,6 @@ public class MessageType {
     protected String confirmationID;
     @XmlAttribute(name = "ReservationID")
     protected String reservationID;
-    @XmlAttribute(name = "Start")
-    protected String start;
-    @XmlAttribute(name = "Duration")
-    protected BigInteger duration;
-    @XmlAttribute(name = "End")
-    protected String end;
-    @XmlAttribute(name = "RangeNum")
-    protected BigInteger rangeNum;
-    @XmlAttribute(name = "SearchTimeZone")
-    protected String searchTimeZone;
     @XmlAttribute(name = "BookingOfficeCode")
     protected String bookingOfficeCode;
     @XmlAttribute(name = "ChainCode")
@@ -116,6 +106,8 @@ public class MessageType {
     protected String hotelCode;
     @XmlAttribute(name = "HotelCityCode")
     protected String hotelCityCode;
+    @XmlAttribute(name = "HotelCityCodeContext")
+    protected String hotelCityCodeContext;
     @XmlAttribute(name = "HotelName")
     protected String hotelName;
     @XmlAttribute(name = "HotelCodeContext")
@@ -124,8 +116,22 @@ public class MessageType {
     protected String chainName;
     @XmlAttribute(name = "BrandName")
     protected String brandName;
+    @XmlAttribute(name = "InvoiceIssuer")
+    protected String invoiceIssuer;
     @XmlAttribute(name = "AreaID")
     protected String areaID;
+    @XmlAttribute(name = "StayType")
+    protected String stayType;
+    @XmlAttribute(name = "Start")
+    protected String start;
+    @XmlAttribute(name = "Duration")
+    protected BigInteger duration;
+    @XmlAttribute(name = "End")
+    protected String end;
+    @XmlAttribute(name = "RangeNum")
+    protected BigInteger rangeNum;
+    @XmlAttribute(name = "SearchTimeZone")
+    protected String searchTimeZone;
 
     /**
      * 获取originalPayloadStdAttributes属性的值。
@@ -416,126 +422,6 @@ public class MessageType {
     }
 
     /**
-     * 获取start属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStart() {
-        return start;
-    }
-
-    /**
-     * 设置start属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStart(String value) {
-        this.start = value;
-    }
-
-    /**
-     * 获取duration属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getDuration() {
-        return duration;
-    }
-
-    /**
-     * 设置duration属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setDuration(BigInteger value) {
-        this.duration = value;
-    }
-
-    /**
-     * 获取end属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEnd() {
-        return end;
-    }
-
-    /**
-     * 设置end属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEnd(String value) {
-        this.end = value;
-    }
-
-    /**
-     * 获取rangeNum属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getRangeNum() {
-        return rangeNum;
-    }
-
-    /**
-     * 设置rangeNum属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setRangeNum(BigInteger value) {
-        this.rangeNum = value;
-    }
-
-    /**
-     * 获取searchTimeZone属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSearchTimeZone() {
-        return searchTimeZone;
-    }
-
-    /**
-     * 设置searchTimeZone属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSearchTimeZone(String value) {
-        this.searchTimeZone = value;
-    }
-
-    /**
      * 获取bookingOfficeCode属性的值。
      * 
      * @return
@@ -656,6 +542,30 @@ public class MessageType {
     }
 
     /**
+     * 获取hotelCityCodeContext属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getHotelCityCodeContext() {
+        return hotelCityCodeContext;
+    }
+
+    /**
+     * 设置hotelCityCodeContext属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setHotelCityCodeContext(String value) {
+        this.hotelCityCodeContext = value;
+    }
+
+    /**
      * 获取hotelName属性的值。
      * 
      * @return
@@ -752,6 +662,30 @@ public class MessageType {
     }
 
     /**
+     * 获取invoiceIssuer属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getInvoiceIssuer() {
+        return invoiceIssuer;
+    }
+
+    /**
+     * 设置invoiceIssuer属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setInvoiceIssuer(String value) {
+        this.invoiceIssuer = value;
+    }
+
+    /**
      * 获取areaID属性的值。
      * 
      * @return
@@ -773,6 +707,150 @@ public class MessageType {
      */
     public void setAreaID(String value) {
         this.areaID = value;
+    }
+
+    /**
+     * 获取stayType属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStayType() {
+        return stayType;
+    }
+
+    /**
+     * 设置stayType属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStayType(String value) {
+        this.stayType = value;
+    }
+
+    /**
+     * 获取start属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStart() {
+        return start;
+    }
+
+    /**
+     * 设置start属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStart(String value) {
+        this.start = value;
+    }
+
+    /**
+     * 获取duration属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getDuration() {
+        return duration;
+    }
+
+    /**
+     * 设置duration属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setDuration(BigInteger value) {
+        this.duration = value;
+    }
+
+    /**
+     * 获取end属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEnd() {
+        return end;
+    }
+
+    /**
+     * 设置end属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEnd(String value) {
+        this.end = value;
+    }
+
+    /**
+     * 获取rangeNum属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getRangeNum() {
+        return rangeNum;
+    }
+
+    /**
+     * 设置rangeNum属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setRangeNum(BigInteger value) {
+        this.rangeNum = value;
+    }
+
+    /**
+     * 获取searchTimeZone属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSearchTimeZone() {
+        return searchTimeZone;
+    }
+
+    /**
+     * 设置searchTimeZone属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSearchTimeZone(String value) {
+        this.searchTimeZone = value;
     }
 
 

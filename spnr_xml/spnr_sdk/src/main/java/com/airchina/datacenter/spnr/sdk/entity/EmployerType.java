@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -38,9 +38,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="TravelArranger" type="{http://www.opentravel.org/OTA/2003/05}TravelArrangerType" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="LoyaltyProgram" type="{http://www.opentravel.org/OTA/2003/05}LoyaltyProgramType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DefaultIndGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OfficeTypeGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DefaultIndGroup"/>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -71,8 +71,6 @@ public class EmployerType {
     protected List<TravelArrangerType> travelArranger;
     @XmlElement(name = "LoyaltyProgram")
     protected List<LoyaltyProgramType> loyaltyProgram;
-    @XmlAttribute(name = "DefaultInd")
-    protected Boolean defaultInd;
     @XmlAttribute(name = "OfficeType")
     protected OfficeLocationType officeType;
     @XmlAttribute(name = "EffectiveDate")
@@ -81,6 +79,8 @@ public class EmployerType {
     @XmlAttribute(name = "ExpireDate")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar expireDate;
+    @XmlAttribute(name = "DefaultInd")
+    protected Boolean defaultInd;
 
     /**
      * 获取companyName属性的值。
@@ -252,34 +252,6 @@ public class EmployerType {
     }
 
     /**
-     * 获取defaultInd属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public boolean isDefaultInd() {
-        if (defaultInd == null) {
-            return false;
-        } else {
-            return defaultInd;
-        }
-    }
-
-    /**
-     * 设置defaultInd属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setDefaultInd(Boolean value) {
-        this.defaultInd = value;
-    }
-
-    /**
      * 获取officeType属性的值。
      * 
      * @return
@@ -349,6 +321,34 @@ public class EmployerType {
      */
     public void setExpireDate(XMLGregorianCalendar value) {
         this.expireDate = value;
+    }
+
+    /**
+     * 获取defaultInd属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public boolean isDefaultInd() {
+        if (defaultInd == null) {
+            return false;
+        } else {
+            return defaultInd;
+        }
+    }
+
+    /**
+     * 设置defaultInd属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setDefaultInd(Boolean value) {
+        this.defaultInd = value;
     }
 
 }

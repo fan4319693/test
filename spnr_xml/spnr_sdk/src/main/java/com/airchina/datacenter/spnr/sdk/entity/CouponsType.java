@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -31,6 +31,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Content" type="{http://www.opentravel.org/OTA/2003/05}ProductContentType" minOccurs="0"/>
+ *         &lt;element name="DefaultContent" type="{http://www.opentravel.org/OTA/2003/05}ProductContentType" minOccurs="0"/>
  *         &lt;element name="Pricing" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
@@ -86,6 +87,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CouponsType", propOrder = {
     "content",
+    "defaultContent",
     "pricing",
     "bookingReferenceID",
     "coupon",
@@ -97,6 +99,8 @@ public class CouponsType {
 
     @XmlElement(name = "Content")
     protected ProductContentType content;
+    @XmlElement(name = "DefaultContent")
+    protected ProductContentType defaultContent;
     @XmlElement(name = "Pricing")
     protected CouponsType.Pricing pricing;
     @XmlElement(name = "BookingReferenceID")
@@ -165,6 +169,30 @@ public class CouponsType {
      */
     public void setContent(ProductContentType value) {
         this.content = value;
+    }
+
+    /**
+     * 获取defaultContent属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link ProductContentType }
+     *     
+     */
+    public ProductContentType getDefaultContent() {
+        return defaultContent;
+    }
+
+    /**
+     * 设置defaultContent属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ProductContentType }
+     *     
+     */
+    public void setDefaultContent(ProductContentType value) {
+        this.defaultContent = value;
     }
 
     /**

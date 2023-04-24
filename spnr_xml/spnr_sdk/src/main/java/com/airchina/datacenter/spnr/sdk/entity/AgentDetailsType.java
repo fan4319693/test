@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -34,6 +34,10 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;attribute name="URL" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *       &lt;attribute name="SourceAddress" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *       &lt;attribute name="Timestamp" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *       &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="FunctionalGroup" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="AdministrativeGroup" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="CreatorID" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -73,6 +77,14 @@ public class AgentDetailsType {
     @XmlAttribute(name = "Timestamp")
     @XmlSchemaType(name = "anySimpleType")
     protected String timestamp;
+    @XmlAttribute(name = "ID")
+    protected String id;
+    @XmlAttribute(name = "FunctionalGroup")
+    protected String functionalGroup;
+    @XmlAttribute(name = "AdministrativeGroup")
+    protected String administrativeGroup;
+    @XmlAttribute(name = "CreatorID")
+    protected String creatorID;
 
     /**
      * 获取agent属性的值。
@@ -288,6 +300,102 @@ public class AgentDetailsType {
      */
     public void setTimestamp(String value) {
         this.timestamp = value;
+    }
+
+    /**
+     * 获取id属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getID() {
+        return id;
+    }
+
+    /**
+     * 设置id属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setID(String value) {
+        this.id = value;
+    }
+
+    /**
+     * 获取functionalGroup属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFunctionalGroup() {
+        return functionalGroup;
+    }
+
+    /**
+     * 设置functionalGroup属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFunctionalGroup(String value) {
+        this.functionalGroup = value;
+    }
+
+    /**
+     * 获取administrativeGroup属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAdministrativeGroup() {
+        return administrativeGroup;
+    }
+
+    /**
+     * 设置administrativeGroup属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAdministrativeGroup(String value) {
+        this.administrativeGroup = value;
+    }
+
+    /**
+     * 获取creatorID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCreatorID() {
+        return creatorID;
+    }
+
+    /**
+     * 设置creatorID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCreatorID(String value) {
+        this.creatorID = value;
     }
 
 }

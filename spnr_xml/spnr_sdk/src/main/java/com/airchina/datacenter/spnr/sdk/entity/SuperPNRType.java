@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -76,6 +76,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                     &lt;complexType>
  *                       &lt;complexContent>
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;sequence>
+ *                             &lt;element name="Agent" type="{http://www.opentravel.org/OTA/2003/05}AgentDetailsType" minOccurs="0"/>
+ *                             &lt;element name="Review" type="{http://www.opentravel.org/OTA/2003/05}ExternalReviewType" maxOccurs="unbounded" minOccurs="0"/>
+ *                           &lt;/sequence>
  *                           &lt;attribute name="FileDate" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                           &lt;attribute name="AuditID" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                         &lt;/restriction>
@@ -155,6 +159,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *         &lt;element name="DeliItineraryStatus" type="{http://www.opentravel.org/OTA/2003/05}DeliItineraryStatusType" minOccurs="0"/>
+ *         &lt;element name="ItinRemarks" type="{http://www.opentravel.org/OTA/2003/05}ItinRemarksType" minOccurs="0"/>
  *         &lt;element name="Category" type="{http://www.opentravel.org/OTA/2003/05}OrderCategoryType" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CommonProductAttributes"/>
@@ -213,6 +218,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "emails",
     "ojActionItem",
     "deliItineraryStatus",
+    "itinRemarks",
     "category"
 })
 @XmlSeeAlso({
@@ -261,6 +267,8 @@ public class SuperPNRType {
     protected SuperPNRType.OJActionItem ojActionItem;
     @XmlElement(name = "DeliItineraryStatus")
     protected DeliItineraryStatusType deliItineraryStatus;
+    @XmlElement(name = "ItinRemarks")
+    protected ItinRemarksType itinRemarks;
     @XmlElement(name = "Category")
     protected OrderCategoryType category;
     @XmlAttribute(name = "FullHistory")
@@ -840,6 +848,30 @@ public class SuperPNRType {
      */
     public void setDeliItineraryStatus(DeliItineraryStatusType value) {
         this.deliItineraryStatus = value;
+    }
+
+    /**
+     * 获取itinRemarks属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link ItinRemarksType }
+     *     
+     */
+    public ItinRemarksType getItinRemarks() {
+        return itinRemarks;
+    }
+
+    /**
+     * 设置itinRemarks属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ItinRemarksType }
+     *     
+     */
+    public void setItinRemarks(ItinRemarksType value) {
+        this.itinRemarks = value;
     }
 
     /**
@@ -1584,6 +1616,10 @@ public class SuperPNRType {
      *           &lt;complexType>
      *             &lt;complexContent>
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;sequence>
+     *                   &lt;element name="Agent" type="{http://www.opentravel.org/OTA/2003/05}AgentDetailsType" minOccurs="0"/>
+     *                   &lt;element name="Review" type="{http://www.opentravel.org/OTA/2003/05}ExternalReviewType" maxOccurs="unbounded" minOccurs="0"/>
+     *                 &lt;/sequence>
      *                 &lt;attribute name="FileDate" type="{http://www.w3.org/2001/XMLSchema}string" />
      *                 &lt;attribute name="AuditID" type="{http://www.w3.org/2001/XMLSchema}string" />
      *               &lt;/restriction>
@@ -1646,6 +1682,10 @@ public class SuperPNRType {
          * &lt;complexType>
          *   &lt;complexContent>
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;sequence>
+         *         &lt;element name="Agent" type="{http://www.opentravel.org/OTA/2003/05}AgentDetailsType" minOccurs="0"/>
+         *         &lt;element name="Review" type="{http://www.opentravel.org/OTA/2003/05}ExternalReviewType" maxOccurs="unbounded" minOccurs="0"/>
+         *       &lt;/sequence>
          *       &lt;attribute name="FileDate" type="{http://www.w3.org/2001/XMLSchema}string" />
          *       &lt;attribute name="AuditID" type="{http://www.w3.org/2001/XMLSchema}string" />
          *     &lt;/restriction>
@@ -1656,13 +1696,73 @@ public class SuperPNRType {
          * 
          */
         @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "")
+        @XmlType(name = "", propOrder = {
+            "agent",
+            "review"
+        })
         public static class BackendAudit {
 
+            @XmlElement(name = "Agent")
+            protected AgentDetailsType agent;
+            @XmlElement(name = "Review")
+            protected List<ExternalReviewType> review;
             @XmlAttribute(name = "FileDate")
             protected String fileDate;
             @XmlAttribute(name = "AuditID")
             protected String auditID;
+
+            /**
+             * 获取agent属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link AgentDetailsType }
+             *     
+             */
+            public AgentDetailsType getAgent() {
+                return agent;
+            }
+
+            /**
+             * 设置agent属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link AgentDetailsType }
+             *     
+             */
+            public void setAgent(AgentDetailsType value) {
+                this.agent = value;
+            }
+
+            /**
+             * Gets the value of the review property.
+             * 
+             * <p>
+             * This accessor method returns a reference to the live list,
+             * not a snapshot. Therefore any modification you make to the
+             * returned list will be present inside the JAXB object.
+             * This is why there is not a <CODE>set</CODE> method for the review property.
+             * 
+             * <p>
+             * For example, to add a new item, do as follows:
+             * <pre>
+             *    getReview().add(newItem);
+             * </pre>
+             * 
+             * 
+             * <p>
+             * Objects of the following type(s) are allowed in the list
+             * {@link ExternalReviewType }
+             * 
+             * 
+             */
+            public List<ExternalReviewType> getReview() {
+                if (review == null) {
+                    review = new ArrayList<ExternalReviewType>();
+                }
+                return this.review;
+            }
 
             /**
              * 获取fileDate属性的值。

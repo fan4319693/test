@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -36,6 +36,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Text" type="{http://www.opentravel.org/OTA/2003/05}FormattedTextTextType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="DefaultText" type="{http://www.opentravel.org/OTA/2003/05}FormattedTextTextType" minOccurs="0"/>
  *         &lt;element name="Image" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="URL" type="{http://www.w3.org/2001/XMLSchema}anyURI" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="ListItem" maxOccurs="unbounded" minOccurs="0">
@@ -48,8 +49,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}LanguageGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeStampGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}LanguageGroup"/>
+ *       &lt;attribute name="ID" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to8" />
  *       &lt;attribute name="Name" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to64" />
  *       &lt;attribute name="ParagraphNumber" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
  *       &lt;attribute name="SupplierCode" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
@@ -63,12 +65,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ParagraphType", propOrder = {
     "text",
+    "defaultText",
     "image",
     "url",
     "listItem"
 })
 @XmlSeeAlso({
     DescriptionFromHotelContentDescription.class,
+    LongDescriptionType.class,
+    com.airchina.datacenter.spnr.sdk.entity.TextDescriptionType.ShortDescription.class,
     com.airchina.datacenter.spnr.sdk.entity.SpecialRequestType.SpecialRequest.class,
     com.airchina.datacenter.spnr.sdk.entity.CommentType.Comment.class,
     com.airchina.datacenter.spnr.sdk.entity.AffiliationInfoType.LoyalPrograms.LoyalProgram.ProgramDescription.class,
@@ -82,6 +87,8 @@ public class ParagraphType {
 
     @XmlElement(name = "Text")
     protected List<FormattedTextTextType> text;
+    @XmlElement(name = "DefaultText")
+    protected FormattedTextTextType defaultText;
     @XmlElement(name = "Image")
     protected List<String> image;
     @XmlElement(name = "URL")
@@ -89,6 +96,8 @@ public class ParagraphType {
     protected List<String> url;
     @XmlElement(name = "ListItem")
     protected List<ParagraphType.ListItem> listItem;
+    @XmlAttribute(name = "ID")
+    protected String id;
     @XmlAttribute(name = "Name")
     protected String name;
     @XmlAttribute(name = "ParagraphNumber")
@@ -97,12 +106,6 @@ public class ParagraphType {
     @XmlAttribute(name = "SupplierCode")
     @XmlSchemaType(name = "anySimpleType")
     protected String supplierCode;
-    @XmlAttribute(name = "Language")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "language")
-    protected String language;
-    @XmlAttribute(name = "CharSet")
-    protected String charSet;
     @XmlAttribute(name = "CreateDateTime")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar createDateTime;
@@ -113,6 +116,12 @@ public class ParagraphType {
     protected XMLGregorianCalendar lastModifyDateTime;
     @XmlAttribute(name = "LastModifierID")
     protected String lastModifierID;
+    @XmlAttribute(name = "Language")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "language")
+    protected String language;
+    @XmlAttribute(name = "CharSet")
+    protected String charSet;
 
     /**
      * Gets the value of the text property.
@@ -141,6 +150,30 @@ public class ParagraphType {
             text = new ArrayList<FormattedTextTextType>();
         }
         return this.text;
+    }
+
+    /**
+     * 获取defaultText属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link FormattedTextTextType }
+     *     
+     */
+    public FormattedTextTextType getDefaultText() {
+        return defaultText;
+    }
+
+    /**
+     * 设置defaultText属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FormattedTextTextType }
+     *     
+     */
+    public void setDefaultText(FormattedTextTextType value) {
+        this.defaultText = value;
     }
 
     /**
@@ -231,6 +264,30 @@ public class ParagraphType {
     }
 
     /**
+     * 获取id属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getID() {
+        return id;
+    }
+
+    /**
+     * 设置id属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setID(String value) {
+        this.id = value;
+    }
+
+    /**
      * 获取name属性的值。
      * 
      * @return
@@ -300,54 +357,6 @@ public class ParagraphType {
      */
     public void setSupplierCode(String value) {
         this.supplierCode = value;
-    }
-
-    /**
-     * 获取language属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLanguage() {
-        return language;
-    }
-
-    /**
-     * 设置language属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLanguage(String value) {
-        this.language = value;
-    }
-
-    /**
-     * 获取charSet属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCharSet() {
-        return charSet;
-    }
-
-    /**
-     * 设置charSet属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCharSet(String value) {
-        this.charSet = value;
     }
 
     /**
@@ -444,6 +453,54 @@ public class ParagraphType {
      */
     public void setLastModifierID(String value) {
         this.lastModifierID = value;
+    }
+
+    /**
+     * 获取language属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLanguage() {
+        return language;
+    }
+
+    /**
+     * 设置language属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLanguage(String value) {
+        this.language = value;
+    }
+
+    /**
+     * 获取charSet属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCharSet() {
+        return charSet;
+    }
+
+    /**
+     * 设置charSet属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCharSet(String value) {
+        this.charSet = value;
     }
 
 

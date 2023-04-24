@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -231,6 +231,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                       &lt;element name="UniqueID" type="{http://www.opentravel.org/OTA/2003/05}UniqueID_Type" minOccurs="0"/>
  *                                       &lt;element name="PolicyDetail" type="{http://www.opentravel.org/OTA/2003/05}PolicyDetail_Type" minOccurs="0"/>
  *                                       &lt;element name="QuoteDetail" type="{http://www.opentravel.org/OTA/2003/05}QuoteDetail_Type" minOccurs="0"/>
+ *                                       &lt;element name="Content" type="{http://www.opentravel.org/OTA/2003/05}InsuranceProductContentType" minOccurs="0"/>
+ *                                       &lt;element name="DefaultContent" type="{http://www.opentravel.org/OTA/2003/05}InsuranceProductContentType" minOccurs="0"/>
  *                                     &lt;/sequence>
  *                                   &lt;/extension>
  *                                 &lt;/complexContent>
@@ -412,6 +414,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                 &lt;sequence>
  *                   &lt;element name="Air" type="{http://www.opentravel.org/OTA/2003/05}AirReservationType" minOccurs="0"/>
  *                   &lt;element name="Content" type="{http://www.opentravel.org/OTA/2003/05}ProductContentType"/>
+ *                   &lt;element name="DefaultContent" type="{http://www.opentravel.org/OTA/2003/05}ProductContentType" minOccurs="0"/>
  *                   &lt;element name="CancellationPenalties" type="{http://www.opentravel.org/OTA/2003/05}CancelPenaltiesType"/>
  *                   &lt;element name="AmendmentPenalties" type="{http://www.opentravel.org/OTA/2003/05}OJ_AmendPenaltiesType" minOccurs="0"/>
  *                   &lt;element name="TravelerInfo" type="{http://www.opentravel.org/OTA/2003/05}TravelerInfoType"/>
@@ -449,6 +452,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                   &lt;element name="SupplierBookingReferenceID" type="{http://www.opentravel.org/OTA/2003/05}SupplierBookingReferenceIDType" minOccurs="0"/>
  *                   &lt;element name="QRData" type="{http://www.opentravel.org/OTA/2003/05}QRDataType" minOccurs="0"/>
  *                   &lt;element name="CarbonOffsets" type="{http://www.opentravel.org/OTA/2003/05}AirAncillaryOffsetProductType" minOccurs="0"/>
+ *                   &lt;element name="EligibleItem" type="{http://www.opentravel.org/OTA/2003/05}AirAncillaryEligibleItemType" minOccurs="0"/>
  *                   &lt;element name="OriginalFlightSegment" type="{http://www.opentravel.org/OTA/2003/05}BookFlightSegmentType" maxOccurs="unbounded" minOccurs="0"/>
  *                 &lt;/sequence>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}TSAncillaryProductGroup"/>
@@ -493,11 +497,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="Membership" type="{http://www.opentravel.org/OTA/2003/05}MembershipReservationType" minOccurs="0"/>
  *         &lt;element name="ItineraryReceipt" type="{http://www.opentravel.org/OTA/2003/05}ItineraryReceiptProductType" minOccurs="0"/>
  *       &lt;/choice>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrimaryLangID_Group"/>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ActionAttributes"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ProductIDs"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}HistoryAttribute"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CommonProductAttributes"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PrimaryLangID_Group"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ActionAttributes"/>
  *       &lt;attribute name="PolicyStatus" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="BookedWith" type="{http://www.opentravel.org/OTA/2003/05}ListOfRPH" />
  *       &lt;attribute name="ReplacedBy" type="{http://www.opentravel.org/OTA/2003/05}ListOfRPH" />
@@ -612,12 +616,6 @@ public class ProductBase {
     protected Boolean refundable;
     @XmlAttribute(name = "SplitFrom")
     protected BigInteger splitFrom;
-    @XmlAttribute(name = "PrimaryLangID")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "language")
-    protected String primaryLangID;
-    @XmlAttribute(name = "Action")
-    protected ActionCodeType action;
     @XmlAttribute(name = "ProductNumber")
     protected BigInteger productNumber;
     @XmlAttribute(name = "MasterProductNumber")
@@ -649,6 +647,12 @@ public class ProductBase {
     protected XMLGregorianCalendar lastModified;
     @XmlAttribute(name = "Destination")
     protected String destination;
+    @XmlAttribute(name = "PrimaryLangID")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "language")
+    protected String primaryLangID;
+    @XmlAttribute(name = "Action")
+    protected ActionCodeType action;
 
     /**
      * 获取air属性的值。
@@ -1434,54 +1438,6 @@ public class ProductBase {
     }
 
     /**
-     * 获取primaryLangID属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPrimaryLangID() {
-        return primaryLangID;
-    }
-
-    /**
-     * 设置primaryLangID属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPrimaryLangID(String value) {
-        this.primaryLangID = value;
-    }
-
-    /**
-     * 获取action属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link ActionCodeType }
-     *     
-     */
-    public ActionCodeType getAction() {
-        return action;
-    }
-
-    /**
-     * 设置action属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ActionCodeType }
-     *     
-     */
-    public void setAction(ActionCodeType value) {
-        this.action = value;
-    }
-
-    /**
      * 获取productNumber属性的值。
      * 
      * @return
@@ -1793,6 +1749,54 @@ public class ProductBase {
         this.destination = value;
     }
 
+    /**
+     * 获取primaryLangID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPrimaryLangID() {
+        return primaryLangID;
+    }
+
+    /**
+     * 设置primaryLangID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPrimaryLangID(String value) {
+        this.primaryLangID = value;
+    }
+
+    /**
+     * 获取action属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link ActionCodeType }
+     *     
+     */
+    public ActionCodeType getAction() {
+        return action;
+    }
+
+    /**
+     * 设置action属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ActionCodeType }
+     *     
+     */
+    public void setAction(ActionCodeType value) {
+        this.action = value;
+    }
+
 
     /**
      * <p>anonymous complex type的 Java 类。
@@ -1884,6 +1888,8 @@ public class ProductBase {
      *                             &lt;element name="UniqueID" type="{http://www.opentravel.org/OTA/2003/05}UniqueID_Type" minOccurs="0"/>
      *                             &lt;element name="PolicyDetail" type="{http://www.opentravel.org/OTA/2003/05}PolicyDetail_Type" minOccurs="0"/>
      *                             &lt;element name="QuoteDetail" type="{http://www.opentravel.org/OTA/2003/05}QuoteDetail_Type" minOccurs="0"/>
+     *                             &lt;element name="Content" type="{http://www.opentravel.org/OTA/2003/05}InsuranceProductContentType" minOccurs="0"/>
+     *                             &lt;element name="DefaultContent" type="{http://www.opentravel.org/OTA/2003/05}InsuranceProductContentType" minOccurs="0"/>
      *                           &lt;/sequence>
      *                         &lt;/extension>
      *                       &lt;/complexContent>
@@ -2403,6 +2409,8 @@ public class ProductBase {
          *                   &lt;element name="UniqueID" type="{http://www.opentravel.org/OTA/2003/05}UniqueID_Type" minOccurs="0"/>
          *                   &lt;element name="PolicyDetail" type="{http://www.opentravel.org/OTA/2003/05}PolicyDetail_Type" minOccurs="0"/>
          *                   &lt;element name="QuoteDetail" type="{http://www.opentravel.org/OTA/2003/05}QuoteDetail_Type" minOccurs="0"/>
+         *                   &lt;element name="Content" type="{http://www.opentravel.org/OTA/2003/05}InsuranceProductContentType" minOccurs="0"/>
+         *                   &lt;element name="DefaultContent" type="{http://www.opentravel.org/OTA/2003/05}InsuranceProductContentType" minOccurs="0"/>
          *                 &lt;/sequence>
          *               &lt;/extension>
          *             &lt;/complexContent>
@@ -2559,6 +2567,8 @@ public class ProductBase {
              *         &lt;element name="UniqueID" type="{http://www.opentravel.org/OTA/2003/05}UniqueID_Type" minOccurs="0"/>
              *         &lt;element name="PolicyDetail" type="{http://www.opentravel.org/OTA/2003/05}PolicyDetail_Type" minOccurs="0"/>
              *         &lt;element name="QuoteDetail" type="{http://www.opentravel.org/OTA/2003/05}QuoteDetail_Type" minOccurs="0"/>
+             *         &lt;element name="Content" type="{http://www.opentravel.org/OTA/2003/05}InsuranceProductContentType" minOccurs="0"/>
+             *         &lt;element name="DefaultContent" type="{http://www.opentravel.org/OTA/2003/05}InsuranceProductContentType" minOccurs="0"/>
              *       &lt;/sequence>
              *     &lt;/extension>
              *   &lt;/complexContent>
@@ -2573,7 +2583,9 @@ public class ProductBase {
                 "planCost",
                 "uniqueID",
                 "policyDetail",
-                "quoteDetail"
+                "quoteDetail",
+                "content",
+                "defaultContent"
             })
             public static class Insurance
                 extends InsCoverageType
@@ -2589,6 +2601,10 @@ public class ProductBase {
                 protected PolicyDetailType policyDetail;
                 @XmlElement(name = "QuoteDetail")
                 protected QuoteDetailType quoteDetail;
+                @XmlElement(name = "Content")
+                protected InsuranceProductContentType content;
+                @XmlElement(name = "DefaultContent")
+                protected InsuranceProductContentType defaultContent;
 
                 /**
                  * 获取insuranceCustomer属性的值。
@@ -2708,6 +2724,54 @@ public class ProductBase {
                  */
                 public void setQuoteDetail(QuoteDetailType value) {
                     this.quoteDetail = value;
+                }
+
+                /**
+                 * 获取content属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link InsuranceProductContentType }
+                 *     
+                 */
+                public InsuranceProductContentType getContent() {
+                    return content;
+                }
+
+                /**
+                 * 设置content属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link InsuranceProductContentType }
+                 *     
+                 */
+                public void setContent(InsuranceProductContentType value) {
+                    this.content = value;
+                }
+
+                /**
+                 * 获取defaultContent属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link InsuranceProductContentType }
+                 *     
+                 */
+                public InsuranceProductContentType getDefaultContent() {
+                    return defaultContent;
+                }
+
+                /**
+                 * 设置defaultContent属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link InsuranceProductContentType }
+                 *     
+                 */
+                public void setDefaultContent(InsuranceProductContentType value) {
+                    this.defaultContent = value;
                 }
 
 
@@ -3137,15 +3201,15 @@ public class ProductBase {
                             protected Float amount;
                             @XmlAttribute(name = "PrePayInd")
                             protected Boolean prePayInd;
-                            @XmlAttribute(name = "OriginalAmount")
-                            protected Float originalAmount;
-                            @XmlAttribute(name = "OriginalCurrencyCode")
-                            protected String originalCurrencyCode;
                             @XmlAttribute(name = "CurrencyCode")
                             protected String currencyCode;
                             @XmlAttribute(name = "DecimalPlaces")
                             @XmlSchemaType(name = "nonNegativeInteger")
                             protected BigInteger decimalPlaces;
+                            @XmlAttribute(name = "OriginalAmount")
+                            protected Float originalAmount;
+                            @XmlAttribute(name = "OriginalCurrencyCode")
+                            protected String originalCurrencyCode;
 
                             /**
                              * 获取frequency属性的值。
@@ -3244,54 +3308,6 @@ public class ProductBase {
                             }
 
                             /**
-                             * 获取originalAmount属性的值。
-                             * 
-                             * @return
-                             *     possible object is
-                             *     {@link Float }
-                             *     
-                             */
-                            public Float getOriginalAmount() {
-                                return originalAmount;
-                            }
-
-                            /**
-                             * 设置originalAmount属性的值。
-                             * 
-                             * @param value
-                             *     allowed object is
-                             *     {@link Float }
-                             *     
-                             */
-                            public void setOriginalAmount(Float value) {
-                                this.originalAmount = value;
-                            }
-
-                            /**
-                             * 获取originalCurrencyCode属性的值。
-                             * 
-                             * @return
-                             *     possible object is
-                             *     {@link String }
-                             *     
-                             */
-                            public String getOriginalCurrencyCode() {
-                                return originalCurrencyCode;
-                            }
-
-                            /**
-                             * 设置originalCurrencyCode属性的值。
-                             * 
-                             * @param value
-                             *     allowed object is
-                             *     {@link String }
-                             *     
-                             */
-                            public void setOriginalCurrencyCode(String value) {
-                                this.originalCurrencyCode = value;
-                            }
-
-                            /**
                              * 获取currencyCode属性的值。
                              * 
                              * @return
@@ -3337,6 +3353,54 @@ public class ProductBase {
                              */
                             public void setDecimalPlaces(BigInteger value) {
                                 this.decimalPlaces = value;
+                            }
+
+                            /**
+                             * 获取originalAmount属性的值。
+                             * 
+                             * @return
+                             *     possible object is
+                             *     {@link Float }
+                             *     
+                             */
+                            public Float getOriginalAmount() {
+                                return originalAmount;
+                            }
+
+                            /**
+                             * 设置originalAmount属性的值。
+                             * 
+                             * @param value
+                             *     allowed object is
+                             *     {@link Float }
+                             *     
+                             */
+                            public void setOriginalAmount(Float value) {
+                                this.originalAmount = value;
+                            }
+
+                            /**
+                             * 获取originalCurrencyCode属性的值。
+                             * 
+                             * @return
+                             *     possible object is
+                             *     {@link String }
+                             *     
+                             */
+                            public String getOriginalCurrencyCode() {
+                                return originalCurrencyCode;
+                            }
+
+                            /**
+                             * 设置originalCurrencyCode属性的值。
+                             * 
+                             * @param value
+                             *     allowed object is
+                             *     {@link String }
+                             *     
+                             */
+                            public void setOriginalCurrencyCode(String value) {
+                                this.originalCurrencyCode = value;
                             }
 
                         }
@@ -3538,6 +3602,7 @@ public class ProductBase {
      *       &lt;sequence>
      *         &lt;element name="Air" type="{http://www.opentravel.org/OTA/2003/05}AirReservationType" minOccurs="0"/>
      *         &lt;element name="Content" type="{http://www.opentravel.org/OTA/2003/05}ProductContentType"/>
+     *         &lt;element name="DefaultContent" type="{http://www.opentravel.org/OTA/2003/05}ProductContentType" minOccurs="0"/>
      *         &lt;element name="CancellationPenalties" type="{http://www.opentravel.org/OTA/2003/05}CancelPenaltiesType"/>
      *         &lt;element name="AmendmentPenalties" type="{http://www.opentravel.org/OTA/2003/05}OJ_AmendPenaltiesType" minOccurs="0"/>
      *         &lt;element name="TravelerInfo" type="{http://www.opentravel.org/OTA/2003/05}TravelerInfoType"/>
@@ -3575,6 +3640,7 @@ public class ProductBase {
      *         &lt;element name="SupplierBookingReferenceID" type="{http://www.opentravel.org/OTA/2003/05}SupplierBookingReferenceIDType" minOccurs="0"/>
      *         &lt;element name="QRData" type="{http://www.opentravel.org/OTA/2003/05}QRDataType" minOccurs="0"/>
      *         &lt;element name="CarbonOffsets" type="{http://www.opentravel.org/OTA/2003/05}AirAncillaryOffsetProductType" minOccurs="0"/>
+     *         &lt;element name="EligibleItem" type="{http://www.opentravel.org/OTA/2003/05}AirAncillaryEligibleItemType" minOccurs="0"/>
      *         &lt;element name="OriginalFlightSegment" type="{http://www.opentravel.org/OTA/2003/05}BookFlightSegmentType" maxOccurs="unbounded" minOccurs="0"/>
      *       &lt;/sequence>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}TSAncillaryProductGroup"/>
@@ -3622,6 +3688,7 @@ public class ProductBase {
     @XmlType(name = "", propOrder = {
         "air",
         "content",
+        "defaultContent",
         "cancellationPenalties",
         "amendmentPenalties",
         "travelerInfo",
@@ -3640,6 +3707,7 @@ public class ProductBase {
         "supplierBookingReferenceID",
         "qrData",
         "carbonOffsets",
+        "eligibleItem",
         "originalFlightSegment"
     })
     public static class AncillaryProduct {
@@ -3648,6 +3716,8 @@ public class ProductBase {
         protected AirReservationType air;
         @XmlElement(name = "Content", required = true)
         protected ProductContentType content;
+        @XmlElement(name = "DefaultContent")
+        protected ProductContentType defaultContent;
         @XmlElement(name = "CancellationPenalties", required = true)
         protected CancelPenaltiesType cancellationPenalties;
         @XmlElement(name = "AmendmentPenalties")
@@ -3684,6 +3754,8 @@ public class ProductBase {
         protected QRDataType qrData;
         @XmlElement(name = "CarbonOffsets")
         protected AirAncillaryOffsetProductType carbonOffsets;
+        @XmlElement(name = "EligibleItem")
+        protected AirAncillaryEligibleItemType eligibleItem;
         @XmlElement(name = "OriginalFlightSegment")
         protected List<BookFlightSegmentType> originalFlightSegment;
         @XmlAttribute(name = "FlightNumber")
@@ -3807,6 +3879,30 @@ public class ProductBase {
          */
         public void setContent(ProductContentType value) {
             this.content = value;
+        }
+
+        /**
+         * 获取defaultContent属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link ProductContentType }
+         *     
+         */
+        public ProductContentType getDefaultContent() {
+            return defaultContent;
+        }
+
+        /**
+         * 设置defaultContent属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link ProductContentType }
+         *     
+         */
+        public void setDefaultContent(ProductContentType value) {
+            this.defaultContent = value;
         }
 
         /**
@@ -4259,6 +4355,30 @@ public class ProductBase {
          */
         public void setCarbonOffsets(AirAncillaryOffsetProductType value) {
             this.carbonOffsets = value;
+        }
+
+        /**
+         * 获取eligibleItem属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link AirAncillaryEligibleItemType }
+         *     
+         */
+        public AirAncillaryEligibleItemType getEligibleItem() {
+            return eligibleItem;
+        }
+
+        /**
+         * 设置eligibleItem属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link AirAncillaryEligibleItemType }
+         *     
+         */
+        public void setEligibleItem(AirAncillaryEligibleItemType value) {
+            this.eligibleItem = value;
         }
 
         /**
@@ -5636,13 +5756,13 @@ public class ProductBase {
     {
 
         @XmlElementRefs({
-            @XmlElementRef(name = "PlanCost", namespace = "http://www.opentravel.org/OTA/2003/05", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "UniqueID", namespace = "http://www.opentravel.org/OTA/2003/05", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "InsuranceCustomer", namespace = "http://www.opentravel.org/OTA/2003/05", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "SupplierPenalties", namespace = "http://www.opentravel.org/OTA/2003/05", type = JAXBElement.class, required = false),
             @XmlElementRef(name = "PolicyDetail", namespace = "http://www.opentravel.org/OTA/2003/05", type = JAXBElement.class, required = false),
             @XmlElementRef(name = "CancellationPenalties", namespace = "http://www.opentravel.org/OTA/2003/05", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "InsuranceCustomer", namespace = "http://www.opentravel.org/OTA/2003/05", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "UniqueID", namespace = "http://www.opentravel.org/OTA/2003/05", type = JAXBElement.class, required = false),
             @XmlElementRef(name = "AmendmentPenalties", namespace = "http://www.opentravel.org/OTA/2003/05", type = JAXBElement.class, required = false),
-            @XmlElementRef(name = "SupplierPenalties", namespace = "http://www.opentravel.org/OTA/2003/05", type = JAXBElement.class, required = false)
+            @XmlElementRef(name = "PlanCost", namespace = "http://www.opentravel.org/OTA/2003/05", type = JAXBElement.class, required = false)
         })
         protected List<JAXBElement<?>> rest;
 
@@ -5652,8 +5772,8 @@ public class ProductBase {
          * <p>
          * 由于以下原因, 您获取的是此 "catch-all" 属性: 
          * 字段名称 "CancellationPenalties" 由模式的两个不同部分使用。请参阅: 
-         * file:/D:/code/CA/spnr/xsd/OJ_SuperPNR.xsd的第 648 行
-         * file:/D:/code/CA/spnr/xsd/OTA_InsuranceCommonTypes.xsd的第 480 行
+         * file:/D:/develop/outsource/udf/spnr_xml/spnr_sdk/xsd/OJ_SuperPNR.xsd的第 699 行
+         * file:/D:/develop/outsource/udf/spnr_xml/spnr_sdk/xsd/OTA_InsuranceCommonTypes.xsd的第 480 行
          * <p>
          * 要清除此属性, 请将属性定制设置应用于以下两个声明
          * 或其中一个以更改其名称: 
@@ -5674,13 +5794,13 @@ public class ProductBase {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link JAXBElement }{@code <}{@link PlanCostType }{@code >}
+         * {@link JAXBElement }{@code <}{@link UniqueIDType }{@code >}
+         * {@link JAXBElement }{@code <}{@link InsuranceCustomerType }{@code >}
+         * {@link JAXBElement }{@code <}{@link SupplierPenaltiesType }{@code >}
          * {@link JAXBElement }{@code <}{@link PolicyDetailType }{@code >}
          * {@link JAXBElement }{@code <}{@link CancelPenaltiesType }{@code >}
-         * {@link JAXBElement }{@code <}{@link InsuranceCustomerType }{@code >}
-         * {@link JAXBElement }{@code <}{@link UniqueIDType }{@code >}
          * {@link JAXBElement }{@code <}{@link OJAmendPenaltiesType }{@code >}
-         * {@link JAXBElement }{@code <}{@link SupplierPenaltiesType }{@code >}
+         * {@link JAXBElement }{@code <}{@link PlanCostType }{@code >}
          * 
          * 
          */
@@ -6627,14 +6747,40 @@ public class ProductBase {
                 protected List<String> segmentIDRef;
                 @XmlElement(name = "TravelerIDRef", type = Integer.class)
                 protected List<Integer> travelerIDRef;
-                @XmlAttribute(name = "CanUnbundle")
-                protected String canUnbundle;
-                @XmlAttribute(name = "FQTVCarrier")
-                protected String fqtvCarrier;
+                @XmlAttribute(name = "Icon")
+                protected String icon;
+                @XmlAttribute(name = "Source")
+                protected String source;
+                @XmlAttribute(name = "CanDeselect")
+                protected String canDeselect;
+                @XmlAttribute(name = "ReasonCode")
+                protected String reasonCode;
                 @XmlAttribute(name = "FQTVNumber")
                 protected String fqtvNumber;
                 @XmlAttribute(name = "FQTVStatus")
                 protected String fqtvStatus;
+                @XmlAttribute(name = "FQTVCarrier")
+                protected String fqtvCarrier;
+                @XmlAttribute(name = "ServiceType")
+                protected String serviceType;
+                @XmlAttribute(name = "ServiceCode")
+                protected String serviceCode;
+                @XmlAttribute(name = "SubCode")
+                protected String subCode;
+                @XmlAttribute(name = "Method", required = true)
+                protected String method;
+                @XmlAttribute(name = "MaxQuantity")
+                protected Integer maxQuantity;
+                @XmlAttribute(name = "Status")
+                protected String status;
+                @XmlAttribute(name = "ApplyToAll")
+                protected String applyToAll;
+                @XmlAttribute(name = "Bundle")
+                protected String bundle;
+                @XmlAttribute(name = "CanUnbundle")
+                protected String canUnbundle;
+                @XmlAttribute(name = "DisplayPriority")
+                protected SrvcDisplayPriorityType displayPriority;
                 @XmlAttribute(name = "Type")
                 protected String type;
                 @XmlAttribute(name = "TypeValue")
@@ -6653,32 +6799,6 @@ public class ProductBase {
                 @XmlAttribute(name = "NotValidAfter")
                 @XmlSchemaType(name = "dateTime")
                 protected XMLGregorianCalendar notValidAfter;
-                @XmlAttribute(name = "ServiceType")
-                protected String serviceType;
-                @XmlAttribute(name = "ServiceCode")
-                protected String serviceCode;
-                @XmlAttribute(name = "SubCode")
-                protected String subCode;
-                @XmlAttribute(name = "ApplyToAll")
-                protected String applyToAll;
-                @XmlAttribute(name = "MaxQuantity")
-                protected Integer maxQuantity;
-                @XmlAttribute(name = "Source")
-                protected String source;
-                @XmlAttribute(name = "Icon")
-                protected String icon;
-                @XmlAttribute(name = "Bundle")
-                protected String bundle;
-                @XmlAttribute(name = "Method", required = true)
-                protected String method;
-                @XmlAttribute(name = "Status")
-                protected String status;
-                @XmlAttribute(name = "ReasonCode")
-                protected String reasonCode;
-                @XmlAttribute(name = "DisplayPriority")
-                protected SrvcDisplayPriorityType displayPriority;
-                @XmlAttribute(name = "CanDeselect")
-                protected String canDeselect;
 
                 /**
                  * 获取description属性的值。
@@ -7176,51 +7296,99 @@ public class ProductBase {
                 }
 
                 /**
-                 * 获取canUnbundle属性的值。
+                 * 获取icon属性的值。
                  * 
                  * @return
                  *     possible object is
                  *     {@link String }
                  *     
                  */
-                public String getCanUnbundle() {
-                    return canUnbundle;
+                public String getIcon() {
+                    return icon;
                 }
 
                 /**
-                 * 设置canUnbundle属性的值。
+                 * 设置icon属性的值。
                  * 
                  * @param value
                  *     allowed object is
                  *     {@link String }
                  *     
                  */
-                public void setCanUnbundle(String value) {
-                    this.canUnbundle = value;
+                public void setIcon(String value) {
+                    this.icon = value;
                 }
 
                 /**
-                 * 获取fqtvCarrier属性的值。
+                 * 获取source属性的值。
                  * 
                  * @return
                  *     possible object is
                  *     {@link String }
                  *     
                  */
-                public String getFQTVCarrier() {
-                    return fqtvCarrier;
+                public String getSource() {
+                    return source;
                 }
 
                 /**
-                 * 设置fqtvCarrier属性的值。
+                 * 设置source属性的值。
                  * 
                  * @param value
                  *     allowed object is
                  *     {@link String }
                  *     
                  */
-                public void setFQTVCarrier(String value) {
-                    this.fqtvCarrier = value;
+                public void setSource(String value) {
+                    this.source = value;
+                }
+
+                /**
+                 * 获取canDeselect属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getCanDeselect() {
+                    return canDeselect;
+                }
+
+                /**
+                 * 设置canDeselect属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setCanDeselect(String value) {
+                    this.canDeselect = value;
+                }
+
+                /**
+                 * 获取reasonCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getReasonCode() {
+                    return reasonCode;
+                }
+
+                /**
+                 * 设置reasonCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setReasonCode(String value) {
+                    this.reasonCode = value;
                 }
 
                 /**
@@ -7269,6 +7437,270 @@ public class ProductBase {
                  */
                 public void setFQTVStatus(String value) {
                     this.fqtvStatus = value;
+                }
+
+                /**
+                 * 获取fqtvCarrier属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getFQTVCarrier() {
+                    return fqtvCarrier;
+                }
+
+                /**
+                 * 设置fqtvCarrier属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setFQTVCarrier(String value) {
+                    this.fqtvCarrier = value;
+                }
+
+                /**
+                 * 获取serviceType属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getServiceType() {
+                    return serviceType;
+                }
+
+                /**
+                 * 设置serviceType属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setServiceType(String value) {
+                    this.serviceType = value;
+                }
+
+                /**
+                 * 获取serviceCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getServiceCode() {
+                    return serviceCode;
+                }
+
+                /**
+                 * 设置serviceCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setServiceCode(String value) {
+                    this.serviceCode = value;
+                }
+
+                /**
+                 * 获取subCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getSubCode() {
+                    return subCode;
+                }
+
+                /**
+                 * 设置subCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setSubCode(String value) {
+                    this.subCode = value;
+                }
+
+                /**
+                 * 获取method属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getMethod() {
+                    return method;
+                }
+
+                /**
+                 * 设置method属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setMethod(String value) {
+                    this.method = value;
+                }
+
+                /**
+                 * 获取maxQuantity属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link Integer }
+                 *     
+                 */
+                public Integer getMaxQuantity() {
+                    return maxQuantity;
+                }
+
+                /**
+                 * 设置maxQuantity属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link Integer }
+                 *     
+                 */
+                public void setMaxQuantity(Integer value) {
+                    this.maxQuantity = value;
+                }
+
+                /**
+                 * 获取status属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getStatus() {
+                    return status;
+                }
+
+                /**
+                 * 设置status属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setStatus(String value) {
+                    this.status = value;
+                }
+
+                /**
+                 * 获取applyToAll属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getApplyToAll() {
+                    return applyToAll;
+                }
+
+                /**
+                 * 设置applyToAll属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setApplyToAll(String value) {
+                    this.applyToAll = value;
+                }
+
+                /**
+                 * 获取bundle属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getBundle() {
+                    return bundle;
+                }
+
+                /**
+                 * 设置bundle属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setBundle(String value) {
+                    this.bundle = value;
+                }
+
+                /**
+                 * 获取canUnbundle属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getCanUnbundle() {
+                    return canUnbundle;
+                }
+
+                /**
+                 * 设置canUnbundle属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setCanUnbundle(String value) {
+                    this.canUnbundle = value;
+                }
+
+                /**
+                 * 获取displayPriority属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link SrvcDisplayPriorityType }
+                 *     
+                 */
+                public SrvcDisplayPriorityType getDisplayPriority() {
+                    return displayPriority;
+                }
+
+                /**
+                 * 设置displayPriority属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link SrvcDisplayPriorityType }
+                 *     
+                 */
+                public void setDisplayPriority(SrvcDisplayPriorityType value) {
+                    this.displayPriority = value;
                 }
 
                 /**
@@ -7461,318 +7893,6 @@ public class ProductBase {
                  */
                 public void setNotValidAfter(XMLGregorianCalendar value) {
                     this.notValidAfter = value;
-                }
-
-                /**
-                 * 获取serviceType属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getServiceType() {
-                    return serviceType;
-                }
-
-                /**
-                 * 设置serviceType属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setServiceType(String value) {
-                    this.serviceType = value;
-                }
-
-                /**
-                 * 获取serviceCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getServiceCode() {
-                    return serviceCode;
-                }
-
-                /**
-                 * 设置serviceCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setServiceCode(String value) {
-                    this.serviceCode = value;
-                }
-
-                /**
-                 * 获取subCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getSubCode() {
-                    return subCode;
-                }
-
-                /**
-                 * 设置subCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setSubCode(String value) {
-                    this.subCode = value;
-                }
-
-                /**
-                 * 获取applyToAll属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getApplyToAll() {
-                    return applyToAll;
-                }
-
-                /**
-                 * 设置applyToAll属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setApplyToAll(String value) {
-                    this.applyToAll = value;
-                }
-
-                /**
-                 * 获取maxQuantity属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Integer }
-                 *     
-                 */
-                public Integer getMaxQuantity() {
-                    return maxQuantity;
-                }
-
-                /**
-                 * 设置maxQuantity属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Integer }
-                 *     
-                 */
-                public void setMaxQuantity(Integer value) {
-                    this.maxQuantity = value;
-                }
-
-                /**
-                 * 获取source属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getSource() {
-                    return source;
-                }
-
-                /**
-                 * 设置source属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setSource(String value) {
-                    this.source = value;
-                }
-
-                /**
-                 * 获取icon属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getIcon() {
-                    return icon;
-                }
-
-                /**
-                 * 设置icon属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setIcon(String value) {
-                    this.icon = value;
-                }
-
-                /**
-                 * 获取bundle属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getBundle() {
-                    return bundle;
-                }
-
-                /**
-                 * 设置bundle属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setBundle(String value) {
-                    this.bundle = value;
-                }
-
-                /**
-                 * 获取method属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getMethod() {
-                    return method;
-                }
-
-                /**
-                 * 设置method属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setMethod(String value) {
-                    this.method = value;
-                }
-
-                /**
-                 * 获取status属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getStatus() {
-                    return status;
-                }
-
-                /**
-                 * 设置status属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setStatus(String value) {
-                    this.status = value;
-                }
-
-                /**
-                 * 获取reasonCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getReasonCode() {
-                    return reasonCode;
-                }
-
-                /**
-                 * 设置reasonCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setReasonCode(String value) {
-                    this.reasonCode = value;
-                }
-
-                /**
-                 * 获取displayPriority属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link SrvcDisplayPriorityType }
-                 *     
-                 */
-                public SrvcDisplayPriorityType getDisplayPriority() {
-                    return displayPriority;
-                }
-
-                /**
-                 * 设置displayPriority属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link SrvcDisplayPriorityType }
-                 *     
-                 */
-                public void setDisplayPriority(SrvcDisplayPriorityType value) {
-                    this.displayPriority = value;
-                }
-
-                /**
-                 * 获取canDeselect属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getCanDeselect() {
-                    return canDeselect;
-                }
-
-                /**
-                 * 设置canDeselect属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setCanDeselect(String value) {
-                    this.canDeselect = value;
                 }
 
 

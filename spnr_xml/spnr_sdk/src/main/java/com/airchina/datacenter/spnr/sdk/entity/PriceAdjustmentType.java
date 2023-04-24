@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -28,8 +28,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyAmountGroup"/>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PriceAdjustmentBaseAttributes"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PriceAdjustmentAttributes"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PriceAdjustmentBaseAttributes"/>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -45,15 +45,21 @@ public class PriceAdjustmentType {
     protected Float amount;
     @XmlAttribute(name = "PrePayInd")
     protected Boolean prePayInd;
-    @XmlAttribute(name = "OriginalAmount")
-    protected Float originalAmount;
-    @XmlAttribute(name = "OriginalCurrencyCode")
-    protected String originalCurrencyCode;
     @XmlAttribute(name = "CurrencyCode")
     protected String currencyCode;
     @XmlAttribute(name = "DecimalPlaces")
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger decimalPlaces;
+    @XmlAttribute(name = "OriginalAmount")
+    protected Float originalAmount;
+    @XmlAttribute(name = "OriginalCurrencyCode")
+    protected String originalCurrencyCode;
+    @XmlAttribute(name = "Description", required = true)
+    protected String description;
+    @XmlAttribute(name = "Code")
+    protected String code;
+    @XmlAttribute(name = "CodeContext")
+    protected String codeContext;
     @XmlAttribute(name = "Modular")
     protected Boolean modular;
     @XmlAttribute(name = "CostCentre")
@@ -77,12 +83,8 @@ public class PriceAdjustmentType {
     protected String productType;
     @XmlAttribute(name = "Stage")
     protected String stage;
-    @XmlAttribute(name = "Description", required = true)
-    protected String description;
-    @XmlAttribute(name = "Code")
-    protected String code;
-    @XmlAttribute(name = "CodeContext")
-    protected String codeContext;
+    @XmlAttribute(name = "Multiplier")
+    protected Float multiplier;
 
     /**
      * 获取amount属性的值。
@@ -130,6 +132,54 @@ public class PriceAdjustmentType {
      */
     public void setPrePayInd(Boolean value) {
         this.prePayInd = value;
+    }
+
+    /**
+     * 获取currencyCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    /**
+     * 设置currencyCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCurrencyCode(String value) {
+        this.currencyCode = value;
+    }
+
+    /**
+     * 获取decimalPlaces属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getDecimalPlaces() {
+        return decimalPlaces;
+    }
+
+    /**
+     * 设置decimalPlaces属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setDecimalPlaces(BigInteger value) {
+        this.decimalPlaces = value;
     }
 
     /**
@@ -181,51 +231,75 @@ public class PriceAdjustmentType {
     }
 
     /**
-     * 获取currencyCode属性的值。
+     * 获取description属性的值。
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCurrencyCode() {
-        return currencyCode;
+    public String getDescription() {
+        return description;
     }
 
     /**
-     * 设置currencyCode属性的值。
+     * 设置description属性的值。
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCurrencyCode(String value) {
-        this.currencyCode = value;
+    public void setDescription(String value) {
+        this.description = value;
     }
 
     /**
-     * 获取decimalPlaces属性的值。
+     * 获取code属性的值。
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getDecimalPlaces() {
-        return decimalPlaces;
+    public String getCode() {
+        return code;
     }
 
     /**
-     * 设置decimalPlaces属性的值。
+     * 设置code属性的值。
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setDecimalPlaces(BigInteger value) {
-        this.decimalPlaces = value;
+    public void setCode(String value) {
+        this.code = value;
+    }
+
+    /**
+     * 获取codeContext属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCodeContext() {
+        return codeContext;
+    }
+
+    /**
+     * 设置codeContext属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCodeContext(String value) {
+        this.codeContext = value;
     }
 
     /**
@@ -493,75 +567,27 @@ public class PriceAdjustmentType {
     }
 
     /**
-     * 获取description属性的值。
+     * 获取multiplier属性的值。
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Float }
      *     
      */
-    public String getDescription() {
-        return description;
+    public Float getMultiplier() {
+        return multiplier;
     }
 
     /**
-     * 设置description属性的值。
+     * 设置multiplier属性的值。
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Float }
      *     
      */
-    public void setDescription(String value) {
-        this.description = value;
-    }
-
-    /**
-     * 获取code属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * 设置code属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCode(String value) {
-        this.code = value;
-    }
-
-    /**
-     * 获取codeContext属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCodeContext() {
-        return codeContext;
-    }
-
-    /**
-     * 设置codeContext属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCodeContext(String value) {
-        this.codeContext = value;
+    public void setMultiplier(Float value) {
+        this.multiplier = value;
     }
 
 }

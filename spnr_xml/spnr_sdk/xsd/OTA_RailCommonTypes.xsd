@@ -850,6 +850,16 @@
 				<xs:documentation xml:lang="en">The status of a ground transport segment.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+		<xs:attribute name="CityCode" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The city code indicates the city, which the bus segment belongs to.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CityCodeContext" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The context of city code, e.g. GovDivision.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="RailSegmentType">
 		<xs:annotation>

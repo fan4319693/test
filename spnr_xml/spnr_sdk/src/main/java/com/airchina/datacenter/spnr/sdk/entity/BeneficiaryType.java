@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -46,8 +46,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;/element>
  *         &lt;element name="Document" type="{http://www.opentravel.org/OTA/2003/05}DocumentType" maxOccurs="5" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}BirthDateGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}BirthDateGroup"/>
  *       &lt;attribute name="EffectiveDate" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="Gender" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="PassengerTypeCode" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -79,11 +79,11 @@ public class BeneficiaryType {
     protected String gender;
     @XmlAttribute(name = "PassengerTypeCode")
     protected String passengerTypeCode;
+    @XmlAttribute(name = "ID")
+    protected String id;
     @XmlAttribute(name = "BirthDate")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar birthDate;
-    @XmlAttribute(name = "ID")
-    protected String id;
 
     /**
      * 获取personName属性的值。
@@ -240,30 +240,6 @@ public class BeneficiaryType {
     }
 
     /**
-     * 获取birthDate属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getBirthDate() {
-        return birthDate;
-    }
-
-    /**
-     * 设置birthDate属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setBirthDate(XMLGregorianCalendar value) {
-        this.birthDate = value;
-    }
-
-    /**
      * 获取id属性的值。
      * 
      * @return
@@ -285,6 +261,30 @@ public class BeneficiaryType {
      */
     public void setID(String value) {
         this.id = value;
+    }
+
+    /**
+     * 获取birthDate属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getBirthDate() {
+        return birthDate;
+    }
+
+    /**
+     * 设置birthDate属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setBirthDate(XMLGregorianCalendar value) {
+        this.birthDate = value;
     }
 
 
@@ -324,6 +324,8 @@ public class BeneficiaryType {
         @XmlAttribute(name = "ShareMarketInd")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         protected String shareMarketInd;
+        @XmlAttribute(name = "FormattedInd")
+        protected Boolean formattedInd;
         @XmlAttribute(name = "PhoneLocationType")
         protected String phoneLocationType;
         @XmlAttribute(name = "PhoneTechType")
@@ -340,8 +342,6 @@ public class BeneficiaryType {
         protected String extension;
         @XmlAttribute(name = "PIN")
         protected String pin;
-        @XmlAttribute(name = "FormattedInd")
-        protected Boolean formattedInd;
         @XmlAttribute(name = "EffectiveDate")
         @XmlSchemaType(name = "date")
         protected XMLGregorianCalendar effectiveDate;
@@ -495,6 +495,34 @@ public class BeneficiaryType {
          */
         public void setShareMarketInd(String value) {
             this.shareMarketInd = value;
+        }
+
+        /**
+         * 获取formattedInd属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link Boolean }
+         *     
+         */
+        public boolean isFormattedInd() {
+            if (formattedInd == null) {
+                return false;
+            } else {
+                return formattedInd;
+            }
+        }
+
+        /**
+         * 设置formattedInd属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Boolean }
+         *     
+         */
+        public void setFormattedInd(Boolean value) {
+            this.formattedInd = value;
         }
 
         /**
@@ -687,34 +715,6 @@ public class BeneficiaryType {
          */
         public void setPIN(String value) {
             this.pin = value;
-        }
-
-        /**
-         * 获取formattedInd属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link Boolean }
-         *     
-         */
-        public boolean isFormattedInd() {
-            if (formattedInd == null) {
-                return false;
-            } else {
-                return formattedInd;
-            }
-        }
-
-        /**
-         * 设置formattedInd属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Boolean }
-         *     
-         */
-        public void setFormattedInd(Boolean value) {
-            this.formattedInd = value;
         }
 
         /**

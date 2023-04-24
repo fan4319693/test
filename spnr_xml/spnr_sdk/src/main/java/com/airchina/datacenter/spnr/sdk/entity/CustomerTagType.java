@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -28,6 +28,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;complexType name="CustomerTagType">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
  *       &lt;attribute name="Code" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to32" />
  *       &lt;attribute name="Type" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to32" />
  *       &lt;attribute name="Name" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to32" />
@@ -50,6 +51,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "CustomerTagType")
 public class CustomerTagType {
 
+    @XmlAttribute(name = "ID")
+    @XmlSchemaType(name = "nonNegativeInteger")
+    protected BigInteger id;
     @XmlAttribute(name = "Code")
     protected String code;
     @XmlAttribute(name = "Type")
@@ -75,6 +79,30 @@ public class CustomerTagType {
     protected Boolean display;
     @XmlAttribute(name = "Priority")
     protected BigInteger priority;
+
+    /**
+     * 获取id属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getID() {
+        return id;
+    }
+
+    /**
+     * 设置id属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setID(BigInteger value) {
+        this.id = value;
+    }
 
     /**
      * 获取code属性的值。

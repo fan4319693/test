@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -12,6 +12,7 @@ import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
@@ -25,6 +26,18 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="ModifyTypeType">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="Reason" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                 &lt;attribute name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *       &lt;/sequence>
  *       &lt;attribute name="Type" use="required" type="{http://www.opentravel.org/OTA/2003/05}AlphaNumericStringLength1to19" />
  *       &lt;attribute name="oldMPNum" type="{http://www.w3.org/2001/XMLSchema}integer" />
  *       &lt;attribute name="splitRequired" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -43,6 +56,12 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;attribute name="ContactPersonRPH" type="{http://www.opentravel.org/OTA/2003/05}RPH_Type" />
  *       &lt;attribute name="OrigCabinClass" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="ReshopID" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *       &lt;attribute name="AirlineTransfer" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *       &lt;attribute name="CodeShare" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *       &lt;attribute name="FFPFreeExchange" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *       &lt;attribute name="FeeWaived" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *       &lt;attribute name="ODChange" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *       &lt;attribute name="TicketNumChange" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -51,9 +70,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ModifyTypeType")
+@XmlType(name = "ModifyTypeType", propOrder = {
+    "reason"
+})
 public class ModifyTypeType {
 
+    @XmlElement(name = "Reason")
+    protected ModifyTypeType.Reason reason;
     @XmlAttribute(name = "Type", required = true)
     protected String type;
     @XmlAttribute(name = "oldMPNum")
@@ -92,6 +115,42 @@ public class ModifyTypeType {
     @XmlAttribute(name = "ReshopID")
     @XmlSchemaType(name = "anySimpleType")
     protected String reshopID;
+    @XmlAttribute(name = "AirlineTransfer")
+    protected Boolean airlineTransfer;
+    @XmlAttribute(name = "CodeShare")
+    protected Boolean codeShare;
+    @XmlAttribute(name = "FFPFreeExchange")
+    protected Boolean ffpFreeExchange;
+    @XmlAttribute(name = "FeeWaived")
+    protected Boolean feeWaived;
+    @XmlAttribute(name = "ODChange")
+    protected Boolean odChange;
+    @XmlAttribute(name = "TicketNumChange")
+    protected Boolean ticketNumChange;
+
+    /**
+     * 获取reason属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link ModifyTypeType.Reason }
+     *     
+     */
+    public ModifyTypeType.Reason getReason() {
+        return reason;
+    }
+
+    /**
+     * 设置reason属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ModifyTypeType.Reason }
+     *     
+     */
+    public void setReason(ModifyTypeType.Reason value) {
+        this.reason = value;
+    }
 
     /**
      * 获取type属性的值。
@@ -515,6 +574,228 @@ public class ModifyTypeType {
      */
     public void setReshopID(String value) {
         this.reshopID = value;
+    }
+
+    /**
+     * 获取airlineTransfer属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isAirlineTransfer() {
+        return airlineTransfer;
+    }
+
+    /**
+     * 设置airlineTransfer属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setAirlineTransfer(Boolean value) {
+        this.airlineTransfer = value;
+    }
+
+    /**
+     * 获取codeShare属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isCodeShare() {
+        return codeShare;
+    }
+
+    /**
+     * 设置codeShare属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setCodeShare(Boolean value) {
+        this.codeShare = value;
+    }
+
+    /**
+     * 获取ffpFreeExchange属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isFFPFreeExchange() {
+        return ffpFreeExchange;
+    }
+
+    /**
+     * 设置ffpFreeExchange属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setFFPFreeExchange(Boolean value) {
+        this.ffpFreeExchange = value;
+    }
+
+    /**
+     * 获取feeWaived属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isFeeWaived() {
+        return feeWaived;
+    }
+
+    /**
+     * 设置feeWaived属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setFeeWaived(Boolean value) {
+        this.feeWaived = value;
+    }
+
+    /**
+     * 获取odChange属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isODChange() {
+        return odChange;
+    }
+
+    /**
+     * 设置odChange属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setODChange(Boolean value) {
+        this.odChange = value;
+    }
+
+    /**
+     * 获取ticketNumChange属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isTicketNumChange() {
+        return ticketNumChange;
+    }
+
+    /**
+     * 设置ticketNumChange属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setTicketNumChange(Boolean value) {
+        this.ticketNumChange = value;
+    }
+
+
+    /**
+     * <p>anonymous complex type的 Java 类。
+     * 
+     * <p>以下模式片段指定包含在此类中的预期内容。
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *       &lt;attribute name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "")
+    public static class Reason {
+
+        @XmlAttribute(name = "Type")
+        protected String type;
+        @XmlAttribute(name = "SubType")
+        protected String subType;
+
+        /**
+         * 获取type属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getType() {
+            return type;
+        }
+
+        /**
+         * 设置type属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setType(String value) {
+            this.type = value;
+        }
+
+        /**
+         * 获取subType属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getSubType() {
+            return subType;
+        }
+
+        /**
+         * 设置subType属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setSubType(String value) {
+            this.subType = value;
+        }
+
     }
 
 }

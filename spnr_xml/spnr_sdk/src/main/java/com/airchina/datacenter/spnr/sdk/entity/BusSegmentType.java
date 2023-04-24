@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -55,6 +55,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;attribute name="Code" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="Status" type="{http://www.opentravel.org/OTA/2003/05}GroundTransportSegmentStatusType" />
+ *       &lt;attribute name="CityCode" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="CityCodeContext" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -107,6 +109,10 @@ public class BusSegmentType {
     protected String id;
     @XmlAttribute(name = "Status")
     protected GroundTransportSegmentStatusType status;
+    @XmlAttribute(name = "CityCode")
+    protected String cityCode;
+    @XmlAttribute(name = "CityCodeContext")
+    protected String cityCodeContext;
 
     /**
      * 获取departureStation属性的值。
@@ -442,6 +448,54 @@ public class BusSegmentType {
      */
     public void setStatus(GroundTransportSegmentStatusType value) {
         this.status = value;
+    }
+
+    /**
+     * 获取cityCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCityCode() {
+        return cityCode;
+    }
+
+    /**
+     * 设置cityCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCityCode(String value) {
+        this.cityCode = value;
+    }
+
+    /**
+     * 获取cityCodeContext属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCityCodeContext() {
+        return cityCodeContext;
+    }
+
+    /**
+     * 设置cityCodeContext属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCityCodeContext(String value) {
+        this.cityCodeContext = value;
     }
 
 

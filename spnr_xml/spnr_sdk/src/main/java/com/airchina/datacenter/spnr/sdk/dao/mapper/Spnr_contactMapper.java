@@ -1,6 +1,6 @@
 package com.airchina.datacenter.spnr.sdk.dao.mapper;
 
-import com.airchina.datacenter.spnr.sdk.dao.entity.Spnr_contactPo;
+import com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_contactPo;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;

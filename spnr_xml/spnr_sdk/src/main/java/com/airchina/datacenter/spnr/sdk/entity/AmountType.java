@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -70,6 +70,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                           &lt;attribute name="MealPriceAfterTax" type="{http://www.w3.org/2001/XMLSchema}float" />
  *                           &lt;attribute name="Date" type="{http://www.opentravel.org/OTA/2003/05}DateOrDateTimeType" />
  *                           &lt;attribute name="OnRequest" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *                           &lt;attribute name="SupplierAmount" type="{http://www.w3.org/2001/XMLSchema}float" />
  *                         &lt;/restriction>
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
@@ -93,6 +94,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                 &lt;/attribute>
  *                 &lt;attribute name="MealPriceBeforeTax" type="{http://www.w3.org/2001/XMLSchema}float" />
  *                 &lt;attribute name="MealPriceAfterTax" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                 &lt;attribute name="MealSupplierPrice" type="{http://www.w3.org/2001/XMLSchema}float" />
  *               &lt;/extension>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -137,8 +139,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DOW_PatternGroup"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
  *                 &lt;attribute name="MinAdvancedBookingOffset" type="{http://www.w3.org/2001/XMLSchema}duration" />
  *                 &lt;attribute name="MaxAdvancedBookingOffset" type="{http://www.w3.org/2001/XMLSchema}duration" />
  *               &lt;/restriction>
@@ -183,6 +185,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                 &lt;/attribute>
  *                 &lt;attribute name="MealPriceBeforeTax" type="{http://www.w3.org/2001/XMLSchema}float" />
  *                 &lt;attribute name="MealPriceAfterTax" type="{http://www.w3.org/2001/XMLSchema}float" />
+ *                 &lt;attribute name="MealSupplierPrice" type="{http://www.w3.org/2001/XMLSchema}float" />
  *               &lt;/extension>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -220,8 +223,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="BuyExtras" type="{http://www.opentravel.org/OTA/2003/05}ExtraType" minOccurs="0"/>
  *         &lt;element name="PriceAdjustments" type="{http://www.opentravel.org/OTA/2003/05}exPriceAdjustmentsType"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}AgeQualifyingGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
  *       &lt;attribute name="GuaranteedInd" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *       &lt;attribute name="NumberOfUnits" type="{http://www.opentravel.org/OTA/2003/05}Numeric1to999" />
  *       &lt;attribute name="RateTimeUnit" type="{http://www.opentravel.org/OTA/2003/05}TimeUnitType" />
@@ -329,12 +332,6 @@ public class AmountType {
     protected DayOfWeekType stayOverDate;
     @XmlAttribute(name = "AlternateCurrencyInd")
     protected Boolean alternateCurrencyInd;
-    @XmlAttribute(name = "EffectiveDate")
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar effectiveDate;
-    @XmlAttribute(name = "ExpireDate")
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar expireDate;
     @XmlAttribute(name = "AgeQualifyingCode")
     protected String ageQualifyingCode;
     @XmlAttribute(name = "MinAge")
@@ -345,6 +342,12 @@ public class AmountType {
     protected String ageTimeUnit;
     @XmlAttribute(name = "RuleCode")
     protected String ruleCode;
+    @XmlAttribute(name = "EffectiveDate")
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar effectiveDate;
+    @XmlAttribute(name = "ExpireDate")
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar expireDate;
 
     /**
      * 获取nightlyRates属性的值。
@@ -1053,54 +1056,6 @@ public class AmountType {
     }
 
     /**
-     * 获取effectiveDate属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getEffectiveDate() {
-        return effectiveDate;
-    }
-
-    /**
-     * 设置effectiveDate属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setEffectiveDate(XMLGregorianCalendar value) {
-        this.effectiveDate = value;
-    }
-
-    /**
-     * 获取expireDate属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getExpireDate() {
-        return expireDate;
-    }
-
-    /**
-     * 设置expireDate属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setExpireDate(XMLGregorianCalendar value) {
-        this.expireDate = value;
-    }
-
-    /**
      * 获取ageQualifyingCode属性的值。
      * 
      * @return
@@ -1218,6 +1173,54 @@ public class AmountType {
      */
     public void setRuleCode(String value) {
         this.ruleCode = value;
+    }
+
+    /**
+     * 获取effectiveDate属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getEffectiveDate() {
+        return effectiveDate;
+    }
+
+    /**
+     * 设置effectiveDate属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setEffectiveDate(XMLGregorianCalendar value) {
+        this.effectiveDate = value;
+    }
+
+    /**
+     * 获取expireDate属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getExpireDate() {
+        return expireDate;
+    }
+
+    /**
+     * 设置expireDate属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setExpireDate(XMLGregorianCalendar value) {
+        this.expireDate = value;
     }
 
 
@@ -1688,8 +1691,8 @@ public class AmountType {
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DOW_PatternGroup"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
      *       &lt;attribute name="MinAdvancedBookingOffset" type="{http://www.w3.org/2001/XMLSchema}duration" />
      *       &lt;attribute name="MaxAdvancedBookingOffset" type="{http://www.w3.org/2001/XMLSchema}duration" />
      *     &lt;/restriction>
@@ -1707,16 +1710,6 @@ public class AmountType {
         protected Duration minAdvancedBookingOffset;
         @XmlAttribute(name = "MaxAdvancedBookingOffset")
         protected Duration maxAdvancedBookingOffset;
-        @XmlAttribute(name = "Start")
-        protected String start;
-        @XmlAttribute(name = "Duration")
-        protected BigInteger duration;
-        @XmlAttribute(name = "End")
-        protected String end;
-        @XmlAttribute(name = "RangeNum")
-        protected BigInteger rangeNum;
-        @XmlAttribute(name = "SearchTimeZone")
-        protected String searchTimeZone;
         @XmlAttribute(name = "Mon")
         protected Boolean mon;
         @XmlAttribute(name = "Tue")
@@ -1731,6 +1724,16 @@ public class AmountType {
         protected Boolean sat;
         @XmlAttribute(name = "Sun")
         protected Boolean sun;
+        @XmlAttribute(name = "Start")
+        protected String start;
+        @XmlAttribute(name = "Duration")
+        protected BigInteger duration;
+        @XmlAttribute(name = "End")
+        protected String end;
+        @XmlAttribute(name = "RangeNum")
+        protected BigInteger rangeNum;
+        @XmlAttribute(name = "SearchTimeZone")
+        protected String searchTimeZone;
 
         /**
          * 获取minAdvancedBookingOffset属性的值。
@@ -1778,126 +1781,6 @@ public class AmountType {
          */
         public void setMaxAdvancedBookingOffset(Duration value) {
             this.maxAdvancedBookingOffset = value;
-        }
-
-        /**
-         * 获取start属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getStart() {
-            return start;
-        }
-
-        /**
-         * 设置start属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setStart(String value) {
-            this.start = value;
-        }
-
-        /**
-         * 获取duration属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigInteger }
-         *     
-         */
-        public BigInteger getDuration() {
-            return duration;
-        }
-
-        /**
-         * 设置duration属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigInteger }
-         *     
-         */
-        public void setDuration(BigInteger value) {
-            this.duration = value;
-        }
-
-        /**
-         * 获取end属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getEnd() {
-            return end;
-        }
-
-        /**
-         * 设置end属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setEnd(String value) {
-            this.end = value;
-        }
-
-        /**
-         * 获取rangeNum属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigInteger }
-         *     
-         */
-        public BigInteger getRangeNum() {
-            return rangeNum;
-        }
-
-        /**
-         * 设置rangeNum属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigInteger }
-         *     
-         */
-        public void setRangeNum(BigInteger value) {
-            this.rangeNum = value;
-        }
-
-        /**
-         * 获取searchTimeZone属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getSearchTimeZone() {
-            return searchTimeZone;
-        }
-
-        /**
-         * 设置searchTimeZone属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setSearchTimeZone(String value) {
-            this.searchTimeZone = value;
         }
 
         /**
@@ -2068,6 +1951,126 @@ public class AmountType {
             this.sun = value;
         }
 
+        /**
+         * 获取start属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getStart() {
+            return start;
+        }
+
+        /**
+         * 设置start属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setStart(String value) {
+            this.start = value;
+        }
+
+        /**
+         * 获取duration属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link BigInteger }
+         *     
+         */
+        public BigInteger getDuration() {
+            return duration;
+        }
+
+        /**
+         * 设置duration属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link BigInteger }
+         *     
+         */
+        public void setDuration(BigInteger value) {
+            this.duration = value;
+        }
+
+        /**
+         * 获取end属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getEnd() {
+            return end;
+        }
+
+        /**
+         * 设置end属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setEnd(String value) {
+            this.end = value;
+        }
+
+        /**
+         * 获取rangeNum属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link BigInteger }
+         *     
+         */
+        public BigInteger getRangeNum() {
+            return rangeNum;
+        }
+
+        /**
+         * 设置rangeNum属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link BigInteger }
+         *     
+         */
+        public void setRangeNum(BigInteger value) {
+            this.rangeNum = value;
+        }
+
+        /**
+         * 获取searchTimeZone属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getSearchTimeZone() {
+            return searchTimeZone;
+        }
+
+        /**
+         * 设置searchTimeZone属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setSearchTimeZone(String value) {
+            this.searchTimeZone = value;
+        }
+
     }
 
 
@@ -2090,6 +2093,7 @@ public class AmountType {
      *       &lt;/attribute>
      *       &lt;attribute name="MealPriceBeforeTax" type="{http://www.w3.org/2001/XMLSchema}float" />
      *       &lt;attribute name="MealPriceAfterTax" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+     *       &lt;attribute name="MealSupplierPrice" type="{http://www.w3.org/2001/XMLSchema}float" />
      *     &lt;/extension>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -2110,6 +2114,8 @@ public class AmountType {
         @XmlAttribute(name = "MealPriceAfterTax")
         @XmlSchemaType(name = "anySimpleType")
         protected String mealPriceAfterTax;
+        @XmlAttribute(name = "MealSupplierPrice")
+        protected Float mealSupplierPrice;
         @XmlAttribute(name = "SellAmountBeforeTax")
         protected Float sellAmountBeforeTax;
         @XmlAttribute(name = "SellAmountAfterTax")
@@ -2191,6 +2197,30 @@ public class AmountType {
          */
         public void setMealPriceAfterTax(String value) {
             this.mealPriceAfterTax = value;
+        }
+
+        /**
+         * 获取mealSupplierPrice属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link Float }
+         *     
+         */
+        public Float getMealSupplierPrice() {
+            return mealSupplierPrice;
+        }
+
+        /**
+         * 设置mealSupplierPrice属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Float }
+         *     
+         */
+        public void setMealSupplierPrice(Float value) {
+            this.mealSupplierPrice = value;
         }
 
         /**
@@ -2503,6 +2533,7 @@ public class AmountType {
      *                 &lt;attribute name="MealPriceAfterTax" type="{http://www.w3.org/2001/XMLSchema}float" />
      *                 &lt;attribute name="Date" type="{http://www.opentravel.org/OTA/2003/05}DateOrDateTimeType" />
      *                 &lt;attribute name="OnRequest" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+     *                 &lt;attribute name="SupplierAmount" type="{http://www.w3.org/2001/XMLSchema}float" />
      *               &lt;/restriction>
      *             &lt;/complexContent>
      *           &lt;/complexType>
@@ -2587,6 +2618,7 @@ public class AmountType {
          *       &lt;attribute name="MealPriceAfterTax" type="{http://www.w3.org/2001/XMLSchema}float" />
          *       &lt;attribute name="Date" type="{http://www.opentravel.org/OTA/2003/05}DateOrDateTimeType" />
          *       &lt;attribute name="OnRequest" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+         *       &lt;attribute name="SupplierAmount" type="{http://www.w3.org/2001/XMLSchema}float" />
          *     &lt;/restriction>
          *   &lt;/complexContent>
          * &lt;/complexType>
@@ -2616,6 +2648,8 @@ public class AmountType {
             protected String date;
             @XmlAttribute(name = "OnRequest")
             protected Boolean onRequest;
+            @XmlAttribute(name = "SupplierAmount")
+            protected Float supplierAmount;
             @XmlAttribute(name = "SellAmountBeforeTax")
             protected Float sellAmountBeforeTax;
             @XmlAttribute(name = "SellAmountAfterTax")
@@ -2830,6 +2864,30 @@ public class AmountType {
              */
             public void setOnRequest(Boolean value) {
                 this.onRequest = value;
+            }
+
+            /**
+             * 获取supplierAmount属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link Float }
+             *     
+             */
+            public Float getSupplierAmount() {
+                return supplierAmount;
+            }
+
+            /**
+             * 设置supplierAmount属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link Float }
+             *     
+             */
+            public void setSupplierAmount(Float value) {
+                this.supplierAmount = value;
             }
 
             /**
@@ -3138,6 +3196,7 @@ public class AmountType {
      *       &lt;/attribute>
      *       &lt;attribute name="MealPriceBeforeTax" type="{http://www.w3.org/2001/XMLSchema}float" />
      *       &lt;attribute name="MealPriceAfterTax" type="{http://www.w3.org/2001/XMLSchema}float" />
+     *       &lt;attribute name="MealSupplierPrice" type="{http://www.w3.org/2001/XMLSchema}float" />
      *     &lt;/extension>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -3157,6 +3216,8 @@ public class AmountType {
         protected Float mealPriceBeforeTax;
         @XmlAttribute(name = "MealPriceAfterTax")
         protected Float mealPriceAfterTax;
+        @XmlAttribute(name = "MealSupplierPrice")
+        protected Float mealSupplierPrice;
         @XmlAttribute(name = "SellAmountBeforeTax")
         protected Float sellAmountBeforeTax;
         @XmlAttribute(name = "SellAmountAfterTax")
@@ -3238,6 +3299,30 @@ public class AmountType {
          */
         public void setMealPriceAfterTax(Float value) {
             this.mealPriceAfterTax = value;
+        }
+
+        /**
+         * 获取mealSupplierPrice属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link Float }
+         *     
+         */
+        public Float getMealSupplierPrice() {
+            return mealSupplierPrice;
+        }
+
+        /**
+         * 设置mealSupplierPrice属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Float }
+         *     
+         */
+        public void setMealSupplierPrice(Float value) {
+            this.mealSupplierPrice = value;
         }
 
         /**

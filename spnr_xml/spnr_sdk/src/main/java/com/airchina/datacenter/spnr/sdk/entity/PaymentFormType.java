@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -52,8 +52,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PromotionCodeGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}LoyaltyCertificateNumberGroup"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PromotionCodeGroup"/>
  *                 &lt;attribute name="RedemptionQuantity" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
  *                 &lt;attribute name="ApprovalCode" type="{http://www.w3.org/2001/XMLSchema}string" />
  *               &lt;/restriction>
@@ -604,8 +604,8 @@ public class PaymentFormType {
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PromotionCodeGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}LoyaltyCertificateNumberGroup"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PromotionCodeGroup"/>
      *       &lt;attribute name="RedemptionQuantity" type="{http://www.w3.org/2001/XMLSchema}positiveInteger" />
      *       &lt;attribute name="ApprovalCode" type="{http://www.w3.org/2001/XMLSchema}string" />
      *     &lt;/restriction>
@@ -624,16 +624,16 @@ public class PaymentFormType {
         protected BigInteger redemptionQuantity;
         @XmlAttribute(name = "ApprovalCode")
         protected String approvalCode;
-        @XmlAttribute(name = "PromotionCode")
-        protected String promotionCode;
-        @XmlAttribute(name = "PromotionVendorCode")
-        protected List<String> promotionVendorCode;
         @XmlAttribute(name = "CertificateNumber")
         protected String certificateNumber;
         @XmlAttribute(name = "MemberNumber")
         protected String memberNumber;
         @XmlAttribute(name = "ProgramName")
         protected String programName;
+        @XmlAttribute(name = "PromotionCode")
+        protected String promotionCode;
+        @XmlAttribute(name = "PromotionVendorCode")
+        protected List<String> promotionVendorCode;
 
         /**
          * 获取redemptionQuantity属性的值。
@@ -681,59 +681,6 @@ public class PaymentFormType {
          */
         public void setApprovalCode(String value) {
             this.approvalCode = value;
-        }
-
-        /**
-         * 获取promotionCode属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getPromotionCode() {
-            return promotionCode;
-        }
-
-        /**
-         * 设置promotionCode属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setPromotionCode(String value) {
-            this.promotionCode = value;
-        }
-
-        /**
-         * Gets the value of the promotionVendorCode property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the promotionVendorCode property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getPromotionVendorCode().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link String }
-         * 
-         * 
-         */
-        public List<String> getPromotionVendorCode() {
-            if (promotionVendorCode == null) {
-                promotionVendorCode = new ArrayList<String>();
-            }
-            return this.promotionVendorCode;
         }
 
         /**
@@ -806,6 +753,59 @@ public class PaymentFormType {
          */
         public void setProgramName(String value) {
             this.programName = value;
+        }
+
+        /**
+         * 获取promotionCode属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getPromotionCode() {
+            return promotionCode;
+        }
+
+        /**
+         * 设置promotionCode属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setPromotionCode(String value) {
+            this.promotionCode = value;
+        }
+
+        /**
+         * Gets the value of the promotionVendorCode property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the promotionVendorCode property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getPromotionVendorCode().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link String }
+         * 
+         * 
+         */
+        public List<String> getPromotionVendorCode() {
+            if (promotionVendorCode == null) {
+                promotionVendorCode = new ArrayList<String>();
+            }
+            return this.promotionVendorCode;
         }
 
     }

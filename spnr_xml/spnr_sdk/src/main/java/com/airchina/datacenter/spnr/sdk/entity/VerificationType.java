@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -41,6 +41,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *               &lt;extension base="{http://www.opentravel.org/OTA/2003/05}PersonNameType">
  *                 &lt;sequence>
  *                   &lt;element name="EncryptedSurname" type="{http://www.opentravel.org/OTA/2003/05}SimplifiedStringType"/>
+ *                   &lt;element name="EncryptedGivenName" type="{http://www.opentravel.org/OTA/2003/05}SimplifiedStringType"/>
  *                 &lt;/sequence>
  *                 &lt;attribute name="PartialName" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *               &lt;/extension>
@@ -858,6 +859,12 @@ public class VerificationType {
         @XmlAttribute(name = "SignupDate")
         @XmlSchemaType(name = "date")
         protected XMLGregorianCalendar signupDate;
+        @XmlAttribute(name = "EffectiveDate")
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar effectiveDate;
+        @XmlAttribute(name = "ExpireDate")
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar expireDate;
         @XmlAttribute(name = "LoyalLevel")
         protected String loyalLevel;
         @XmlAttribute(name = "LoyalLevelCode")
@@ -868,12 +875,6 @@ public class VerificationType {
         @XmlAttribute(name = "ShareMarketInd")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         protected String shareMarketInd;
-        @XmlAttribute(name = "EffectiveDate")
-        @XmlSchemaType(name = "date")
-        protected XMLGregorianCalendar effectiveDate;
-        @XmlAttribute(name = "ExpireDate")
-        @XmlSchemaType(name = "date")
-        protected XMLGregorianCalendar expireDate;
 
         /**
          * 获取programID属性的值。
@@ -1145,6 +1146,54 @@ public class VerificationType {
         }
 
         /**
+         * 获取effectiveDate属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public XMLGregorianCalendar getEffectiveDate() {
+            return effectiveDate;
+        }
+
+        /**
+         * 设置effectiveDate属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public void setEffectiveDate(XMLGregorianCalendar value) {
+            this.effectiveDate = value;
+        }
+
+        /**
+         * 获取expireDate属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public XMLGregorianCalendar getExpireDate() {
+            return expireDate;
+        }
+
+        /**
+         * 设置expireDate属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public void setExpireDate(XMLGregorianCalendar value) {
+            this.expireDate = value;
+        }
+
+        /**
          * 获取loyalLevel属性的值。
          * 
          * @return
@@ -1238,54 +1287,6 @@ public class VerificationType {
          */
         public void setShareMarketInd(String value) {
             this.shareMarketInd = value;
-        }
-
-        /**
-         * 获取effectiveDate属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public XMLGregorianCalendar getEffectiveDate() {
-            return effectiveDate;
-        }
-
-        /**
-         * 设置effectiveDate属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public void setEffectiveDate(XMLGregorianCalendar value) {
-            this.effectiveDate = value;
-        }
-
-        /**
-         * 获取expireDate属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public XMLGregorianCalendar getExpireDate() {
-            return expireDate;
-        }
-
-        /**
-         * 设置expireDate属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public void setExpireDate(XMLGregorianCalendar value) {
-            this.expireDate = value;
         }
 
     }
@@ -1444,6 +1445,7 @@ public class VerificationType {
      *     &lt;extension base="{http://www.opentravel.org/OTA/2003/05}PersonNameType">
      *       &lt;sequence>
      *         &lt;element name="EncryptedSurname" type="{http://www.opentravel.org/OTA/2003/05}SimplifiedStringType"/>
+     *         &lt;element name="EncryptedGivenName" type="{http://www.opentravel.org/OTA/2003/05}SimplifiedStringType"/>
      *       &lt;/sequence>
      *       &lt;attribute name="PartialName" type="{http://www.w3.org/2001/XMLSchema}boolean" />
      *     &lt;/extension>
@@ -1455,7 +1457,8 @@ public class VerificationType {
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "encryptedSurname"
+        "encryptedSurname",
+        "encryptedGivenName"
     })
     public static class PersonName
         extends PersonNameType
@@ -1463,6 +1466,8 @@ public class VerificationType {
 
         @XmlElement(name = "EncryptedSurname", required = true)
         protected SimplifiedStringType encryptedSurname;
+        @XmlElement(name = "EncryptedGivenName", required = true)
+        protected SimplifiedStringType encryptedGivenName;
         @XmlAttribute(name = "PartialName")
         protected Boolean partialName;
 
@@ -1488,6 +1493,30 @@ public class VerificationType {
          */
         public void setEncryptedSurname(SimplifiedStringType value) {
             this.encryptedSurname = value;
+        }
+
+        /**
+         * 获取encryptedGivenName属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link SimplifiedStringType }
+         *     
+         */
+        public SimplifiedStringType getEncryptedGivenName() {
+            return encryptedGivenName;
+        }
+
+        /**
+         * 设置encryptedGivenName属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link SimplifiedStringType }
+         *     
+         */
+        public void setEncryptedGivenName(SimplifiedStringType value) {
+            this.encryptedGivenName = value;
         }
 
         /**
@@ -1761,6 +1790,8 @@ public class VerificationType {
         @XmlAttribute(name = "ShareMarketInd")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         protected String shareMarketInd;
+        @XmlAttribute(name = "FormattedInd")
+        protected Boolean formattedInd;
         @XmlAttribute(name = "PhoneLocationType")
         protected String phoneLocationType;
         @XmlAttribute(name = "PhoneTechType")
@@ -1777,8 +1808,6 @@ public class VerificationType {
         protected String extension;
         @XmlAttribute(name = "PIN")
         protected String pin;
-        @XmlAttribute(name = "FormattedInd")
-        protected Boolean formattedInd;
 
         /**
          * 获取rph属性的值。
@@ -1926,6 +1955,34 @@ public class VerificationType {
          */
         public void setShareMarketInd(String value) {
             this.shareMarketInd = value;
+        }
+
+        /**
+         * 获取formattedInd属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link Boolean }
+         *     
+         */
+        public boolean isFormattedInd() {
+            if (formattedInd == null) {
+                return false;
+            } else {
+                return formattedInd;
+            }
+        }
+
+        /**
+         * 设置formattedInd属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Boolean }
+         *     
+         */
+        public void setFormattedInd(Boolean value) {
+            this.formattedInd = value;
         }
 
         /**
@@ -2118,34 +2175,6 @@ public class VerificationType {
          */
         public void setPIN(String value) {
             this.pin = value;
-        }
-
-        /**
-         * 获取formattedInd属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link Boolean }
-         *     
-         */
-        public boolean isFormattedInd() {
-            if (formattedInd == null) {
-                return false;
-            } else {
-                return formattedInd;
-            }
-        }
-
-        /**
-         * 设置formattedInd属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Boolean }
-         *     
-         */
-        public void setFormattedInd(Boolean value) {
-            this.formattedInd = value;
         }
 
     }

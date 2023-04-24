@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -75,6 +75,7 @@ import javax.xml.bind.annotation.XmlType;
  *                   &lt;element name="InvoiceTitle" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *                   &lt;element name="InvoiceType" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *                   &lt;element name="TrackingReferenceID" type="{http://www.opentravel.org/OTA/2003/05}UniqueID_Type" minOccurs="0"/>
+ *                   &lt;element name="InvoiceIssuer" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -386,6 +387,7 @@ public class FulfillmentType {
      *         &lt;element name="InvoiceTitle" type="{http://www.w3.org/2001/XMLSchema}string"/>
      *         &lt;element name="InvoiceType" type="{http://www.w3.org/2001/XMLSchema}string"/>
      *         &lt;element name="TrackingReferenceID" type="{http://www.opentravel.org/OTA/2003/05}UniqueID_Type" minOccurs="0"/>
+     *         &lt;element name="InvoiceIssuer" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -398,7 +400,8 @@ public class FulfillmentType {
     @XmlType(name = "", propOrder = {
         "invoiceTitle",
         "invoiceType",
-        "trackingReferenceID"
+        "trackingReferenceID",
+        "invoiceIssuer"
     })
     public static class Invoice {
 
@@ -408,6 +411,8 @@ public class FulfillmentType {
         protected String invoiceType;
         @XmlElement(name = "TrackingReferenceID")
         protected UniqueIDType trackingReferenceID;
+        @XmlElement(name = "InvoiceIssuer")
+        protected String invoiceIssuer;
 
         /**
          * 获取invoiceTitle属性的值。
@@ -479,6 +484,30 @@ public class FulfillmentType {
          */
         public void setTrackingReferenceID(UniqueIDType value) {
             this.trackingReferenceID = value;
+        }
+
+        /**
+         * 获取invoiceIssuer属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getInvoiceIssuer() {
+            return invoiceIssuer;
+        }
+
+        /**
+         * 设置invoiceIssuer属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setInvoiceIssuer(String value) {
+            this.invoiceIssuer = value;
         }
 
     }

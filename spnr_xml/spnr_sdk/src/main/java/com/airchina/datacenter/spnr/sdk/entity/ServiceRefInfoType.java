@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -52,9 +52,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Description" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="DescriptionVariable" type="{http://www.opentravel.org/OTA/2003/05}SrvcDesVariableType" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ReasonCodeReq"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ServiceTypeCode"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}Method"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ReasonCodeReq"/>
  *       &lt;attribute name="AssociationID" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -88,8 +88,6 @@ public class ServiceRefInfoType {
     protected SrvcDesVariableType descriptionVariable;
     @XmlAttribute(name = "AssociationID", required = true)
     protected String associationID;
-    @XmlAttribute(name = "ReasonCode", required = true)
-    protected String reasonCode;
     @XmlAttribute(name = "ServiceType")
     protected String serviceType;
     @XmlAttribute(name = "ServiceCode")
@@ -98,6 +96,8 @@ public class ServiceRefInfoType {
     protected String subCode;
     @XmlAttribute(name = "Method", required = true)
     protected String method;
+    @XmlAttribute(name = "ReasonCode", required = true)
+    protected String reasonCode;
 
     /**
      * 获取travelerIDRef属性的值。
@@ -273,30 +273,6 @@ public class ServiceRefInfoType {
     }
 
     /**
-     * 获取reasonCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getReasonCode() {
-        return reasonCode;
-    }
-
-    /**
-     * 设置reasonCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setReasonCode(String value) {
-        this.reasonCode = value;
-    }
-
-    /**
      * 获取serviceType属性的值。
      * 
      * @return
@@ -390,6 +366,30 @@ public class ServiceRefInfoType {
      */
     public void setMethod(String value) {
         this.method = value;
+    }
+
+    /**
+     * 获取reasonCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getReasonCode() {
+        return reasonCode;
+    }
+
+    /**
+     * 设置reasonCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReasonCode(String value) {
+        this.reasonCode = value;
     }
 
 

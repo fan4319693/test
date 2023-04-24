@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -99,9 +99,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeStampGroup"/>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ShareAllGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ProfileTypeGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ShareAllGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeStampGroup"/>
  *       &lt;attribute name="RPH" type="{http://www.opentravel.org/OTA/2003/05}RPH_Type" />
  *       &lt;attribute name="hasLoyaltyAccount" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *       &lt;attribute name="VerifiedInd" type="{http://www.w3.org/2001/XMLSchema}boolean" />
@@ -184,6 +184,12 @@ public class ProfileType {
     protected List<String> statusCode;
     @XmlAttribute(name = "RegistrationType")
     protected String registrationType;
+    @XmlAttribute(name = "ProfileType")
+    protected String profileType;
+    @XmlAttribute(name = "ShareAllSynchInd")
+    protected YesNoType shareAllSynchInd;
+    @XmlAttribute(name = "ShareAllMarketInd")
+    protected YesNoType shareAllMarketInd;
     @XmlAttribute(name = "CreateDateTime")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar createDateTime;
@@ -194,12 +200,6 @@ public class ProfileType {
     protected XMLGregorianCalendar lastModifyDateTime;
     @XmlAttribute(name = "LastModifierID")
     protected String lastModifierID;
-    @XmlAttribute(name = "ShareAllSynchInd")
-    protected YesNoType shareAllSynchInd;
-    @XmlAttribute(name = "ShareAllMarketInd")
-    protected YesNoType shareAllMarketInd;
-    @XmlAttribute(name = "ProfileType")
-    protected String profileType;
 
     /**
      * 获取accesses属性的值。
@@ -750,6 +750,86 @@ public class ProfileType {
     }
 
     /**
+     * 获取profileType属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getProfileType() {
+        return profileType;
+    }
+
+    /**
+     * 设置profileType属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setProfileType(String value) {
+        this.profileType = value;
+    }
+
+    /**
+     * 获取shareAllSynchInd属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link YesNoType }
+     *     
+     */
+    public YesNoType getShareAllSynchInd() {
+        if (shareAllSynchInd == null) {
+            return YesNoType.NO;
+        } else {
+            return shareAllSynchInd;
+        }
+    }
+
+    /**
+     * 设置shareAllSynchInd属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link YesNoType }
+     *     
+     */
+    public void setShareAllSynchInd(YesNoType value) {
+        this.shareAllSynchInd = value;
+    }
+
+    /**
+     * 获取shareAllMarketInd属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link YesNoType }
+     *     
+     */
+    public YesNoType getShareAllMarketInd() {
+        if (shareAllMarketInd == null) {
+            return YesNoType.NO;
+        } else {
+            return shareAllMarketInd;
+        }
+    }
+
+    /**
+     * 设置shareAllMarketInd属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link YesNoType }
+     *     
+     */
+    public void setShareAllMarketInd(YesNoType value) {
+        this.shareAllMarketInd = value;
+    }
+
+    /**
      * 获取createDateTime属性的值。
      * 
      * @return
@@ -843,86 +923,6 @@ public class ProfileType {
      */
     public void setLastModifierID(String value) {
         this.lastModifierID = value;
-    }
-
-    /**
-     * 获取shareAllSynchInd属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link YesNoType }
-     *     
-     */
-    public YesNoType getShareAllSynchInd() {
-        if (shareAllSynchInd == null) {
-            return YesNoType.NO;
-        } else {
-            return shareAllSynchInd;
-        }
-    }
-
-    /**
-     * 设置shareAllSynchInd属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link YesNoType }
-     *     
-     */
-    public void setShareAllSynchInd(YesNoType value) {
-        this.shareAllSynchInd = value;
-    }
-
-    /**
-     * 获取shareAllMarketInd属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link YesNoType }
-     *     
-     */
-    public YesNoType getShareAllMarketInd() {
-        if (shareAllMarketInd == null) {
-            return YesNoType.NO;
-        } else {
-            return shareAllMarketInd;
-        }
-    }
-
-    /**
-     * 设置shareAllMarketInd属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link YesNoType }
-     *     
-     */
-    public void setShareAllMarketInd(YesNoType value) {
-        this.shareAllMarketInd = value;
-    }
-
-    /**
-     * 获取profileType属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getProfileType() {
-        return profileType;
-    }
-
-    /**
-     * 设置profileType属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setProfileType(String value) {
-        this.profileType = value;
     }
 
 

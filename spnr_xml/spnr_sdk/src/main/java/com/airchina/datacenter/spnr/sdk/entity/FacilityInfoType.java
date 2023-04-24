@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -287,8 +287,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                                 &lt;/choice>
  *                                                 &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *                                               &lt;/sequence>
- *                                               &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}QuantityGroup"/>
  *                                               &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+ *                                               &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}QuantityGroup"/>
  *                                               &lt;attribute name="RoomAmenityCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
  *                                               &lt;attribute name="IncludedInRateIndicator" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *                                               &lt;attribute name="ExistsCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
@@ -305,6 +305,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                             &lt;element name="Features" type="{http://www.opentravel.org/OTA/2003/05}FeaturesType" minOccurs="0"/>
  *                             &lt;element name="MultimediaDescriptions" type="{http://www.opentravel.org/OTA/2003/05}MultimediaDescriptionsType" minOccurs="0"/>
  *                             &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                             &lt;element ref="{http://www.opentravel.org/OTA/2003/05}AltRoomTypeNames" minOccurs="0"/>
  *                             &lt;element name="Description" type="{http://www.opentravel.org/OTA/2003/05}MultimediaDescriptionsType" minOccurs="0"/>
  *                             &lt;element name="ShortDescription" type="{http://www.opentravel.org/OTA/2003/05}MultimediaDescriptionsType" minOccurs="0"/>
  *                           &lt;/sequence>
@@ -521,8 +522,8 @@ public class FacilityInfoType {
      *                                       &lt;/choice>
      *                                       &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
      *                                     &lt;/sequence>
-     *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}QuantityGroup"/>
      *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+     *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}QuantityGroup"/>
      *                                     &lt;attribute name="RoomAmenityCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
      *                                     &lt;attribute name="IncludedInRateIndicator" type="{http://www.w3.org/2001/XMLSchema}boolean" />
      *                                     &lt;attribute name="ExistsCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
@@ -539,6 +540,7 @@ public class FacilityInfoType {
      *                   &lt;element name="Features" type="{http://www.opentravel.org/OTA/2003/05}FeaturesType" minOccurs="0"/>
      *                   &lt;element name="MultimediaDescriptions" type="{http://www.opentravel.org/OTA/2003/05}MultimediaDescriptionsType" minOccurs="0"/>
      *                   &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *                   &lt;element ref="{http://www.opentravel.org/OTA/2003/05}AltRoomTypeNames" minOccurs="0"/>
      *                   &lt;element name="Description" type="{http://www.opentravel.org/OTA/2003/05}MultimediaDescriptionsType" minOccurs="0"/>
      *                   &lt;element name="ShortDescription" type="{http://www.opentravel.org/OTA/2003/05}MultimediaDescriptionsType" minOccurs="0"/>
      *                 &lt;/sequence>
@@ -694,8 +696,8 @@ public class FacilityInfoType {
          *                             &lt;/choice>
          *                             &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          *                           &lt;/sequence>
-         *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}QuantityGroup"/>
          *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+         *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}QuantityGroup"/>
          *                           &lt;attribute name="RoomAmenityCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
          *                           &lt;attribute name="IncludedInRateIndicator" type="{http://www.w3.org/2001/XMLSchema}boolean" />
          *                           &lt;attribute name="ExistsCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
@@ -712,6 +714,7 @@ public class FacilityInfoType {
          *         &lt;element name="Features" type="{http://www.opentravel.org/OTA/2003/05}FeaturesType" minOccurs="0"/>
          *         &lt;element name="MultimediaDescriptions" type="{http://www.opentravel.org/OTA/2003/05}MultimediaDescriptionsType" minOccurs="0"/>
          *         &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         *         &lt;element ref="{http://www.opentravel.org/OTA/2003/05}AltRoomTypeNames" minOccurs="0"/>
          *         &lt;element name="Description" type="{http://www.opentravel.org/OTA/2003/05}MultimediaDescriptionsType" minOccurs="0"/>
          *         &lt;element name="ShortDescription" type="{http://www.opentravel.org/OTA/2003/05}MultimediaDescriptionsType" minOccurs="0"/>
          *       &lt;/sequence>
@@ -740,6 +743,7 @@ public class FacilityInfoType {
             "features",
             "multimediaDescriptions",
             "descriptiveText",
+            "altRoomTypeNames",
             "description",
             "shortDescription"
         })
@@ -757,6 +761,8 @@ public class FacilityInfoType {
             protected MultimediaDescriptionsType multimediaDescriptions;
             @XmlElement(name = "DescriptiveText")
             protected String descriptiveText;
+            @XmlElement(name = "AltRoomTypeNames")
+            protected AltRoomTypeNames altRoomTypeNames;
             @XmlElement(name = "Description")
             protected MultimediaDescriptionsType description;
             @XmlElement(name = "ShortDescription")
@@ -942,6 +948,30 @@ public class FacilityInfoType {
              */
             public void setDescriptiveText(String value) {
                 this.descriptiveText = value;
+            }
+
+            /**
+             * 获取altRoomTypeNames属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link AltRoomTypeNames }
+             *     
+             */
+            public AltRoomTypeNames getAltRoomTypeNames() {
+                return altRoomTypeNames;
+            }
+
+            /**
+             * 设置altRoomTypeNames属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link AltRoomTypeNames }
+             *     
+             */
+            public void setAltRoomTypeNames(AltRoomTypeNames value) {
+                this.altRoomTypeNames = value;
             }
 
             /**
@@ -1328,8 +1358,8 @@ public class FacilityInfoType {
              *                   &lt;/choice>
              *                   &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
              *                 &lt;/sequence>
-             *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}QuantityGroup"/>
              *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+             *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}QuantityGroup"/>
              *                 &lt;attribute name="RoomAmenityCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
              *                 &lt;attribute name="IncludedInRateIndicator" type="{http://www.w3.org/2001/XMLSchema}boolean" />
              *                 &lt;attribute name="ExistsCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
@@ -1403,8 +1433,8 @@ public class FacilityInfoType {
                  *         &lt;/choice>
                  *         &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
                  *       &lt;/sequence>
-                 *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}QuantityGroup"/>
                  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+                 *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}QuantityGroup"/>
                  *       &lt;attribute name="RoomAmenityCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
                  *       &lt;attribute name="IncludedInRateIndicator" type="{http://www.w3.org/2001/XMLSchema}boolean" />
                  *       &lt;attribute name="ExistsCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
@@ -1444,13 +1474,13 @@ public class FacilityInfoType {
                     protected String existsCode;
                     @XmlAttribute(name = "AmenityCode", required = true)
                     protected int amenityCode;
-                    @XmlAttribute(name = "Quantity")
-                    @XmlSchemaType(name = "nonNegativeInteger")
-                    protected BigInteger quantity;
                     @XmlAttribute(name = "CodeDetail")
                     protected String codeDetail;
                     @XmlAttribute(name = "Removal")
                     protected Boolean removal;
+                    @XmlAttribute(name = "Quantity")
+                    @XmlSchemaType(name = "nonNegativeInteger")
+                    protected BigInteger quantity;
 
                     /**
                      * 获取operationSchedules属性的值。
@@ -1671,30 +1701,6 @@ public class FacilityInfoType {
                     }
 
                     /**
-                     * 获取quantity属性的值。
-                     * 
-                     * @return
-                     *     possible object is
-                     *     {@link BigInteger }
-                     *     
-                     */
-                    public BigInteger getQuantity() {
-                        return quantity;
-                    }
-
-                    /**
-                     * 设置quantity属性的值。
-                     * 
-                     * @param value
-                     *     allowed object is
-                     *     {@link BigInteger }
-                     *     
-                     */
-                    public void setQuantity(BigInteger value) {
-                        this.quantity = value;
-                    }
-
-                    /**
                      * 获取codeDetail属性的值。
                      * 
                      * @return
@@ -1744,6 +1750,30 @@ public class FacilityInfoType {
                      */
                     public void setRemoval(Boolean value) {
                         this.removal = value;
+                    }
+
+                    /**
+                     * 获取quantity属性的值。
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link BigInteger }
+                     *     
+                     */
+                    public BigInteger getQuantity() {
+                        return quantity;
+                    }
+
+                    /**
+                     * 设置quantity属性的值。
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link BigInteger }
+                     *     
+                     */
+                    public void setQuantity(BigInteger value) {
+                        this.quantity = value;
                     }
 
                 }

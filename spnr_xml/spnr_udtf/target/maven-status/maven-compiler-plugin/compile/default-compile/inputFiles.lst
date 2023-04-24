@@ -1,10 +1,2 @@
-D:\workspace\ca\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\utils\XmlTables.java
-D:\workspace\ca\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\processor\XmlProcessor.java
-D:\workspace\ca\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\XmlTabUDTF.java
-D:\workspace\ca\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\pojo\XmlParserEx.java
-D:\workspace\ca\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\utils\ClassMapper.java
-D:\workspace\ca\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\processor\Dispatcher.java
-D:\workspace\ca\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\XmlPathUDF.java
-D:\workspace\ca\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\utils\Arguments.java
-D:\workspace\ca\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\utils\KafkaDao.java
-D:\workspace\ca\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\pojo\KafkaLogs.java
+C:\Users\LPT014812\Desktop\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\XmlPathUDF.java
+C:\Users\LPT014812\Desktop\udf\spnr_xml\spnr_udtf\src\main\java\com\airchina\datacenter\spnr\udf\XmlTabUDTF.java

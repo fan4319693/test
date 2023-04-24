@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -65,10 +65,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                             &lt;element name="RefPoints" type="{http://www.opentravel.org/OTA/2003/05}RefPointsType" minOccurs="0"/>
  *                             &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *                           &lt;/sequence>
- *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+ *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
  *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
  *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
- *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+ *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
  *                           &lt;attribute name="AttractionCategoryCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
  *                           &lt;attribute name="AttractionName" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                           &lt;attribute name="AttractionFee" type="{http://www.w3.org/2001/XMLSchema}float" />
@@ -135,8 +135,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                             &lt;/element>
  *                             &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *                           &lt;/sequence>
- *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
  *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+ *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
  *                           &lt;attribute name="Code" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
  *                           &lt;attribute name="Name" type="{http://www.opentravel.org/OTA/2003/05}StringLength0to64" />
  *                           &lt;attribute name="ProximityCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
@@ -333,10 +333,10 @@ public class AreaInfoType {
      *                   &lt;element name="RefPoints" type="{http://www.opentravel.org/OTA/2003/05}RefPointsType" minOccurs="0"/>
      *                   &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
      *                 &lt;/sequence>
-     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
      *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
      *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
-     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
      *                 &lt;attribute name="AttractionCategoryCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
      *                 &lt;attribute name="AttractionName" type="{http://www.w3.org/2001/XMLSchema}string" />
      *                 &lt;attribute name="AttractionFee" type="{http://www.w3.org/2001/XMLSchema}float" />
@@ -446,10 +446,10 @@ public class AreaInfoType {
          *         &lt;element name="RefPoints" type="{http://www.opentravel.org/OTA/2003/05}RefPointsType" minOccurs="0"/>
          *         &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          *       &lt;/sequence>
-         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
          *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
          *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
-         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
          *       &lt;attribute name="AttractionCategoryCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
          *       &lt;attribute name="AttractionName" type="{http://www.w3.org/2001/XMLSchema}string" />
          *       &lt;attribute name="AttractionFee" type="{http://www.w3.org/2001/XMLSchema}float" />
@@ -496,16 +496,10 @@ public class AreaInfoType {
             @XmlAttribute(name = "Sort")
             @XmlSchemaType(name = "nonNegativeInteger")
             protected BigInteger sort;
-            @XmlAttribute(name = "Start")
-            protected String start;
-            @XmlAttribute(name = "Duration")
-            protected BigInteger duration;
-            @XmlAttribute(name = "End")
-            protected String end;
-            @XmlAttribute(name = "RangeNum")
-            protected BigInteger rangeNum;
-            @XmlAttribute(name = "SearchTimeZone")
-            protected String searchTimeZone;
+            @XmlAttribute(name = "CodeDetail")
+            protected String codeDetail;
+            @XmlAttribute(name = "Removal")
+            protected Boolean removal;
             @XmlAttribute(name = "URI")
             @XmlSchemaType(name = "anyURI")
             protected String uri;
@@ -518,10 +512,16 @@ public class AreaInfoType {
             protected String codeContext;
             @XmlAttribute(name = "ID")
             protected String id;
-            @XmlAttribute(name = "CodeDetail")
-            protected String codeDetail;
-            @XmlAttribute(name = "Removal")
-            protected Boolean removal;
+            @XmlAttribute(name = "Start")
+            protected String start;
+            @XmlAttribute(name = "Duration")
+            protected BigInteger duration;
+            @XmlAttribute(name = "End")
+            protected String end;
+            @XmlAttribute(name = "RangeNum")
+            protected BigInteger rangeNum;
+            @XmlAttribute(name = "SearchTimeZone")
+            protected String searchTimeZone;
 
             /**
              * 获取contact属性的值。
@@ -788,123 +788,55 @@ public class AreaInfoType {
             }
 
             /**
-             * 获取start属性的值。
+             * 获取codeDetail属性的值。
              * 
              * @return
              *     possible object is
              *     {@link String }
              *     
              */
-            public String getStart() {
-                return start;
+            public String getCodeDetail() {
+                return codeDetail;
             }
 
             /**
-             * 设置start属性的值。
+             * 设置codeDetail属性的值。
              * 
              * @param value
              *     allowed object is
              *     {@link String }
              *     
              */
-            public void setStart(String value) {
-                this.start = value;
+            public void setCodeDetail(String value) {
+                this.codeDetail = value;
             }
 
             /**
-             * 获取duration属性的值。
+             * 获取removal属性的值。
              * 
              * @return
              *     possible object is
-             *     {@link BigInteger }
+             *     {@link Boolean }
              *     
              */
-            public BigInteger getDuration() {
-                return duration;
+            public boolean isRemoval() {
+                if (removal == null) {
+                    return false;
+                } else {
+                    return removal;
+                }
             }
 
             /**
-             * 设置duration属性的值。
+             * 设置removal属性的值。
              * 
              * @param value
              *     allowed object is
-             *     {@link BigInteger }
+             *     {@link Boolean }
              *     
              */
-            public void setDuration(BigInteger value) {
-                this.duration = value;
-            }
-
-            /**
-             * 获取end属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getEnd() {
-                return end;
-            }
-
-            /**
-             * 设置end属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setEnd(String value) {
-                this.end = value;
-            }
-
-            /**
-             * 获取rangeNum属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link BigInteger }
-             *     
-             */
-            public BigInteger getRangeNum() {
-                return rangeNum;
-            }
-
-            /**
-             * 设置rangeNum属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link BigInteger }
-             *     
-             */
-            public void setRangeNum(BigInteger value) {
-                this.rangeNum = value;
-            }
-
-            /**
-             * 获取searchTimeZone属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getSearchTimeZone() {
-                return searchTimeZone;
-            }
-
-            /**
-             * 设置searchTimeZone属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setSearchTimeZone(String value) {
-                this.searchTimeZone = value;
+            public void setRemoval(Boolean value) {
+                this.removal = value;
             }
 
             /**
@@ -1028,55 +960,123 @@ public class AreaInfoType {
             }
 
             /**
-             * 获取codeDetail属性的值。
+             * 获取start属性的值。
              * 
              * @return
              *     possible object is
              *     {@link String }
              *     
              */
-            public String getCodeDetail() {
-                return codeDetail;
+            public String getStart() {
+                return start;
             }
 
             /**
-             * 设置codeDetail属性的值。
+             * 设置start属性的值。
              * 
              * @param value
              *     allowed object is
              *     {@link String }
              *     
              */
-            public void setCodeDetail(String value) {
-                this.codeDetail = value;
+            public void setStart(String value) {
+                this.start = value;
             }
 
             /**
-             * 获取removal属性的值。
+             * 获取duration属性的值。
              * 
              * @return
              *     possible object is
-             *     {@link Boolean }
+             *     {@link BigInteger }
              *     
              */
-            public boolean isRemoval() {
-                if (removal == null) {
-                    return false;
-                } else {
-                    return removal;
-                }
+            public BigInteger getDuration() {
+                return duration;
             }
 
             /**
-             * 设置removal属性的值。
+             * 设置duration属性的值。
              * 
              * @param value
              *     allowed object is
-             *     {@link Boolean }
+             *     {@link BigInteger }
              *     
              */
-            public void setRemoval(Boolean value) {
-                this.removal = value;
+            public void setDuration(BigInteger value) {
+                this.duration = value;
+            }
+
+            /**
+             * 获取end属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getEnd() {
+                return end;
+            }
+
+            /**
+             * 设置end属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setEnd(String value) {
+                this.end = value;
+            }
+
+            /**
+             * 获取rangeNum属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link BigInteger }
+             *     
+             */
+            public BigInteger getRangeNum() {
+                return rangeNum;
+            }
+
+            /**
+             * 设置rangeNum属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link BigInteger }
+             *     
+             */
+            public void setRangeNum(BigInteger value) {
+                this.rangeNum = value;
+            }
+
+            /**
+             * 获取searchTimeZone属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getSearchTimeZone() {
+                return searchTimeZone;
+            }
+
+            /**
+             * 设置searchTimeZone属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setSearchTimeZone(String value) {
+                this.searchTimeZone = value;
             }
 
 
@@ -1297,6 +1297,8 @@ public class AreaInfoType {
             protected String hotelCode;
             @XmlAttribute(name = "HotelCityCode")
             protected String hotelCityCode;
+            @XmlAttribute(name = "HotelCityCodeContext")
+            protected String hotelCityCodeContext;
             @XmlAttribute(name = "HotelName")
             protected String hotelName;
             @XmlAttribute(name = "HotelCodeContext")
@@ -1305,8 +1307,12 @@ public class AreaInfoType {
             protected String chainName;
             @XmlAttribute(name = "BrandName")
             protected String brandName;
+            @XmlAttribute(name = "InvoiceIssuer")
+            protected String invoiceIssuer;
             @XmlAttribute(name = "AreaID")
             protected String areaID;
+            @XmlAttribute(name = "StayType")
+            protected String stayType;
 
             /**
              * 获取contactInfos属性的值。
@@ -1573,6 +1579,30 @@ public class AreaInfoType {
             }
 
             /**
+             * 获取hotelCityCodeContext属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getHotelCityCodeContext() {
+                return hotelCityCodeContext;
+            }
+
+            /**
+             * 设置hotelCityCodeContext属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setHotelCityCodeContext(String value) {
+                this.hotelCityCodeContext = value;
+            }
+
+            /**
              * 获取hotelName属性的值。
              * 
              * @return
@@ -1669,6 +1699,30 @@ public class AreaInfoType {
             }
 
             /**
+             * 获取invoiceIssuer属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getInvoiceIssuer() {
+                return invoiceIssuer;
+            }
+
+            /**
+             * 设置invoiceIssuer属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setInvoiceIssuer(String value) {
+                this.invoiceIssuer = value;
+            }
+
+            /**
              * 获取areaID属性的值。
              * 
              * @return
@@ -1690,6 +1744,30 @@ public class AreaInfoType {
              */
             public void setAreaID(String value) {
                 this.areaID = value;
+            }
+
+            /**
+             * 获取stayType属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getStayType() {
+                return stayType;
+            }
+
+            /**
+             * 设置stayType属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setStayType(String value) {
+                this.stayType = value;
             }
 
         }
@@ -1752,8 +1830,8 @@ public class AreaInfoType {
      *                   &lt;/element>
      *                   &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
      *                 &lt;/sequence>
-     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
      *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
      *                 &lt;attribute name="Code" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
      *                 &lt;attribute name="Name" type="{http://www.opentravel.org/OTA/2003/05}StringLength0to64" />
      *                 &lt;attribute name="ProximityCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
@@ -1889,8 +1967,8 @@ public class AreaInfoType {
          *         &lt;/element>
          *         &lt;element name="DescriptiveText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
          *       &lt;/sequence>
-         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
          *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeInfoGroup"/>
+         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
          *       &lt;attribute name="Code" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
          *       &lt;attribute name="Name" type="{http://www.opentravel.org/OTA/2003/05}StringLength0to64" />
          *       &lt;attribute name="ProximityCode" type="{http://www.opentravel.org/OTA/2003/05}OTA_CodeType" />
@@ -1940,12 +2018,12 @@ public class AreaInfoType {
             @XmlAttribute(name = "Sort")
             @XmlSchemaType(name = "nonNegativeInteger")
             protected BigInteger sort;
-            @XmlAttribute(name = "ID")
-            protected String id;
             @XmlAttribute(name = "CodeDetail")
             protected String codeDetail;
             @XmlAttribute(name = "Removal")
             protected Boolean removal;
+            @XmlAttribute(name = "ID")
+            protected String id;
 
             /**
              * 获取contact属性的值。
@@ -2236,30 +2314,6 @@ public class AreaInfoType {
             }
 
             /**
-             * 获取id属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getID() {
-                return id;
-            }
-
-            /**
-             * 设置id属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setID(String value) {
-                this.id = value;
-            }
-
-            /**
              * 获取codeDetail属性的值。
              * 
              * @return
@@ -2309,6 +2363,30 @@ public class AreaInfoType {
              */
             public void setRemoval(Boolean value) {
                 this.removal = value;
+            }
+
+            /**
+             * 获取id属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getID() {
+                return id;
+            }
+
+            /**
+             * 设置id属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setID(String value) {
+                this.id = value;
             }
 
 

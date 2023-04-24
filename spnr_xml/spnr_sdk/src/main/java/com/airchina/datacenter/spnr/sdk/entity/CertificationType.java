@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -29,8 +29,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;complexType name="CertificationType">
  *   &lt;simpleContent>
  *     &lt;extension base="&lt;http://www.opentravel.org/OTA/2003/05>FreeTextType">
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}SingleVendorIndGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ID_OptionalGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}SingleVendorIndGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
  *     &lt;/extension>
  *   &lt;/simpleContent>
@@ -45,41 +45,17 @@ public class CertificationType
     extends FreeTextType
 {
 
+    @XmlAttribute(name = "ID")
+    protected String id;
     @XmlAttribute(name = "SingleVendorInd")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String singleVendorInd;
-    @XmlAttribute(name = "ID")
-    protected String id;
     @XmlAttribute(name = "EffectiveDate")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar effectiveDate;
     @XmlAttribute(name = "ExpireDate")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar expireDate;
-
-    /**
-     * 获取singleVendorInd属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSingleVendorInd() {
-        return singleVendorInd;
-    }
-
-    /**
-     * 设置singleVendorInd属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSingleVendorInd(String value) {
-        this.singleVendorInd = value;
-    }
 
     /**
      * 获取id属性的值。
@@ -103,6 +79,30 @@ public class CertificationType
      */
     public void setID(String value) {
         this.id = value;
+    }
+
+    /**
+     * 获取singleVendorInd属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSingleVendorInd() {
+        return singleVendorInd;
+    }
+
+    /**
+     * 设置singleVendorInd属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSingleVendorInd(String value) {
+        this.singleVendorInd = value;
     }
 
     /**

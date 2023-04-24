@@ -1675,21 +1675,14 @@ TRAV = AMOUNT PER INDIVIDUAL TRAVELER</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="WideSearchBudgetListType"/>
 	</xs:simpleType>
-	<xs:simpleType name="ContentDataType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="local"/>
-			<xs:enumeration value="remote"/>
-		</xs:restriction>
-	</xs:simpleType>
-
-      <xs:attributeGroup name="ApplyToAll">
-	<xs:attribute name="ApplyToAll" type="ChoiceType">
-		<xs:annotation>
-			<xs:documentation source="DESCRIPTION" xml:lang="en">If Y, this offer, if selected, applies to all passengers in the PNR.
+	<xs:attributeGroup name="ApplyToAll">
+		<xs:attribute name="ApplyToAll" type="ChoiceType">
+			<xs:annotation>
+				<xs:documentation source="DESCRIPTION" xml:lang="en">If Y, this offer, if selected, applies to all passengers in the PNR.
 Example: Y (YES)</xs:documentation>
-		</xs:annotation>
-	</xs:attribute>
-      </xs:attributeGroup>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
 	<xs:attribute name="BookingTime" type="TimeType">
 		<xs:annotation>
 			<xs:documentation source="DESCRIPTION" xml:lang="en">Booking time.

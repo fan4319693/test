@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -41,8 +41,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}TelephoneInfoGroup"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
  *                 &lt;attribute name="VerificationStatus" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                 &lt;attribute name="VerificationCode" type="{http://www.w3.org/2001/XMLSchema}string" />
  *               &lt;/restriction>
@@ -150,12 +150,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *         &lt;element name="Tag" type="{http://www.opentravel.org/OTA/2003/05}CustomerTagType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="AssociatedInfo" type="{http://www.opentravel.org/OTA/2003/05}CustomerAssociatedInfoType" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}BirthDateGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OJ_PTC_Group"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}GenderGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OJ_SuperPNR_RPH"/>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OJ_PTC_Group"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CurrencyCodeGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}BirthDateGroup"/>
  *       &lt;attribute name="Deceased" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *       &lt;attribute name="LockoutType" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to16" />
  *       &lt;attribute name="Age" type="{http://www.opentravel.org/OTA/2003/05}Numeric1to999" />
@@ -191,7 +192,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "corporateInfo",
     "travelerRefNumber",
     "passengerTypeQuantity",
-    "tag"
+    "tag",
+    "associatedInfo"
 })
 @XmlSeeAlso({
     com.airchina.datacenter.spnr.sdk.entity.OJCustomerPrimaryAdditionalType.Primary.class,
@@ -243,6 +245,8 @@ public class CustomerType {
     protected CustomerType.PassengerTypeQuantity passengerTypeQuantity;
     @XmlElement(name = "Tag")
     protected List<CustomerTagType> tag;
+    @XmlElement(name = "AssociatedInfo")
+    protected CustomerAssociatedInfoType associatedInfo;
     @XmlAttribute(name = "Deceased")
     protected Boolean deceased;
     @XmlAttribute(name = "LockoutType")
@@ -255,23 +259,23 @@ public class CustomerType {
     protected Integer auditID;
     @XmlAttribute(name = "CustomerID")
     protected Integer customerID;
-    @XmlAttribute(name = "BirthDate")
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar birthDate;
+    @XmlAttribute(name = "PassengerTypeCode")
+    protected String passengerTypeCode;
+    @XmlAttribute(name = "PTCSubType")
+    protected String ptcSubType;
     @XmlAttribute(name = "Gender")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String gender;
     @XmlAttribute(name = "OJ_SuperPNR_RPH")
     protected String ojSuperPNRRPH;
-    @XmlAttribute(name = "PassengerTypeCode")
-    protected String passengerTypeCode;
-    @XmlAttribute(name = "PTCSubType")
-    protected String ptcSubType;
     @XmlAttribute(name = "CurrencyCode")
     protected String currencyCode;
     @XmlAttribute(name = "DecimalPlaces")
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger decimalPlaces;
+    @XmlAttribute(name = "BirthDate")
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar birthDate;
 
     /**
      * 获取personName属性的值。
@@ -853,6 +857,30 @@ public class CustomerType {
     }
 
     /**
+     * 获取associatedInfo属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link CustomerAssociatedInfoType }
+     *     
+     */
+    public CustomerAssociatedInfoType getAssociatedInfo() {
+        return associatedInfo;
+    }
+
+    /**
+     * 设置associatedInfo属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CustomerAssociatedInfoType }
+     *     
+     */
+    public void setAssociatedInfo(CustomerAssociatedInfoType value) {
+        this.associatedInfo = value;
+    }
+
+    /**
      * 获取deceased属性的值。
      * 
      * @return
@@ -997,27 +1025,51 @@ public class CustomerType {
     }
 
     /**
-     * 获取birthDate属性的值。
+     * 获取passengerTypeCode属性的值。
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public XMLGregorianCalendar getBirthDate() {
-        return birthDate;
+    public String getPassengerTypeCode() {
+        return passengerTypeCode;
     }
 
     /**
-     * 设置birthDate属性的值。
+     * 设置passengerTypeCode属性的值。
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public void setBirthDate(XMLGregorianCalendar value) {
-        this.birthDate = value;
+    public void setPassengerTypeCode(String value) {
+        this.passengerTypeCode = value;
+    }
+
+    /**
+     * 获取ptcSubType属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPTCSubType() {
+        return ptcSubType;
+    }
+
+    /**
+     * 设置ptcSubType属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPTCSubType(String value) {
+        this.ptcSubType = value;
     }
 
     /**
@@ -1069,54 +1121,6 @@ public class CustomerType {
     }
 
     /**
-     * 获取passengerTypeCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPassengerTypeCode() {
-        return passengerTypeCode;
-    }
-
-    /**
-     * 设置passengerTypeCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPassengerTypeCode(String value) {
-        this.passengerTypeCode = value;
-    }
-
-    /**
-     * 获取ptcSubType属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPTCSubType() {
-        return ptcSubType;
-    }
-
-    /**
-     * 设置ptcSubType属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPTCSubType(String value) {
-        this.ptcSubType = value;
-    }
-
-    /**
      * 获取currencyCode属性的值。
      * 
      * @return
@@ -1162,6 +1166,30 @@ public class CustomerType {
      */
     public void setDecimalPlaces(BigInteger value) {
         this.decimalPlaces = value;
+    }
+
+    /**
+     * 获取birthDate属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getBirthDate() {
+        return birthDate;
+    }
+
+    /**
+     * 设置birthDate属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setBirthDate(XMLGregorianCalendar value) {
+        this.birthDate = value;
     }
 
 
@@ -1760,6 +1788,12 @@ public class CustomerType {
         @XmlAttribute(name = "SignupDate")
         @XmlSchemaType(name = "date")
         protected XMLGregorianCalendar signupDate;
+        @XmlAttribute(name = "EffectiveDate")
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar effectiveDate;
+        @XmlAttribute(name = "ExpireDate")
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar expireDate;
         @XmlAttribute(name = "LoyalLevel")
         protected String loyalLevel;
         @XmlAttribute(name = "LoyalLevelCode")
@@ -1770,12 +1804,6 @@ public class CustomerType {
         @XmlAttribute(name = "ShareMarketInd")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         protected String shareMarketInd;
-        @XmlAttribute(name = "EffectiveDate")
-        @XmlSchemaType(name = "date")
-        protected XMLGregorianCalendar effectiveDate;
-        @XmlAttribute(name = "ExpireDate")
-        @XmlSchemaType(name = "date")
-        protected XMLGregorianCalendar expireDate;
 
         /**
          * 获取loyaltyDetail属性的值。
@@ -2172,6 +2200,54 @@ public class CustomerType {
         }
 
         /**
+         * 获取effectiveDate属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public XMLGregorianCalendar getEffectiveDate() {
+            return effectiveDate;
+        }
+
+        /**
+         * 设置effectiveDate属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public void setEffectiveDate(XMLGregorianCalendar value) {
+            this.effectiveDate = value;
+        }
+
+        /**
+         * 获取expireDate属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public XMLGregorianCalendar getExpireDate() {
+            return expireDate;
+        }
+
+        /**
+         * 设置expireDate属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public void setExpireDate(XMLGregorianCalendar value) {
+            this.expireDate = value;
+        }
+
+        /**
          * 获取loyalLevel属性的值。
          * 
          * @return
@@ -2265,54 +2341,6 @@ public class CustomerType {
          */
         public void setShareMarketInd(String value) {
             this.shareMarketInd = value;
-        }
-
-        /**
-         * 获取effectiveDate属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public XMLGregorianCalendar getEffectiveDate() {
-            return effectiveDate;
-        }
-
-        /**
-         * 设置effectiveDate属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public void setEffectiveDate(XMLGregorianCalendar value) {
-            this.effectiveDate = value;
-        }
-
-        /**
-         * 获取expireDate属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public XMLGregorianCalendar getExpireDate() {
-            return expireDate;
-        }
-
-        /**
-         * 设置expireDate属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public void setExpireDate(XMLGregorianCalendar value) {
-            this.expireDate = value;
         }
 
     }
@@ -2536,8 +2564,8 @@ public class CustomerType {
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}TelephoneInfoGroup"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
      *       &lt;attribute name="VerificationStatus" type="{http://www.w3.org/2001/XMLSchema}string" />
      *       &lt;attribute name="VerificationCode" type="{http://www.w3.org/2001/XMLSchema}string" />
      *     &lt;/restriction>
@@ -2555,12 +2583,6 @@ public class CustomerType {
         protected String verificationStatus;
         @XmlAttribute(name = "VerificationCode")
         protected String verificationCode;
-        @XmlAttribute(name = "EffectiveDate")
-        @XmlSchemaType(name = "date")
-        protected XMLGregorianCalendar effectiveDate;
-        @XmlAttribute(name = "ExpireDate")
-        @XmlSchemaType(name = "date")
-        protected XMLGregorianCalendar expireDate;
         @XmlAttribute(name = "RPH")
         protected String rph;
         @XmlAttribute(name = "index")
@@ -2575,6 +2597,8 @@ public class CustomerType {
         @XmlAttribute(name = "ShareMarketInd")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         protected String shareMarketInd;
+        @XmlAttribute(name = "FormattedInd")
+        protected Boolean formattedInd;
         @XmlAttribute(name = "PhoneLocationType")
         protected String phoneLocationType;
         @XmlAttribute(name = "PhoneTechType")
@@ -2591,8 +2615,12 @@ public class CustomerType {
         protected String extension;
         @XmlAttribute(name = "PIN")
         protected String pin;
-        @XmlAttribute(name = "FormattedInd")
-        protected Boolean formattedInd;
+        @XmlAttribute(name = "EffectiveDate")
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar effectiveDate;
+        @XmlAttribute(name = "ExpireDate")
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar expireDate;
 
         /**
          * 获取verificationStatus属性的值。
@@ -2640,54 +2668,6 @@ public class CustomerType {
          */
         public void setVerificationCode(String value) {
             this.verificationCode = value;
-        }
-
-        /**
-         * 获取effectiveDate属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public XMLGregorianCalendar getEffectiveDate() {
-            return effectiveDate;
-        }
-
-        /**
-         * 设置effectiveDate属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public void setEffectiveDate(XMLGregorianCalendar value) {
-            this.effectiveDate = value;
-        }
-
-        /**
-         * 获取expireDate属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public XMLGregorianCalendar getExpireDate() {
-            return expireDate;
-        }
-
-        /**
-         * 设置expireDate属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public void setExpireDate(XMLGregorianCalendar value) {
-            this.expireDate = value;
         }
 
         /**
@@ -2836,6 +2816,34 @@ public class CustomerType {
          */
         public void setShareMarketInd(String value) {
             this.shareMarketInd = value;
+        }
+
+        /**
+         * 获取formattedInd属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link Boolean }
+         *     
+         */
+        public boolean isFormattedInd() {
+            if (formattedInd == null) {
+                return false;
+            } else {
+                return formattedInd;
+            }
+        }
+
+        /**
+         * 设置formattedInd属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Boolean }
+         *     
+         */
+        public void setFormattedInd(Boolean value) {
+            this.formattedInd = value;
         }
 
         /**
@@ -3031,31 +3039,51 @@ public class CustomerType {
         }
 
         /**
-         * 获取formattedInd属性的值。
+         * 获取effectiveDate属性的值。
          * 
          * @return
          *     possible object is
-         *     {@link Boolean }
+         *     {@link XMLGregorianCalendar }
          *     
          */
-        public boolean isFormattedInd() {
-            if (formattedInd == null) {
-                return false;
-            } else {
-                return formattedInd;
-            }
+        public XMLGregorianCalendar getEffectiveDate() {
+            return effectiveDate;
         }
 
         /**
-         * 设置formattedInd属性的值。
+         * 设置effectiveDate属性的值。
          * 
          * @param value
          *     allowed object is
-         *     {@link Boolean }
+         *     {@link XMLGregorianCalendar }
          *     
          */
-        public void setFormattedInd(Boolean value) {
-            this.formattedInd = value;
+        public void setEffectiveDate(XMLGregorianCalendar value) {
+            this.effectiveDate = value;
+        }
+
+        /**
+         * 获取expireDate属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public XMLGregorianCalendar getExpireDate() {
+            return expireDate;
+        }
+
+        /**
+         * 设置expireDate属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public void setExpireDate(XMLGregorianCalendar value) {
+            this.expireDate = value;
         }
 
     }

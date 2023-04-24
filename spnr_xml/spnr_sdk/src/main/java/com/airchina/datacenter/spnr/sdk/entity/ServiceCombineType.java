@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlType;
  *                   &lt;element ref="{http://www.opentravel.org/OTA/2003/05}ServiceID" minOccurs="0"/>
  *                   &lt;element ref="{http://www.opentravel.org/OTA/2003/05}OfferID" minOccurs="0"/>
  *                 &lt;/choice>
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ReasonCode"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ServiceTypeCode"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ReasonCode"/>
  *                 &lt;attribute name="CombineInd" use="required" type="{http://www.opentravel.org/OTA/2003/05}ChoiceType" />
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -104,8 +104,8 @@ public class ServiceCombineType {
      *         &lt;element ref="{http://www.opentravel.org/OTA/2003/05}ServiceID" minOccurs="0"/>
      *         &lt;element ref="{http://www.opentravel.org/OTA/2003/05}OfferID" minOccurs="0"/>
      *       &lt;/choice>
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ReasonCode"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ServiceTypeCode"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ReasonCode"/>
      *       &lt;attribute name="CombineInd" use="required" type="{http://www.opentravel.org/OTA/2003/05}ChoiceType" />
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -127,14 +127,14 @@ public class ServiceCombineType {
         protected OfferID offerID;
         @XmlAttribute(name = "CombineInd", required = true)
         protected String combineInd;
-        @XmlAttribute(name = "ReasonCode")
-        protected String reasonCode;
         @XmlAttribute(name = "ServiceType")
         protected String serviceType;
         @XmlAttribute(name = "ServiceCode")
         protected String serviceCode;
         @XmlAttribute(name = "SubCode")
         protected String subCode;
+        @XmlAttribute(name = "ReasonCode")
+        protected String reasonCode;
 
         /**
          * 获取serviceID属性的值。
@@ -209,30 +209,6 @@ public class ServiceCombineType {
         }
 
         /**
-         * 获取reasonCode属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getReasonCode() {
-            return reasonCode;
-        }
-
-        /**
-         * 设置reasonCode属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setReasonCode(String value) {
-            this.reasonCode = value;
-        }
-
-        /**
          * 获取serviceType属性的值。
          * 
          * @return
@@ -302,6 +278,30 @@ public class ServiceCombineType {
          */
         public void setSubCode(String value) {
             this.subCode = value;
+        }
+
+        /**
+         * 获取reasonCode属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getReasonCode() {
+            return reasonCode;
+        }
+
+        /**
+         * 设置reasonCode属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setReasonCode(String value) {
+            this.reasonCode = value;
         }
 
     }

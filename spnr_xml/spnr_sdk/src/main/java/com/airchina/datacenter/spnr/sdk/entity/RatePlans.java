@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -48,11 +48,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                     &lt;attribute name="Blocked" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *                                     &lt;attribute name="ForDate" use="required" type="{http://www.w3.org/2001/XMLSchema}date" />
  *                                     &lt;attribute name="LocallyBooked" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+ *                                     &lt;attribute name="InitiallyAvailable" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                     &lt;attribute name="AdjustmentToAvailability" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *                                     &lt;attribute name="TotallyAvailable" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *                                     &lt;attribute name="RatePlanEnabled" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
  *                                     &lt;attribute name="Status" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *                                     &lt;attribute name="MinLOS" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *                                     &lt;attribute name="FullPatternLOS" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *                                     &lt;attribute name="AvailableOverCap" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *                                   &lt;/restriction>
  *                                 &lt;/complexContent>
  *                               &lt;/complexType>
@@ -145,11 +148,14 @@ public class RatePlans {
      *                           &lt;attribute name="Blocked" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
      *                           &lt;attribute name="ForDate" use="required" type="{http://www.w3.org/2001/XMLSchema}date" />
      *                           &lt;attribute name="LocallyBooked" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+     *                           &lt;attribute name="InitiallyAvailable" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+     *                           &lt;attribute name="AdjustmentToAvailability" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
      *                           &lt;attribute name="TotallyAvailable" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
      *                           &lt;attribute name="RatePlanEnabled" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
      *                           &lt;attribute name="Status" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
      *                           &lt;attribute name="MinLOS" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
      *                           &lt;attribute name="FullPatternLOS" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+     *                           &lt;attribute name="AvailableOverCap" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
      *                         &lt;/restriction>
      *                       &lt;/complexContent>
      *                     &lt;/complexType>
@@ -411,11 +417,14 @@ public class RatePlans {
          *                 &lt;attribute name="Blocked" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
          *                 &lt;attribute name="ForDate" use="required" type="{http://www.w3.org/2001/XMLSchema}date" />
          *                 &lt;attribute name="LocallyBooked" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+         *                 &lt;attribute name="InitiallyAvailable" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+         *                 &lt;attribute name="AdjustmentToAvailability" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
          *                 &lt;attribute name="TotallyAvailable" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
          *                 &lt;attribute name="RatePlanEnabled" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
          *                 &lt;attribute name="Status" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
          *                 &lt;attribute name="MinLOS" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
          *                 &lt;attribute name="FullPatternLOS" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+         *                 &lt;attribute name="AvailableOverCap" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
          *               &lt;/restriction>
          *             &lt;/complexContent>
          *           &lt;/complexType>
@@ -480,11 +489,14 @@ public class RatePlans {
              *       &lt;attribute name="Blocked" use="required" type="{http://www.w3.org/2001/XMLSchema}boolean" />
              *       &lt;attribute name="ForDate" use="required" type="{http://www.w3.org/2001/XMLSchema}date" />
              *       &lt;attribute name="LocallyBooked" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
+             *       &lt;attribute name="InitiallyAvailable" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+             *       &lt;attribute name="AdjustmentToAvailability" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
              *       &lt;attribute name="TotallyAvailable" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
              *       &lt;attribute name="RatePlanEnabled" use="required" type="{http://www.w3.org/2001/XMLSchema}int" />
              *       &lt;attribute name="Status" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
              *       &lt;attribute name="MinLOS" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
              *       &lt;attribute name="FullPatternLOS" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+             *       &lt;attribute name="AvailableOverCap" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
              *     &lt;/restriction>
              *   &lt;/complexContent>
              * &lt;/complexType>
@@ -505,6 +517,12 @@ public class RatePlans {
                 protected XMLGregorianCalendar forDate;
                 @XmlAttribute(name = "LocallyBooked", required = true)
                 protected int locallyBooked;
+                @XmlAttribute(name = "InitiallyAvailable")
+                @XmlSchemaType(name = "anySimpleType")
+                protected String initiallyAvailable;
+                @XmlAttribute(name = "AdjustmentToAvailability")
+                @XmlSchemaType(name = "anySimpleType")
+                protected String adjustmentToAvailability;
                 @XmlAttribute(name = "TotallyAvailable", required = true)
                 protected int totallyAvailable;
                 @XmlAttribute(name = "RatePlanEnabled", required = true)
@@ -518,6 +536,9 @@ public class RatePlans {
                 @XmlAttribute(name = "FullPatternLOS")
                 @XmlSchemaType(name = "anySimpleType")
                 protected String fullPatternLOS;
+                @XmlAttribute(name = "AvailableOverCap")
+                @XmlSchemaType(name = "anySimpleType")
+                protected String availableOverCap;
 
                 /**
                  * 获取available属性的值。
@@ -589,6 +610,54 @@ public class RatePlans {
                  */
                 public void setLocallyBooked(int value) {
                     this.locallyBooked = value;
+                }
+
+                /**
+                 * 获取initiallyAvailable属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getInitiallyAvailable() {
+                    return initiallyAvailable;
+                }
+
+                /**
+                 * 设置initiallyAvailable属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setInitiallyAvailable(String value) {
+                    this.initiallyAvailable = value;
+                }
+
+                /**
+                 * 获取adjustmentToAvailability属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getAdjustmentToAvailability() {
+                    return adjustmentToAvailability;
+                }
+
+                /**
+                 * 设置adjustmentToAvailability属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setAdjustmentToAvailability(String value) {
+                    this.adjustmentToAvailability = value;
                 }
 
                 /**
@@ -693,6 +762,30 @@ public class RatePlans {
                  */
                 public void setFullPatternLOS(String value) {
                     this.fullPatternLOS = value;
+                }
+
+                /**
+                 * 获取availableOverCap属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getAvailableOverCap() {
+                    return availableOverCap;
+                }
+
+                /**
+                 * 设置availableOverCap属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setAvailableOverCap(String value) {
+                    this.availableOverCap = value;
                 }
 
             }

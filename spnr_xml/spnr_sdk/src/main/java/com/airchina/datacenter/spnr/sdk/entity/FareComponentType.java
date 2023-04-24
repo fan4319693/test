@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -47,8 +47,8 @@ import javax.xml.bind.annotation.XmlType;
  *                               &lt;complexType>
  *                                 &lt;complexContent>
  *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OriginDestinationGroup"/>
  *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CompanyID_AttributesGroup"/>
+ *                                     &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OriginDestinationGroup"/>
  *                                     &lt;attribute name="SequenceNbr" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to8" />
  *                                     &lt;attribute name="CouponItinerarySeqNbr" type="{http://www.opentravel.org/OTA/2003/05}Numeric0to99" />
  *                                     &lt;attribute name="StopoverInd" type="{http://www.w3.org/2001/XMLSchema}boolean" />
@@ -356,8 +356,8 @@ public class FareComponentType {
      *                     &lt;complexType>
      *                       &lt;complexContent>
      *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OriginDestinationGroup"/>
      *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CompanyID_AttributesGroup"/>
+     *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OriginDestinationGroup"/>
      *                           &lt;attribute name="SequenceNbr" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to8" />
      *                           &lt;attribute name="CouponItinerarySeqNbr" type="{http://www.opentravel.org/OTA/2003/05}Numeric0to99" />
      *                           &lt;attribute name="StopoverInd" type="{http://www.w3.org/2001/XMLSchema}boolean" />
@@ -500,8 +500,8 @@ public class FareComponentType {
          *           &lt;complexType>
          *             &lt;complexContent>
          *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-         *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OriginDestinationGroup"/>
          *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CompanyID_AttributesGroup"/>
+         *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OriginDestinationGroup"/>
          *                 &lt;attribute name="SequenceNbr" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to8" />
          *                 &lt;attribute name="CouponItinerarySeqNbr" type="{http://www.opentravel.org/OTA/2003/05}Numeric0to99" />
          *                 &lt;attribute name="StopoverInd" type="{http://www.w3.org/2001/XMLSchema}boolean" />
@@ -1052,15 +1052,15 @@ public class FareComponentType {
                 protected Float amount;
                 @XmlAttribute(name = "PrePayInd")
                 protected Boolean prePayInd;
-                @XmlAttribute(name = "OriginalAmount")
-                protected Float originalAmount;
-                @XmlAttribute(name = "OriginalCurrencyCode")
-                protected String originalCurrencyCode;
                 @XmlAttribute(name = "CurrencyCode")
                 protected String currencyCode;
                 @XmlAttribute(name = "DecimalPlaces")
                 @XmlSchemaType(name = "nonNegativeInteger")
                 protected BigInteger decimalPlaces;
+                @XmlAttribute(name = "OriginalAmount")
+                protected Float originalAmount;
+                @XmlAttribute(name = "OriginalCurrencyCode")
+                protected String originalCurrencyCode;
 
                 /**
                  * 获取purpose属性的值。
@@ -1135,54 +1135,6 @@ public class FareComponentType {
                 }
 
                 /**
-                 * 获取originalAmount属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link Float }
-                 *     
-                 */
-                public Float getOriginalAmount() {
-                    return originalAmount;
-                }
-
-                /**
-                 * 设置originalAmount属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link Float }
-                 *     
-                 */
-                public void setOriginalAmount(Float value) {
-                    this.originalAmount = value;
-                }
-
-                /**
-                 * 获取originalCurrencyCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getOriginalCurrencyCode() {
-                    return originalCurrencyCode;
-                }
-
-                /**
-                 * 设置originalCurrencyCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setOriginalCurrencyCode(String value) {
-                    this.originalCurrencyCode = value;
-                }
-
-                /**
                  * 获取currencyCode属性的值。
                  * 
                  * @return
@@ -1228,6 +1180,54 @@ public class FareComponentType {
                  */
                 public void setDecimalPlaces(BigInteger value) {
                     this.decimalPlaces = value;
+                }
+
+                /**
+                 * 获取originalAmount属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link Float }
+                 *     
+                 */
+                public Float getOriginalAmount() {
+                    return originalAmount;
+                }
+
+                /**
+                 * 设置originalAmount属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link Float }
+                 *     
+                 */
+                public void setOriginalAmount(Float value) {
+                    this.originalAmount = value;
+                }
+
+                /**
+                 * 获取originalCurrencyCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getOriginalCurrencyCode() {
+                    return originalCurrencyCode;
+                }
+
+                /**
+                 * 设置originalCurrencyCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setOriginalCurrencyCode(String value) {
+                    this.originalCurrencyCode = value;
                 }
 
             }
@@ -1452,8 +1452,8 @@ public class FareComponentType {
              * &lt;complexType>
              *   &lt;complexContent>
              *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-             *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OriginDestinationGroup"/>
              *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CompanyID_AttributesGroup"/>
+             *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OriginDestinationGroup"/>
              *       &lt;attribute name="SequenceNbr" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to8" />
              *       &lt;attribute name="CouponItinerarySeqNbr" type="{http://www.opentravel.org/OTA/2003/05}Numeric0to99" />
              *       &lt;attribute name="StopoverInd" type="{http://www.w3.org/2001/XMLSchema}boolean" />
@@ -1477,14 +1477,6 @@ public class FareComponentType {
                 protected Boolean stopoverInd;
                 @XmlAttribute(name = "ResBookDesigCode")
                 protected String resBookDesigCode;
-                @XmlAttribute(name = "OriginCityCode")
-                protected String originCityCode;
-                @XmlAttribute(name = "OriginCodeContext")
-                protected String originCodeContext;
-                @XmlAttribute(name = "DestinationCityCode")
-                protected String destinationCityCode;
-                @XmlAttribute(name = "DestinationCodeContext")
-                protected String destinationCodeContext;
                 @XmlAttribute(name = "CompanyType")
                 protected String companyType;
                 @XmlAttribute(name = "CompanyShortName")
@@ -1495,6 +1487,14 @@ public class FareComponentType {
                 protected String code;
                 @XmlAttribute(name = "CodeContext")
                 protected String codeContext;
+                @XmlAttribute(name = "OriginCityCode")
+                protected String originCityCode;
+                @XmlAttribute(name = "OriginCodeContext")
+                protected String originCodeContext;
+                @XmlAttribute(name = "DestinationCityCode")
+                protected String destinationCityCode;
+                @XmlAttribute(name = "DestinationCodeContext")
+                protected String destinationCodeContext;
 
                 /**
                  * 获取sequenceNbr属性的值。
@@ -1590,102 +1590,6 @@ public class FareComponentType {
                  */
                 public void setResBookDesigCode(String value) {
                     this.resBookDesigCode = value;
-                }
-
-                /**
-                 * 获取originCityCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getOriginCityCode() {
-                    return originCityCode;
-                }
-
-                /**
-                 * 设置originCityCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setOriginCityCode(String value) {
-                    this.originCityCode = value;
-                }
-
-                /**
-                 * 获取originCodeContext属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getOriginCodeContext() {
-                    return originCodeContext;
-                }
-
-                /**
-                 * 设置originCodeContext属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setOriginCodeContext(String value) {
-                    this.originCodeContext = value;
-                }
-
-                /**
-                 * 获取destinationCityCode属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getDestinationCityCode() {
-                    return destinationCityCode;
-                }
-
-                /**
-                 * 设置destinationCityCode属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setDestinationCityCode(String value) {
-                    this.destinationCityCode = value;
-                }
-
-                /**
-                 * 获取destinationCodeContext属性的值。
-                 * 
-                 * @return
-                 *     possible object is
-                 *     {@link String }
-                 *     
-                 */
-                public String getDestinationCodeContext() {
-                    return destinationCodeContext;
-                }
-
-                /**
-                 * 设置destinationCodeContext属性的值。
-                 * 
-                 * @param value
-                 *     allowed object is
-                 *     {@link String }
-                 *     
-                 */
-                public void setDestinationCodeContext(String value) {
-                    this.destinationCodeContext = value;
                 }
 
                 /**
@@ -1808,6 +1712,102 @@ public class FareComponentType {
                     this.codeContext = value;
                 }
 
+                /**
+                 * 获取originCityCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getOriginCityCode() {
+                    return originCityCode;
+                }
+
+                /**
+                 * 设置originCityCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setOriginCityCode(String value) {
+                    this.originCityCode = value;
+                }
+
+                /**
+                 * 获取originCodeContext属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getOriginCodeContext() {
+                    return originCodeContext;
+                }
+
+                /**
+                 * 设置originCodeContext属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setOriginCodeContext(String value) {
+                    this.originCodeContext = value;
+                }
+
+                /**
+                 * 获取destinationCityCode属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getDestinationCityCode() {
+                    return destinationCityCode;
+                }
+
+                /**
+                 * 设置destinationCityCode属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setDestinationCityCode(String value) {
+                    this.destinationCityCode = value;
+                }
+
+                /**
+                 * 获取destinationCodeContext属性的值。
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getDestinationCodeContext() {
+                    return destinationCodeContext;
+                }
+
+                /**
+                 * 设置destinationCodeContext属性的值。
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setDestinationCodeContext(String value) {
+                    this.destinationCodeContext = value;
+                }
+
             }
 
 
@@ -1921,15 +1921,15 @@ public class FareComponentType {
         protected Float amount;
         @XmlAttribute(name = "PrePayInd")
         protected Boolean prePayInd;
-        @XmlAttribute(name = "OriginalAmount")
-        protected Float originalAmount;
-        @XmlAttribute(name = "OriginalCurrencyCode")
-        protected String originalCurrencyCode;
         @XmlAttribute(name = "CurrencyCode")
         protected String currencyCode;
         @XmlAttribute(name = "DecimalPlaces")
         @XmlSchemaType(name = "nonNegativeInteger")
         protected BigInteger decimalPlaces;
+        @XmlAttribute(name = "OriginalAmount")
+        protected Float originalAmount;
+        @XmlAttribute(name = "OriginalCurrencyCode")
+        protected String originalCurrencyCode;
 
         /**
          * 获取purpose属性的值。
@@ -2004,54 +2004,6 @@ public class FareComponentType {
         }
 
         /**
-         * 获取originalAmount属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link Float }
-         *     
-         */
-        public Float getOriginalAmount() {
-            return originalAmount;
-        }
-
-        /**
-         * 设置originalAmount属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Float }
-         *     
-         */
-        public void setOriginalAmount(Float value) {
-            this.originalAmount = value;
-        }
-
-        /**
-         * 获取originalCurrencyCode属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getOriginalCurrencyCode() {
-            return originalCurrencyCode;
-        }
-
-        /**
-         * 设置originalCurrencyCode属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setOriginalCurrencyCode(String value) {
-            this.originalCurrencyCode = value;
-        }
-
-        /**
          * 获取currencyCode属性的值。
          * 
          * @return
@@ -2097,6 +2049,54 @@ public class FareComponentType {
          */
         public void setDecimalPlaces(BigInteger value) {
             this.decimalPlaces = value;
+        }
+
+        /**
+         * 获取originalAmount属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link Float }
+         *     
+         */
+        public Float getOriginalAmount() {
+            return originalAmount;
+        }
+
+        /**
+         * 设置originalAmount属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Float }
+         *     
+         */
+        public void setOriginalAmount(Float value) {
+            this.originalAmount = value;
+        }
+
+        /**
+         * 获取originalCurrencyCode属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getOriginalCurrencyCode() {
+            return originalCurrencyCode;
+        }
+
+        /**
+         * 设置originalCurrencyCode属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setOriginalCurrencyCode(String value) {
+            this.originalCurrencyCode = value;
         }
 
     }

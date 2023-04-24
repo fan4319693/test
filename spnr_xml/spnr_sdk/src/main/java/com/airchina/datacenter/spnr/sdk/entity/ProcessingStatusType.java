@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="APPLYING"/>
  *     &lt;enumeration value="DELETED"/>
  *     &lt;enumeration value="PAID"/>
+ *     &lt;enumeration value="PENDING_PAYMENT_REVIEW"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -158,7 +159,13 @@ public enum ProcessingStatusType {
      * Used to indicate paid status
      * 
      */
-    PAID;
+    PAID,
+
+    /**
+     * Used to indicate PendingPayment reviewing status
+     * 
+     */
+    PENDING_PAYMENT_REVIEW;
 
     public String value() {
         return name();

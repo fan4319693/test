@@ -273,6 +273,25 @@ baggage</xs:documentation>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="ModifyTypeType">
+		<xs:sequence>
+			<xs:element name="Reason" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reason of the Modification</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="Type" type="xs:string" use="optional">
+						<xs:annotation>
+							<xs:documentation>Reason type</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="SubType" type="xs:string" use="optional">
+						<xs:annotation>
+							<xs:documentation>Reason sub type</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
 		<xs:attribute name="Type" type="AlphaNumericStringLength1to19" use="required">
 			<xs:annotation>
 				<xs:documentation>Indicates the type of modification pending on this product/package/SPNR</xs:documentation>
@@ -351,6 +370,36 @@ If ModifyType/@Type is 'SegmentTransfer', NeedCancel = 'true' indicates the tran
 		<xs:attribute name="ReshopID">
 			<xs:annotation>
 				<xs:documentation>The customised ID for each reshop process.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AirlineTransfer" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>Airline transfer indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CodeShare" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>Code share indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FFPFreeExchange" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>FFP free exchange indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FeeWaived" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>Amendment Fee waived indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ODChange" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>Origin or Destination change indicator</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TicketNumChange" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>Ticket number changed indicator</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
@@ -596,6 +645,8 @@ If ModifyType/@Type is 'SegmentTransfer', NeedCancel = 'true' indicates the tran
 																		<xs:documentation xml:lang="en">Contains the information about the plan, such as the name of the insurance company and restrictions, specific to the quote.</xs:documentation>
 																	</xs:annotation>
 																</xs:element>
+																<xs:element name="Content" type="InsuranceProductContentType" minOccurs="0"/>
+																<xs:element name="DefaultContent" type="InsuranceProductContentType" minOccurs="0"/>
 															</xs:sequence>
 														</xs:extension>
 													</xs:complexContent>
@@ -953,6 +1004,7 @@ If ModifyType/@Type is 'SegmentTransfer', NeedCancel = 'true' indicates the tran
 					<xs:sequence>
 						<xs:element name="Air" type="AirReservationType" minOccurs="0"/>
 						<xs:element name="Content" type="ProductContentType"/>
+						<xs:element name="DefaultContent" type="ProductContentType" minOccurs="0"/>
 						<xs:element name="CancellationPenalties" type="CancelPenaltiesType"/>
 						<xs:element name="AmendmentPenalties" type="OJ_AmendPenaltiesType" minOccurs="0">
 							<xs:annotation>
@@ -1045,6 +1097,11 @@ If ModifyType/@Type is 'SegmentTransfer', NeedCancel = 'true' indicates the tran
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="CarbonOffsets" type="AirAncillaryOffsetProductType" minOccurs="0" maxOccurs="1"/>
+						<xs:element name="EligibleItem" type="AirAncillaryEligibleItemType" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation>The eligible item of the particular ancillary product.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
 						<xs:element name="OriginalFlightSegment" type="BookFlightSegmentType" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
 								<xs:documentation xml:lang="en">Original Flight Segment information.</xs:documentation>
@@ -1569,6 +1626,11 @@ If ModifyType/@Type is 'SegmentTransfer', NeedCancel = 'true' indicates the tran
 				<xs:documentation>Indicates Price Adjustment is for a particular Flight Segment</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+		<xs:attribute name="PassengerRPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation>Passenger RPH to indicate the passenger id</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="ProductDescriptionType">
 		<xs:sequence>
@@ -1884,6 +1946,10 @@ If ModifyType/@Type is 'SegmentTransfer', NeedCancel = 'true' indicates the tran
 					<xs:sequence>
 						<xs:element name="BackendAudit" minOccurs="0" maxOccurs="unbounded">
 							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Agent" type="AgentDetailsType" minOccurs="0"/>
+									<xs:element name="Review" type="ExternalReviewType" minOccurs="0" maxOccurs="unbounded"/>
+								</xs:sequence>
 								<xs:attribute name="FileDate" type="xs:string"/>
 								<xs:attribute name="AuditID" type="xs:string"/>
 							</xs:complexType>
@@ -1980,6 +2046,7 @@ If ModifyType/@Type is 'SegmentTransfer', NeedCancel = 'true' indicates the tran
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="DeliItineraryStatus" type="DeliItineraryStatusType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ItinRemarks" type="ItinRemarksType" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="Category" type="OrderCategoryType" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="FullHistory" type="xs:boolean">

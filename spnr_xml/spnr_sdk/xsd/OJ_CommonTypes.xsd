@@ -893,6 +893,11 @@ Equipment which represents separate products should be listed at a higher level 
 							</xs:attribute>
 						</xs:complexType>
 					</xs:element>
+					<xs:element name="ProcessingStatus" minOccurs="0" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:attribute name="State" type="ProcessingStatusType"></xs:attribute>
+						</xs:complexType>
+					</xs:element>
 					<xs:element name="ArchivalStatus" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation xml:lang="en">Order archival status.</xs:documentation>
@@ -1115,6 +1120,28 @@ Equipment which represents separate products should be listed at a higher level 
 							<xs:documentation>The Agent ID that made or modified the booking</xs:documentation>
 						</xs:annotation>
 					</xs:element>
+					<xs:element name="Agent" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>The Agent that made or modified the booking</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="ID" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The agent id.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="AdministrativeGroup" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">Indicate to which administrative group within the organization the agent belong.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="CreatorID" type="xs:string">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The unique identifier for the creator.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
 					<xs:element name="Loyalty" type="LoyaltyProductType" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation xml:lang="en">The amount of Loyalty Points that the customer has earned and/or redeemed in relation to this product</xs:documentation>
@@ -1267,11 +1294,6 @@ refundAdjustmentReview</xs:documentation>
 											</xs:element>
 										</xs:sequence>
 									</xs:complexType>
-								</xs:element>
-								<xs:element name="RequestorID" minOccurs="0" maxOccurs="unbounded">
-									<xs:annotation>
-										<xs:documentation xml:lang="en">The ID of the requestor.</xs:documentation>
-									</xs:annotation>
 								</xs:element>
 							</xs:sequence>
 						</xs:complexType>
@@ -1474,6 +1496,11 @@ refundAdjustmentReview</xs:documentation>
 												<xs:complexType>
 													<xs:sequence>
 														<xs:element name="OriginDestinationOption" type="VerificationODOType" minOccurs="0" maxOccurs="unbounded"/>
+														<xs:element name="TourCode" type="StringLength1to16" minOccurs="0" maxOccurs="unbounded">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">A tour number that may be printed on the ticket or override an existing tour number in the PNR.</xs:documentation>
+															</xs:annotation>
+														</xs:element>
 													</xs:sequence>
 												</xs:complexType>
 											</xs:element>
@@ -1501,6 +1528,16 @@ refundAdjustmentReview</xs:documentation>
 										<xs:attributeGroup ref="DateTimeSpanGroup"/>
 									</xs:complexType>
 								</xs:element>
+								<xs:element name="SendTimeSpan" minOccurs="0">
+									<xs:complexType>
+										<xs:attributeGroup ref="DateTimeSpanGroup"/>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="ArrivalTimeSpan" minOccurs="0">
+									<xs:complexType>
+										<xs:attributeGroup ref="DateTimeSpanGroup"/>
+									</xs:complexType>
+								</xs:element>
 							</xs:sequence>
 							<xs:attribute name="State" type="xs:string"/>
 						</xs:complexType>
@@ -1521,9 +1558,33 @@ refundAdjustmentReview</xs:documentation>
 					</xs:element>
 					<xs:element name="ModifyType" minOccurs="0" maxOccurs="unbounded">
 						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Reason" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Reason of the Modification</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:attribute name="Type" type="xs:string" use="optional">
+											<xs:annotation>
+												<xs:documentation>Reason type</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="SubType" type="xs:string" use="optional">
+											<xs:annotation>
+												<xs:documentation>Reason sub type</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
 							<xs:attribute name="Type" type="xs:string" use="optional">
 								<xs:annotation>
 									<xs:documentation xml:lang="en">The type of modification.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="freeDateChange" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation>is free datechange  true:false </xs:documentation>
 								</xs:annotation>
 							</xs:attribute>
 							<xs:attribute name="CrossChannel" type="xs:boolean" use="optional">
@@ -1544,6 +1605,50 @@ refundAdjustmentReview</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="AssociatedBookings" type="AssociatedBookingsType" minOccurs="0"/>
+					<xs:element name="SupplierNotes" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Search by supplier specific instructions.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Note" minOccurs="0" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:simpleContent>
+											<xs:extension base="xs:string">
+												<xs:attribute name="Type" type="xs:string"/>
+											</xs:extension>
+										</xs:simpleContent>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ItinRemarks" minOccurs="0" maxOccurs="1">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ItinRemark" minOccurs="0" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:attribute name="Type" type="xs:string"/>
+										<xs:attribute name="Value" type="xs:string"/>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="SpecialServiceRequests" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Search by SSR types.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="SpecialServiceRequest" minOccurs="0" maxOccurs="unbounded">
+									<xs:complexType>
+										<xs:attribute name="Type" type="xs:string"/>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -2314,6 +2419,7 @@ refundAdjustmentReview</xs:documentation>
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="Payment" type="OtherPaymentType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="Type" type="xs:int">
 			<xs:annotation>
@@ -2325,6 +2431,22 @@ refundAdjustmentReview</xs:documentation>
 				<xs:documentation>Ref of payment</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="OtherPaymentType">
+		<xs:annotation>
+			<xs:documentation>Payment breakdown of "other" payment type, used for mixed redirect payments. These are regarded as a single payment transaction in DragonFly, the mixed payment types information is all handled by the external payment system.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="ID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Unique identifier for this payment breakdown</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Type" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Type of this payment breakdown</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="CurrencyAmountGroup"/>
 	</xs:complexType>
 	<xs:complexType name="RefundQualifiersType">
 		<xs:sequence>
@@ -3488,6 +3610,48 @@ refundAdjustmentReview</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
+	<xs:complexType name="ExternalReviewType">
+		<xs:annotation>
+			<xs:documentation>Review info for the external system.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Comment" type="FreeTextType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Review comment.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Status" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Pending commit, pending review, cancelled, finished etc.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Type" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Ticking or payment.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Approved" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>True or false.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReviewerID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The user id of the product reviewer.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReviewID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The id of this review.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AssociatedID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The associated id of this review.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
 	<xs:simpleType name="TSPaymentOptionCodeType">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">Payment Option Codes</xs:documentation>
@@ -3643,6 +3807,16 @@ refundAdjustmentReview</xs:documentation>
 								<xs:documentation xml:lang="en">Order status</xs:documentation>
 							</xs:annotation>
 						</xs:element>
+						<xs:element name="OrderID" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">The identification number associated to the orders.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="FlightSegmentsText" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation xml:lang="en">Flight segments text in WeChat message.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
 					</xs:sequence>
 					<xs:attribute name="Code" type="xs:string">
 						<xs:annotation>
@@ -3651,7 +3825,20 @@ refundAdjustmentReview</xs:documentation>
 					</xs:attribute>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="CustLoyalty" type="CustLoyaltyType" minOccurs="0"/>
+			<xs:element name="Documents" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Document" type="WeChatDocType" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:sequence>
+		<xs:attribute name="SendTime" type="xs:dateTime">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Time stamp of sending the message.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<xs:attributeGroup name="MessageAttributes">
 		<xs:annotation>
@@ -4021,6 +4208,11 @@ refundAdjustmentReview</xs:documentation>
 					<xs:documentation>Used to indicate paid status</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
+			<xs:enumeration value="PENDING_PAYMENT_REVIEW">
+				<xs:annotation>
+					<xs:documentation>Used to indicate PendingPayment reviewing status</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ModTSBookingStatusType">
@@ -4149,6 +4341,31 @@ refundAdjustmentReview</xs:documentation>
 			<xs:enumeration value="PAID">
 				<xs:annotation>
 					<xs:documentation xml:lang="en">Indicates the product is paid</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PENDING_CONFIRM">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Indicates to wait for the background to confirm with the supplier</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CANCELLED_PENDING_SETTLEMENT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Indicates that the product is unsubscribed within the cancellation period, but settlement is required</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EXPIRED_PENDING_SETTLEMENT">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">At the time of settlement, the customer did not use it and did not cancel it within the free cancellation time limit</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ACCEPTED">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Indicates the product is accepted by the supplier</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PENDING_PAYMENT_REVIEW">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Indicates that the product is waiting for payment reviewing.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
@@ -4573,6 +4790,377 @@ SOLVED</xs:documentation>
 		<xs:attribute name="Code" type="xs:string">
 			<xs:annotation>
 				<xs:documentation xml:lang="en">Indicates the code of the category.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>	
+	<xs:complexType name="RefundInfoPaymentsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The refund payments info type.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Payment" type="RefundInfoPaymentType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RefundInfoPaymentBaseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This base type is used for OJ_GetRefundInfoRQ/Request/Payment</xs:documentation>
+		</xs:annotation>		
+		<xs:attribute name="BankBillNo" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Bank Bill ref id for the refund.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BankID" type="StringLength1to128">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Bank ID for the refund payment.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="RefundInfoPaymentType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This Refund Info Payment type is used for OJ_GetRefundInfoRS/RefundInfo/Payments/Payment</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="RefundInfoPaymentBaseType">
+				<xs:attributeGroup ref="CurrencyAmountGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CouponsIssueType">
+		<xs:sequence>
+			<xs:element name="Criteria" type="CouponCriteriaType" minOccurs="0"/>
+			<xs:element name="EventGroup" type="CouponEventGroupType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CouponEventGroupType">
+		<xs:sequence>
+			<xs:element name="Descriptions" type="DescriptionsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Localised description for this event group.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Event" type="CouponEventType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Name" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines event group name.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Code" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines event group code.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CouponCriteriaType">
+		<xs:sequence>
+			<xs:element name="TravelItinerary" type="CouponTravelItineraryType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Account" type="CouponAccountType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Product" type="CouponProductType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CouponTravelItineraryType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Defines the redemption value of a coupon. It can be a fixed amount or a percentage off from total price.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ItineraryInfo" type="CouponItineraryInfoType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CouponItineraryInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Itinerary reservation information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Ticketing" type="CouponTicketingType" minOccurs="0"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="TripType" type="AirTripType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">To specify if the trip is one way or roundtrip.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CouponTicketingType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Itinerary reservation information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="FlightInfo" type="CouponFlightInfoType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+			<xs:element name="ReservationTimeSpan" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The start and end day of the reservation.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="DateTimeSpanGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CouponFlightInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Itinerary reservation information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DepartureInformation">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies departure information for a flight.    </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="DateOfDeparture" type="DateOrDateTimeType" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Date of departure from this board point. </xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attributeGroup ref="AirportLocationGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ArrivalInfomation">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Specifies arrival information for a flight.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="DateOfArrival" type="DateOrDateTimeType" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Date of arrival at this board point. </xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attributeGroup ref="AirportLocationGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="FlightStatus"/>
+		<xs:attributeGroup ref="FlightNumberGroup"/>
+	</xs:complexType>
+	<xs:complexType name="CouponAccountType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Defines the account information.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="AccountNumber" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates the account number.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Type" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates the type of the account.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CouponProductType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Defines the coupon product information.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Type" type="ProductTypeType" use="optional">
+			<xs:annotation>
+				<xs:documentation>The type of product, e.g. air, car, hotel etc</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SubType" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>The type of product subType, e.g. air, upgrade, seat etc</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Status" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the product status, e.g. Used|Open|Refund.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OrderStatus" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the order status. e.g. ticketSuccess|pendingPayment</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SaleType" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the sale type. e.g. Inpath|MMB|AC</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CouponEventType">
+		<xs:sequence>
+			<xs:element name="Descriptions" type="DescriptionsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Localised description for this event.</xs:documentation>
+				</xs:annotation>
+			</xs:element>			
+			<xs:element name="Issue" type="CouponIssueType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Name" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines event name.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Code" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines event code.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="IssueCriteriaType" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the issue dimension, which means the event will search by the type.
+					e.g. account|order|product</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>		
+		<xs:attribute name="ID" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates the event ID.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CouponIssueType">
+		<xs:sequence>
+			<xs:element name="ValidTimeSpan" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The start and end day of the valid time span.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="DateTimeSpanGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Code" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the issue code.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Type" type="CouponIssueTypeType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates the type of the coupon issue.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BatchNumber" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the issue batch number.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Bound" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Used with Event/@IssueCriteriaType to determine how the Coupon is bound. For example bound to a Customer or Product or Itinerary.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Frequency" type="TimeUnitType" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the issue repeat type. e.g. day|week</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Status" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the issue status. e.g. unpulish|working|disabled</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RunningStatus" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the issue running status. e.g. running|done</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Channel" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the issue channel. e.g. IBE|RONGYT</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="BankID" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Defines the bank id. e.g. easypay</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="CouponIssueTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Immediate"/>
+			<xs:enumeration value="Scheduled"/>
+			<xs:enumeration value="Manual"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="WeChatDocType">
+		<xs:attribute name="DocID" type="StringLength1to32">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The unique identification number assigned by the authorities to the document.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DocType" type="OTA_CodeType">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Indicates the type of document (for example, Passport, Military ID, Drivers License, national ID, Vaccination Certificate). Refer to OTA Code List Document Type (DOC).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="CustLoyaltyType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en"> Identifies the loyalty program(s) that the customer belongs to and associated information.</xs:documentation>
+		</xs:annotation>
+		<xs:attributeGroup ref="CustomerLoyaltyGroup"/>
+	</xs:complexType>
+	<xs:complexType name="ItinRemarksType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This records Itinerary remarks. This was necessary because TS will solely use OJ_SuperPNR/Remarks for recording the Refund process.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ItinRemark" type="ItinRemarkType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ItinRemarkType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">An individual Itinerary Remark.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Text" type="FreeTextType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The actual text of the remark</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Agent" type="AgentDetailsType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The agent who added the remark</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Date" type="xs:dateTime" use="optional">
+			<xs:annotation>
+				<xs:documentation>The date and time the remark was added</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Code" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>The code associated with the remark if any</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Type" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>The type of the remark</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Value" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>The value associated with the code of the remark if any</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RPH" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>Unique identifier for this remark</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AuditID" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>Required for audit trail</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="HistoryRPH" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>It is used to group together all the remark elements over it's history, it will be set to RPH when the remarks are first created and will not change thereafter</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="LiveRPH" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>Indicates the next remark in the chain of it's history, it will only exist if this is a historical remark</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SeqNo" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>Number identifying position of spnr item in DB</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Active" type="xs:boolean" use="required">
+			<xs:annotation>
+				<xs:documentation>Indicates if this is an active remark</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>

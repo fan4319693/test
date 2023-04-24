@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -47,8 +47,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;group ref="{http://www.opentravel.org/OTA/2003/05}PackageCommonElements"/>
  *         &lt;/sequence>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CommonProductAttributes"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}HistoryAttribute"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CommonProductAttributes"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ProductIDs"/>
  *       &lt;attribute name="PolicyStatus" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="PackageType" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -125,6 +125,12 @@ public class PackageProductType {
     protected ActionCodeType action;
     @XmlAttribute(name = "isSwitchSell")
     protected Boolean isSwitchSell;
+    @XmlAttribute(name = "HistoryID")
+    protected BigInteger historyID;
+    @XmlAttribute(name = "Historic")
+    protected Boolean historic;
+    @XmlAttribute(name = "LiveID")
+    protected Integer liveID;
     @XmlAttribute(name = "BookingStatus", required = true)
     protected String bookingStatus;
     @XmlAttribute(name = "CancellationDate")
@@ -146,12 +152,6 @@ public class PackageProductType {
     protected XMLGregorianCalendar lastModified;
     @XmlAttribute(name = "Destination")
     protected String destination;
-    @XmlAttribute(name = "HistoryID")
-    protected BigInteger historyID;
-    @XmlAttribute(name = "Historic")
-    protected Boolean historic;
-    @XmlAttribute(name = "LiveID")
-    protected Integer liveID;
     @XmlAttribute(name = "ProductNumber")
     protected BigInteger productNumber;
     @XmlAttribute(name = "MasterProductNumber")
@@ -635,6 +635,78 @@ public class PackageProductType {
     }
 
     /**
+     * 获取historyID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getHistoryID() {
+        return historyID;
+    }
+
+    /**
+     * 设置historyID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setHistoryID(BigInteger value) {
+        this.historyID = value;
+    }
+
+    /**
+     * 获取historic属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isHistoric() {
+        return historic;
+    }
+
+    /**
+     * 设置historic属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setHistoric(Boolean value) {
+        this.historic = value;
+    }
+
+    /**
+     * 获取liveID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getLiveID() {
+        return liveID;
+    }
+
+    /**
+     * 设置liveID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setLiveID(Integer value) {
+        this.liveID = value;
+    }
+
+    /**
      * 获取bookingStatus属性的值。
      * 
      * @return
@@ -824,78 +896,6 @@ public class PackageProductType {
      */
     public void setDestination(String value) {
         this.destination = value;
-    }
-
-    /**
-     * 获取historyID属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getHistoryID() {
-        return historyID;
-    }
-
-    /**
-     * 设置historyID属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setHistoryID(BigInteger value) {
-        this.historyID = value;
-    }
-
-    /**
-     * 获取historic属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isHistoric() {
-        return historic;
-    }
-
-    /**
-     * 设置historic属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setHistoric(Boolean value) {
-        this.historic = value;
-    }
-
-    /**
-     * 获取liveID属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getLiveID() {
-        return liveID;
-    }
-
-    /**
-     * 设置liveID属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setLiveID(Integer value) {
-        this.liveID = value;
     }
 
     /**

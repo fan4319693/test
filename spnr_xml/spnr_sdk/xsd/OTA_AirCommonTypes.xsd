@@ -1332,7 +1332,7 @@ this request.</xs:documentation>
 		</xs:attribute>
 		<xs:attribute name="PricingScope" type="xs:string">
 			<xs:annotation>
-				<xs:documentation>The scope of the price info under AirItineraryPricingInfo node that indicates what's the price info used for. The value can be "Member|MemberDay|IBS|Package".</xs:documentation>
+				<xs:documentation>The scope of the price info under AirItineraryPricingInfo node that indicates what's the price info used for. The value can be "Member|MemberDay|IBS|Package|LowestPrice".</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="PriceRange" type="xs:int">
@@ -1742,6 +1742,11 @@ this request.</xs:documentation>
 									<xs:documentation xml:lang="en">PNR creation date.</xs:documentation>
 								</xs:annotation>
 							</xs:attribute>
+							<xs:attribute name="CancelDateTime" type="xs:dateTime" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">PNR cancellation date.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
 							<xs:attribute name="Status" type="xs:string" use="optional">
 								<xs:annotation>
 									<xs:documentation xml:lang="en">The current status of the pnr eg Reuse,XE,NO...</xs:documentation>
@@ -1889,6 +1894,7 @@ this request.</xs:documentation>
 						<xs:element name="InvoiceTitle" minOccurs="1" type="xs:string"/>
 						<xs:element name="InvoiceType" minOccurs="1" type="xs:string"/>
 						<xs:element name="TrackingReferenceID" type="UniqueID_Type" minOccurs="0"/>
+						<xs:element name="InvoiceIssuer" minOccurs="0" type="xs:string"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -2121,6 +2127,7 @@ Identifies the code for the tax.
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="PaymentForm" type="PaymentFormType" maxOccurs="unbounded"/>
+			<xs:element name="Tag" type="CustomerTagType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="GenderGroup"/>
 		<xs:attributeGroup ref="PrivacyGroup"/>
@@ -2164,6 +2171,11 @@ Identifies the code for the tax.
 		<xs:attribute name="GroupInd" type="xs:boolean" use="optional">
 			<xs:annotation>
 				<xs:documentation>Indicates whether passenger's ticket is a group ticket.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AppendInd" type="xs:boolean" use="optional">
+			<xs:annotation>
+				<xs:documentation>Indicates whether the child/infant is being added to an existing reservation.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
@@ -3845,6 +3857,16 @@ Type attribute.</xs:documentation>
 				<xs:annotation>
 					<xs:documentation>Any known supplier penalties for cancellation or amendment,  This is informational for back office systems</xs:documentation>
 				</xs:annotation>
+			</xs:element>
+			<xs:element name="Descriptions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used to store descriptions outside of the PricedItinerary to avoid repeating information. They are referenced within the PricedItinerary via the ID attribute.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Description" type="LongDescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>

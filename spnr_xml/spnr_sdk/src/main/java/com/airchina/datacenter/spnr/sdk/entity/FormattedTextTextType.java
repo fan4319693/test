@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * &lt;complexType name="FormattedTextTextType">
  *   &lt;simpleContent>
  *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}FontGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}LanguageGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}FontGroup"/>
  *       &lt;attribute name="Formatted" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *       &lt;attribute name="SupplierCode" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *       &lt;attribute name="Selected" type="{http://www.w3.org/2001/XMLSchema}boolean" />
@@ -66,6 +66,12 @@ public class FormattedTextTextType {
     protected String supplierCode;
     @XmlAttribute(name = "Selected")
     protected Boolean selected;
+    @XmlAttribute(name = "Language")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "language")
+    protected String language;
+    @XmlAttribute(name = "CharSet")
+    protected String charSet;
     @XmlAttribute(name = "Mode")
     protected String mode;
     @XmlAttribute(name = "Font")
@@ -85,12 +91,6 @@ public class FormattedTextTextType {
     protected String textColor;
     @XmlAttribute(name = "BackgroundColor")
     protected String backgroundColor;
-    @XmlAttribute(name = "Language")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "language")
-    protected String language;
-    @XmlAttribute(name = "CharSet")
-    protected String charSet;
 
     /**
      * 获取value属性的值。
@@ -186,6 +186,54 @@ public class FormattedTextTextType {
      */
     public void setSelected(Boolean value) {
         this.selected = value;
+    }
+
+    /**
+     * 获取language属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLanguage() {
+        return language;
+    }
+
+    /**
+     * 设置language属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLanguage(String value) {
+        this.language = value;
+    }
+
+    /**
+     * 获取charSet属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCharSet() {
+        return charSet;
+    }
+
+    /**
+     * 设置charSet属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCharSet(String value) {
+        this.charSet = value;
     }
 
     /**
@@ -402,54 +450,6 @@ public class FormattedTextTextType {
      */
     public void setBackgroundColor(String value) {
         this.backgroundColor = value;
-    }
-
-    /**
-     * 获取language属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLanguage() {
-        return language;
-    }
-
-    /**
-     * 设置language属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLanguage(String value) {
-        this.language = value;
-    }
-
-    /**
-     * 获取charSet属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCharSet() {
-        return charSet;
-    }
-
-    /**
-     * 设置charSet属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCharSet(String value) {
-        this.charSet = value;
     }
 
 }

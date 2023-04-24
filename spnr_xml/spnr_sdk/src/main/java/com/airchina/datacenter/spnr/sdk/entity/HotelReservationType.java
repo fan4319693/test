@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -30,6 +30,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="Air" type="{http://www.opentravel.org/OTA/2003/05}AirReservationType" minOccurs="0"/>
  *         &lt;element name="Notifications" type="{http://www.opentravel.org/OTA/2003/05}NotificationsType" minOccurs="0"/>
  *         &lt;element name="UniqueID" minOccurs="0">
  *           &lt;complexType>
@@ -48,6 +49,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="WrittenConfInst" type="{http://www.opentravel.org/OTA/2003/05}WrittenConfInstType" minOccurs="0"/>
  *         &lt;element ref="{http://www.opentravel.org/OTA/2003/05}TPA_Extensions" minOccurs="0"/>
  *         &lt;element name="ReservationDetails" type="{http://www.opentravel.org/OTA/2003/05}ReservationDetailsType" minOccurs="0"/>
+ *         &lt;element name="ReservationRestrictions" type="{http://www.opentravel.org/OTA/2003/05}HotelReservationRestrictionsType" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeStampGroup"/>
  *       &lt;attribute name="RoomStayReservation" type="{http://www.w3.org/2001/XMLSchema}boolean" />
@@ -63,6 +65,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "HotelReservationType", propOrder = {
+    "air",
     "notifications",
     "uniqueID",
     "roomStays",
@@ -72,7 +75,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "fulfillment",
     "writtenConfInst",
     "tpaExtensions",
-    "reservationDetails"
+    "reservationDetails",
+    "reservationRestrictions"
 })
 @XmlSeeAlso({
     com.airchina.datacenter.spnr.sdk.entity.ProductBase.Hotel.class,
@@ -81,6 +85,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class HotelReservationType {
 
+    @XmlElement(name = "Air")
+    protected AirReservationType air;
     @XmlElement(name = "Notifications")
     protected NotificationsType notifications;
     @XmlElement(name = "UniqueID")
@@ -101,6 +107,8 @@ public class HotelReservationType {
     protected TPAExtensionsType tpaExtensions;
     @XmlElement(name = "ReservationDetails")
     protected ReservationDetailsType reservationDetails;
+    @XmlElement(name = "ReservationRestrictions")
+    protected HotelReservationRestrictionsType reservationRestrictions;
     @XmlAttribute(name = "RoomStayReservation")
     protected Boolean roomStayReservation;
     @XmlAttribute(name = "ResStatus")
@@ -120,6 +128,30 @@ public class HotelReservationType {
     protected XMLGregorianCalendar lastModifyDateTime;
     @XmlAttribute(name = "LastModifierID")
     protected String lastModifierID;
+
+    /**
+     * 获取air属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link AirReservationType }
+     *     
+     */
+    public AirReservationType getAir() {
+        return air;
+    }
+
+    /**
+     * 设置air属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AirReservationType }
+     *     
+     */
+    public void setAir(AirReservationType value) {
+        this.air = value;
+    }
 
     /**
      * 获取notifications属性的值。
@@ -359,6 +391,30 @@ public class HotelReservationType {
      */
     public void setReservationDetails(ReservationDetailsType value) {
         this.reservationDetails = value;
+    }
+
+    /**
+     * 获取reservationRestrictions属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link HotelReservationRestrictionsType }
+     *     
+     */
+    public HotelReservationRestrictionsType getReservationRestrictions() {
+        return reservationRestrictions;
+    }
+
+    /**
+     * 设置reservationRestrictions属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link HotelReservationRestrictionsType }
+     *     
+     */
+    public void setReservationRestrictions(HotelReservationRestrictionsType value) {
+        this.reservationRestrictions = value;
     }
 
     /**

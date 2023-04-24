@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -121,18 +121,18 @@ public class CarryOnAllowanceType
     protected List<FlightNumberNodeType> flightSegmentNumber;
     @XmlAttribute(name = "BookingChannel")
     protected String bookingChannel;
-    @XmlAttribute(name = "FlightNumber")
-    protected String flightNumber;
-    @XmlAttribute(name = "FQTVNumber")
-    protected String fqtvNumber;
-    @XmlAttribute(name = "FQTVStatus")
-    protected String fqtvStatus;
     @XmlAttribute(name = "ServiceType")
     protected String serviceType;
     @XmlAttribute(name = "ServiceCode")
     protected String serviceCode;
     @XmlAttribute(name = "SubCode")
     protected String subCode;
+    @XmlAttribute(name = "FQTVNumber")
+    protected String fqtvNumber;
+    @XmlAttribute(name = "FQTVStatus")
+    protected String fqtvStatus;
+    @XmlAttribute(name = "FlightNumber")
+    protected String flightNumber;
 
     /**
      * Gets the value of the travelerIDRef property.
@@ -443,78 +443,6 @@ public class CarryOnAllowanceType
     }
 
     /**
-     * 获取flightNumber属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFlightNumber() {
-        return flightNumber;
-    }
-
-    /**
-     * 设置flightNumber属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFlightNumber(String value) {
-        this.flightNumber = value;
-    }
-
-    /**
-     * 获取fqtvNumber属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFQTVNumber() {
-        return fqtvNumber;
-    }
-
-    /**
-     * 设置fqtvNumber属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFQTVNumber(String value) {
-        this.fqtvNumber = value;
-    }
-
-    /**
-     * 获取fqtvStatus属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFQTVStatus() {
-        return fqtvStatus;
-    }
-
-    /**
-     * 设置fqtvStatus属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFQTVStatus(String value) {
-        this.fqtvStatus = value;
-    }
-
-    /**
      * 获取serviceType属性的值。
      * 
      * @return
@@ -584,6 +512,78 @@ public class CarryOnAllowanceType
      */
     public void setSubCode(String value) {
         this.subCode = value;
+    }
+
+    /**
+     * 获取fqtvNumber属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFQTVNumber() {
+        return fqtvNumber;
+    }
+
+    /**
+     * 设置fqtvNumber属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFQTVNumber(String value) {
+        this.fqtvNumber = value;
+    }
+
+    /**
+     * 获取fqtvStatus属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFQTVStatus() {
+        return fqtvStatus;
+    }
+
+    /**
+     * 设置fqtvStatus属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFQTVStatus(String value) {
+        this.fqtvStatus = value;
+    }
+
+    /**
+     * 获取flightNumber属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    /**
+     * 设置flightNumber属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFlightNumber(String value) {
+        this.flightNumber = value;
     }
 
 

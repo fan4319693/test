@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -64,8 +64,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;/element>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}FareGroup"/>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}LoyaltyInfoGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CruiseCategoryGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}LoyaltyInfoGroup"/>
  *       &lt;attribute name="CabinNumber" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to8" />
  *       &lt;attribute name="HeldIndicator" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *       &lt;attribute name="MaxOccupancy" type="{http://www.opentravel.org/OTA/2003/05}Numeric1to99" />
@@ -112,16 +112,16 @@ public class SearchQualifierType {
     protected String fareCode;
     @XmlAttribute(name = "GroupCode")
     protected String groupCode;
+    @XmlAttribute(name = "BerthedCategoryCode")
+    protected String berthedCategoryCode;
+    @XmlAttribute(name = "PricedCategoryCode")
+    protected String pricedCategoryCode;
     @XmlAttribute(name = "LoyaltyMembershipID")
     protected String loyaltyMembershipID;
     @XmlAttribute(name = "LoyalLevel")
     protected String loyalLevel;
     @XmlAttribute(name = "LoyalLevelCode")
     protected Integer loyalLevelCode;
-    @XmlAttribute(name = "BerthedCategoryCode")
-    protected String berthedCategoryCode;
-    @XmlAttribute(name = "PricedCategoryCode")
-    protected String pricedCategoryCode;
 
     /**
      * 获取reservationID属性的值。
@@ -393,6 +393,54 @@ public class SearchQualifierType {
     }
 
     /**
+     * 获取berthedCategoryCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBerthedCategoryCode() {
+        return berthedCategoryCode;
+    }
+
+    /**
+     * 设置berthedCategoryCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBerthedCategoryCode(String value) {
+        this.berthedCategoryCode = value;
+    }
+
+    /**
+     * 获取pricedCategoryCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPricedCategoryCode() {
+        return pricedCategoryCode;
+    }
+
+    /**
+     * 设置pricedCategoryCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPricedCategoryCode(String value) {
+        this.pricedCategoryCode = value;
+    }
+
+    /**
      * 获取loyaltyMembershipID属性的值。
      * 
      * @return
@@ -462,54 +510,6 @@ public class SearchQualifierType {
      */
     public void setLoyalLevelCode(Integer value) {
         this.loyalLevelCode = value;
-    }
-
-    /**
-     * 获取berthedCategoryCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getBerthedCategoryCode() {
-        return berthedCategoryCode;
-    }
-
-    /**
-     * 设置berthedCategoryCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setBerthedCategoryCode(String value) {
-        this.berthedCategoryCode = value;
-    }
-
-    /**
-     * 获取pricedCategoryCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPricedCategoryCode() {
-        return pricedCategoryCode;
-    }
-
-    /**
-     * 设置pricedCategoryCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPricedCategoryCode(String value) {
-        this.pricedCategoryCode = value;
     }
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2012 rel. 2 sp1 (x64) (http://www.altova.com) by Yunhai Zhao (Openjaw Technologies) -->
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (x64) (http://www.altova.com) by Andrew Kelly (Openjaw Technologies) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="4.001" id="OTA2003A2006B">
 	<xs:include schemaLocation="OTA_SimpleTypes.xsd"/>
 	<xs:include schemaLocation="OTA_CommonTypes.xsd"/>
@@ -131,7 +131,6 @@
 					<xs:documentation xml:lang="en">Describes the policies of the hotel, such as the type of payments, or whether children or pets are accepted.</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
-					<!--  maps to java List<Object> cancelPolicyAndGuaranteePaymentPolicyAndPolicyInfoCodes -->
 					<xs:sequence minOccurs="0">
 						<xs:element name="CancelPolicy" type="CancelPenaltiesType" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
@@ -631,6 +630,118 @@
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
+						<xs:element name="BookPolicy" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>A collection of policies that may apply to a reservation.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="BookRestriction" minOccurs="0" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>The restriction that may apply to a reservation.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Distance" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>A collection of vehicle restriction that may apply to a reservation.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:attribute name="Quantity" type="xs:nonNegativeInteger">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Provides the number of miles/kilometers included, typically used when Unlimited is false.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="Unit" type="DistanceUnitNameType">
+															<xs:annotation>
+																<xs:documentation xml:lang="en">Provides the units in which distance is measured (i.e., miles or kilometers), typically used when Unlimited is false.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="ID" type="xs:string" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">The restriction id.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ExtraChargePolicy" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>A collection of policies that may apply to a reservation.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ExtraChargePenalty" minOccurs="0" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>The extra charge options that may apply to a reservation.</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence minOccurs="0">
+												<xs:element name="TimeSlotCharge" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation xml:lang="en">The charge penalty related to time.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="AmountPercent" type="AmountPercentType" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation xml:lang="en">Payment expressed as a fixed amount, or a percentage.</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="Start" type="xs:nonNegativeInteger">
+															<xs:annotation>
+																<xs:documentation>The start of the time period.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="End" type="xs:nonNegativeInteger">
+															<xs:annotation>
+																<xs:documentation>The end of the time period.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="StepSize" type="xs:decimal">
+															<xs:annotation>
+																<xs:documentation>The size of each step, typically when the charge type is tiered pricing.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="Unit" type="TimeUnitType">
+															<xs:annotation>
+																<xs:documentation>The units of time, e.g.: days, hours, etc., that apply to the time period.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+														<xs:attribute name="ChargeType">
+															<xs:annotation>
+																<xs:documentation>Enumeration indicating charge Type, i.e. Fixed, Tiered etc.</xs:documentation>
+															</xs:annotation>
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:enumeration value="Fixed"/>
+																	<xs:enumeration value="Tiered">
+																		<xs:annotation>
+																			<xs:documentation source="Description" xml:lang="en">Tiered pricing.</xs:documentation>
+																		</xs:annotation>
+																	</xs:enumeration>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="PolicyCode" type="StringLength1to16" use="optional">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">Policy code.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
 					</xs:sequence>
 					<xs:attribute name="DefaultValidBookingMinOffset" type="xs:nonNegativeInteger" use="optional">
 						<xs:annotation>
@@ -663,6 +774,7 @@
 							<xs:documentation xml:lang="en">Used to indicate the effective day for the policy.</xs:documentation>
 						</xs:annotation>
 					</xs:attributeGroup>
+					<!--  maps to java List<Object> cancelPolicyAndGuaranteePaymentPolicyAndPolicyInfoCodes -->
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
@@ -2286,6 +2398,7 @@ Refer to OTA Code List Revenue Category Code (RCC). This is a union type which a
 								<xs:attribute name="Date" type="DateOrDateTimeType"/>
 								<xs:attributeGroup ref="SellingPrices"/>
 								<xs:attribute name="OnRequest" type="xs:boolean"/>
+								<xs:attribute name="SupplierAmount" type="xs:float" use="optional"/>
 							</xs:complexType>
 						</xs:element>
 					</xs:sequence>
@@ -2310,6 +2423,11 @@ Refer to OTA Code List Revenue Category Code (RCC). This is a union type which a
 							</xs:attribute>
 							<xs:attribute name="MealPriceBeforeTax" type="xs:float"/>
 							<xs:attribute name="MealPriceAfterTax"/>
+							<xs:attribute name="MealSupplierPrice" type="xs:float" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The Supplier Amount for the Meal</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
 							<xs:attributeGroup ref="SellingPrices"/>
 						</xs:extension>
 					</xs:complexContent>
@@ -2462,6 +2580,11 @@ Refer to OTA Code List Revenue Category Code (RCC). This is a union type which a
 							</xs:attribute>
 							<xs:attribute name="MealPriceBeforeTax" type="xs:float"/>
 							<xs:attribute name="MealPriceAfterTax" type="xs:float"/>
+							<xs:attribute name="MealSupplierPrice" type="xs:float" use="optional">
+								<xs:annotation>
+									<xs:documentation xml:lang="en">The Supplier Amount for the Meal</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
 							<xs:attributeGroup ref="SellingPrices"/>
 						</xs:extension>
 					</xs:complexContent>
@@ -4326,6 +4449,11 @@ Values: False or No, and True or Yes.</xs:documentation>
 			</xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="HotelReferenceGroup"/>
+		<xs:attributeGroup ref="DateTimeStampGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The timestamp of thehotel  inventory is created or changed.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="LengthsOfStayType">
 		<xs:annotation>
@@ -5169,6 +5297,11 @@ Values: False or No, and True or Yes.</xs:documentation>
 		</xs:attribute>
 		<xs:attribute name="SellingRatePlan" type="xs:boolean"/>
 		<xs:attribute name="RatePlanVersion" type="xs:int"/>
+		<xs:attributeGroup ref="DateTimeStampGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The timestamp of the rateplan is created or changes.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="RateType">
 		<xs:annotation>
@@ -6024,6 +6157,7 @@ Refer to OTA Code List Decline Reason (DEC).
 											</xs:annotation>
 										</xs:attribute>
 										<xs:attribute name="AreaID" type="xs:string" use="optional"/>
+										<xs:attribute name="AllocatedUnits" type="xs:int"/>
 									</xs:extension>
 								</xs:complexContent>
 							</xs:complexType>
@@ -6126,6 +6260,11 @@ Refer to OTA Code List Decline Reason (DEC).
 		</xs:attribute>
 		<xs:attribute name="DiscountCode" type="StringLength1to64" use="optional"/>
 		<xs:attributeGroup ref="PromotionCodeGroup"/>
+		<xs:attributeGroup ref="DateTimeStampGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The timestamp of the room inventory is created or changed.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="RoomTypeType">
 		<xs:annotation>
@@ -6174,6 +6313,7 @@ Refer to OTA Code List Decline Reason (DEC).
 					</xs:attributeGroup>
 				</xs:complexType>
 			</xs:element>
+			<xs:element ref="AltRoomTypeNames" minOccurs="0"/>
 			<xs:element name="RoomShortDescription" type="ParagraphType" minOccurs="0"/>
 			<xs:element ref="RatePlans" minOccurs="0"/>
 		</xs:sequence>
@@ -6214,6 +6354,31 @@ Refer to OTA Code List Decline Reason (DEC).
 		<xs:attribute name="SupplierType" type="xs:string"/>
 		<xs:attribute name="AreaID" type="xs:string" use="optional"/>
 	</xs:complexType>
+	<xs:element name="AltRoomTypeNames">
+		<xs:annotation>
+			<xs:documentation>A ccollection of alternative names for a Room Type</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="AltRoomTypeName" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>An element representing an alternative name for a Room Type, with text value and language</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Text" type="FormattedTextTextType" maxOccurs="unbounded"/>
+							<xs:element name="DefaultText" type="FormattedTextTextType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Allows for text in a default language to be included if necessary</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="RPH" type="RPH_Type"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 	<xs:complexType name="RoutingHopType">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">A collection of RoutingHop objects. This details the path that the original request or notification traveled.</xs:documentation>
@@ -7315,6 +7480,7 @@ Refer to OTA Code List Decline Reason (DEC).
 					<xs:attribute name="Quantity" type="xs:int"/>
 					<xs:attribute name="Duration" type="xs:int"/>
 					<xs:attribute name="Type" type="xs:int"/>
+					<xs:attribute name="SupplierAmount" type="xs:float"/>
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
@@ -7388,6 +7554,257 @@ Refer to OTA Code List Decline Reason (DEC).
 		<xs:attribute name="SupplierServiceCode" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>Supplier service code. Some external hotel supplier can return back service code that is not possible to map to OTA code.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="HotelProcessingInfoType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A collection of information that specifies how the message processing should occur or how the data should be returned.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ReservationRestrictions" type="HotelReservationRestrictionsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HotelReservationRestrictionsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A collection of information that specifies how the reservation restriction should be prcessed.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IgnoreItems" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A collection of information that specifies which the reservation restriction should be ignored.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="MinAdvBookingOffSet" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="Actived" type="xs:boolean"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="MaxAdvBookingOffset" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="Actived" type="xs:boolean"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Mode" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A string specifies the mode of the reservation restriction should be used, e.g. Restrict, PartialIgnore, Ignore.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="HotelAvailReportsType">
+		<xs:sequence>
+			<xs:element name="HotelAvailReport" type="HotelAvailReportType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="From" type="xs:date" use="required"/>
+		<xs:attribute name="To" type="xs:date" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="HotelAvailReportType">
+		<xs:sequence>
+			<xs:element name="AffiliationInfo" type="AffiliationInfoType"/>
+			<xs:element name="Rooms">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Room" type="HotelAvailReportRoomType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="OJHotelCode" type="xs:string" use="required"/>
+		<xs:attribute name="HotelName" type="xs:string" use="required"/>
+		<xs:attribute name="CountryCode" use="required"/>
+		<xs:attribute name="StateCode" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="2"/>
+					<xs:maxLength value="8"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="City" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="8"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="HotelCodeContext" type="xs:string" use="optional"/>
+		<xs:attributeGroup ref="StayTypeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="HotelAvailReportRoomType">
+		<xs:sequence>
+			<xs:element name="Contracts">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Contract" type="HotelAvailReportContractType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="RoomCode" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="16"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="HotelAvailReportContractType">
+		<xs:sequence>
+			<xs:element name="Allocations">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Allocation" type="HotelAvailReportAllocationType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BookingRules" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BookingRule" type="HotelAvailReportBookingRuleType" minOccurs="1" maxOccurs="unbounded">
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ContractCode" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="16"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="HotelAvailReportAllocationType">
+		<xs:attribute name="ForDate" type="xs:date" use="required"/>
+		<xs:attribute name="InitiallyAllocated"/>
+		<xs:attribute name="AdjustmentToAllocation"/>
+		<xs:attribute name="Allocated" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="1"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Booked" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Released" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="DailyCap" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Available" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="AvailableOverCap"/>
+	</xs:complexType>
+	<xs:complexType name="HotelAvailReportBookingRuleType">
+		<xs:attribute name="MinAdvBookingDate" type="DateOrDateTimeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="HotelAvailReportRequestType">
+		<xs:sequence>
+			<xs:element name="AvailTimeSpan">
+				<xs:complexType>
+					<xs:attribute name="From" type="xs:date" use="required"/>
+					<xs:attribute name="To" type="xs:date" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Suppliers" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="Supplier" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:attribute name="SupplierCode" use="required">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="16"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Award" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">An element that identifies the hotel ratings. </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="Provider" type="xs:string" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The name of the award or ratings provider.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="Rating" type="xs:string" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The actual award or rating received by the hotel facility. </xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="OJHotelCode" type="xs:string" use="optional"/>
+		<xs:attributeGroup ref="StayTypeGroup"/>
+		<xs:attribute name="HotelCode" type="xs:string" use="optional"/>
+		<xs:attribute name="HotelCodeContext" type="xs:string" use="optional"/>
+		<xs:attribute name="CountryCode" type="xs:string" use="required"/>
+		<xs:attribute name="StateCode" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="2"/>
+					<xs:maxLength value="8"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="HotelCityCode" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="15"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="HotelCityCodeContext" type="xs:string" use="optional"/>
+		<xs:attribute name="RatingProvider" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The name of the award or ratings provider (e.g., Michilen, American Automobile Association (AAA). </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RatingMin">
+			<xs:annotation>
+				<xs:documentation>Min hotel rating.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RatingMax">
+			<xs:annotation>
+				<xs:documentation>Max hotel rating.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>

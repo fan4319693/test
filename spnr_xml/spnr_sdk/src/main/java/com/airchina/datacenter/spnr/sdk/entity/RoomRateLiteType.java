@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -33,8 +33,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="Rates" type="{http://www.opentravel.org/OTA/2003/05}RateLiteType"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}RatePlanGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}RatePlanGroup"/>
  *       &lt;attribute name="RoomTypeCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to16" />
  *       &lt;attribute name="InvBlockCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to32" />
  *       &lt;attribute name="NumberOfUnits" type="{http://www.opentravel.org/OTA/2003/05}Numeric1to999" />
@@ -59,6 +59,12 @@ public class RoomRateLiteType {
     protected String invBlockCode;
     @XmlAttribute(name = "NumberOfUnits")
     protected Integer numberOfUnits;
+    @XmlAttribute(name = "EffectiveDate")
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar effectiveDate;
+    @XmlAttribute(name = "ExpireDate")
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar expireDate;
     @XmlAttribute(name = "RatePlanType")
     protected String ratePlanType;
     @XmlAttribute(name = "RatePlanCode")
@@ -75,12 +81,6 @@ public class RoomRateLiteType {
     protected String promotionCode;
     @XmlAttribute(name = "PromotionVendorCode")
     protected List<String> promotionVendorCode;
-    @XmlAttribute(name = "EffectiveDate")
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar effectiveDate;
-    @XmlAttribute(name = "ExpireDate")
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar expireDate;
 
     /**
      * 获取rates属性的值。
@@ -176,6 +176,54 @@ public class RoomRateLiteType {
      */
     public void setNumberOfUnits(Integer value) {
         this.numberOfUnits = value;
+    }
+
+    /**
+     * 获取effectiveDate属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getEffectiveDate() {
+        return effectiveDate;
+    }
+
+    /**
+     * 设置effectiveDate属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setEffectiveDate(XMLGregorianCalendar value) {
+        this.effectiveDate = value;
+    }
+
+    /**
+     * 获取expireDate属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getExpireDate() {
+        return expireDate;
+    }
+
+    /**
+     * 设置expireDate属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setExpireDate(XMLGregorianCalendar value) {
+        this.expireDate = value;
     }
 
     /**
@@ -373,54 +421,6 @@ public class RoomRateLiteType {
             promotionVendorCode = new ArrayList<String>();
         }
         return this.promotionVendorCode;
-    }
-
-    /**
-     * 获取effectiveDate属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getEffectiveDate() {
-        return effectiveDate;
-    }
-
-    /**
-     * 设置effectiveDate属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setEffectiveDate(XMLGregorianCalendar value) {
-        this.effectiveDate = value;
-    }
-
-    /**
-     * 获取expireDate属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getExpireDate() {
-        return expireDate;
-    }
-
-    /**
-     * 设置expireDate属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setExpireDate(XMLGregorianCalendar value) {
-        this.expireDate = value;
     }
 
 }

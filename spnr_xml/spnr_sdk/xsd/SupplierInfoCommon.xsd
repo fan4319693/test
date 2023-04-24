@@ -374,6 +374,11 @@
 				</xs:restriction>
 			</xs:simpleType>
 		</xs:attribute>
+		<xs:attributeGroup ref="DateTimeStampGroup">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The timestamp of the supplier content is created or changed.</xs:documentation>
+			</xs:annotation>
+		</xs:attributeGroup>
 	</xs:complexType>
 	<xs:complexType name="BookingOfficesType">
 		<xs:sequence>

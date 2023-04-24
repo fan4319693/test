@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -512,28 +512,28 @@ public class ServiceBundleNoPriceType {
             protected DiagnosticsType diagnostics;
             @XmlElement(name = "MediaReference")
             protected MediaReferenceType mediaReference;
-            @XmlAttribute(name = "Status")
-            protected String status;
             @XmlAttribute(name = "ReasonCode")
             protected String reasonCode;
-            @XmlAttribute(name = "CanDeselect")
-            protected String canDeselect;
-            @XmlAttribute(name = "ServiceType")
-            protected String serviceType;
-            @XmlAttribute(name = "ServiceCode")
-            protected String serviceCode;
-            @XmlAttribute(name = "SubCode")
-            protected String subCode;
-            @XmlAttribute(name = "Icon")
-            protected String icon;
+            @XmlAttribute(name = "Status")
+            protected String status;
             @XmlAttribute(name = "NotValidBefore")
             @XmlSchemaType(name = "dateTime")
             protected XMLGregorianCalendar notValidBefore;
             @XmlAttribute(name = "NotValidAfter")
             @XmlSchemaType(name = "dateTime")
             protected XMLGregorianCalendar notValidAfter;
+            @XmlAttribute(name = "ServiceType")
+            protected String serviceType;
+            @XmlAttribute(name = "ServiceCode")
+            protected String serviceCode;
+            @XmlAttribute(name = "SubCode")
+            protected String subCode;
             @XmlAttribute(name = "Method")
             protected String method;
+            @XmlAttribute(name = "Icon")
+            protected String icon;
+            @XmlAttribute(name = "CanDeselect")
+            protected String canDeselect;
 
             /**
              * 获取serviceID属性的值。
@@ -825,30 +825,6 @@ public class ServiceBundleNoPriceType {
             }
 
             /**
-             * 获取status属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getStatus() {
-                return status;
-            }
-
-            /**
-             * 设置status属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setStatus(String value) {
-                this.status = value;
-            }
-
-            /**
              * 获取reasonCode属性的值。
              * 
              * @return
@@ -873,27 +849,75 @@ public class ServiceBundleNoPriceType {
             }
 
             /**
-             * 获取canDeselect属性的值。
+             * 获取status属性的值。
              * 
              * @return
              *     possible object is
              *     {@link String }
              *     
              */
-            public String getCanDeselect() {
-                return canDeselect;
+            public String getStatus() {
+                return status;
             }
 
             /**
-             * 设置canDeselect属性的值。
+             * 设置status属性的值。
              * 
              * @param value
              *     allowed object is
              *     {@link String }
              *     
              */
-            public void setCanDeselect(String value) {
-                this.canDeselect = value;
+            public void setStatus(String value) {
+                this.status = value;
+            }
+
+            /**
+             * 获取notValidBefore属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link XMLGregorianCalendar }
+             *     
+             */
+            public XMLGregorianCalendar getNotValidBefore() {
+                return notValidBefore;
+            }
+
+            /**
+             * 设置notValidBefore属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link XMLGregorianCalendar }
+             *     
+             */
+            public void setNotValidBefore(XMLGregorianCalendar value) {
+                this.notValidBefore = value;
+            }
+
+            /**
+             * 获取notValidAfter属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link XMLGregorianCalendar }
+             *     
+             */
+            public XMLGregorianCalendar getNotValidAfter() {
+                return notValidAfter;
+            }
+
+            /**
+             * 设置notValidAfter属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link XMLGregorianCalendar }
+             *     
+             */
+            public void setNotValidAfter(XMLGregorianCalendar value) {
+                this.notValidAfter = value;
             }
 
             /**
@@ -969,6 +993,30 @@ public class ServiceBundleNoPriceType {
             }
 
             /**
+             * 获取method属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getMethod() {
+                return method;
+            }
+
+            /**
+             * 设置method属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setMethod(String value) {
+                this.method = value;
+            }
+
+            /**
              * 获取icon属性的值。
              * 
              * @return
@@ -993,75 +1041,27 @@ public class ServiceBundleNoPriceType {
             }
 
             /**
-             * 获取notValidBefore属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link XMLGregorianCalendar }
-             *     
-             */
-            public XMLGregorianCalendar getNotValidBefore() {
-                return notValidBefore;
-            }
-
-            /**
-             * 设置notValidBefore属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link XMLGregorianCalendar }
-             *     
-             */
-            public void setNotValidBefore(XMLGregorianCalendar value) {
-                this.notValidBefore = value;
-            }
-
-            /**
-             * 获取notValidAfter属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link XMLGregorianCalendar }
-             *     
-             */
-            public XMLGregorianCalendar getNotValidAfter() {
-                return notValidAfter;
-            }
-
-            /**
-             * 设置notValidAfter属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link XMLGregorianCalendar }
-             *     
-             */
-            public void setNotValidAfter(XMLGregorianCalendar value) {
-                this.notValidAfter = value;
-            }
-
-            /**
-             * 获取method属性的值。
+             * 获取canDeselect属性的值。
              * 
              * @return
              *     possible object is
              *     {@link String }
              *     
              */
-            public String getMethod() {
-                return method;
+            public String getCanDeselect() {
+                return canDeselect;
             }
 
             /**
-             * 设置method属性的值。
+             * 设置canDeselect属性的值。
              * 
              * @param value
              *     allowed object is
              *     {@link String }
              *     
              */
-            public void setMethod(String value) {
-                this.method = value;
+            public void setCanDeselect(String value) {
+                this.canDeselect = value;
             }
 
 

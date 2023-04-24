@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -184,8 +184,8 @@ import javax.xml.datatype.Duration;
  *                     &lt;/complexType>
  *                   &lt;/element>
  *                 &lt;/sequence>
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}InvBlockCutoffGroup"/>
  *                 &lt;attribute name="MaxAdvancedBookingOffset" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                 &lt;attribute name="MinAdvancedBookingOffset" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -406,8 +406,8 @@ public class BookingRulesType {
      *           &lt;/complexType>
      *         &lt;/element>
      *       &lt;/sequence>
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}CodeListGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}InvBlockCutoffGroup"/>
      *       &lt;attribute name="MaxAdvancedBookingOffset" type="{http://www.w3.org/2001/XMLSchema}string" />
      *       &lt;attribute name="MinAdvancedBookingOffset" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -493,16 +493,6 @@ public class BookingRulesType {
         @XmlAttribute(name = "MaxContiguousBookings")
         @XmlSchemaType(name = "nonNegativeInteger")
         protected BigInteger maxContiguousBookings;
-        @XmlAttribute(name = "URI")
-        @XmlSchemaType(name = "anyURI")
-        protected String uri;
-        @XmlAttribute(name = "Quantity")
-        @XmlSchemaType(name = "nonNegativeInteger")
-        protected BigInteger quantity;
-        @XmlAttribute(name = "Code")
-        protected String code;
-        @XmlAttribute(name = "CodeContext")
-        protected String codeContext;
         @XmlAttribute(name = "Start")
         protected String start;
         @XmlAttribute(name = "Duration")
@@ -513,6 +503,16 @@ public class BookingRulesType {
         protected BigInteger rangeNum;
         @XmlAttribute(name = "SearchTimeZone")
         protected String searchTimeZone;
+        @XmlAttribute(name = "URI")
+        @XmlSchemaType(name = "anyURI")
+        protected String uri;
+        @XmlAttribute(name = "Quantity")
+        @XmlSchemaType(name = "nonNegativeInteger")
+        protected BigInteger quantity;
+        @XmlAttribute(name = "Code")
+        protected String code;
+        @XmlAttribute(name = "CodeContext")
+        protected String codeContext;
         @XmlAttribute(name = "AbsoluteCutoff")
         protected String absoluteCutoff;
         @XmlAttribute(name = "OffsetDuration")
@@ -1079,102 +1079,6 @@ public class BookingRulesType {
         }
 
         /**
-         * 获取uri属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getURI() {
-            return uri;
-        }
-
-        /**
-         * 设置uri属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setURI(String value) {
-            this.uri = value;
-        }
-
-        /**
-         * 获取quantity属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigInteger }
-         *     
-         */
-        public BigInteger getQuantity() {
-            return quantity;
-        }
-
-        /**
-         * 设置quantity属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigInteger }
-         *     
-         */
-        public void setQuantity(BigInteger value) {
-            this.quantity = value;
-        }
-
-        /**
-         * 获取code属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getCode() {
-            return code;
-        }
-
-        /**
-         * 设置code属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setCode(String value) {
-            this.code = value;
-        }
-
-        /**
-         * 获取codeContext属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getCodeContext() {
-            return codeContext;
-        }
-
-        /**
-         * 设置codeContext属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setCodeContext(String value) {
-            this.codeContext = value;
-        }
-
-        /**
          * 获取start属性的值。
          * 
          * @return
@@ -1292,6 +1196,102 @@ public class BookingRulesType {
          */
         public void setSearchTimeZone(String value) {
             this.searchTimeZone = value;
+        }
+
+        /**
+         * 获取uri属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getURI() {
+            return uri;
+        }
+
+        /**
+         * 设置uri属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setURI(String value) {
+            this.uri = value;
+        }
+
+        /**
+         * 获取quantity属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link BigInteger }
+         *     
+         */
+        public BigInteger getQuantity() {
+            return quantity;
+        }
+
+        /**
+         * 设置quantity属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link BigInteger }
+         *     
+         */
+        public void setQuantity(BigInteger value) {
+            this.quantity = value;
+        }
+
+        /**
+         * 获取code属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getCode() {
+            return code;
+        }
+
+        /**
+         * 设置code属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setCode(String value) {
+            this.code = value;
+        }
+
+        /**
+         * 获取codeContext属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getCodeContext() {
+            return codeContext;
+        }
+
+        /**
+         * 设置codeContext属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setCodeContext(String value) {
+            this.codeContext = value;
         }
 
         /**
@@ -1784,15 +1784,15 @@ public class BookingRulesType {
             protected Float amount;
             @XmlAttribute(name = "PrePayInd")
             protected Boolean prePayInd;
-            @XmlAttribute(name = "OriginalAmount")
-            protected Float originalAmount;
-            @XmlAttribute(name = "OriginalCurrencyCode")
-            protected String originalCurrencyCode;
             @XmlAttribute(name = "CurrencyCode")
             protected String currencyCode;
             @XmlAttribute(name = "DecimalPlaces")
             @XmlSchemaType(name = "nonNegativeInteger")
             protected BigInteger decimalPlaces;
+            @XmlAttribute(name = "OriginalAmount")
+            protected Float originalAmount;
+            @XmlAttribute(name = "OriginalCurrencyCode")
+            protected String originalCurrencyCode;
 
             /**
              * 获取percent属性的值。
@@ -2015,54 +2015,6 @@ public class BookingRulesType {
             }
 
             /**
-             * 获取originalAmount属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link Float }
-             *     
-             */
-            public Float getOriginalAmount() {
-                return originalAmount;
-            }
-
-            /**
-             * 设置originalAmount属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link Float }
-             *     
-             */
-            public void setOriginalAmount(Float value) {
-                this.originalAmount = value;
-            }
-
-            /**
-             * 获取originalCurrencyCode属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getOriginalCurrencyCode() {
-                return originalCurrencyCode;
-            }
-
-            /**
-             * 设置originalCurrencyCode属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setOriginalCurrencyCode(String value) {
-                this.originalCurrencyCode = value;
-            }
-
-            /**
              * 获取currencyCode属性的值。
              * 
              * @return
@@ -2108,6 +2060,54 @@ public class BookingRulesType {
              */
             public void setDecimalPlaces(BigInteger value) {
                 this.decimalPlaces = value;
+            }
+
+            /**
+             * 获取originalAmount属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link Float }
+             *     
+             */
+            public Float getOriginalAmount() {
+                return originalAmount;
+            }
+
+            /**
+             * 设置originalAmount属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link Float }
+             *     
+             */
+            public void setOriginalAmount(Float value) {
+                this.originalAmount = value;
+            }
+
+            /**
+             * 获取originalCurrencyCode属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getOriginalCurrencyCode() {
+                return originalCurrencyCode;
+            }
+
+            /**
+             * 设置originalCurrencyCode属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setOriginalCurrencyCode(String value) {
+                this.originalCurrencyCode = value;
             }
 
         }

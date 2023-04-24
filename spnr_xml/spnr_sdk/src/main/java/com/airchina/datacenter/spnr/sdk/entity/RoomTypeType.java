@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -53,6 +53,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
+ *         &lt;element ref="{http://www.opentravel.org/OTA/2003/05}AltRoomTypeNames" minOccurs="0"/>
  *         &lt;element name="RoomShortDescription" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" minOccurs="0"/>
  *         &lt;element ref="{http://www.opentravel.org/OTA/2003/05}RatePlans" minOccurs="0"/>
  *       &lt;/sequence>
@@ -81,6 +82,7 @@ import javax.xml.bind.annotation.XmlType;
     "additionalDetails",
     "amenities",
     "occupancy",
+    "altRoomTypeNames",
     "roomShortDescription",
     "ratePlans"
 })
@@ -97,6 +99,8 @@ public class RoomTypeType {
     protected RoomTypeType.Amenities amenities;
     @XmlElement(name = "Occupancy")
     protected List<RoomTypeType.Occupancy> occupancy;
+    @XmlElement(name = "AltRoomTypeNames")
+    protected AltRoomTypeNames altRoomTypeNames;
     @XmlElement(name = "RoomShortDescription")
     protected ParagraphType roomShortDescription;
     @XmlElement(name = "RatePlans")
@@ -225,6 +229,30 @@ public class RoomTypeType {
             occupancy = new ArrayList<RoomTypeType.Occupancy>();
         }
         return this.occupancy;
+    }
+
+    /**
+     * 获取altRoomTypeNames属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link AltRoomTypeNames }
+     *     
+     */
+    public AltRoomTypeNames getAltRoomTypeNames() {
+        return altRoomTypeNames;
+    }
+
+    /**
+     * 设置altRoomTypeNames属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AltRoomTypeNames }
+     *     
+     */
+    public void setAltRoomTypeNames(AltRoomTypeNames value) {
+        this.altRoomTypeNames = value;
     }
 
     /**

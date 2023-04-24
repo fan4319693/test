@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -27,8 +27,8 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="SPNR_WarningType">
  *   &lt;simpleContent>
  *     &lt;extension base="&lt;http://www.opentravel.org/OTA/2003/05>FreeTextType">
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ErrorWarningAttributeGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}SPNR_ErrorAttributes"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ErrorWarningAttributeGroup"/>
  *       &lt;attribute name="Type" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/extension>
  *   &lt;/simpleContent>
@@ -45,6 +45,10 @@ public class SPNRWarningType
 
     @XmlAttribute(name = "Type", required = true)
     protected String type;
+    @XmlAttribute(name = "ProductNumber")
+    protected BigInteger productNumber;
+    @XmlAttribute(name = "AuditID")
+    protected Integer auditID;
     @XmlAttribute(name = "ShortText")
     protected String shortText;
     @XmlAttribute(name = "Code")
@@ -66,10 +70,6 @@ public class SPNRWarningType
     protected String supplierCode;
     @XmlAttribute(name = "SupplierID")
     protected String supplierID;
-    @XmlAttribute(name = "ProductNumber")
-    protected BigInteger productNumber;
-    @XmlAttribute(name = "AuditID")
-    protected Integer auditID;
 
     /**
      * 获取type属性的值。
@@ -93,6 +93,54 @@ public class SPNRWarningType
      */
     public void setType(String value) {
         this.type = value;
+    }
+
+    /**
+     * 获取productNumber属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getProductNumber() {
+        return productNumber;
+    }
+
+    /**
+     * 设置productNumber属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setProductNumber(BigInteger value) {
+        this.productNumber = value;
+    }
+
+    /**
+     * 获取auditID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getAuditID() {
+        return auditID;
+    }
+
+    /**
+     * 设置auditID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setAuditID(Integer value) {
+        this.auditID = value;
     }
 
     /**
@@ -333,54 +381,6 @@ public class SPNRWarningType
      */
     public void setSupplierID(String value) {
         this.supplierID = value;
-    }
-
-    /**
-     * 获取productNumber属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getProductNumber() {
-        return productNumber;
-    }
-
-    /**
-     * 设置productNumber属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setProductNumber(BigInteger value) {
-        this.productNumber = value;
-    }
-
-    /**
-     * 获取auditID属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getAuditID() {
-        return auditID;
-    }
-
-    /**
-     * 设置auditID属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setAuditID(Integer value) {
-        this.auditID = value;
     }
 
 }

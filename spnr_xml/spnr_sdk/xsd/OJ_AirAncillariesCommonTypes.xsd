@@ -497,6 +497,7 @@
 			<xs:element name="Content" type="AirAncillaryProductLocalisedContentType" minOccurs="0"/>
 			<xs:element name="CarbonOffsets" type="AirAncillaryOffsetProductType" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="DefaultContent" type="AirAncillaryProductLocalisedContentType" minOccurs="0"/>
+			<xs:element name="EligibleItem" type="AirAncillaryEligibleItemType" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="Lounge" type="AirAncillaryLoungeProductType" minOccurs="0"/>
 			<xs:element name="AncillaryProducts" type="AncillaryProductsType" minOccurs="0"/>
 			<xs:element name="Prices" type="AirAncillaryProductPricesType" minOccurs="0">
@@ -933,7 +934,21 @@
 			<xs:documentation xml:lang="en">The carbon offset calculated based on journey, class and number of passengers.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="Price" type="AirAncillaryProductPriceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Price" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="AirAncillaryProductPriceType">
+							<xs:sequence>
+								<xs:element name="Loyalty" type="LoyaltyProductType" minOccurs="0" maxOccurs="1">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The amount of Loyalty Points that the customer has earned and/or redeemed in relation to this product</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="Unit" type="WeightUnitType">
 			<xs:annotation>
@@ -943,6 +958,126 @@
 		<xs:attribute name="Amount" type="xs:float">
 			<xs:annotation>
 				<xs:documentation>The carbon offset amount.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FlightSegmentRPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation>RPH attribute from FlightSegment section from this ancillary's flight segment</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Quantity" type="xs:positiveInteger" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">The quantity for the carbon offset.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!-- ==================================================================== -->
+	<!-- One price two seat type definition.-->
+	<xs:complexType name="AirAncillaryEligibleItemType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The eligible item of the particular ancillary product.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="Air" type="EligibleItemAirType" minOccurs="0" maxOccurs="1"/>
+			</xs:choice>
+			<xs:element name="EligiblePricing" type="EligiblePricingType" minOccurs="0"  maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EligibleItemAirType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The air content of the eligible item.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AirItineraryPricingInfo" type="AirItineraryPricingInfoType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="RPH" type="RPH_Type" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A reference to eligible pricing.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!-- ==================================================================== -->
+	<!-- Eligible pricing type.-->
+	<xs:complexType name="EligiblePricingType">
+		<xs:sequence>
+			<xs:element name="BaseFare" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Price of the inventory excluding taxes and fees.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="CurrencyAmountGroup"/>
+					<xs:attributeGroup ref="CurrencyConversionGroup"/>
+					<xs:attribute name="Adjusted" type="xs:float" use="optional"/>
+					<xs:attribute name="OriginalPrice" type="Money" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">A description of the base amount original fare, a base amount fare before price discount.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="DifferFare" type="Money" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The upgrade amount of the fare.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="ReissueFee" type="Money" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The daychange amount of the fare.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="RefundAmount" type="Money" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The refundable money.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="UsedAmount" type="Money" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The fare already used for the flight segment.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="NonRefundableAmount" type="Money" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Non refundable amount for the flight segment.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="RoundTripAmount" type="Money" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The round trip fare.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PriceAdjustments" type="exPriceAdjustmentsType" minOccurs="0"/>
+			<xs:element name="TotalFare" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The total price that the passenger would pay (includes fare, taxes, fees)  </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Loyalty" type="LoyaltyPricingType" minOccurs="0"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="CurrencyAmountGroup"/>
+					<xs:attribute name="Adjusted" type="xs:string" use="optional"/>
+					<xs:attribute name="OriginalPrice" type="Money" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">A description of the total original fare, a total fare before price discount.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="Currency" type="xs:string" use="optional">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The code specifying a monetary unit. Use ISO 4217, three alpha code. This attribute is deprecated, CurrencyCode should be used!</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ItemRPH_List" type="ListOfRPH">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Reference to itinerary reservation item (e.g. Car, Hotel, Air, Package).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AssociatedItemRPH" type="ListOfRPH">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Reference to associated itinerary item (e.g. Travel Insurance).</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
@@ -1065,6 +1200,7 @@
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attributeGroup ref="DateTimeStampGroup"/>
+		<xs:attributeGroup ref="DateTimeSpanGroup"/>
 	</xs:complexType>
 	<!-- ==================================================================== -->
 	<!-- Ancillary product lounge content definition.                         -->
@@ -2072,6 +2208,7 @@ Please see Baggage_CommonTypes.xsd and BaggageSimpleTypes.xsl fir further inform
 			<xs:element name="GroundTransportServiceCriteria" type="GroundTransportServiceCriteriaType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="AirCriteria" type="AirSearchCriteriaType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="PriceCriteria" type="PriceCriteriaType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="LoungeCriteria" type="LoungeCriteriaType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GroundTransportServiceCriteriaType">
@@ -2117,17 +2254,10 @@ Please see Baggage_CommonTypes.xsd and BaggageSimpleTypes.xsl fir further inform
 			<xs:documentation xml:lang="en">A collection of criteria for specifying flight itinerary to be searched for.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="OriginDestinationOption" maxOccurs="unbounded">
+			<xs:element name="AirItinerary" type="AirItineraryType" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation xml:lang="en">Specify specific flight information for the itinerary. </xs:documentation>
+					<xs:documentation xml:lang="en"> Specify specific flight information for the itinerary. </xs:documentation>
 				</xs:annotation>
-				<xs:complexType>
-					<xs:complexContent>
-						<xs:extension base="OriginDestinationOptionType">
-							<xs:attribute name="RPH" type="RPH_Type" use="optional"/>
-						</xs:extension>
-					</xs:complexContent>
-				</xs:complexType>
 			</xs:element>
 			<xs:element name="TravelerInfoSummary" minOccurs="0">
 				<xs:annotation>
@@ -2150,8 +2280,21 @@ Please see Baggage_CommonTypes.xsd and BaggageSimpleTypes.xsl fir further inform
 					</xs:complexContent>
 				</xs:complexType>
 			</xs:element>
+            <xs:element name="AirItineraryPricingInfo" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en"> Pricing Information for an Air Itinerary.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="AirItineraryPricingInfoType">
+                            <xs:attributeGroup ref="AirItineraryPricingInfoGroup"/>
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
 		</xs:sequence>
 	</xs:complexType>
+
     <!-- ==================================================================== -->
     <xs:complexType name="PriceCriteriaType">
         <xs:annotation>
@@ -2169,4 +2312,27 @@ Please see Baggage_CommonTypes.xsd and BaggageSimpleTypes.xsl fir further inform
 		<xs:attribute name="MinAmount" type="xs:float" use="optional"/>
 		<xs:attribute name="MaxAmount" type="xs:float" use="optional"/>
     </xs:complexType>
+	<xs:complexType name="LoungeCriteriaType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Used to search lounge service.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Airport" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Airport information.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="AirportLocationGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TravelDateTimeSpan" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Travel date time span information.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="DateTimeSpanGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
 </xs:schema>

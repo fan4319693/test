@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -92,6 +92,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                           &lt;attribute name="OnRequest" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *                           &lt;attribute name="RemainingUnits" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                           &lt;attribute name="AreaID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                           &lt;attribute name="AllocatedUnits" type="{http://www.w3.org/2001/XMLSchema}int" />
  *                         &lt;/extension>
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
@@ -135,6 +136,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="GroupPriorities" type="{http://www.opentravel.org/OTA/2003/05}GroupPriorities" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}PromotionCodeGroup"/>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeStampGroup"/>
  *       &lt;attribute name="MarketCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to64" />
  *       &lt;attribute name="SourceOfBusiness" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to64" />
  *       &lt;attribute name="DiscountCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to64" />
@@ -205,6 +207,16 @@ public class RoomStayType {
     protected String promotionCode;
     @XmlAttribute(name = "PromotionVendorCode")
     protected List<String> promotionVendorCode;
+    @XmlAttribute(name = "CreateDateTime")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar createDateTime;
+    @XmlAttribute(name = "CreatorID")
+    protected String creatorID;
+    @XmlAttribute(name = "LastModifyDateTime")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar lastModifyDateTime;
+    @XmlAttribute(name = "LastModifierID")
+    protected String lastModifierID;
 
     /**
      * 获取roomTypes属性的值。
@@ -651,6 +663,102 @@ public class RoomStayType {
             promotionVendorCode = new ArrayList<String>();
         }
         return this.promotionVendorCode;
+    }
+
+    /**
+     * 获取createDateTime属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getCreateDateTime() {
+        return createDateTime;
+    }
+
+    /**
+     * 设置createDateTime属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setCreateDateTime(XMLGregorianCalendar value) {
+        this.createDateTime = value;
+    }
+
+    /**
+     * 获取creatorID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCreatorID() {
+        return creatorID;
+    }
+
+    /**
+     * 设置creatorID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCreatorID(String value) {
+        this.creatorID = value;
+    }
+
+    /**
+     * 获取lastModifyDateTime属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getLastModifyDateTime() {
+        return lastModifyDateTime;
+    }
+
+    /**
+     * 设置lastModifyDateTime属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setLastModifyDateTime(XMLGregorianCalendar value) {
+        this.lastModifyDateTime = value;
+    }
+
+    /**
+     * 获取lastModifierID属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLastModifierID() {
+        return lastModifierID;
+    }
+
+    /**
+     * 设置lastModifierID属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLastModifierID(String value) {
+        this.lastModifierID = value;
     }
 
 
@@ -1380,6 +1488,7 @@ public class RoomStayType {
      *                 &lt;attribute name="OnRequest" type="{http://www.w3.org/2001/XMLSchema}boolean" />
      *                 &lt;attribute name="RemainingUnits" type="{http://www.w3.org/2001/XMLSchema}string" />
      *                 &lt;attribute name="AreaID" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *                 &lt;attribute name="AllocatedUnits" type="{http://www.w3.org/2001/XMLSchema}int" />
      *               &lt;/extension>
      *             &lt;/complexContent>
      *           &lt;/complexType>
@@ -1478,6 +1587,7 @@ public class RoomStayType {
          *       &lt;attribute name="OnRequest" type="{http://www.w3.org/2001/XMLSchema}boolean" />
          *       &lt;attribute name="RemainingUnits" type="{http://www.w3.org/2001/XMLSchema}string" />
          *       &lt;attribute name="AreaID" type="{http://www.w3.org/2001/XMLSchema}string" />
+         *       &lt;attribute name="AllocatedUnits" type="{http://www.w3.org/2001/XMLSchema}int" />
          *     &lt;/extension>
          *   &lt;/complexContent>
          * &lt;/complexType>
@@ -1501,6 +1611,8 @@ public class RoomStayType {
             protected String remainingUnits;
             @XmlAttribute(name = "AreaID")
             protected String areaID;
+            @XmlAttribute(name = "AllocatedUnits")
+            protected Integer allocatedUnits;
 
             /**
              * 获取mode属性的值。
@@ -1620,6 +1732,30 @@ public class RoomStayType {
              */
             public void setAreaID(String value) {
                 this.areaID = value;
+            }
+
+            /**
+             * 获取allocatedUnits属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link Integer }
+             *     
+             */
+            public Integer getAllocatedUnits() {
+                return allocatedUnits;
+            }
+
+            /**
+             * 设置allocatedUnits属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link Integer }
+             *     
+             */
+            public void setAllocatedUnits(Integer value) {
+                this.allocatedUnits = value;
             }
 
         }

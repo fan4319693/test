@@ -1,11 +1,2 @@
-com\airchina\datacenter\spnr\udf\processor\XmlProcessor.class
 com\airchina\datacenter\spnr\udf\XmlPathUDF.class
-com\airchina\datacenter\spnr\udf\processor\Dispatcher.class
-com\airchina\datacenter\spnr\udf\utils\KafkaDao.class
-com\airchina\datacenter\spnr\udf\pojo\XmlParserEx.class
 com\airchina\datacenter\spnr\udf\XmlTabUDTF.class
-com\airchina\datacenter\spnr\udf\utils\ClassMapper.class
-com\airchina\datacenter\spnr\udf\utils\XmlTables.class
-com\airchina\datacenter\spnr\udf\XmlTabUDTF$Arguments.class
-com\airchina\datacenter\spnr\udf\utils\Arguments.class
-com\airchina\datacenter\spnr\udf\pojo\KafkaLogs.class

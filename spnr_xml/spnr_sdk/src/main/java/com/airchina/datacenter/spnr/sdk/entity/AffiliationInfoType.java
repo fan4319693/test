@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -78,8 +78,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                               &lt;/complexType>
  *                             &lt;/element>
  *                           &lt;/sequence>
- *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}HotelReferenceGroup"/>
  *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}RemovalGroup"/>
+ *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}HotelReferenceGroup"/>
  *                           &lt;attribute name="Priority" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *                           &lt;attribute name="Enabled" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *                           &lt;attribute name="External" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
@@ -1053,8 +1053,8 @@ public class AffiliationInfoType {
      *                     &lt;/complexType>
      *                   &lt;/element>
      *                 &lt;/sequence>
-     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}HotelReferenceGroup"/>
      *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}RemovalGroup"/>
+     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}HotelReferenceGroup"/>
      *                 &lt;attribute name="Priority" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
      *                 &lt;attribute name="Enabled" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
      *                 &lt;attribute name="External" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
@@ -1156,8 +1156,8 @@ public class AffiliationInfoType {
          *           &lt;/complexType>
          *         &lt;/element>
          *       &lt;/sequence>
-         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}HotelReferenceGroup"/>
          *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}RemovalGroup"/>
+         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}HotelReferenceGroup"/>
          *       &lt;attribute name="Priority" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
          *       &lt;attribute name="Enabled" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
          *       &lt;attribute name="External" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
@@ -1201,6 +1201,8 @@ public class AffiliationInfoType {
             protected String useRatePlan;
             @XmlAttribute(name = "MultiRoomTypeBookable")
             protected Boolean multiRoomTypeBookable;
+            @XmlAttribute(name = "Removal")
+            protected Boolean removal;
             @XmlAttribute(name = "BookingOfficeCode")
             protected String bookingOfficeCode;
             @XmlAttribute(name = "ChainCode")
@@ -1211,6 +1213,8 @@ public class AffiliationInfoType {
             protected String hotelCode;
             @XmlAttribute(name = "HotelCityCode")
             protected String hotelCityCode;
+            @XmlAttribute(name = "HotelCityCodeContext")
+            protected String hotelCityCodeContext;
             @XmlAttribute(name = "HotelName")
             protected String hotelName;
             @XmlAttribute(name = "HotelCodeContext")
@@ -1219,10 +1223,12 @@ public class AffiliationInfoType {
             protected String chainName;
             @XmlAttribute(name = "BrandName")
             protected String brandName;
+            @XmlAttribute(name = "InvoiceIssuer")
+            protected String invoiceIssuer;
             @XmlAttribute(name = "AreaID")
             protected String areaID;
-            @XmlAttribute(name = "Removal")
-            protected Boolean removal;
+            @XmlAttribute(name = "StayType")
+            protected String stayType;
 
             /**
              * 获取companyName属性的值。
@@ -1441,6 +1447,34 @@ public class AffiliationInfoType {
             }
 
             /**
+             * 获取removal属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link Boolean }
+             *     
+             */
+            public boolean isRemoval() {
+                if (removal == null) {
+                    return false;
+                } else {
+                    return removal;
+                }
+            }
+
+            /**
+             * 设置removal属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link Boolean }
+             *     
+             */
+            public void setRemoval(Boolean value) {
+                this.removal = value;
+            }
+
+            /**
              * 获取bookingOfficeCode属性的值。
              * 
              * @return
@@ -1561,6 +1595,30 @@ public class AffiliationInfoType {
             }
 
             /**
+             * 获取hotelCityCodeContext属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getHotelCityCodeContext() {
+                return hotelCityCodeContext;
+            }
+
+            /**
+             * 设置hotelCityCodeContext属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setHotelCityCodeContext(String value) {
+                this.hotelCityCodeContext = value;
+            }
+
+            /**
              * 获取hotelName属性的值。
              * 
              * @return
@@ -1657,6 +1715,30 @@ public class AffiliationInfoType {
             }
 
             /**
+             * 获取invoiceIssuer属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getInvoiceIssuer() {
+                return invoiceIssuer;
+            }
+
+            /**
+             * 设置invoiceIssuer属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setInvoiceIssuer(String value) {
+                this.invoiceIssuer = value;
+            }
+
+            /**
              * 获取areaID属性的值。
              * 
              * @return
@@ -1681,31 +1763,27 @@ public class AffiliationInfoType {
             }
 
             /**
-             * 获取removal属性的值。
+             * 获取stayType属性的值。
              * 
              * @return
              *     possible object is
-             *     {@link Boolean }
+             *     {@link String }
              *     
              */
-            public boolean isRemoval() {
-                if (removal == null) {
-                    return false;
-                } else {
-                    return removal;
-                }
+            public String getStayType() {
+                return stayType;
             }
 
             /**
-             * 设置removal属性的值。
+             * 设置stayType属性的值。
              * 
              * @param value
              *     allowed object is
-             *     {@link Boolean }
+             *     {@link String }
              *     
              */
-            public void setRemoval(Boolean value) {
-                this.removal = value;
+            public void setStayType(String value) {
+                this.stayType = value;
             }
 
 

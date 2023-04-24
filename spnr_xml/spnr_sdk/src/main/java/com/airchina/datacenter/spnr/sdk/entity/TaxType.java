@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -37,9 +37,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="TaxDescription" type="{http://www.opentravel.org/OTA/2003/05}ParagraphType" maxOccurs="5" minOccurs="0"/>
  *         &lt;element name="ChildAmounts" type="{http://www.opentravel.org/OTA/2003/05}ChildAmountType" minOccurs="0"/>
  *       &lt;/sequence>
+ *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}FeeTaxGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}EffectiveExpireOptionalDateGroup"/>
  *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}ChargeUnitGroup"/>
- *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}FeeTaxGroup"/>
  *       &lt;attribute name="PayableLocally" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *       &lt;attribute name="ApplyOrder" type="{http://www.w3.org/2001/XMLSchema}int" />
  *       &lt;attribute name="Source" type="{http://www.opentravel.org/OTA/2003/05}AlphaLength3" />
@@ -72,6 +72,25 @@ public class TaxType {
     protected Integer applyOrder;
     @XmlAttribute(name = "Source")
     protected String source;
+    @XmlAttribute(name = "Type")
+    protected AmountDeterminationType type;
+    @XmlAttribute(name = "Code")
+    protected String code;
+    @XmlAttribute(name = "Percent")
+    protected BigDecimal percent;
+    @XmlAttribute(name = "Amount")
+    protected Float amount;
+    @XmlAttribute(name = "PrePayInd")
+    protected Boolean prePayInd;
+    @XmlAttribute(name = "CurrencyCode")
+    protected String currencyCode;
+    @XmlAttribute(name = "DecimalPlaces")
+    @XmlSchemaType(name = "nonNegativeInteger")
+    protected BigInteger decimalPlaces;
+    @XmlAttribute(name = "OriginalAmount")
+    protected Float originalAmount;
+    @XmlAttribute(name = "OriginalCurrencyCode")
+    protected String originalCurrencyCode;
     @XmlAttribute(name = "EffectiveDate")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar effectiveDate;
@@ -94,25 +113,6 @@ public class TaxType {
     @XmlAttribute(name = "MaxChargeFrequencyApplies")
     @XmlSchemaType(name = "positiveInteger")
     protected BigInteger maxChargeFrequencyApplies;
-    @XmlAttribute(name = "Type")
-    protected AmountDeterminationType type;
-    @XmlAttribute(name = "Code")
-    protected String code;
-    @XmlAttribute(name = "Percent")
-    protected BigDecimal percent;
-    @XmlAttribute(name = "Amount")
-    protected Float amount;
-    @XmlAttribute(name = "PrePayInd")
-    protected Boolean prePayInd;
-    @XmlAttribute(name = "OriginalAmount")
-    protected Float originalAmount;
-    @XmlAttribute(name = "OriginalCurrencyCode")
-    protected String originalCurrencyCode;
-    @XmlAttribute(name = "CurrencyCode")
-    protected String currencyCode;
-    @XmlAttribute(name = "DecimalPlaces")
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger decimalPlaces;
 
     /**
      * Gets the value of the taxDescription property.
@@ -237,6 +237,222 @@ public class TaxType {
      */
     public void setSource(String value) {
         this.source = value;
+    }
+
+    /**
+     * 获取type属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link AmountDeterminationType }
+     *     
+     */
+    public AmountDeterminationType getType() {
+        return type;
+    }
+
+    /**
+     * 设置type属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AmountDeterminationType }
+     *     
+     */
+    public void setType(AmountDeterminationType value) {
+        this.type = value;
+    }
+
+    /**
+     * 获取code属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * 设置code属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCode(String value) {
+        this.code = value;
+    }
+
+    /**
+     * 获取percent属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public BigDecimal getPercent() {
+        return percent;
+    }
+
+    /**
+     * 设置percent属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public void setPercent(BigDecimal value) {
+        this.percent = value;
+    }
+
+    /**
+     * 获取amount属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Float }
+     *     
+     */
+    public Float getAmount() {
+        return amount;
+    }
+
+    /**
+     * 设置amount属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Float }
+     *     
+     */
+    public void setAmount(Float value) {
+        this.amount = value;
+    }
+
+    /**
+     * 获取prePayInd属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isPrePayInd() {
+        return prePayInd;
+    }
+
+    /**
+     * 设置prePayInd属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setPrePayInd(Boolean value) {
+        this.prePayInd = value;
+    }
+
+    /**
+     * 获取currencyCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    /**
+     * 设置currencyCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCurrencyCode(String value) {
+        this.currencyCode = value;
+    }
+
+    /**
+     * 获取decimalPlaces属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getDecimalPlaces() {
+        return decimalPlaces;
+    }
+
+    /**
+     * 设置decimalPlaces属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setDecimalPlaces(BigInteger value) {
+        this.decimalPlaces = value;
+    }
+
+    /**
+     * 获取originalAmount属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Float }
+     *     
+     */
+    public Float getOriginalAmount() {
+        return originalAmount;
+    }
+
+    /**
+     * 设置originalAmount属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Float }
+     *     
+     */
+    public void setOriginalAmount(Float value) {
+        this.originalAmount = value;
+    }
+
+    /**
+     * 获取originalCurrencyCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getOriginalCurrencyCode() {
+        return originalCurrencyCode;
+    }
+
+    /**
+     * 设置originalCurrencyCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOriginalCurrencyCode(String value) {
+        this.originalCurrencyCode = value;
     }
 
     /**
@@ -429,222 +645,6 @@ public class TaxType {
      */
     public void setMaxChargeFrequencyApplies(BigInteger value) {
         this.maxChargeFrequencyApplies = value;
-    }
-
-    /**
-     * 获取type属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link AmountDeterminationType }
-     *     
-     */
-    public AmountDeterminationType getType() {
-        return type;
-    }
-
-    /**
-     * 设置type属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AmountDeterminationType }
-     *     
-     */
-    public void setType(AmountDeterminationType value) {
-        this.type = value;
-    }
-
-    /**
-     * 获取code属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * 设置code属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCode(String value) {
-        this.code = value;
-    }
-
-    /**
-     * 获取percent属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public BigDecimal getPercent() {
-        return percent;
-    }
-
-    /**
-     * 设置percent属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public void setPercent(BigDecimal value) {
-        this.percent = value;
-    }
-
-    /**
-     * 获取amount属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link Float }
-     *     
-     */
-    public Float getAmount() {
-        return amount;
-    }
-
-    /**
-     * 设置amount属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Float }
-     *     
-     */
-    public void setAmount(Float value) {
-        this.amount = value;
-    }
-
-    /**
-     * 获取prePayInd属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isPrePayInd() {
-        return prePayInd;
-    }
-
-    /**
-     * 设置prePayInd属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setPrePayInd(Boolean value) {
-        this.prePayInd = value;
-    }
-
-    /**
-     * 获取originalAmount属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link Float }
-     *     
-     */
-    public Float getOriginalAmount() {
-        return originalAmount;
-    }
-
-    /**
-     * 设置originalAmount属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Float }
-     *     
-     */
-    public void setOriginalAmount(Float value) {
-        this.originalAmount = value;
-    }
-
-    /**
-     * 获取originalCurrencyCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getOriginalCurrencyCode() {
-        return originalCurrencyCode;
-    }
-
-    /**
-     * 设置originalCurrencyCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setOriginalCurrencyCode(String value) {
-        this.originalCurrencyCode = value;
-    }
-
-    /**
-     * 获取currencyCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCurrencyCode() {
-        return currencyCode;
-    }
-
-    /**
-     * 设置currencyCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCurrencyCode(String value) {
-        this.currencyCode = value;
-    }
-
-    /**
-     * 获取decimalPlaces属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getDecimalPlaces() {
-        return decimalPlaces;
-    }
-
-    /**
-     * 设置decimalPlaces属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setDecimalPlaces(BigInteger value) {
-        this.decimalPlaces = value;
     }
 
 }

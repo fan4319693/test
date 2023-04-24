@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -19,7 +19,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the com.airchina.datacenter.spnr.entity package.
+ * generated in the com.airchina.datacenter.spnr.sdk.entity package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -40,10 +40,10 @@ public class ObjectFactory {
     private final static QName _DescriptionContent_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "DescriptionContent");
     private final static QName _SaleInfo_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "SaleInfo");
     private final static QName _TravelerInfo_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "TravelerInfo");
-    private final static QName _SeatData_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "SeatData");
     private final static QName _SectionSeatData_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "SectionSeatData");
-    private final static QName _Attributes_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "Attributes");
+    private final static QName _SeatData_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "SeatData");
     private final static QName _Commission_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "Commission");
+    private final static QName _Attributes_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "Attributes");
     private final static QName _OfferIDRef_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "OfferIDRef");
     private final static QName _FlightFrequency_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "FlightFrequency");
     private final static QName _ServiceDate_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "ServiceDate");
@@ -109,8 +109,8 @@ public class ObjectFactory {
     private final static QName _OtherMemberships_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "OtherMemberships");
     private final static QName _USDOT_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "USDOT");
     private final static QName _FareCacheKey_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "FareCacheKey");
-    private final static QName _DepartureDate_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "DepartureDate");
     private final static QName _SegmentIDRef_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "SegmentIDRef");
+    private final static QName _DepartureDate_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "DepartureDate");
     private final static QName _TripMileage_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "TripMileage");
     private final static QName _DateOfBirth_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "DateOfBirth");
     private final static QName _IncentiveProgram_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "IncentiveProgram");
@@ -137,9 +137,9 @@ public class ObjectFactory {
     private final static QName _FareBasisCode_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "FareBasisCode");
     private final static QName _ValidatingCarrier_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "ValidatingCarrier");
     private final static QName _FlightSegmentNumber_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "FlightSegmentNumber");
+    private final static QName _TravelerIDRef_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "TravelerIDRef");
     private final static QName _Disclosure_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "Disclosure");
     private final static QName _ExchangeInfo_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "ExchangeInfo");
-    private final static QName _TravelerIDRef_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "TravelerIDRef");
     private final static QName _FlightTable_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "FlightTable");
     private final static QName _CCIssuer_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "CCIssuer");
     private final static QName _FareRefKey_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "FareRefKey");
@@ -157,26 +157,10 @@ public class ObjectFactory {
     private final static QName _ProductBaseInsuranceCancellationPenalties_QNAME = new QName("http://www.opentravel.org/OTA/2003/05", "CancellationPenalties");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.airchina.datacenter.spnr.entity
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.airchina.datacenter.spnr.sdk.entity
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link TripProfile }
-     * 
-     */
-    public TripProfile createTripProfile() {
-        return new TripProfile();
-    }
-
-    /**
-     * Create an instance of {@link Discounts }
-     * 
-     */
-    public Discounts createDiscounts() {
-        return new Discounts();
     }
 
     /**
@@ -188,6 +172,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AltRoomTypeNames }
+     * 
+     */
+    public AltRoomTypeNames createAltRoomTypeNames() {
+        return new AltRoomTypeNames();
+    }
+
+    /**
+     * Create an instance of {@link DestActivityDescriptions }
+     * 
+     */
+    public DestActivityDescriptions createDestActivityDescriptions() {
+        return new DestActivityDescriptions();
+    }
+
+    /**
      * Create an instance of {@link SearchResponse }
      * 
      */
@@ -196,11 +196,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TripProfile }
+     * 
+     */
+    public TripProfile createTripProfile() {
+        return new TripProfile();
+    }
+
+    /**
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.RatePlans }
+     * 
+     */
+    public com.airchina.datacenter.spnr.sdk.entity.RatePlans createRatePlans() {
+        return new com.airchina.datacenter.spnr.sdk.entity.RatePlans();
+    }
+
+    /**
      * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Rates }
      * 
      */
     public com.airchina.datacenter.spnr.sdk.entity.Rates createRates() {
         return new com.airchina.datacenter.spnr.sdk.entity.Rates();
+    }
+
+    /**
+     * Create an instance of {@link Discounts }
+     * 
+     */
+    public Discounts createDiscounts() {
+        return new Discounts();
     }
 
     /**
@@ -225,22 +249,6 @@ public class ObjectFactory {
      */
     public AvailabilityAllRates createAvailabilityAllRates() {
         return new AvailabilityAllRates();
-    }
-
-    /**
-     * Create an instance of {@link DestActivityDescriptions }
-     * 
-     */
-    public DestActivityDescriptions createDestActivityDescriptions() {
-        return new DestActivityDescriptions();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.RatePlans }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.RatePlans createRatePlans() {
-        return new com.airchina.datacenter.spnr.sdk.entity.RatePlans();
     }
 
     /**
@@ -492,11 +500,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link EligiblePricingType }
+     * 
+     */
+    public EligiblePricingType createEligiblePricingType() {
+        return new EligiblePricingType();
+    }
+
+    /**
      * Create an instance of {@link EventCategoriesType }
      * 
      */
     public EventCategoriesType createEventCategoriesType() {
         return new EventCategoriesType();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportRoomType }
+     * 
+     */
+    public HotelAvailReportRoomType createHotelAvailReportRoomType() {
+        return new HotelAvailReportRoomType();
     }
 
     /**
@@ -545,6 +569,38 @@ public class ObjectFactory {
      */
     public PoliciesType.Policy createPoliciesTypePolicy() {
         return new PoliciesType.Policy();
+    }
+
+    /**
+     * Create an instance of {@link PoliciesType.Policy.ExtraChargePolicy }
+     * 
+     */
+    public PoliciesType.Policy.ExtraChargePolicy createPoliciesTypePolicyExtraChargePolicy() {
+        return new PoliciesType.Policy.ExtraChargePolicy();
+    }
+
+    /**
+     * Create an instance of {@link PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty }
+     * 
+     */
+    public PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty createPoliciesTypePolicyExtraChargePolicyExtraChargePenalty() {
+        return new PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty();
+    }
+
+    /**
+     * Create an instance of {@link PoliciesType.Policy.BookPolicy }
+     * 
+     */
+    public PoliciesType.Policy.BookPolicy createPoliciesTypePolicyBookPolicy() {
+        return new PoliciesType.Policy.BookPolicy();
+    }
+
+    /**
+     * Create an instance of {@link PoliciesType.Policy.BookPolicy.BookRestriction }
+     * 
+     */
+    public PoliciesType.Policy.BookPolicy.BookRestriction createPoliciesTypePolicyBookPolicyBookRestriction() {
+        return new PoliciesType.Policy.BookPolicy.BookRestriction();
     }
 
     /**
@@ -1289,6 +1345,22 @@ public class ObjectFactory {
      */
     public AgeQualificationType createAgeQualificationType() {
         return new AgeQualificationType();
+    }
+
+    /**
+     * Create an instance of {@link CarbonOffsetType }
+     * 
+     */
+    public CarbonOffsetType createCarbonOffsetType() {
+        return new CarbonOffsetType();
+    }
+
+    /**
+     * Create an instance of {@link AirAncillaryProductPriceType }
+     * 
+     */
+    public AirAncillaryProductPriceType createAirAncillaryProductPriceType() {
+        return new AirAncillaryProductPriceType();
     }
 
     /**
@@ -2580,6 +2652,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ModifyTypeType }
+     * 
+     */
+    public ModifyTypeType createModifyTypeType() {
+        return new ModifyTypeType();
+    }
+
+    /**
+     * Create an instance of {@link CouponIssueType }
+     * 
+     */
+    public CouponIssueType createCouponIssueType() {
+        return new CouponIssueType();
+    }
+
+    /**
      * Create an instance of {@link Specials }
      * 
      */
@@ -3564,14 +3652,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AirAncillaryProductPriceType }
-     * 
-     */
-    public AirAncillaryProductPriceType createAirAncillaryProductPriceType() {
-        return new AirAncillaryProductPriceType();
-    }
-
-    /**
      * Create an instance of {@link ShipInfoType }
      * 
      */
@@ -3665,6 +3745,14 @@ public class ObjectFactory {
      */
     public SearchQualifierType createSearchQualifierType() {
         return new SearchQualifierType();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportContractType }
+     * 
+     */
+    public HotelAvailReportContractType createHotelAvailReportContractType() {
+        return new HotelAvailReportContractType();
     }
 
     /**
@@ -4692,6 +4780,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ProductContentType }
+     * 
+     */
+    public ProductContentType createProductContentType() {
+        return new ProductContentType();
+    }
+
+    /**
      * Create an instance of {@link HotelResModifyType }
      * 
      */
@@ -5060,6 +5156,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CouponFlightInfoType }
+     * 
+     */
+    public CouponFlightInfoType createCouponFlightInfoType() {
+        return new CouponFlightInfoType();
+    }
+
+    /**
      * Create an instance of {@link VehicleLocationAdditionalDetailsType }
      * 
      */
@@ -5129,6 +5233,22 @@ public class ObjectFactory {
      */
     public ItineraryItemRequestType createItineraryItemRequestType() {
         return new ItineraryItemRequestType();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportRequestType }
+     * 
+     */
+    public HotelAvailReportRequestType createHotelAvailReportRequestType() {
+        return new HotelAvailReportRequestType();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportRequestType.Suppliers }
+     * 
+     */
+    public HotelAvailReportRequestType.Suppliers createHotelAvailReportRequestTypeSuppliers() {
+        return new HotelAvailReportRequestType.Suppliers();
     }
 
     /**
@@ -5321,6 +5441,14 @@ public class ObjectFactory {
      */
     public VehicleRentalTransactionType.PricedEquips.PricedEquip createVehicleRentalTransactionTypePricedEquipsPricedEquip() {
         return new VehicleRentalTransactionType.PricedEquips.PricedEquip();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportType }
+     * 
+     */
+    public HotelAvailReportType createHotelAvailReportType() {
+        return new HotelAvailReportType();
     }
 
     /**
@@ -6564,6 +6692,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link LoungeCriteriaType }
+     * 
+     */
+    public LoungeCriteriaType createLoungeCriteriaType() {
+        return new LoungeCriteriaType();
+    }
+
+    /**
      * Create an instance of {@link CabinClassType }
      * 
      */
@@ -6681,6 +6817,38 @@ public class ObjectFactory {
      */
     public VerificationPNR createVerificationPNR() {
         return new VerificationPNR();
+    }
+
+    /**
+     * Create an instance of {@link VerificationPNR.SpecialServiceRequests }
+     * 
+     */
+    public VerificationPNR.SpecialServiceRequests createVerificationPNRSpecialServiceRequests() {
+        return new VerificationPNR.SpecialServiceRequests();
+    }
+
+    /**
+     * Create an instance of {@link VerificationPNR.ItinRemarks }
+     * 
+     */
+    public VerificationPNR.ItinRemarks createVerificationPNRItinRemarks() {
+        return new VerificationPNR.ItinRemarks();
+    }
+
+    /**
+     * Create an instance of {@link VerificationPNR.SupplierNotes }
+     * 
+     */
+    public VerificationPNR.SupplierNotes createVerificationPNRSupplierNotes() {
+        return new VerificationPNR.SupplierNotes();
+    }
+
+    /**
+     * Create an instance of {@link VerificationPNR.ModifyType }
+     * 
+     */
+    public VerificationPNR.ModifyType createVerificationPNRModifyType() {
+        return new VerificationPNR.ModifyType();
     }
 
     /**
@@ -6865,6 +7033,14 @@ public class ObjectFactory {
      */
     public AirAncillaryProductType.Restrictions createAirAncillaryProductTypeRestrictions() {
         return new AirAncillaryProductType.Restrictions();
+    }
+
+    /**
+     * Create an instance of {@link CouponTicketingType }
+     * 
+     */
+    public CouponTicketingType createCouponTicketingType() {
+        return new CouponTicketingType();
     }
 
     /**
@@ -7228,11 +7404,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link HotelReservationRestrictionsType }
+     * 
+     */
+    public HotelReservationRestrictionsType createHotelReservationRestrictionsType() {
+        return new HotelReservationRestrictionsType();
+    }
+
+    /**
+     * Create an instance of {@link HotelReservationRestrictionsType.IgnoreItems }
+     * 
+     */
+    public HotelReservationRestrictionsType.IgnoreItems createHotelReservationRestrictionsTypeIgnoreItems() {
+        return new HotelReservationRestrictionsType.IgnoreItems();
+    }
+
+    /**
      * Create an instance of {@link TextItemsType }
      * 
      */
     public TextItemsType createTextItemsType() {
         return new TextItemsType();
+    }
+
+    /**
+     * Create an instance of {@link TextDescriptionType }
+     * 
+     */
+    public TextDescriptionType createTextDescriptionType() {
+        return new TextDescriptionType();
     }
 
     /**
@@ -7828,22 +8028,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FlightRefInfoType }
-     * 
-     */
-    public FlightRefInfoType createFlightRefInfoType() {
-        return new FlightRefInfoType();
-    }
-
-    /**
-     * Create an instance of {@link SpecialSrvcType }
-     * 
-     */
-    public SpecialSrvcType createSpecialSrvcType() {
-        return new SpecialSrvcType();
-    }
-
-    /**
      * Create an instance of {@link ServicesFilterType }
      * 
      */
@@ -8012,99 +8196,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ServiceCombineType }
-     * 
-     */
-    public ServiceCombineType createServiceCombineType() {
-        return new ServiceCombineType();
-    }
-
-    /**
-     * Create an instance of {@link ServiceRefInfoType }
-     * 
-     */
-    public ServiceRefInfoType createServiceRefInfoType() {
-        return new ServiceRefInfoType();
-    }
-
-    /**
-     * Create an instance of {@link ServiceBundleNoPriceRefType }
-     * 
-     */
-    public ServiceBundleNoPriceRefType createServiceBundleNoPriceRefType() {
-        return new ServiceBundleNoPriceRefType();
-    }
-
-    /**
-     * Create an instance of {@link ServiceBundleNoPriceRefType.Item }
-     * 
-     */
-    public ServiceBundleNoPriceRefType.Item createServiceBundleNoPriceRefTypeItem() {
-        return new ServiceBundleNoPriceRefType.Item();
-    }
-
-    /**
-     * Create an instance of {@link ServiceBundleNoPriceRefType.Item.ItemDetail }
-     * 
-     */
-    public ServiceBundleNoPriceRefType.Item.ItemDetail createServiceBundleNoPriceRefTypeItemItemDetail() {
-        return new ServiceBundleNoPriceRefType.Item.ItemDetail();
-    }
-
-    /**
-     * Create an instance of {@link ServiceBundleNoPriceRefType.Item.ItemDetail.BookingInstructions }
-     * 
-     */
-    public ServiceBundleNoPriceRefType.Item.ItemDetail.BookingInstructions createServiceBundleNoPriceRefTypeItemItemDetailBookingInstructions() {
-        return new ServiceBundleNoPriceRefType.Item.ItemDetail.BookingInstructions();
-    }
-
-    /**
      * Create an instance of {@link TaxConfiguration.TaxPolicies }
      * 
      */
     public TaxConfiguration.TaxPolicies createTaxConfigurationTaxPolicies() {
         return new TaxConfiguration.TaxPolicies();
-    }
-
-    /**
-     * Create an instance of {@link ComponentType }
-     * 
-     */
-    public ComponentType createComponentType() {
-        return new ComponentType();
-    }
-
-    /**
-     * Create an instance of {@link ComponentType.Marketing }
-     * 
-     */
-    public ComponentType.Marketing createComponentTypeMarketing() {
-        return new ComponentType.Marketing();
-    }
-
-    /**
-     * Create an instance of {@link ComponentType.Location }
-     * 
-     */
-    public ComponentType.Location createComponentTypeLocation() {
-        return new ComponentType.Location();
-    }
-
-    /**
-     * Create an instance of {@link ComponentType.Location.Space }
-     * 
-     */
-    public ComponentType.Location.Space createComponentTypeLocationSpace() {
-        return new ComponentType.Location.Space();
-    }
-
-    /**
-     * Create an instance of {@link ComponentType.Dimensions }
-     * 
-     */
-    public ComponentType.Dimensions createComponentTypeDimensions() {
-        return new ComponentType.Dimensions();
     }
 
     /**
@@ -8172,38 +8268,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan createRatePlansRatePlan() {
-        return new com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan.InvCounts }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan.InvCounts createRatePlansRatePlanInvCounts() {
-        return new com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan.InvCounts();
-    }
-
-    /**
-     * Create an instance of {@link DerivationType }
-     * 
-     */
-    public DerivationType createDerivationType() {
-        return new DerivationType();
-    }
-
-    /**
-     * Create an instance of {@link DerivationType.Certificate }
-     * 
-     */
-    public DerivationType.Certificate createDerivationTypeCertificate() {
-        return new DerivationType.Certificate();
-    }
-
-    /**
      * Create an instance of {@link MediaContentType }
      * 
      */
@@ -8268,70 +8332,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SearchType }
-     * 
-     */
-    public SearchType createSearchType() {
-        return new SearchType();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.Passengers }
-     * 
-     */
-    public SearchType.Passengers createSearchTypePassengers() {
-        return new SearchType.Passengers();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.OriginDestinationInformation }
-     * 
-     */
-    public SearchType.OriginDestinationInformation createSearchTypeOriginDestinationInformation() {
-        return new SearchType.OriginDestinationInformation();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.OriginDestinationInformation.FlightDetails }
-     * 
-     */
-    public SearchType.OriginDestinationInformation.FlightDetails createSearchTypeOriginDestinationInformationFlightDetails() {
-        return new SearchType.OriginDestinationInformation.FlightDetails();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.HotelInformation }
-     * 
-     */
-    public SearchType.HotelInformation createSearchTypeHotelInformation() {
-        return new SearchType.HotelInformation();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.HotelInformation.RoomInformation }
-     * 
-     */
-    public SearchType.HotelInformation.RoomInformation createSearchTypeHotelInformationRoomInformation() {
-        return new SearchType.HotelInformation.RoomInformation();
-    }
-
-    /**
-     * Create an instance of {@link JourneyControlType }
-     * 
-     */
-    public JourneyControlType createJourneyControlType() {
-        return new JourneyControlType();
-    }
-
-    /**
-     * Create an instance of {@link JourneyControlType.JCDFlight }
-     * 
-     */
-    public JourneyControlType.JCDFlight createJourneyControlTypeJCDFlight() {
-        return new JourneyControlType.JCDFlight();
-    }
-
-    /**
      * Create an instance of {@link DestActivityDescriptiveContentsType }
      * 
      */
@@ -8345,14 +8345,6 @@ public class ObjectFactory {
      */
     public DestActivityDescriptiveContentsType.DestActivityDescriptiveContent createDestActivityDescriptiveContentsTypeDestActivityDescriptiveContent() {
         return new DestActivityDescriptiveContentsType.DestActivityDescriptiveContent();
-    }
-
-    /**
-     * Create an instance of {@link CorporateHierarchiesType }
-     * 
-     */
-    public CorporateHierarchiesType createCorporateHierarchiesType() {
-        return new CorporateHierarchiesType();
     }
 
     /**
@@ -8380,67 +8372,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SeatDataType }
-     * 
-     */
-    public SeatDataType createSeatDataType() {
-        return new SeatDataType();
-    }
-
-    /**
-     * Create an instance of {@link SeatDataType.Marketing }
-     * 
-     */
-    public SeatDataType.Marketing createSeatDataTypeMarketing() {
-        return new SeatDataType.Marketing();
-    }
-
-    /**
-     * Create an instance of {@link SaleInfoType }
-     * 
-     */
-    public SaleInfoType createSaleInfoType() {
-        return new SaleInfoType();
-    }
-
-    /**
-     * Create an instance of {@link SaleInfoType.Identification }
-     * 
-     */
-    public SaleInfoType.Identification createSaleInfoTypeIdentification() {
-        return new SaleInfoType.Identification();
-    }
-
-    /**
-     * Create an instance of {@link SaleInfoType.Identification.RequestorInfo }
-     * 
-     */
-    public SaleInfoType.Identification.RequestorInfo createSaleInfoTypeIdentificationRequestorInfo() {
-        return new SaleInfoType.Identification.RequestorInfo();
-    }
-
-    /**
-     * Create an instance of {@link CommissionType }
-     * 
-     */
-    public CommissionType createCommissionType() {
-        return new CommissionType();
-    }
-
-    /**
      * Create an instance of {@link AttributesType }
      * 
      */
     public AttributesType createAttributesType() {
         return new AttributesType();
-    }
-
-    /**
-     * Create an instance of {@link DestActivityDescriptions.Renovation }
-     * 
-     */
-    public DestActivityDescriptions.Renovation createDestActivityDescriptionsRenovation() {
-        return new DestActivityDescriptions.Renovation();
     }
 
     /**
@@ -8500,6 +8436,174 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AutoExchangeType }
+     * 
+     */
+    public AutoExchangeType createAutoExchangeType() {
+        return new AutoExchangeType();
+    }
+
+    /**
+     * Create an instance of {@link MediaReferenceType }
+     * 
+     */
+    public MediaReferenceType createMediaReferenceType() {
+        return new MediaReferenceType();
+    }
+
+    /**
+     * Create an instance of {@link ShoppingResponseIDsType }
+     * 
+     */
+    public ShoppingResponseIDsType createShoppingResponseIDsType() {
+        return new ShoppingResponseIDsType();
+    }
+
+    /**
+     * Create an instance of {@link ShoppingResponseIDsType.AssociatedIDs }
+     * 
+     */
+    public ShoppingResponseIDsType.AssociatedIDs createShoppingResponseIDsTypeAssociatedIDs() {
+        return new ShoppingResponseIDsType.AssociatedIDs();
+    }
+
+    /**
+     * Create an instance of {@link TktInExchangeForType }
+     * 
+     */
+    public TktInExchangeForType createTktInExchangeForType() {
+        return new TktInExchangeForType();
+    }
+
+    /**
+     * Create an instance of {@link FlightRefInfoType }
+     * 
+     */
+    public FlightRefInfoType createFlightRefInfoType() {
+        return new FlightRefInfoType();
+    }
+
+    /**
+     * Create an instance of {@link SpecialSrvcType }
+     * 
+     */
+    public SpecialSrvcType createSpecialSrvcType() {
+        return new SpecialSrvcType();
+    }
+
+    /**
+     * Create an instance of {@link ServicePenaltyType }
+     * 
+     */
+    public ServicePenaltyType createServicePenaltyType() {
+        return new ServicePenaltyType();
+    }
+
+    /**
+     * Create an instance of {@link ServicePenaltyType.Cancel }
+     * 
+     */
+    public ServicePenaltyType.Cancel createServicePenaltyTypeCancel() {
+        return new ServicePenaltyType.Cancel();
+    }
+
+    /**
+     * Create an instance of {@link ServicePenaltyType.Change }
+     * 
+     */
+    public ServicePenaltyType.Change createServicePenaltyTypeChange() {
+        return new ServicePenaltyType.Change();
+    }
+
+    /**
+     * Create an instance of {@link ServiceCombineType }
+     * 
+     */
+    public ServiceCombineType createServiceCombineType() {
+        return new ServiceCombineType();
+    }
+
+    /**
+     * Create an instance of {@link ServiceRefInfoType }
+     * 
+     */
+    public ServiceRefInfoType createServiceRefInfoType() {
+        return new ServiceRefInfoType();
+    }
+
+    /**
+     * Create an instance of {@link ServiceBundleNoPriceRefType }
+     * 
+     */
+    public ServiceBundleNoPriceRefType createServiceBundleNoPriceRefType() {
+        return new ServiceBundleNoPriceRefType();
+    }
+
+    /**
+     * Create an instance of {@link ServiceBundleNoPriceRefType.Item }
+     * 
+     */
+    public ServiceBundleNoPriceRefType.Item createServiceBundleNoPriceRefTypeItem() {
+        return new ServiceBundleNoPriceRefType.Item();
+    }
+
+    /**
+     * Create an instance of {@link ServiceBundleNoPriceRefType.Item.ItemDetail }
+     * 
+     */
+    public ServiceBundleNoPriceRefType.Item.ItemDetail createServiceBundleNoPriceRefTypeItemItemDetail() {
+        return new ServiceBundleNoPriceRefType.Item.ItemDetail();
+    }
+
+    /**
+     * Create an instance of {@link ServiceBundleNoPriceRefType.Item.ItemDetail.BookingInstructions }
+     * 
+     */
+    public ServiceBundleNoPriceRefType.Item.ItemDetail.BookingInstructions createServiceBundleNoPriceRefTypeItemItemDetailBookingInstructions() {
+        return new ServiceBundleNoPriceRefType.Item.ItemDetail.BookingInstructions();
+    }
+
+    /**
+     * Create an instance of {@link ComponentType }
+     * 
+     */
+    public ComponentType createComponentType() {
+        return new ComponentType();
+    }
+
+    /**
+     * Create an instance of {@link ComponentType.Marketing }
+     * 
+     */
+    public ComponentType.Marketing createComponentTypeMarketing() {
+        return new ComponentType.Marketing();
+    }
+
+    /**
+     * Create an instance of {@link ComponentType.Location }
+     * 
+     */
+    public ComponentType.Location createComponentTypeLocation() {
+        return new ComponentType.Location();
+    }
+
+    /**
+     * Create an instance of {@link ComponentType.Location.Space }
+     * 
+     */
+    public ComponentType.Location.Space createComponentTypeLocationSpace() {
+        return new ComponentType.Location.Space();
+    }
+
+    /**
+     * Create an instance of {@link ComponentType.Dimensions }
+     * 
+     */
+    public ComponentType.Dimensions createComponentTypeDimensions() {
+        return new ComponentType.Dimensions();
+    }
+
+    /**
      * Create an instance of {@link AllRates.QuantityOptions }
      * 
      */
@@ -8524,59 +8628,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AutoExchangeType }
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan }
      * 
      */
-    public AutoExchangeType createAutoExchangeType() {
-        return new AutoExchangeType();
+    public com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan createRatePlansRatePlan() {
+        return new com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan();
     }
 
     /**
-     * Create an instance of {@link FlightTableType }
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan.InvCounts }
      * 
      */
-    public FlightTableType createFlightTableType() {
-        return new FlightTableType();
+    public com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan.InvCounts createRatePlansRatePlanInvCounts() {
+        return new com.airchina.datacenter.spnr.sdk.entity.RatePlans.RatePlan.InvCounts();
     }
 
     /**
-     * Create an instance of {@link FlightTableType.Flight }
+     * Create an instance of {@link DerivationType }
      * 
      */
-    public FlightTableType.Flight createFlightTableTypeFlight() {
-        return new FlightTableType.Flight();
+    public DerivationType createDerivationType() {
+        return new DerivationType();
     }
 
     /**
-     * Create an instance of {@link MediaReferenceType }
+     * Create an instance of {@link DerivationType.Certificate }
      * 
      */
-    public MediaReferenceType createMediaReferenceType() {
-        return new MediaReferenceType();
+    public DerivationType.Certificate createDerivationTypeCertificate() {
+        return new DerivationType.Certificate();
     }
 
     /**
-     * Create an instance of {@link ProductContentType }
+     * Create an instance of {@link PromotionsType }
      * 
      */
-    public ProductContentType createProductContentType() {
-        return new ProductContentType();
-    }
-
-    /**
-     * Create an instance of {@link ServiceProcessInfoType }
-     * 
-     */
-    public ServiceProcessInfoType createServiceProcessInfoType() {
-        return new ServiceProcessInfoType();
-    }
-
-    /**
-     * Create an instance of {@link SupplierSpecificInfosType }
-     * 
-     */
-    public SupplierSpecificInfosType createSupplierSpecificInfosType() {
-        return new SupplierSpecificInfosType();
+    public PromotionsType createPromotionsType() {
+        return new PromotionsType();
     }
 
     /**
@@ -8617,6 +8705,14 @@ public class ObjectFactory {
      */
     public SearchResponse.RoomStays createSearchResponseRoomStays() {
         return new SearchResponse.RoomStays();
+    }
+
+    /**
+     * Create an instance of {@link PricedItinerariesType }
+     * 
+     */
+    public PricedItinerariesType createPricedItinerariesType() {
+        return new PricedItinerariesType();
     }
 
     /**
@@ -8764,43 +8860,163 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ServicePenaltyType }
+     * Create an instance of {@link SearchType }
      * 
      */
-    public ServicePenaltyType createServicePenaltyType() {
-        return new ServicePenaltyType();
+    public SearchType createSearchType() {
+        return new SearchType();
     }
 
     /**
-     * Create an instance of {@link ServicePenaltyType.Cancel }
+     * Create an instance of {@link SearchType.Passengers }
      * 
      */
-    public ServicePenaltyType.Cancel createServicePenaltyTypeCancel() {
-        return new ServicePenaltyType.Cancel();
+    public SearchType.Passengers createSearchTypePassengers() {
+        return new SearchType.Passengers();
     }
 
     /**
-     * Create an instance of {@link ServicePenaltyType.Change }
+     * Create an instance of {@link SearchType.OriginDestinationInformation }
      * 
      */
-    public ServicePenaltyType.Change createServicePenaltyTypeChange() {
-        return new ServicePenaltyType.Change();
+    public SearchType.OriginDestinationInformation createSearchTypeOriginDestinationInformation() {
+        return new SearchType.OriginDestinationInformation();
     }
 
     /**
-     * Create an instance of {@link ShoppingResponseIDsType }
+     * Create an instance of {@link SearchType.OriginDestinationInformation.FlightDetails }
      * 
      */
-    public ShoppingResponseIDsType createShoppingResponseIDsType() {
-        return new ShoppingResponseIDsType();
+    public SearchType.OriginDestinationInformation.FlightDetails createSearchTypeOriginDestinationInformationFlightDetails() {
+        return new SearchType.OriginDestinationInformation.FlightDetails();
     }
 
     /**
-     * Create an instance of {@link ShoppingResponseIDsType.AssociatedIDs }
+     * Create an instance of {@link SearchType.HotelInformation }
      * 
      */
-    public ShoppingResponseIDsType.AssociatedIDs createShoppingResponseIDsTypeAssociatedIDs() {
-        return new ShoppingResponseIDsType.AssociatedIDs();
+    public SearchType.HotelInformation createSearchTypeHotelInformation() {
+        return new SearchType.HotelInformation();
+    }
+
+    /**
+     * Create an instance of {@link SearchType.HotelInformation.RoomInformation }
+     * 
+     */
+    public SearchType.HotelInformation.RoomInformation createSearchTypeHotelInformationRoomInformation() {
+        return new SearchType.HotelInformation.RoomInformation();
+    }
+
+    /**
+     * Create an instance of {@link JourneyControlType }
+     * 
+     */
+    public JourneyControlType createJourneyControlType() {
+        return new JourneyControlType();
+    }
+
+    /**
+     * Create an instance of {@link JourneyControlType.JCDFlight }
+     * 
+     */
+    public JourneyControlType.JCDFlight createJourneyControlTypeJCDFlight() {
+        return new JourneyControlType.JCDFlight();
+    }
+
+    /**
+     * Create an instance of {@link CorporateHierarchiesType }
+     * 
+     */
+    public CorporateHierarchiesType createCorporateHierarchiesType() {
+        return new CorporateHierarchiesType();
+    }
+
+    /**
+     * Create an instance of {@link SeatDataType }
+     * 
+     */
+    public SeatDataType createSeatDataType() {
+        return new SeatDataType();
+    }
+
+    /**
+     * Create an instance of {@link SeatDataType.Marketing }
+     * 
+     */
+    public SeatDataType.Marketing createSeatDataTypeMarketing() {
+        return new SeatDataType.Marketing();
+    }
+
+    /**
+     * Create an instance of {@link SaleInfoType }
+     * 
+     */
+    public SaleInfoType createSaleInfoType() {
+        return new SaleInfoType();
+    }
+
+    /**
+     * Create an instance of {@link SaleInfoType.Identification }
+     * 
+     */
+    public SaleInfoType.Identification createSaleInfoTypeIdentification() {
+        return new SaleInfoType.Identification();
+    }
+
+    /**
+     * Create an instance of {@link SaleInfoType.Identification.RequestorInfo }
+     * 
+     */
+    public SaleInfoType.Identification.RequestorInfo createSaleInfoTypeIdentificationRequestorInfo() {
+        return new SaleInfoType.Identification.RequestorInfo();
+    }
+
+    /**
+     * Create an instance of {@link CommissionType }
+     * 
+     */
+    public CommissionType createCommissionType() {
+        return new CommissionType();
+    }
+
+    /**
+     * Create an instance of {@link DestActivityDescriptions.Renovation }
+     * 
+     */
+    public DestActivityDescriptions.Renovation createDestActivityDescriptionsRenovation() {
+        return new DestActivityDescriptions.Renovation();
+    }
+
+    /**
+     * Create an instance of {@link FlightTableType }
+     * 
+     */
+    public FlightTableType createFlightTableType() {
+        return new FlightTableType();
+    }
+
+    /**
+     * Create an instance of {@link FlightTableType.Flight }
+     * 
+     */
+    public FlightTableType.Flight createFlightTableTypeFlight() {
+        return new FlightTableType.Flight();
+    }
+
+    /**
+     * Create an instance of {@link ServiceProcessInfoType }
+     * 
+     */
+    public ServiceProcessInfoType createServiceProcessInfoType() {
+        return new ServiceProcessInfoType();
+    }
+
+    /**
+     * Create an instance of {@link SupplierSpecificInfosType }
+     * 
+     */
+    public SupplierSpecificInfosType createSupplierSpecificInfosType() {
+        return new SupplierSpecificInfosType();
     }
 
     /**
@@ -8820,22 +9036,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TktInExchangeForType }
-     * 
-     */
-    public TktInExchangeForType createTktInExchangeForType() {
-        return new TktInExchangeForType();
-    }
-
-    /**
-     * Create an instance of {@link PromotionsType }
-     * 
-     */
-    public PromotionsType createPromotionsType() {
-        return new PromotionsType();
-    }
-
-    /**
      * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Origin }
      * 
      */
@@ -8844,35 +9044,83 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TripProfiles }
+     * Create an instance of {@link DateTimeStampType }
      * 
      */
-    public TripProfiles createTripProfiles() {
-        return new TripProfiles();
+    public DateTimeStampType createDateTimeStampType() {
+        return new DateTimeStampType();
     }
 
     /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.StayDateRange }
+     * Create an instance of {@link ExtensionPointType }
      * 
      */
-    public com.airchina.datacenter.spnr.sdk.entity.StayDateRange createStayDateRange() {
-        return new com.airchina.datacenter.spnr.sdk.entity.StayDateRange();
+    public ExtensionPointType createExtensionPointType() {
+        return new ExtensionPointType();
     }
 
     /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.DOW }
+     * Create an instance of {@link LocationTypeFromSearchHotel }
      * 
      */
-    public com.airchina.datacenter.spnr.sdk.entity.DOW createDOW() {
-        return new com.airchina.datacenter.spnr.sdk.entity.DOW();
+    public LocationTypeFromSearchHotel createLocationTypeFromSearchHotel() {
+        return new LocationTypeFromSearchHotel();
     }
 
     /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Search }
+     * Create an instance of {@link SrvcDesVariableType }
      * 
      */
-    public com.airchina.datacenter.spnr.sdk.entity.Search createSearch() {
-        return new com.airchina.datacenter.spnr.sdk.entity.Search();
+    public SrvcDesVariableType createSrvcDesVariableType() {
+        return new SrvcDesVariableType();
+    }
+
+    /**
+     * Create an instance of {@link SegmentIDRefType }
+     * 
+     */
+    public SegmentIDRefType createSegmentIDRefType() {
+        return new SegmentIDRefType();
+    }
+
+    /**
+     * Create an instance of {@link Tags }
+     * 
+     */
+    public Tags createTags() {
+        return new Tags();
+    }
+
+    /**
+     * Create an instance of {@link TagType }
+     * 
+     */
+    public TagType createTagType() {
+        return new TagType();
+    }
+
+    /**
+     * Create an instance of {@link StatusFromPromotionCommonTypes }
+     * 
+     */
+    public StatusFromPromotionCommonTypes createStatusFromPromotionCommonTypes() {
+        return new StatusFromPromotionCommonTypes();
+    }
+
+    /**
+     * Create an instance of {@link BasicRate }
+     * 
+     */
+    public BasicRate createBasicRate() {
+        return new BasicRate();
+    }
+
+    /**
+     * Create an instance of {@link SeatLocationType }
+     * 
+     */
+    public SeatLocationType createSeatLocationType() {
+        return new SeatLocationType();
     }
 
     /**
@@ -8889,6 +9137,134 @@ public class ObjectFactory {
      */
     public Passenger createPassenger() {
         return new Passenger();
+    }
+
+    /**
+     * Create an instance of {@link SalesDateRange }
+     * 
+     */
+    public SalesDateRange createSalesDateRange() {
+        return new SalesDateRange();
+    }
+
+    /**
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Amenities }
+     * 
+     */
+    public com.airchina.datacenter.spnr.sdk.entity.Amenities createAmenities() {
+        return new com.airchina.datacenter.spnr.sdk.entity.Amenities();
+    }
+
+    /**
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Amenity }
+     * 
+     */
+    public com.airchina.datacenter.spnr.sdk.entity.Amenity createAmenity() {
+        return new com.airchina.datacenter.spnr.sdk.entity.Amenity();
+    }
+
+    /**
+     * Create an instance of {@link PrivateFareOfficeType }
+     * 
+     */
+    public PrivateFareOfficeType createPrivateFareOfficeType() {
+        return new PrivateFareOfficeType();
+    }
+
+    /**
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Group }
+     * 
+     */
+    public com.airchina.datacenter.spnr.sdk.entity.Group createGroup() {
+        return new com.airchina.datacenter.spnr.sdk.entity.Group();
+    }
+
+    /**
+     * Create an instance of {@link EticketDesired }
+     * 
+     */
+    public EticketDesired createEticketDesired() {
+        return new EticketDesired();
+    }
+
+    /**
+     * Create an instance of {@link PricingRestrictionType }
+     * 
+     */
+    public PricingRestrictionType createPricingRestrictionType() {
+        return new PricingRestrictionType();
+    }
+
+    /**
+     * Create an instance of {@link ResultOrdering }
+     * 
+     */
+    public ResultOrdering createResultOrdering() {
+        return new ResultOrdering();
+    }
+
+    /**
+     * Create an instance of {@link TravelerInfantType }
+     * 
+     */
+    public TravelerInfantType createTravelerInfantType() {
+        return new TravelerInfantType();
+    }
+
+    /**
+     * Create an instance of {@link TicketDesignatorType }
+     * 
+     */
+    public TicketDesignatorType createTicketDesignatorType() {
+        return new TicketDesignatorType();
+    }
+
+    /**
+     * Create an instance of {@link Groups }
+     * 
+     */
+    public Groups createGroups() {
+        return new Groups();
+    }
+
+    /**
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.DescriptionDetails }
+     * 
+     */
+    public com.airchina.datacenter.spnr.sdk.entity.DescriptionDetails createDescriptionDetails() {
+        return new com.airchina.datacenter.spnr.sdk.entity.DescriptionDetails();
+    }
+
+    /**
+     * Create an instance of {@link DateTimeType }
+     * 
+     */
+    public DateTimeType createDateTimeType() {
+        return new DateTimeType();
+    }
+
+    /**
+     * Create an instance of {@link Context }
+     * 
+     */
+    public Context createContext() {
+        return new Context();
+    }
+
+    /**
+     * Create an instance of {@link FlightNumberNodeType }
+     * 
+     */
+    public FlightNumberNodeType createFlightNumberNodeType() {
+        return new FlightNumberNodeType();
+    }
+
+    /**
+     * Create an instance of {@link DescriptionType }
+     * 
+     */
+    public DescriptionType createDescriptionType() {
+        return new DescriptionType();
     }
 
     /**
@@ -8916,6 +9292,38 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TravelerIDRefType }
+     * 
+     */
+    public TravelerIDRefType createTravelerIDRefType() {
+        return new TravelerIDRefType();
+    }
+
+    /**
+     * Create an instance of {@link SearchCriteria }
+     * 
+     */
+    public SearchCriteria createSearchCriteria() {
+        return new SearchCriteria();
+    }
+
+    /**
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Restrictions }
+     * 
+     */
+    public com.airchina.datacenter.spnr.sdk.entity.Restrictions createRestrictions() {
+        return new com.airchina.datacenter.spnr.sdk.entity.Restrictions();
+    }
+
+    /**
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Search }
+     * 
+     */
+    public com.airchina.datacenter.spnr.sdk.entity.Search createSearch() {
+        return new com.airchina.datacenter.spnr.sdk.entity.Search();
+    }
+
+    /**
      * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.HotelInformation }
      * 
      */
@@ -8937,14 +9345,6 @@ public class ObjectFactory {
      */
     public com.airchina.datacenter.spnr.sdk.entity.HotelName createHotelName() {
         return new com.airchina.datacenter.spnr.sdk.entity.HotelName();
-    }
-
-    /**
-     * Create an instance of {@link LocationTypeFromSearchHotel }
-     * 
-     */
-    public LocationTypeFromSearchHotel createLocationTypeFromSearchHotel() {
-        return new LocationTypeFromSearchHotel();
     }
 
     /**
@@ -9020,235 +9420,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EticketDesired }
+     * Create an instance of {@link PointsOfSale }
      * 
      */
-    public EticketDesired createEticketDesired() {
-        return new EticketDesired();
-    }
-
-    /**
-     * Create an instance of {@link TripProfile.FromPrices }
-     * 
-     */
-    public TripProfile.FromPrices createTripProfileFromPrices() {
-        return new TripProfile.FromPrices();
-    }
-
-    /**
-     * Create an instance of {@link ImpressionType }
-     * 
-     */
-    public ImpressionType createImpressionType() {
-        return new ImpressionType();
-    }
-
-    /**
-     * Create an instance of {@link DateTimeStampType }
-     * 
-     */
-    public DateTimeStampType createDateTimeStampType() {
-        return new DateTimeStampType();
-    }
-
-    /**
-     * Create an instance of {@link ExtensionPointType }
-     * 
-     */
-    public ExtensionPointType createExtensionPointType() {
-        return new ExtensionPointType();
-    }
-
-    /**
-     * Create an instance of {@link SrvcDesVariableType }
-     * 
-     */
-    public SrvcDesVariableType createSrvcDesVariableType() {
-        return new SrvcDesVariableType();
-    }
-
-    /**
-     * Create an instance of {@link Discounts.DiscountForTickets }
-     * 
-     */
-    public Discounts.DiscountForTickets createDiscountsDiscountForTickets() {
-        return new Discounts.DiscountForTickets();
-    }
-
-    /**
-     * Create an instance of {@link NDCPromotionType }
-     * 
-     */
-    public NDCPromotionType createNDCPromotionType() {
-        return new NDCPromotionType();
-    }
-
-    /**
-     * Create an instance of {@link FareCacheKeyType }
-     * 
-     */
-    public FareCacheKeyType createFareCacheKeyType() {
-        return new FareCacheKeyType();
-    }
-
-    /**
-     * Create an instance of {@link SegmentIDRefType }
-     * 
-     */
-    public SegmentIDRefType createSegmentIDRefType() {
-        return new SegmentIDRefType();
-    }
-
-    /**
-     * Create an instance of {@link OtherMembershipsType }
-     * 
-     */
-    public OtherMembershipsType createOtherMembershipsType() {
-        return new OtherMembershipsType();
-    }
-
-    /**
-     * Create an instance of {@link Tags }
-     * 
-     */
-    public Tags createTags() {
-        return new Tags();
-    }
-
-    /**
-     * Create an instance of {@link TagType }
-     * 
-     */
-    public TagType createTagType() {
-        return new TagType();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Restrictions }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.Restrictions createRestrictions() {
-        return new com.airchina.datacenter.spnr.sdk.entity.Restrictions();
-    }
-
-    /**
-     * Create an instance of {@link USDOTType }
-     * 
-     */
-    public USDOTType createUSDOTType() {
-        return new USDOTType();
-    }
-
-    /**
-     * Create an instance of {@link StatusFromPromotionCommonTypes }
-     * 
-     */
-    public StatusFromPromotionCommonTypes createStatusFromPromotionCommonTypes() {
-        return new StatusFromPromotionCommonTypes();
-    }
-
-    /**
-     * Create an instance of {@link SearchResponses }
-     * 
-     */
-    public SearchResponses createSearchResponses() {
-        return new SearchResponses();
-    }
-
-    /**
-     * Create an instance of {@link PricedItinerariesType }
-     * 
-     */
-    public PricedItinerariesType createPricedItinerariesType() {
-        return new PricedItinerariesType();
-    }
-
-    /**
-     * Create an instance of {@link BasicRate }
-     * 
-     */
-    public BasicRate createBasicRate() {
-        return new BasicRate();
-    }
-
-    /**
-     * Create an instance of {@link SeatLocationType }
-     * 
-     */
-    public SeatLocationType createSeatLocationType() {
-        return new SeatLocationType();
-    }
-
-    /**
-     * Create an instance of {@link IncentiveProgramType }
-     * 
-     */
-    public IncentiveProgramType createIncentiveProgramType() {
-        return new IncentiveProgramType();
-    }
-
-    /**
-     * Create an instance of {@link CurrencyCodeType }
-     * 
-     */
-    public CurrencyCodeType createCurrencyCodeType() {
-        return new CurrencyCodeType();
-    }
-
-    /**
-     * Create an instance of {@link OntologyExtensionType }
-     * 
-     */
-    public OntologyExtensionType createOntologyExtensionType() {
-        return new OntologyExtensionType();
-    }
-
-    /**
-     * Create an instance of {@link SalesDateRange }
-     * 
-     */
-    public SalesDateRange createSalesDateRange() {
-        return new SalesDateRange();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Amenities }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.Amenities createAmenities() {
-        return new com.airchina.datacenter.spnr.sdk.entity.Amenities();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Amenity }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.Amenity createAmenity() {
-        return new com.airchina.datacenter.spnr.sdk.entity.Amenity();
-    }
-
-    /**
-     * Create an instance of {@link PrivateFareOfficeType }
-     * 
-     */
-    public PrivateFareOfficeType createPrivateFareOfficeType() {
-        return new PrivateFareOfficeType();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Group }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.Group createGroup() {
-        return new com.airchina.datacenter.spnr.sdk.entity.Group();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Description }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.Description createDescription() {
-        return new com.airchina.datacenter.spnr.sdk.entity.Description();
+    public PointsOfSale createPointsOfSale() {
+        return new PointsOfSale();
     }
 
     /**
@@ -9260,150 +9436,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PricingRestrictionType }
-     * 
-     */
-    public PricingRestrictionType createPricingRestrictionType() {
-        return new PricingRestrictionType();
-    }
-
-    /**
-     * Create an instance of {@link ResultOrdering }
-     * 
-     */
-    public ResultOrdering createResultOrdering() {
-        return new ResultOrdering();
-    }
-
-    /**
-     * Create an instance of {@link TravelerInfantType }
-     * 
-     */
-    public TravelerInfantType createTravelerInfantType() {
-        return new TravelerInfantType();
-    }
-
-    /**
-     * Create an instance of {@link ProfileIndexType }
-     * 
-     */
-    public ProfileIndexType createProfileIndexType() {
-        return new ProfileIndexType();
-    }
-
-    /**
-     * Create an instance of {@link TicketDesignatorType }
-     * 
-     */
-    public TicketDesignatorType createTicketDesignatorType() {
-        return new TicketDesignatorType();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Descriptions }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.Descriptions createDescriptions() {
-        return new com.airchina.datacenter.spnr.sdk.entity.Descriptions();
-    }
-
-    /**
-     * Create an instance of {@link DescriptionFromHotelContentDescription }
-     * 
-     */
-    public DescriptionFromHotelContentDescription createDescriptionFromHotelContentDescription() {
-        return new DescriptionFromHotelContentDescription();
-    }
-
-    /**
-     * Create an instance of {@link Groups }
-     * 
-     */
-    public Groups createGroups() {
-        return new Groups();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.DescriptionDetails }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.DescriptionDetails createDescriptionDetails() {
-        return new com.airchina.datacenter.spnr.sdk.entity.DescriptionDetails();
-    }
-
-    /**
-     * Create an instance of {@link DateTimeType }
-     * 
-     */
-    public DateTimeType createDateTimeType() {
-        return new DateTimeType();
-    }
-
-    /**
-     * Create an instance of {@link Context }
-     * 
-     */
-    public Context createContext() {
-        return new Context();
-    }
-
-    /**
-     * Create an instance of {@link FlightNumberNodeType }
-     * 
-     */
-    public FlightNumberNodeType createFlightNumberNodeType() {
-        return new FlightNumberNodeType();
-    }
-
-    /**
-     * Create an instance of {@link DescriptionType }
-     * 
-     */
-    public DescriptionType createDescriptionType() {
-        return new DescriptionType();
-    }
-
-    /**
-     * Create an instance of {@link FareBasisCodeType }
-     * 
-     */
-    public FareBasisCodeType createFareBasisCodeType() {
-        return new FareBasisCodeType();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Text }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.Text createText() {
-        return new com.airchina.datacenter.spnr.sdk.entity.Text();
-    }
-
-    /**
-     * Create an instance of {@link TravelerIDRefType }
-     * 
-     */
-    public TravelerIDRefType createTravelerIDRefType() {
-        return new TravelerIDRefType();
-    }
-
-    /**
-     * Create an instance of {@link SearchCriteria }
-     * 
-     */
-    public SearchCriteria createSearchCriteria() {
-        return new SearchCriteria();
-    }
-
-    /**
-     * Create an instance of {@link PointsOfSale }
-     * 
-     */
-    public PointsOfSale createPointsOfSale() {
-        return new PointsOfSale();
-    }
-
-    /**
      * Create an instance of {@link Dates }
      * 
      */
@@ -9412,27 +9444,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CCExpiration }
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.StayDateRange }
      * 
      */
-    public CCExpiration createCCExpiration() {
-        return new CCExpiration();
+    public com.airchina.datacenter.spnr.sdk.entity.StayDateRange createStayDateRange() {
+        return new com.airchina.datacenter.spnr.sdk.entity.StayDateRange();
     }
 
     /**
-     * Create an instance of {@link StatusApplicationControlTimes }
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.DOW }
      * 
      */
-    public StatusApplicationControlTimes createStatusApplicationControlTimes() {
-        return new StatusApplicationControlTimes();
-    }
-
-    /**
-     * Create an instance of {@link StatusApplicationControlTime }
-     * 
-     */
-    public StatusApplicationControlTime createStatusApplicationControlTime() {
-        return new StatusApplicationControlTime();
+    public com.airchina.datacenter.spnr.sdk.entity.DOW createDOW() {
+        return new com.airchina.datacenter.spnr.sdk.entity.DOW();
     }
 
     /**
@@ -9476,11 +9500,139 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.StatusApplicationControl }
+     * Create an instance of {@link AltRoomTypeNames.AltRoomTypeName }
      * 
      */
-    public com.airchina.datacenter.spnr.sdk.entity.StatusApplicationControl createStatusApplicationControl() {
-        return new com.airchina.datacenter.spnr.sdk.entity.StatusApplicationControl();
+    public AltRoomTypeNames.AltRoomTypeName createAltRoomTypeNamesAltRoomTypeName() {
+        return new AltRoomTypeNames.AltRoomTypeName();
+    }
+
+    /**
+     * Create an instance of {@link NDCTicketingInfoType }
+     * 
+     */
+    public NDCTicketingInfoType createNDCTicketingInfoType() {
+        return new NDCTicketingInfoType();
+    }
+
+    /**
+     * Create an instance of {@link LinkParams }
+     * 
+     */
+    public LinkParams createLinkParams() {
+        return new LinkParams();
+    }
+
+    /**
+     * Create an instance of {@link OfferID }
+     * 
+     */
+    public OfferID createOfferID() {
+        return new OfferID();
+    }
+
+    /**
+     * Create an instance of {@link OfferIDType }
+     * 
+     */
+    public OfferIDType createOfferIDType() {
+        return new OfferIDType();
+    }
+
+    /**
+     * Create an instance of {@link TripProfile.FromPrices }
+     * 
+     */
+    public TripProfile.FromPrices createTripProfileFromPrices() {
+        return new TripProfile.FromPrices();
+    }
+
+    /**
+     * Create an instance of {@link ImpressionType }
+     * 
+     */
+    public ImpressionType createImpressionType() {
+        return new ImpressionType();
+    }
+
+    /**
+     * Create an instance of {@link DiagnosticsType }
+     * 
+     */
+    public DiagnosticsType createDiagnosticsType() {
+        return new DiagnosticsType();
+    }
+
+    /**
+     * Create an instance of {@link StatusApplicationControlTime }
+     * 
+     */
+    public StatusApplicationControlTime createStatusApplicationControlTime() {
+        return new StatusApplicationControlTime();
+    }
+
+    /**
+     * Create an instance of {@link TPAExtensionsType }
+     * 
+     */
+    public TPAExtensionsType createTPAExtensionsType() {
+        return new TPAExtensionsType();
+    }
+
+    /**
+     * Create an instance of {@link PrivateFareCorpType }
+     * 
+     */
+    public PrivateFareCorpType createPrivateFareCorpType() {
+        return new PrivateFareCorpType();
+    }
+
+    /**
+     * Create an instance of {@link FlightCOSDetailType }
+     * 
+     */
+    public FlightCOSDetailType createFlightCOSDetailType() {
+        return new FlightCOSDetailType();
+    }
+
+    /**
+     * Create an instance of {@link Channels }
+     * 
+     */
+    public Channels createChannels() {
+        return new Channels();
+    }
+
+    /**
+     * Create an instance of {@link ChannelType }
+     * 
+     */
+    public ChannelType createChannelType() {
+        return new ChannelType();
+    }
+
+    /**
+     * Create an instance of {@link AncillaryService }
+     * 
+     */
+    public AncillaryService createAncillaryService() {
+        return new AncillaryService();
+    }
+
+    /**
+     * Create an instance of {@link AncillaryServiceType }
+     * 
+     */
+    public AncillaryServiceType createAncillaryServiceType() {
+        return new AncillaryServiceType();
+    }
+
+    /**
+     * Create an instance of {@link Discounts.DiscountForTickets }
+     * 
+     */
+    public Discounts.DiscountForTickets createDiscountsDiscountForTickets() {
+        return new Discounts.DiscountForTickets();
     }
 
     /**
@@ -9492,19 +9644,179 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TravelerAgeType }
+     * 
+     */
+    public TravelerAgeType createTravelerAgeType() {
+        return new TravelerAgeType();
+    }
+
+    /**
+     * Create an instance of {@link TravelerRefInfoType }
+     * 
+     */
+    public TravelerRefInfoType createTravelerRefInfoType() {
+        return new TravelerRefInfoType();
+    }
+
+    /**
+     * Create an instance of {@link CCQualifierType }
+     * 
+     */
+    public CCQualifierType createCCQualifierType() {
+        return new CCQualifierType();
+    }
+
+    /**
+     * Create an instance of {@link TripProfiles }
+     * 
+     */
+    public TripProfiles createTripProfiles() {
+        return new TripProfiles();
+    }
+
+    /**
+     * Create an instance of {@link NDCPromotionType }
+     * 
+     */
+    public NDCPromotionType createNDCPromotionType() {
+        return new NDCPromotionType();
+    }
+
+    /**
+     * Create an instance of {@link FareCacheKeyType }
+     * 
+     */
+    public FareCacheKeyType createFareCacheKeyType() {
+        return new FareCacheKeyType();
+    }
+
+    /**
+     * Create an instance of {@link OtherMembershipsType }
+     * 
+     */
+    public OtherMembershipsType createOtherMembershipsType() {
+        return new OtherMembershipsType();
+    }
+
+    /**
+     * Create an instance of {@link USDOTType }
+     * 
+     */
+    public USDOTType createUSDOTType() {
+        return new USDOTType();
+    }
+
+    /**
+     * Create an instance of {@link SearchResponses }
+     * 
+     */
+    public SearchResponses createSearchResponses() {
+        return new SearchResponses();
+    }
+
+    /**
+     * Create an instance of {@link IncentiveProgramType }
+     * 
+     */
+    public IncentiveProgramType createIncentiveProgramType() {
+        return new IncentiveProgramType();
+    }
+
+    /**
+     * Create an instance of {@link CurrencyCodeType }
+     * 
+     */
+    public CurrencyCodeType createCurrencyCodeType() {
+        return new CurrencyCodeType();
+    }
+
+    /**
+     * Create an instance of {@link OntologyExtensionType }
+     * 
+     */
+    public OntologyExtensionType createOntologyExtensionType() {
+        return new OntologyExtensionType();
+    }
+
+    /**
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Description }
+     * 
+     */
+    public com.airchina.datacenter.spnr.sdk.entity.Description createDescription() {
+        return new com.airchina.datacenter.spnr.sdk.entity.Description();
+    }
+
+    /**
+     * Create an instance of {@link ProfileIndexType }
+     * 
+     */
+    public ProfileIndexType createProfileIndexType() {
+        return new ProfileIndexType();
+    }
+
+    /**
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Descriptions }
+     * 
+     */
+    public com.airchina.datacenter.spnr.sdk.entity.Descriptions createDescriptions() {
+        return new com.airchina.datacenter.spnr.sdk.entity.Descriptions();
+    }
+
+    /**
+     * Create an instance of {@link DescriptionFromHotelContentDescription }
+     * 
+     */
+    public DescriptionFromHotelContentDescription createDescriptionFromHotelContentDescription() {
+        return new DescriptionFromHotelContentDescription();
+    }
+
+    /**
+     * Create an instance of {@link FareBasisCodeType }
+     * 
+     */
+    public FareBasisCodeType createFareBasisCodeType() {
+        return new FareBasisCodeType();
+    }
+
+    /**
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Text }
+     * 
+     */
+    public com.airchina.datacenter.spnr.sdk.entity.Text createText() {
+        return new com.airchina.datacenter.spnr.sdk.entity.Text();
+    }
+
+    /**
+     * Create an instance of {@link CCExpiration }
+     * 
+     */
+    public CCExpiration createCCExpiration() {
+        return new CCExpiration();
+    }
+
+    /**
+     * Create an instance of {@link StatusApplicationControlTimes }
+     * 
+     */
+    public StatusApplicationControlTimes createStatusApplicationControlTimes() {
+        return new StatusApplicationControlTimes();
+    }
+
+    /**
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.StatusApplicationControl }
+     * 
+     */
+    public com.airchina.datacenter.spnr.sdk.entity.StatusApplicationControl createStatusApplicationControl() {
+        return new com.airchina.datacenter.spnr.sdk.entity.StatusApplicationControl();
+    }
+
+    /**
      * Create an instance of {@link AvailabilityAllRates.EventDateTime }
      * 
      */
     public AvailabilityAllRates.EventDateTime createAvailabilityAllRatesEventDateTime() {
         return new AvailabilityAllRates.EventDateTime();
-    }
-
-    /**
-     * Create an instance of {@link TextDescriptionType }
-     * 
-     */
-    public TextDescriptionType createTextDescriptionType() {
-        return new TextDescriptionType();
     }
 
     /**
@@ -9540,35 +9852,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NDCTicketingInfoType }
-     * 
-     */
-    public NDCTicketingInfoType createNDCTicketingInfoType() {
-        return new NDCTicketingInfoType();
-    }
-
-    /**
-     * Create an instance of {@link LinkParams }
-     * 
-     */
-    public LinkParams createLinkParams() {
-        return new LinkParams();
-    }
-
-    /**
      * Create an instance of {@link ServiceID }
      * 
      */
     public ServiceID createServiceID() {
         return new ServiceID();
-    }
-
-    /**
-     * Create an instance of {@link OfferIDType }
-     * 
-     */
-    public OfferIDType createOfferIDType() {
-        return new OfferIDType();
     }
 
     /**
@@ -9585,22 +9873,6 @@ public class ObjectFactory {
      */
     public TravelerNameType createTravelerNameType() {
         return new TravelerNameType();
-    }
-
-    /**
-     * Create an instance of {@link TravelerAgeType }
-     * 
-     */
-    public TravelerAgeType createTravelerAgeType() {
-        return new TravelerAgeType();
-    }
-
-    /**
-     * Create an instance of {@link OfferID }
-     * 
-     */
-    public OfferID createOfferID() {
-        return new OfferID();
     }
 
     /**
@@ -9652,38 +9924,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DiagnosticsType }
-     * 
-     */
-    public DiagnosticsType createDiagnosticsType() {
-        return new DiagnosticsType();
-    }
-
-    /**
-     * Create an instance of {@link TPAExtensionsType }
-     * 
-     */
-    public TPAExtensionsType createTPAExtensionsType() {
-        return new TPAExtensionsType();
-    }
-
-    /**
-     * Create an instance of {@link PrivateFareCorpType }
-     * 
-     */
-    public PrivateFareCorpType createPrivateFareCorpType() {
-        return new PrivateFareCorpType();
-    }
-
-    /**
-     * Create an instance of {@link FlightCOSDetailType }
-     * 
-     */
-    public FlightCOSDetailType createFlightCOSDetailType() {
-        return new FlightCOSDetailType();
-    }
-
-    /**
      * Create an instance of {@link PrivateFareContractType }
      * 
      */
@@ -9700,43 +9940,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Channels }
-     * 
-     */
-    public Channels createChannels() {
-        return new Channels();
-    }
-
-    /**
-     * Create an instance of {@link ChannelType }
-     * 
-     */
-    public ChannelType createChannelType() {
-        return new ChannelType();
-    }
-
-    /**
      * Create an instance of {@link RecordLocatorType }
      * 
      */
     public RecordLocatorType createRecordLocatorType() {
         return new RecordLocatorType();
-    }
-
-    /**
-     * Create an instance of {@link AncillaryService }
-     * 
-     */
-    public AncillaryService createAncillaryService() {
-        return new AncillaryService();
-    }
-
-    /**
-     * Create an instance of {@link AncillaryServiceType }
-     * 
-     */
-    public AncillaryServiceType createAncillaryServiceType() {
-        return new AncillaryServiceType();
     }
 
     /**
@@ -9785,14 +9993,6 @@ public class ObjectFactory {
      */
     public DefaultLanguage createDefaultLanguage() {
         return new DefaultLanguage();
-    }
-
-    /**
-     * Create an instance of {@link TravelerRefInfoType }
-     * 
-     */
-    public TravelerRefInfoType createTravelerRefInfoType() {
-        return new TravelerRefInfoType();
     }
 
     /**
@@ -9884,19 +10084,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ItinRemarksType }
+     * 
+     */
+    public ItinRemarksType createItinRemarksType() {
+        return new ItinRemarksType();
+    }
+
+    /**
      * Create an instance of {@link OrderCategoryType }
      * 
      */
     public OrderCategoryType createOrderCategoryType() {
         return new OrderCategoryType();
-    }
-
-    /**
-     * Create an instance of {@link CCQualifierType }
-     * 
-     */
-    public CCQualifierType createCCQualifierType() {
-        return new CCQualifierType();
     }
 
     /**
@@ -10156,6 +10356,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CouponEventType }
+     * 
+     */
+    public CouponEventType createCouponEventType() {
+        return new CouponEventType();
+    }
+
+    /**
      * Create an instance of {@link ImageItemType }
      * 
      */
@@ -10316,11 +10524,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AirAncillaryEligibleItemType }
+     * 
+     */
+    public AirAncillaryEligibleItemType createAirAncillaryEligibleItemType() {
+        return new AirAncillaryEligibleItemType();
+    }
+
+    /**
      * Create an instance of {@link SessionType }
      * 
      */
     public SessionType createSessionType() {
         return new SessionType();
+    }
+
+    /**
+     * Create an instance of {@link LongDescriptionType }
+     * 
+     */
+    public LongDescriptionType createLongDescriptionType() {
+        return new LongDescriptionType();
     }
 
     /**
@@ -10345,6 +10569,14 @@ public class ObjectFactory {
      */
     public OJActionItemType createOJActionItemType() {
         return new OJActionItemType();
+    }
+
+    /**
+     * Create an instance of {@link RefundInfoPaymentBaseType }
+     * 
+     */
+    public RefundInfoPaymentBaseType createRefundInfoPaymentBaseType() {
+        return new RefundInfoPaymentBaseType();
     }
 
     /**
@@ -10553,6 +10785,14 @@ public class ObjectFactory {
      */
     public AirInfoType createAirInfoType() {
         return new AirInfoType();
+    }
+
+    /**
+     * Create an instance of {@link RefundInfoPaymentsType }
+     * 
+     */
+    public RefundInfoPaymentsType createRefundInfoPaymentsType() {
+        return new RefundInfoPaymentsType();
     }
 
     /**
@@ -10793,6 +11033,14 @@ public class ObjectFactory {
      */
     public SurchargeBasicType createSurchargeBasicType() {
         return new SurchargeBasicType();
+    }
+
+    /**
+     * Create an instance of {@link VehicleModelContent }
+     * 
+     */
+    public VehicleModelContent createVehicleModelContent() {
+        return new VehicleModelContent();
     }
 
     /**
@@ -11124,6 +11372,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CustLoyaltyType }
+     * 
+     */
+    public CustLoyaltyType createCustLoyaltyType() {
+        return new CustLoyaltyType();
+    }
+
+    /**
      * Create an instance of {@link ListGroundServiceProvided }
      * 
      */
@@ -11356,6 +11612,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CouponTravelItineraryType }
+     * 
+     */
+    public CouponTravelItineraryType createCouponTravelItineraryType() {
+        return new CouponTravelItineraryType();
+    }
+
+    /**
      * Create an instance of {@link BasicEndorsementType }
      * 
      */
@@ -11460,6 +11724,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RefundInfoPaymentType }
+     * 
+     */
+    public RefundInfoPaymentType createRefundInfoPaymentType() {
+        return new RefundInfoPaymentType();
+    }
+
+    /**
      * Create an instance of {@link RoomStayCandidateType }
      * 
      */
@@ -11532,6 +11804,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link HotelProcessingInfoType }
+     * 
+     */
+    public HotelProcessingInfoType createHotelProcessingInfoType() {
+        return new HotelProcessingInfoType();
+    }
+
+    /**
      * Create an instance of {@link BookingSummaryType }
      * 
      */
@@ -11593,6 +11873,14 @@ public class ObjectFactory {
      */
     public ListRateCategory createListRateCategory() {
         return new ListRateCategory();
+    }
+
+    /**
+     * Create an instance of {@link CustomerAssociatedInfoType }
+     * 
+     */
+    public CustomerAssociatedInfoType createCustomerAssociatedInfoType() {
+        return new CustomerAssociatedInfoType();
     }
 
     /**
@@ -11972,6 +12260,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CouponProductType }
+     * 
+     */
+    public CouponProductType createCouponProductType() {
+        return new CouponProductType();
+    }
+
+    /**
      * Create an instance of {@link TelephoneInfoType }
      * 
      */
@@ -12036,6 +12332,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link InsuranceProductContentType }
+     * 
+     */
+    public InsuranceProductContentType createInsuranceProductContentType() {
+        return new InsuranceProductContentType();
+    }
+
+    /**
      * Create an instance of {@link CancellationRefundDetailsType }
      * 
      */
@@ -12049,6 +12353,14 @@ public class ObjectFactory {
      */
     public VehicleChargePurposeType createVehicleChargePurposeType() {
         return new VehicleChargePurposeType();
+    }
+
+    /**
+     * Create an instance of {@link EligibleItemAirType }
+     * 
+     */
+    public EligibleItemAirType createEligibleItemAirType() {
+        return new EligibleItemAirType();
     }
 
     /**
@@ -12180,6 +12492,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ItinRemarkType }
+     * 
+     */
+    public ItinRemarkType createItinRemarkType() {
+        return new ItinRemarkType();
+    }
+
+    /**
      * Create an instance of {@link ListPowerType }
      * 
      */
@@ -12241,6 +12561,14 @@ public class ObjectFactory {
      */
     public CabinDetail createCabinDetail() {
         return new CabinDetail();
+    }
+
+    /**
+     * Create an instance of {@link CouponItineraryInfoType }
+     * 
+     */
+    public CouponItineraryInfoType createCouponItineraryInfoType() {
+        return new CouponItineraryInfoType();
     }
 
     /**
@@ -12521,6 +12849,14 @@ public class ObjectFactory {
      */
     public IssuerNameType createIssuerNameType() {
         return new IssuerNameType();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportAllocationType }
+     * 
+     */
+    public HotelAvailReportAllocationType createHotelAvailReportAllocationType() {
+        return new HotelAvailReportAllocationType();
     }
 
     /**
@@ -12828,6 +13164,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link HotelAvailReportsType }
+     * 
+     */
+    public HotelAvailReportsType createHotelAvailReportsType() {
+        return new HotelAvailReportsType();
+    }
+
+    /**
      * Create an instance of {@link ListProximity }
      * 
      */
@@ -12841,6 +13185,14 @@ public class ObjectFactory {
      */
     public ListUnitOfMeasure createListUnitOfMeasure() {
         return new ListUnitOfMeasure();
+    }
+
+    /**
+     * Create an instance of {@link CustomerAssociatedTicketingType }
+     * 
+     */
+    public CustomerAssociatedTicketingType createCustomerAssociatedTicketingType() {
+        return new CustomerAssociatedTicketingType();
     }
 
     /**
@@ -13220,14 +13572,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ModifyTypeType }
-     * 
-     */
-    public ModifyTypeType createModifyTypeType() {
-        return new ModifyTypeType();
-    }
-
-    /**
      * Create an instance of {@link ListLoyaltyPrgCurrency }
      * 
      */
@@ -13241,6 +13585,14 @@ public class ObjectFactory {
      */
     public FerryWarningsType createFerryWarningsType() {
         return new FerryWarningsType();
+    }
+
+    /**
+     * Create an instance of {@link CouponEventGroupType }
+     * 
+     */
+    public CouponEventGroupType createCouponEventGroupType() {
+        return new CouponEventGroupType();
     }
 
     /**
@@ -13348,6 +13700,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OtherPaymentType }
+     * 
+     */
+    public OtherPaymentType createOtherPaymentType() {
+        return new OtherPaymentType();
+    }
+
+    /**
      * Create an instance of {@link ListFareStatus }
      * 
      */
@@ -13452,6 +13812,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ExternalReviewType }
+     * 
+     */
+    public ExternalReviewType createExternalReviewType() {
+        return new ExternalReviewType();
+    }
+
+    /**
      * Create an instance of {@link StandaloneAncillaryType }
      * 
      */
@@ -13513,6 +13881,14 @@ public class ObjectFactory {
      */
     public SecurityFeaturePrefType createSecurityFeaturePrefType() {
         return new SecurityFeaturePrefType();
+    }
+
+    /**
+     * Create an instance of {@link CouponCriteriaType }
+     * 
+     */
+    public CouponCriteriaType createCouponCriteriaType() {
+        return new CouponCriteriaType();
     }
 
     /**
@@ -13700,6 +14076,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link WeChatDocType }
+     * 
+     */
+    public WeChatDocType createWeChatDocType() {
+        return new WeChatDocType();
+    }
+
+    /**
      * Create an instance of {@link ServicesDescriptionType }
      * 
      */
@@ -13793,6 +14177,14 @@ public class ObjectFactory {
      */
     public DictionaryOJType createDictionaryOJType() {
         return new DictionaryOJType();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportBookingRuleType }
+     * 
+     */
+    public HotelAvailReportBookingRuleType createHotelAvailReportBookingRuleType() {
+        return new HotelAvailReportBookingRuleType();
     }
 
     /**
@@ -13892,14 +14284,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CarbonOffsetType }
-     * 
-     */
-    public CarbonOffsetType createCarbonOffsetType() {
-        return new CarbonOffsetType();
-    }
-
-    /**
      * Create an instance of {@link SupplierPenaltyType }
      * 
      */
@@ -13969,6 +14353,14 @@ public class ObjectFactory {
      */
     public FerryTravellerCountBaseType createFerryTravellerCountBaseType() {
         return new FerryTravellerCountBaseType();
+    }
+
+    /**
+     * Create an instance of {@link CouponAccountType }
+     * 
+     */
+    public CouponAccountType createCouponAccountType() {
+        return new CouponAccountType();
     }
 
     /**
@@ -14089,6 +14481,14 @@ public class ObjectFactory {
      */
     public ContractIDType createContractIDType() {
         return new ContractIDType();
+    }
+
+    /**
+     * Create an instance of {@link CouponsIssueType }
+     * 
+     */
+    public CouponsIssueType createCouponsIssueType() {
+        return new CouponsIssueType();
     }
 
     /**
@@ -14436,11 +14836,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link EligiblePricingType.BaseFare }
+     * 
+     */
+    public EligiblePricingType.BaseFare createEligiblePricingTypeBaseFare() {
+        return new EligiblePricingType.BaseFare();
+    }
+
+    /**
+     * Create an instance of {@link EligiblePricingType.TotalFare }
+     * 
+     */
+    public EligiblePricingType.TotalFare createEligiblePricingTypeTotalFare() {
+        return new EligiblePricingType.TotalFare();
+    }
+
+    /**
      * Create an instance of {@link EventCategoriesType.Category }
      * 
      */
     public EventCategoriesType.Category createEventCategoriesTypeCategory() {
         return new EventCategoriesType.Category();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportRoomType.Contracts }
+     * 
+     */
+    public HotelAvailReportRoomType.Contracts createHotelAvailReportRoomTypeContracts() {
+        return new HotelAvailReportRoomType.Contracts();
     }
 
     /**
@@ -14481,6 +14905,22 @@ public class ObjectFactory {
      */
     public PoliciesType.Policy.FeePolicies createPoliciesTypePolicyFeePolicies() {
         return new PoliciesType.Policy.FeePolicies();
+    }
+
+    /**
+     * Create an instance of {@link PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty.TimeSlotCharge }
+     * 
+     */
+    public PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty.TimeSlotCharge createPoliciesTypePolicyExtraChargePolicyExtraChargePenaltyTimeSlotCharge() {
+        return new PoliciesType.Policy.ExtraChargePolicy.ExtraChargePenalty.TimeSlotCharge();
+    }
+
+    /**
+     * Create an instance of {@link PoliciesType.Policy.BookPolicy.BookRestriction.Distance }
+     * 
+     */
+    public PoliciesType.Policy.BookPolicy.BookRestriction.Distance createPoliciesTypePolicyBookPolicyBookRestrictionDistance() {
+        return new PoliciesType.Policy.BookPolicy.BookRestriction.Distance();
     }
 
     /**
@@ -15345,6 +15785,30 @@ public class ObjectFactory {
      */
     public AgeQualificationType.PTC createAgeQualificationTypePTC() {
         return new AgeQualificationType.PTC();
+    }
+
+    /**
+     * Create an instance of {@link CarbonOffsetType.Price }
+     * 
+     */
+    public CarbonOffsetType.Price createCarbonOffsetTypePrice() {
+        return new CarbonOffsetType.Price();
+    }
+
+    /**
+     * Create an instance of {@link AirAncillaryProductPriceType.Base }
+     * 
+     */
+    public AirAncillaryProductPriceType.Base createAirAncillaryProductPriceTypeBase() {
+        return new AirAncillaryProductPriceType.Base();
+    }
+
+    /**
+     * Create an instance of {@link AirAncillaryProductPriceType.Total }
+     * 
+     */
+    public AirAncillaryProductPriceType.Total createAirAncillaryProductPriceTypeTotal() {
+        return new AirAncillaryProductPriceType.Total();
     }
 
     /**
@@ -17036,6 +17500,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ModifyTypeType.Reason }
+     * 
+     */
+    public ModifyTypeType.Reason createModifyTypeTypeReason() {
+        return new ModifyTypeType.Reason();
+    }
+
+    /**
+     * Create an instance of {@link CouponIssueType.ValidTimeSpan }
+     * 
+     */
+    public CouponIssueType.ValidTimeSpan createCouponIssueTypeValidTimeSpan() {
+        return new CouponIssueType.ValidTimeSpan();
+    }
+
+    /**
      * Create an instance of {@link Specials.Special.Discount.Description.Text }
      * 
      */
@@ -18228,22 +18708,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AirAncillaryProductPriceType.Base }
-     * 
-     */
-    public AirAncillaryProductPriceType.Base createAirAncillaryProductPriceTypeBase() {
-        return new AirAncillaryProductPriceType.Base();
-    }
-
-    /**
-     * Create an instance of {@link AirAncillaryProductPriceType.Total }
-     * 
-     */
-    public AirAncillaryProductPriceType.Total createAirAncillaryProductPriceTypeTotal() {
-        return new AirAncillaryProductPriceType.Total();
-    }
-
-    /**
      * Create an instance of {@link ShipInfoType.Ship }
      * 
      */
@@ -18409,6 +18873,22 @@ public class ObjectFactory {
      */
     public SearchQualifierType.Status createSearchQualifierTypeStatus() {
         return new SearchQualifierType.Status();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportContractType.Allocations }
+     * 
+     */
+    public HotelAvailReportContractType.Allocations createHotelAvailReportContractTypeAllocations() {
+        return new HotelAvailReportContractType.Allocations();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportContractType.BookingRules }
+     * 
+     */
+    public HotelAvailReportContractType.BookingRules createHotelAvailReportContractTypeBookingRules() {
+        return new HotelAvailReportContractType.BookingRules();
     }
 
     /**
@@ -19892,6 +20372,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ProductContentType.Image }
+     * 
+     */
+    public ProductContentType.Image createProductContentTypeImage() {
+        return new ProductContentType.Image();
+    }
+
+    /**
      * Create an instance of {@link HotelResModifyType.HotelResModify }
      * 
      */
@@ -20468,6 +20956,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CouponFlightInfoType.DepartureInformation }
+     * 
+     */
+    public CouponFlightInfoType.DepartureInformation createCouponFlightInfoTypeDepartureInformation() {
+        return new CouponFlightInfoType.DepartureInformation();
+    }
+
+    /**
+     * Create an instance of {@link CouponFlightInfoType.ArrivalInfomation }
+     * 
+     */
+    public CouponFlightInfoType.ArrivalInfomation createCouponFlightInfoTypeArrivalInfomation() {
+        return new CouponFlightInfoType.ArrivalInfomation();
+    }
+
+    /**
      * Create an instance of {@link VehicleLocationAdditionalDetailsType.OneWayDropLocations.OneWayDropLocation }
      * 
      */
@@ -20505,6 +21009,30 @@ public class ObjectFactory {
      */
     public ItineraryItemRequestType.RentalCar createItineraryItemRequestTypeRentalCar() {
         return new ItineraryItemRequestType.RentalCar();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportRequestType.AvailTimeSpan }
+     * 
+     */
+    public HotelAvailReportRequestType.AvailTimeSpan createHotelAvailReportRequestTypeAvailTimeSpan() {
+        return new HotelAvailReportRequestType.AvailTimeSpan();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportRequestType.Award }
+     * 
+     */
+    public HotelAvailReportRequestType.Award createHotelAvailReportRequestTypeAward() {
+        return new HotelAvailReportRequestType.Award();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportRequestType.Suppliers.Supplier }
+     * 
+     */
+    public HotelAvailReportRequestType.Suppliers.Supplier createHotelAvailReportRequestTypeSuppliersSupplier() {
+        return new HotelAvailReportRequestType.Suppliers.Supplier();
     }
 
     /**
@@ -20697,6 +21225,14 @@ public class ObjectFactory {
      */
     public VehicleRentalTransactionType.PricedEquips.PricedEquip.Equipment createVehicleRentalTransactionTypePricedEquipsPricedEquipEquipment() {
         return new VehicleRentalTransactionType.PricedEquips.PricedEquip.Equipment();
+    }
+
+    /**
+     * Create an instance of {@link HotelAvailReportType.Rooms }
+     * 
+     */
+    public HotelAvailReportType.Rooms createHotelAvailReportTypeRooms() {
+        return new HotelAvailReportType.Rooms();
     }
 
     /**
@@ -21465,6 +22001,14 @@ public class ObjectFactory {
      */
     public WeChatMessageType.Template createWeChatMessageTypeTemplate() {
         return new WeChatMessageType.Template();
+    }
+
+    /**
+     * Create an instance of {@link WeChatMessageType.Documents }
+     * 
+     */
+    public WeChatMessageType.Documents createWeChatMessageTypeDocuments() {
+        return new WeChatMessageType.Documents();
     }
 
     /**
@@ -22348,6 +22892,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link LoungeCriteriaType.Airport }
+     * 
+     */
+    public LoungeCriteriaType.Airport createLoungeCriteriaTypeAirport() {
+        return new LoungeCriteriaType.Airport();
+    }
+
+    /**
+     * Create an instance of {@link LoungeCriteriaType.TravelDateTimeSpan }
+     * 
+     */
+    public LoungeCriteriaType.TravelDateTimeSpan createLoungeCriteriaTypeTravelDateTimeSpan() {
+        return new LoungeCriteriaType.TravelDateTimeSpan();
+    }
+
+    /**
      * Create an instance of {@link CabinClassType.AirRows }
      * 
      */
@@ -22508,11 +23068,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link VerificationPNR.ProcessingStatus }
+     * 
+     */
+    public VerificationPNR.ProcessingStatus createVerificationPNRProcessingStatus() {
+        return new VerificationPNR.ProcessingStatus();
+    }
+
+    /**
      * Create an instance of {@link VerificationPNR.ArchivalStatus }
      * 
      */
     public VerificationPNR.ArchivalStatus createVerificationPNRArchivalStatus() {
         return new VerificationPNR.ArchivalStatus();
+    }
+
+    /**
+     * Create an instance of {@link VerificationPNR.Agent }
+     * 
+     */
+    public VerificationPNR.Agent createVerificationPNRAgent() {
+        return new VerificationPNR.Agent();
     }
 
     /**
@@ -22628,11 +23204,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link VerificationPNR.ModifyType }
+     * Create an instance of {@link VerificationPNR.SpecialServiceRequests.SpecialServiceRequest }
      * 
      */
-    public VerificationPNR.ModifyType createVerificationPNRModifyType() {
-        return new VerificationPNR.ModifyType();
+    public VerificationPNR.SpecialServiceRequests.SpecialServiceRequest createVerificationPNRSpecialServiceRequestsSpecialServiceRequest() {
+        return new VerificationPNR.SpecialServiceRequests.SpecialServiceRequest();
+    }
+
+    /**
+     * Create an instance of {@link VerificationPNR.ItinRemarks.ItinRemark }
+     * 
+     */
+    public VerificationPNR.ItinRemarks.ItinRemark createVerificationPNRItinRemarksItinRemark() {
+        return new VerificationPNR.ItinRemarks.ItinRemark();
+    }
+
+    /**
+     * Create an instance of {@link VerificationPNR.SupplierNotes.Note }
+     * 
+     */
+    public VerificationPNR.SupplierNotes.Note createVerificationPNRSupplierNotesNote() {
+        return new VerificationPNR.SupplierNotes.Note();
+    }
+
+    /**
+     * Create an instance of {@link VerificationPNR.ModifyType.Reason }
+     * 
+     */
+    public VerificationPNR.ModifyType.Reason createVerificationPNRModifyTypeReason() {
+        return new VerificationPNR.ModifyType.Reason();
     }
 
     /**
@@ -22649,6 +23249,22 @@ public class ObjectFactory {
      */
     public VerificationPNR.Ticketing.TimeSpan createVerificationPNRTicketingTimeSpan() {
         return new VerificationPNR.Ticketing.TimeSpan();
+    }
+
+    /**
+     * Create an instance of {@link VerificationPNR.Ticketing.SendTimeSpan }
+     * 
+     */
+    public VerificationPNR.Ticketing.SendTimeSpan createVerificationPNRTicketingSendTimeSpan() {
+        return new VerificationPNR.Ticketing.SendTimeSpan();
+    }
+
+    /**
+     * Create an instance of {@link VerificationPNR.Ticketing.ArrivalTimeSpan }
+     * 
+     */
+    public VerificationPNR.Ticketing.ArrivalTimeSpan createVerificationPNRTicketingArrivalTimeSpan() {
+        return new VerificationPNR.Ticketing.ArrivalTimeSpan();
     }
 
     /**
@@ -22937,6 +23553,14 @@ public class ObjectFactory {
      */
     public AirAncillaryProductType.Restrictions.LoyaltyPrograms createAirAncillaryProductTypeRestrictionsLoyaltyPrograms() {
         return new AirAncillaryProductType.Restrictions.LoyaltyPrograms();
+    }
+
+    /**
+     * Create an instance of {@link CouponTicketingType.ReservationTimeSpan }
+     * 
+     */
+    public CouponTicketingType.ReservationTimeSpan createCouponTicketingTypeReservationTimeSpan() {
+        return new CouponTicketingType.ReservationTimeSpan();
     }
 
     /**
@@ -23292,11 +23916,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link HotelReservationRestrictionsType.IgnoreItems.MinAdvBookingOffSet }
+     * 
+     */
+    public HotelReservationRestrictionsType.IgnoreItems.MinAdvBookingOffSet createHotelReservationRestrictionsTypeIgnoreItemsMinAdvBookingOffSet() {
+        return new HotelReservationRestrictionsType.IgnoreItems.MinAdvBookingOffSet();
+    }
+
+    /**
+     * Create an instance of {@link HotelReservationRestrictionsType.IgnoreItems.MaxAdvBookingOffset }
+     * 
+     */
+    public HotelReservationRestrictionsType.IgnoreItems.MaxAdvBookingOffset createHotelReservationRestrictionsTypeIgnoreItemsMaxAdvBookingOffset() {
+        return new HotelReservationRestrictionsType.IgnoreItems.MaxAdvBookingOffset();
+    }
+
+    /**
      * Create an instance of {@link TextItemsType.TextItem }
      * 
      */
     public TextItemsType.TextItem createTextItemsTypeTextItem() {
         return new TextItemsType.TextItem();
+    }
+
+    /**
+     * Create an instance of {@link TextDescriptionType.ShortDescription }
+     * 
+     */
+    public TextDescriptionType.ShortDescription createTextDescriptionTypeShortDescription() {
+        return new TextDescriptionType.ShortDescription();
     }
 
     /**
@@ -24044,19 +24692,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AirSearchCriteriaType.OriginDestinationOption }
-     * 
-     */
-    public AirSearchCriteriaType.OriginDestinationOption createAirSearchCriteriaTypeOriginDestinationOption() {
-        return new AirSearchCriteriaType.OriginDestinationOption();
-    }
-
-    /**
      * Create an instance of {@link AirSearchCriteriaType.TravelerInfoSummary }
      * 
      */
     public AirSearchCriteriaType.TravelerInfoSummary createAirSearchCriteriaTypeTravelerInfoSummary() {
         return new AirSearchCriteriaType.TravelerInfoSummary();
+    }
+
+    /**
+     * Create an instance of {@link AirSearchCriteriaType.AirItineraryPricingInfo }
+     * 
+     */
+    public AirSearchCriteriaType.AirItineraryPricingInfo createAirSearchCriteriaTypeAirItineraryPricingInfo() {
+        return new AirSearchCriteriaType.AirItineraryPricingInfo();
     }
 
     /**
@@ -24153,38 +24801,6 @@ public class ObjectFactory {
      */
     public AccommodationServiceType.AccommodationDetail createAccommodationServiceTypeAccommodationDetail() {
         return new AccommodationServiceType.AccommodationDetail();
-    }
-
-    /**
-     * Create an instance of {@link FlightRefInfoType.Departure }
-     * 
-     */
-    public FlightRefInfoType.Departure createFlightRefInfoTypeDeparture() {
-        return new FlightRefInfoType.Departure();
-    }
-
-    /**
-     * Create an instance of {@link FlightRefInfoType.Arrival }
-     * 
-     */
-    public FlightRefInfoType.Arrival createFlightRefInfoTypeArrival() {
-        return new FlightRefInfoType.Arrival();
-    }
-
-    /**
-     * Create an instance of {@link SpecialSrvcType.SSRType }
-     * 
-     */
-    public SpecialSrvcType.SSRType createSpecialSrvcTypeSSRType() {
-        return new SpecialSrvcType.SSRType();
-    }
-
-    /**
-     * Create an instance of {@link SpecialSrvcType.OtherType }
-     * 
-     */
-    public SpecialSrvcType.OtherType createSpecialSrvcTypeOtherType() {
-        return new SpecialSrvcType.OtherType();
     }
 
     /**
@@ -24396,6 +25012,342 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TaxConfiguration.TaxPolicies.TaxPolicy }
+     * 
+     */
+    public TaxConfiguration.TaxPolicies.TaxPolicy createTaxConfigurationTaxPoliciesTaxPolicy() {
+        return new TaxConfiguration.TaxPolicies.TaxPolicy();
+    }
+
+    /**
+     * Create an instance of {@link ServicePriceType.ServicePriceCalculation.Operation.Adjustment }
+     * 
+     */
+    public ServicePriceType.ServicePriceCalculation.Operation.Adjustment createServicePriceTypeServicePriceCalculationOperationAdjustment() {
+        return new ServicePriceType.ServicePriceCalculation.Operation.Adjustment();
+    }
+
+    /**
+     * Create an instance of {@link ServicePriceType.ServicePriceCalculation.Operation.DescriptionDetails }
+     * 
+     */
+    public ServicePriceType.ServicePriceCalculation.Operation.DescriptionDetails createServicePriceTypeServicePriceCalculationOperationDescriptionDetails() {
+        return new ServicePriceType.ServicePriceCalculation.Operation.DescriptionDetails();
+    }
+
+    /**
+     * Create an instance of {@link ServicePriceType.ServicePriceCalculation.Operation.RedemptionCurrency }
+     * 
+     */
+    public ServicePriceType.ServicePriceCalculation.Operation.RedemptionCurrency createServicePriceTypeServicePriceCalculationOperationRedemptionCurrency() {
+        return new ServicePriceType.ServicePriceCalculation.Operation.RedemptionCurrency();
+    }
+
+    /**
+     * Create an instance of {@link RedemptionType.Transactions.Transaction.RedeemedProduct }
+     * 
+     */
+    public RedemptionType.Transactions.Transaction.RedeemedProduct createRedemptionTypeTransactionsTransactionRedeemedProduct() {
+        return new RedemptionType.Transactions.Transaction.RedeemedProduct();
+    }
+
+    /**
+     * Create an instance of {@link RedemptionType.Accruals.Accrual }
+     * 
+     */
+    public RedemptionType.Accruals.Accrual createRedemptionTypeAccrualsAccrual() {
+        return new RedemptionType.Accruals.Accrual();
+    }
+
+    /**
+     * Create an instance of {@link ExemptTaxType.Tax.CollectionPoint }
+     * 
+     */
+    public ExemptTaxType.Tax.CollectionPoint createExemptTaxTypeTaxCollectionPoint() {
+        return new ExemptTaxType.Tax.CollectionPoint();
+    }
+
+    /**
+     * Create an instance of {@link MediaContentType.MediaLinks.Link }
+     * 
+     */
+    public MediaContentType.MediaLinks.Link createMediaContentTypeMediaLinksLink() {
+        return new MediaContentType.MediaLinks.Link();
+    }
+
+    /**
+     * Create an instance of {@link MediaContentType.Images.Image }
+     * 
+     */
+    public MediaContentType.Images.Image createMediaContentTypeImagesImage() {
+        return new MediaContentType.Images.Image();
+    }
+
+    /**
+     * Create an instance of {@link MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.ImageFormat }
+     * 
+     */
+    public MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.ImageFormat createMultimediaObjectsTypeMultimediaObjectImageItemsImageItemImageFormat() {
+        return new MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.ImageFormat();
+    }
+
+    /**
+     * Create an instance of {@link MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.Text }
+     * 
+     */
+    public MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.Text createMultimediaObjectsTypeMultimediaObjectImageItemsImageItemText() {
+        return new MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.Text();
+    }
+
+    /**
+     * Create an instance of {@link PTCsFromDestActivityCommonTypes.PTC }
+     * 
+     */
+    public PTCsFromDestActivityCommonTypes.PTC createPTCsFromDestActivityCommonTypesPTC() {
+        return new PTCsFromDestActivityCommonTypes.PTC();
+    }
+
+    /**
+     * Create an instance of {@link DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ExchangeRate }
+     * 
+     */
+    public DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ExchangeRate createDestActivityDescriptiveContentsTypeDestActivityDescriptiveContentExchangeRate() {
+        return new DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ExchangeRate();
+    }
+
+    /**
+     * Create an instance of {@link DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ReportingExchangeRates }
+     * 
+     */
+    public DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ReportingExchangeRates createDestActivityDescriptiveContentsTypeDestActivityDescriptiveContentReportingExchangeRates() {
+        return new DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ReportingExchangeRates();
+    }
+
+    /**
+     * Create an instance of {@link FreqGuestNumberType.Association }
+     * 
+     */
+    public FreqGuestNumberType.Association createFreqGuestNumberTypeAssociation() {
+        return new FreqGuestNumberType.Association();
+    }
+
+    /**
+     * Create an instance of {@link ServiceIncentiveDataType.Offer.OfferCodeID }
+     * 
+     */
+    public ServiceIncentiveDataType.Offer.OfferCodeID createServiceIncentiveDataTypeOfferOfferCodeID() {
+        return new ServiceIncentiveDataType.Offer.OfferCodeID();
+    }
+
+    /**
+     * Create an instance of {@link ServiceIncentiveDataType.Offer.DiscountLevel }
+     * 
+     */
+    public ServiceIncentiveDataType.Offer.DiscountLevel createServiceIncentiveDataTypeOfferDiscountLevel() {
+        return new ServiceIncentiveDataType.Offer.DiscountLevel();
+    }
+
+    /**
+     * Create an instance of {@link AttributesType.Group }
+     * 
+     */
+    public AttributesType.Group createAttributesTypeGroup() {
+        return new AttributesType.Group();
+    }
+
+    /**
+     * Create an instance of {@link AttributesType.SubGroup }
+     * 
+     */
+    public AttributesType.SubGroup createAttributesTypeSubGroup() {
+        return new AttributesType.SubGroup();
+    }
+
+    /**
+     * Create an instance of {@link AttributesType.Desc1 }
+     * 
+     */
+    public AttributesType.Desc1 createAttributesTypeDesc1() {
+        return new AttributesType.Desc1();
+    }
+
+    /**
+     * Create an instance of {@link AttributesType.Desc2 }
+     * 
+     */
+    public AttributesType.Desc2 createAttributesTypeDesc2() {
+        return new AttributesType.Desc2();
+    }
+
+    /**
+     * Create an instance of {@link AccommodationCategoryType.Accommodation }
+     * 
+     */
+    public AccommodationCategoryType.Accommodation createAccommodationCategoryTypeAccommodation() {
+        return new AccommodationCategoryType.Accommodation();
+    }
+
+    /**
+     * Create an instance of {@link AvailabilityRates.SellingRestrictions.DistributionChannels.DistributionChannel }
+     * 
+     */
+    public AvailabilityRates.SellingRestrictions.DistributionChannels.DistributionChannel createAvailabilityRatesSellingRestrictionsDistributionChannelsDistributionChannel() {
+        return new AvailabilityRates.SellingRestrictions.DistributionChannels.DistributionChannel();
+    }
+
+    /**
+     * Create an instance of {@link AvailabilityRates.SellingRestrictions.Regions.Region }
+     * 
+     */
+    public AvailabilityRates.SellingRestrictions.Regions.Region createAvailabilityRatesSellingRestrictionsRegionsRegion() {
+        return new AvailabilityRates.SellingRestrictions.Regions.Region();
+    }
+
+    /**
+     * Create an instance of {@link AvailabilityRates.SellingRestrictions.CustomerTypes.CustomerType }
+     * 
+     */
+    public AvailabilityRates.SellingRestrictions.CustomerTypes.CustomerType createAvailabilityRatesSellingRestrictionsCustomerTypesCustomerType() {
+        return new AvailabilityRates.SellingRestrictions.CustomerTypes.CustomerType();
+    }
+
+    /**
+     * Create an instance of {@link AvailabilityRates.Releases.Release }
+     * 
+     */
+    public AvailabilityRates.Releases.Release createAvailabilityRatesReleasesRelease() {
+        return new AvailabilityRates.Releases.Release();
+    }
+
+    /**
+     * Create an instance of {@link AvailabilityRates.StatusApplicationBlackOutDates.StatusApplicationBlackOutDate }
+     * 
+     */
+    public AvailabilityRates.StatusApplicationBlackOutDates.StatusApplicationBlackOutDate createAvailabilityRatesStatusApplicationBlackOutDatesStatusApplicationBlackOutDate() {
+        return new AvailabilityRates.StatusApplicationBlackOutDates.StatusApplicationBlackOutDate();
+    }
+
+    /**
+     * Create an instance of {@link AutoExchangeType.Penalty }
+     * 
+     */
+    public AutoExchangeType.Penalty createAutoExchangeTypePenalty() {
+        return new AutoExchangeType.Penalty();
+    }
+
+    /**
+     * Create an instance of {@link AutoExchangeType.CommPenalty }
+     * 
+     */
+    public AutoExchangeType.CommPenalty createAutoExchangeTypeCommPenalty() {
+        return new AutoExchangeType.CommPenalty();
+    }
+
+    /**
+     * Create an instance of {@link AutoExchangeType.ValueOfOldTicket }
+     * 
+     */
+    public AutoExchangeType.ValueOfOldTicket createAutoExchangeTypeValueOfOldTicket() {
+        return new AutoExchangeType.ValueOfOldTicket();
+    }
+
+    /**
+     * Create an instance of {@link MediaReferenceType.Image }
+     * 
+     */
+    public MediaReferenceType.Image createMediaReferenceTypeImage() {
+        return new MediaReferenceType.Image();
+    }
+
+    /**
+     * Create an instance of {@link MediaReferenceType.Link }
+     * 
+     */
+    public MediaReferenceType.Link createMediaReferenceTypeLink() {
+        return new MediaReferenceType.Link();
+    }
+
+    /**
+     * Create an instance of {@link ShoppingResponseIDsType.AssociatedIDs.OfferGroup }
+     * 
+     */
+    public ShoppingResponseIDsType.AssociatedIDs.OfferGroup createShoppingResponseIDsTypeAssociatedIDsOfferGroup() {
+        return new ShoppingResponseIDsType.AssociatedIDs.OfferGroup();
+    }
+
+    /**
+     * Create an instance of {@link ShoppingResponseIDsType.AssociatedIDs.ServiceGroup }
+     * 
+     */
+    public ShoppingResponseIDsType.AssociatedIDs.ServiceGroup createShoppingResponseIDsTypeAssociatedIDsServiceGroup() {
+        return new ShoppingResponseIDsType.AssociatedIDs.ServiceGroup();
+    }
+
+    /**
+     * Create an instance of {@link TktInExchangeForType.TicketNumber }
+     * 
+     */
+    public TktInExchangeForType.TicketNumber createTktInExchangeForTypeTicketNumber() {
+        return new TktInExchangeForType.TicketNumber();
+    }
+
+    /**
+     * Create an instance of {@link FlightRefInfoType.Departure }
+     * 
+     */
+    public FlightRefInfoType.Departure createFlightRefInfoTypeDeparture() {
+        return new FlightRefInfoType.Departure();
+    }
+
+    /**
+     * Create an instance of {@link FlightRefInfoType.Arrival }
+     * 
+     */
+    public FlightRefInfoType.Arrival createFlightRefInfoTypeArrival() {
+        return new FlightRefInfoType.Arrival();
+    }
+
+    /**
+     * Create an instance of {@link SpecialSrvcType.SSRType }
+     * 
+     */
+    public SpecialSrvcType.SSRType createSpecialSrvcTypeSSRType() {
+        return new SpecialSrvcType.SSRType();
+    }
+
+    /**
+     * Create an instance of {@link SpecialSrvcType.OtherType }
+     * 
+     */
+    public SpecialSrvcType.OtherType createSpecialSrvcTypeOtherType() {
+        return new SpecialSrvcType.OtherType();
+    }
+
+    /**
+     * Create an instance of {@link ServicePenaltyType.FeeApplies }
+     * 
+     */
+    public ServicePenaltyType.FeeApplies createServicePenaltyTypeFeeApplies() {
+        return new ServicePenaltyType.FeeApplies();
+    }
+
+    /**
+     * Create an instance of {@link ServicePenaltyType.Cancel.Amount }
+     * 
+     */
+    public ServicePenaltyType.Cancel.Amount createServicePenaltyTypeCancelAmount() {
+        return new ServicePenaltyType.Cancel.Amount();
+    }
+
+    /**
+     * Create an instance of {@link ServicePenaltyType.Change.Amount }
+     * 
+     */
+    public ServicePenaltyType.Change.Amount createServicePenaltyTypeChangeAmount() {
+        return new ServicePenaltyType.Change.Amount();
+    }
+
+    /**
      * Create an instance of {@link ServiceCombineType.ServiceItem }
      * 
      */
@@ -24425,14 +25377,6 @@ public class ObjectFactory {
      */
     public ServiceBundleNoPriceRefType.Item.ItemDetail.BookingInstructions.UpgradeMethod createServiceBundleNoPriceRefTypeItemItemDetailBookingInstructionsUpgradeMethod() {
         return new ServiceBundleNoPriceRefType.Item.ItemDetail.BookingInstructions.UpgradeMethod();
-    }
-
-    /**
-     * Create an instance of {@link TaxConfiguration.TaxPolicies.TaxPolicy }
-     * 
-     */
-    public TaxConfiguration.TaxPolicies.TaxPolicy createTaxConfigurationTaxPoliciesTaxPolicy() {
-        return new TaxConfiguration.TaxPolicies.TaxPolicy();
     }
 
     /**
@@ -24500,51 +25444,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ServicePriceType.ServicePriceCalculation.Operation.Adjustment }
+     * Create an instance of {@link AllRates.QuantityOptions.QuantityOption }
      * 
      */
-    public ServicePriceType.ServicePriceCalculation.Operation.Adjustment createServicePriceTypeServicePriceCalculationOperationAdjustment() {
-        return new ServicePriceType.ServicePriceCalculation.Operation.Adjustment();
+    public AllRates.QuantityOptions.QuantityOption createAllRatesQuantityOptionsQuantityOption() {
+        return new AllRates.QuantityOptions.QuantityOption();
     }
 
     /**
-     * Create an instance of {@link ServicePriceType.ServicePriceCalculation.Operation.DescriptionDetails }
+     * Create an instance of {@link ExPriceAdjustmentsType.PriceAdjustment }
      * 
      */
-    public ServicePriceType.ServicePriceCalculation.Operation.DescriptionDetails createServicePriceTypeServicePriceCalculationOperationDescriptionDetails() {
-        return new ServicePriceType.ServicePriceCalculation.Operation.DescriptionDetails();
+    public ExPriceAdjustmentsType.PriceAdjustment createExPriceAdjustmentsTypePriceAdjustment() {
+        return new ExPriceAdjustmentsType.PriceAdjustment();
     }
 
     /**
-     * Create an instance of {@link ServicePriceType.ServicePriceCalculation.Operation.RedemptionCurrency }
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.TotalRate }
      * 
      */
-    public ServicePriceType.ServicePriceCalculation.Operation.RedemptionCurrency createServicePriceTypeServicePriceCalculationOperationRedemptionCurrency() {
-        return new ServicePriceType.ServicePriceCalculation.Operation.RedemptionCurrency();
+    public com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.TotalRate createRatesRateTotalRate() {
+        return new com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.TotalRate();
     }
 
     /**
-     * Create an instance of {@link RedemptionType.Transactions.Transaction.RedeemedProduct }
+     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.NegotiatedPrice }
      * 
      */
-    public RedemptionType.Transactions.Transaction.RedeemedProduct createRedemptionTypeTransactionsTransactionRedeemedProduct() {
-        return new RedemptionType.Transactions.Transaction.RedeemedProduct();
-    }
-
-    /**
-     * Create an instance of {@link RedemptionType.Accruals.Accrual }
-     * 
-     */
-    public RedemptionType.Accruals.Accrual createRedemptionTypeAccrualsAccrual() {
-        return new RedemptionType.Accruals.Accrual();
-    }
-
-    /**
-     * Create an instance of {@link ExemptTaxType.Tax.CollectionPoint }
-     * 
-     */
-    public ExemptTaxType.Tax.CollectionPoint createExemptTaxTypeTaxCollectionPoint() {
-        return new ExemptTaxType.Tax.CollectionPoint();
+    public com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.NegotiatedPrice createRatesRateNegotiatedPrice() {
+        return new com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.NegotiatedPrice();
     }
 
     /**
@@ -24588,563 +25516,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MediaContentType.MediaLinks.Link }
+     * Create an instance of {@link PromotionsType.Promotion }
      * 
      */
-    public MediaContentType.MediaLinks.Link createMediaContentTypeMediaLinksLink() {
-        return new MediaContentType.MediaLinks.Link();
-    }
-
-    /**
-     * Create an instance of {@link MediaContentType.Images.Image }
-     * 
-     */
-    public MediaContentType.Images.Image createMediaContentTypeImagesImage() {
-        return new MediaContentType.Images.Image();
-    }
-
-    /**
-     * Create an instance of {@link MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.ImageFormat }
-     * 
-     */
-    public MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.ImageFormat createMultimediaObjectsTypeMultimediaObjectImageItemsImageItemImageFormat() {
-        return new MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.ImageFormat();
-    }
-
-    /**
-     * Create an instance of {@link MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.Text }
-     * 
-     */
-    public MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.Text createMultimediaObjectsTypeMultimediaObjectImageItemsImageItemText() {
-        return new MultimediaObjectsType.MultimediaObject.ImageItems.ImageItem.Text();
-    }
-
-    /**
-     * Create an instance of {@link PTCsFromDestActivityCommonTypes.PTC }
-     * 
-     */
-    public PTCsFromDestActivityCommonTypes.PTC createPTCsFromDestActivityCommonTypesPTC() {
-        return new PTCsFromDestActivityCommonTypes.PTC();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.DateInformation }
-     * 
-     */
-    public SearchType.DateInformation createSearchTypeDateInformation() {
-        return new SearchType.DateInformation();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.AirlinePrefs }
-     * 
-     */
-    public SearchType.AirlinePrefs createSearchTypeAirlinePrefs() {
-        return new SearchType.AirlinePrefs();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.VehicleInformation }
-     * 
-     */
-    public SearchType.VehicleInformation createSearchTypeVehicleInformation() {
-        return new SearchType.VehicleInformation();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.AirlineIBEIntegration }
-     * 
-     */
-    public SearchType.AirlineIBEIntegration createSearchTypeAirlineIBEIntegration() {
-        return new SearchType.AirlineIBEIntegration();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.Passengers.ChildAges }
-     * 
-     */
-    public SearchType.Passengers.ChildAges createSearchTypePassengersChildAges() {
-        return new SearchType.Passengers.ChildAges();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.Passengers.InfantAges }
-     * 
-     */
-    public SearchType.Passengers.InfantAges createSearchTypePassengersInfantAges() {
-        return new SearchType.Passengers.InfantAges();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.Passengers.AdultFareBreakdown }
-     * 
-     */
-    public SearchType.Passengers.AdultFareBreakdown createSearchTypePassengersAdultFareBreakdown() {
-        return new SearchType.Passengers.AdultFareBreakdown();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.Passengers.ChildFareBreakdown }
-     * 
-     */
-    public SearchType.Passengers.ChildFareBreakdown createSearchTypePassengersChildFareBreakdown() {
-        return new SearchType.Passengers.ChildFareBreakdown();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.Passengers.InfantFareBreakdown }
-     * 
-     */
-    public SearchType.Passengers.InfantFareBreakdown createSearchTypePassengersInfantFareBreakdown() {
-        return new SearchType.Passengers.InfantFareBreakdown();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.OriginDestinationInformation.Origin }
-     * 
-     */
-    public SearchType.OriginDestinationInformation.Origin createSearchTypeOriginDestinationInformationOrigin() {
-        return new SearchType.OriginDestinationInformation.Origin();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.OriginDestinationInformation.Destination }
-     * 
-     */
-    public SearchType.OriginDestinationInformation.Destination createSearchTypeOriginDestinationInformationDestination() {
-        return new SearchType.OriginDestinationInformation.Destination();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.OriginDestinationInformation.FlightDetails.FlightSegment }
-     * 
-     */
-    public SearchType.OriginDestinationInformation.FlightDetails.FlightSegment createSearchTypeOriginDestinationInformationFlightDetailsFlightSegment() {
-        return new SearchType.OriginDestinationInformation.FlightDetails.FlightSegment();
-    }
-
-    /**
-     * Create an instance of {@link SearchType.HotelInformation.RoomInformation.ChildAges }
-     * 
-     */
-    public SearchType.HotelInformation.RoomInformation.ChildAges createSearchTypeHotelInformationRoomInformationChildAges() {
-        return new SearchType.HotelInformation.RoomInformation.ChildAges();
-    }
-
-    /**
-     * Create an instance of {@link JourneyControlType.JCDFlight.JCDDeparture }
-     * 
-     */
-    public JourneyControlType.JCDFlight.JCDDeparture createJourneyControlTypeJCDFlightJCDDeparture() {
-        return new JourneyControlType.JCDFlight.JCDDeparture();
-    }
-
-    /**
-     * Create an instance of {@link JourneyControlType.JCDFlight.JCDArrival }
-     * 
-     */
-    public JourneyControlType.JCDFlight.JCDArrival createJourneyControlTypeJCDFlightJCDArrival() {
-        return new JourneyControlType.JCDFlight.JCDArrival();
-    }
-
-    /**
-     * Create an instance of {@link JourneyControlType.JCDFlight.JCDDate }
-     * 
-     */
-    public JourneyControlType.JCDFlight.JCDDate createJourneyControlTypeJCDFlightJCDDate() {
-        return new JourneyControlType.JCDFlight.JCDDate();
-    }
-
-    /**
-     * Create an instance of {@link JourneyControlType.JCDFlight.Carrier }
-     * 
-     */
-    public JourneyControlType.JCDFlight.Carrier createJourneyControlTypeJCDFlightCarrier() {
-        return new JourneyControlType.JCDFlight.Carrier();
-    }
-
-    /**
-     * Create an instance of {@link JourneyControlType.JCDFlight.OperatingCarrier }
-     * 
-     */
-    public JourneyControlType.JCDFlight.OperatingCarrier createJourneyControlTypeJCDFlightOperatingCarrier() {
-        return new JourneyControlType.JCDFlight.OperatingCarrier();
-    }
-
-    /**
-     * Create an instance of {@link DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ExchangeRate }
-     * 
-     */
-    public DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ExchangeRate createDestActivityDescriptiveContentsTypeDestActivityDescriptiveContentExchangeRate() {
-        return new DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ExchangeRate();
-    }
-
-    /**
-     * Create an instance of {@link DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ReportingExchangeRates }
-     * 
-     */
-    public DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ReportingExchangeRates createDestActivityDescriptiveContentsTypeDestActivityDescriptiveContentReportingExchangeRates() {
-        return new DestActivityDescriptiveContentsType.DestActivityDescriptiveContent.ReportingExchangeRates();
-    }
-
-    /**
-     * Create an instance of {@link CorporateHierarchiesType.CorporateHierarchy }
-     * 
-     */
-    public CorporateHierarchiesType.CorporateHierarchy createCorporateHierarchiesTypeCorporateHierarchy() {
-        return new CorporateHierarchiesType.CorporateHierarchy();
-    }
-
-    /**
-     * Create an instance of {@link FreqGuestNumberType.Association }
-     * 
-     */
-    public FreqGuestNumberType.Association createFreqGuestNumberTypeAssociation() {
-        return new FreqGuestNumberType.Association();
-    }
-
-    /**
-     * Create an instance of {@link ServiceIncentiveDataType.Offer.OfferCodeID }
-     * 
-     */
-    public ServiceIncentiveDataType.Offer.OfferCodeID createServiceIncentiveDataTypeOfferOfferCodeID() {
-        return new ServiceIncentiveDataType.Offer.OfferCodeID();
-    }
-
-    /**
-     * Create an instance of {@link ServiceIncentiveDataType.Offer.DiscountLevel }
-     * 
-     */
-    public ServiceIncentiveDataType.Offer.DiscountLevel createServiceIncentiveDataTypeOfferDiscountLevel() {
-        return new ServiceIncentiveDataType.Offer.DiscountLevel();
-    }
-
-    /**
-     * Create an instance of {@link SeatDataType.Size }
-     * 
-     */
-    public SeatDataType.Size createSeatDataTypeSize() {
-        return new SeatDataType.Size();
-    }
-
-    /**
-     * Create an instance of {@link SeatDataType.Marketing.Images }
-     * 
-     */
-    public SeatDataType.Marketing.Images createSeatDataTypeMarketingImages() {
-        return new SeatDataType.Marketing.Images();
-    }
-
-    /**
-     * Create an instance of {@link SeatDataType.Marketing.Links }
-     * 
-     */
-    public SeatDataType.Marketing.Links createSeatDataTypeMarketingLinks() {
-        return new SeatDataType.Marketing.Links();
-    }
-
-    /**
-     * Create an instance of {@link SeatDataType.Marketing.Message }
-     * 
-     */
-    public SeatDataType.Marketing.Message createSeatDataTypeMarketingMessage() {
-        return new SeatDataType.Marketing.Message();
-    }
-
-    /**
-     * Create an instance of {@link SaleInfoType.CityCode }
-     * 
-     */
-    public SaleInfoType.CityCode createSaleInfoTypeCityCode() {
-        return new SaleInfoType.CityCode();
-    }
-
-    /**
-     * Create an instance of {@link SaleInfoType.CountryCode }
-     * 
-     */
-    public SaleInfoType.CountryCode createSaleInfoTypeCountryCode() {
-        return new SaleInfoType.CountryCode();
-    }
-
-    /**
-     * Create an instance of {@link SaleInfoType.RequestTime }
-     * 
-     */
-    public SaleInfoType.RequestTime createSaleInfoTypeRequestTime() {
-        return new SaleInfoType.RequestTime();
-    }
-
-    /**
-     * Create an instance of {@link SaleInfoType.Identification.AggregatorInfo }
-     * 
-     */
-    public SaleInfoType.Identification.AggregatorInfo createSaleInfoTypeIdentificationAggregatorInfo() {
-        return new SaleInfoType.Identification.AggregatorInfo();
-    }
-
-    /**
-     * Create an instance of {@link SaleInfoType.Identification.RequestorInfo.OtherAgencyID }
-     * 
-     */
-    public SaleInfoType.Identification.RequestorInfo.OtherAgencyID createSaleInfoTypeIdentificationRequestorInfoOtherAgencyID() {
-        return new SaleInfoType.Identification.RequestorInfo.OtherAgencyID();
-    }
-
-    /**
-     * Create an instance of {@link SaleInfoType.Identification.RequestorInfo.AccountInfo }
-     * 
-     */
-    public SaleInfoType.Identification.RequestorInfo.AccountInfo createSaleInfoTypeIdentificationRequestorInfoAccountInfo() {
-        return new SaleInfoType.Identification.RequestorInfo.AccountInfo();
-    }
-
-    /**
-     * Create an instance of {@link CommissionType.CommissionableAmount }
-     * 
-     */
-    public CommissionType.CommissionableAmount createCommissionTypeCommissionableAmount() {
-        return new CommissionType.CommissionableAmount();
-    }
-
-    /**
-     * Create an instance of {@link CommissionType.PrepaidAmount }
-     * 
-     */
-    public CommissionType.PrepaidAmount createCommissionTypePrepaidAmount() {
-        return new CommissionType.PrepaidAmount();
-    }
-
-    /**
-     * Create an instance of {@link CommissionType.FlatCommission }
-     * 
-     */
-    public CommissionType.FlatCommission createCommissionTypeFlatCommission() {
-        return new CommissionType.FlatCommission();
-    }
-
-    /**
-     * Create an instance of {@link CommissionType.CommissionPayableAmount }
-     * 
-     */
-    public CommissionType.CommissionPayableAmount createCommissionTypeCommissionPayableAmount() {
-        return new CommissionType.CommissionPayableAmount();
-    }
-
-    /**
-     * Create an instance of {@link AttributesType.Group }
-     * 
-     */
-    public AttributesType.Group createAttributesTypeGroup() {
-        return new AttributesType.Group();
-    }
-
-    /**
-     * Create an instance of {@link AttributesType.SubGroup }
-     * 
-     */
-    public AttributesType.SubGroup createAttributesTypeSubGroup() {
-        return new AttributesType.SubGroup();
-    }
-
-    /**
-     * Create an instance of {@link AttributesType.Desc1 }
-     * 
-     */
-    public AttributesType.Desc1 createAttributesTypeDesc1() {
-        return new AttributesType.Desc1();
-    }
-
-    /**
-     * Create an instance of {@link AttributesType.Desc2 }
-     * 
-     */
-    public AttributesType.Desc2 createAttributesTypeDesc2() {
-        return new AttributesType.Desc2();
-    }
-
-    /**
-     * Create an instance of {@link DestActivityDescriptions.Renovation.Text }
-     * 
-     */
-    public DestActivityDescriptions.Renovation.Text createDestActivityDescriptionsRenovationText() {
-        return new DestActivityDescriptions.Renovation.Text();
-    }
-
-    /**
-     * Create an instance of {@link AccommodationCategoryType.Accommodation }
-     * 
-     */
-    public AccommodationCategoryType.Accommodation createAccommodationCategoryTypeAccommodation() {
-        return new AccommodationCategoryType.Accommodation();
-    }
-
-    /**
-     * Create an instance of {@link AvailabilityRates.SellingRestrictions.DistributionChannels.DistributionChannel }
-     * 
-     */
-    public AvailabilityRates.SellingRestrictions.DistributionChannels.DistributionChannel createAvailabilityRatesSellingRestrictionsDistributionChannelsDistributionChannel() {
-        return new AvailabilityRates.SellingRestrictions.DistributionChannels.DistributionChannel();
-    }
-
-    /**
-     * Create an instance of {@link AvailabilityRates.SellingRestrictions.Regions.Region }
-     * 
-     */
-    public AvailabilityRates.SellingRestrictions.Regions.Region createAvailabilityRatesSellingRestrictionsRegionsRegion() {
-        return new AvailabilityRates.SellingRestrictions.Regions.Region();
-    }
-
-    /**
-     * Create an instance of {@link AvailabilityRates.SellingRestrictions.CustomerTypes.CustomerType }
-     * 
-     */
-    public AvailabilityRates.SellingRestrictions.CustomerTypes.CustomerType createAvailabilityRatesSellingRestrictionsCustomerTypesCustomerType() {
-        return new AvailabilityRates.SellingRestrictions.CustomerTypes.CustomerType();
-    }
-
-    /**
-     * Create an instance of {@link AvailabilityRates.Releases.Release }
-     * 
-     */
-    public AvailabilityRates.Releases.Release createAvailabilityRatesReleasesRelease() {
-        return new AvailabilityRates.Releases.Release();
-    }
-
-    /**
-     * Create an instance of {@link AvailabilityRates.StatusApplicationBlackOutDates.StatusApplicationBlackOutDate }
-     * 
-     */
-    public AvailabilityRates.StatusApplicationBlackOutDates.StatusApplicationBlackOutDate createAvailabilityRatesStatusApplicationBlackOutDatesStatusApplicationBlackOutDate() {
-        return new AvailabilityRates.StatusApplicationBlackOutDates.StatusApplicationBlackOutDate();
-    }
-
-    /**
-     * Create an instance of {@link AllRates.QuantityOptions.QuantityOption }
-     * 
-     */
-    public AllRates.QuantityOptions.QuantityOption createAllRatesQuantityOptionsQuantityOption() {
-        return new AllRates.QuantityOptions.QuantityOption();
-    }
-
-    /**
-     * Create an instance of {@link ExPriceAdjustmentsType.PriceAdjustment }
-     * 
-     */
-    public ExPriceAdjustmentsType.PriceAdjustment createExPriceAdjustmentsTypePriceAdjustment() {
-        return new ExPriceAdjustmentsType.PriceAdjustment();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.TotalRate }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.TotalRate createRatesRateTotalRate() {
-        return new com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.TotalRate();
-    }
-
-    /**
-     * Create an instance of {@link com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.NegotiatedPrice }
-     * 
-     */
-    public com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.NegotiatedPrice createRatesRateNegotiatedPrice() {
-        return new com.airchina.datacenter.spnr.sdk.entity.Rates.Rate.NegotiatedPrice();
-    }
-
-    /**
-     * Create an instance of {@link AutoExchangeType.Penalty }
-     * 
-     */
-    public AutoExchangeType.Penalty createAutoExchangeTypePenalty() {
-        return new AutoExchangeType.Penalty();
-    }
-
-    /**
-     * Create an instance of {@link AutoExchangeType.CommPenalty }
-     * 
-     */
-    public AutoExchangeType.CommPenalty createAutoExchangeTypeCommPenalty() {
-        return new AutoExchangeType.CommPenalty();
-    }
-
-    /**
-     * Create an instance of {@link AutoExchangeType.ValueOfOldTicket }
-     * 
-     */
-    public AutoExchangeType.ValueOfOldTicket createAutoExchangeTypeValueOfOldTicket() {
-        return new AutoExchangeType.ValueOfOldTicket();
-    }
-
-    /**
-     * Create an instance of {@link FlightTableType.Flight.Departure }
-     * 
-     */
-    public FlightTableType.Flight.Departure createFlightTableTypeFlightDeparture() {
-        return new FlightTableType.Flight.Departure();
-    }
-
-    /**
-     * Create an instance of {@link FlightTableType.Flight.Arrival }
-     * 
-     */
-    public FlightTableType.Flight.Arrival createFlightTableTypeFlightArrival() {
-        return new FlightTableType.Flight.Arrival();
-    }
-
-    /**
-     * Create an instance of {@link FlightTableType.Flight.OnTimeInfo }
-     * 
-     */
-    public FlightTableType.Flight.OnTimeInfo createFlightTableTypeFlightOnTimeInfo() {
-        return new FlightTableType.Flight.OnTimeInfo();
-    }
-
-    /**
-     * Create an instance of {@link FlightTableType.Flight.Classes }
-     * 
-     */
-    public FlightTableType.Flight.Classes createFlightTableTypeFlightClasses() {
-        return new FlightTableType.Flight.Classes();
-    }
-
-    /**
-     * Create an instance of {@link MediaReferenceType.Image }
-     * 
-     */
-    public MediaReferenceType.Image createMediaReferenceTypeImage() {
-        return new MediaReferenceType.Image();
-    }
-
-    /**
-     * Create an instance of {@link MediaReferenceType.Link }
-     * 
-     */
-    public MediaReferenceType.Link createMediaReferenceTypeLink() {
-        return new MediaReferenceType.Link();
-    }
-
-    /**
-     * Create an instance of {@link ProductContentType.Image }
-     * 
-     */
-    public ProductContentType.Image createProductContentTypeImage() {
-        return new ProductContentType.Image();
-    }
-
-    /**
-     * Create an instance of {@link ServiceProcessInfoType.CreationTimeStamp }
-     * 
-     */
-    public ServiceProcessInfoType.CreationTimeStamp createServiceProcessInfoTypeCreationTimeStamp() {
-        return new ServiceProcessInfoType.CreationTimeStamp();
-    }
-
-    /**
-     * Create an instance of {@link SupplierSpecificInfosType.SupplierSpecificInfo }
-     * 
-     */
-    public SupplierSpecificInfosType.SupplierSpecificInfo createSupplierSpecificInfosTypeSupplierSpecificInfo() {
-        return new SupplierSpecificInfosType.SupplierSpecificInfo();
+    public PromotionsType.Promotion createPromotionsTypePromotion() {
+        return new PromotionsType.Promotion();
     }
 
     /**
@@ -25177,6 +25553,14 @@ public class ObjectFactory {
      */
     public SearchResponse.RoomStays.RoomStay createSearchResponseRoomStaysRoomStay() {
         return new SearchResponse.RoomStays.RoomStay();
+    }
+
+    /**
+     * Create an instance of {@link PricedItinerariesType.Descriptions }
+     * 
+     */
+    public PricedItinerariesType.Descriptions createPricedItinerariesTypeDescriptions() {
+        return new PricedItinerariesType.Descriptions();
     }
 
     /**
@@ -25356,43 +25740,323 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ServicePenaltyType.FeeApplies }
+     * Create an instance of {@link SearchType.DateInformation }
      * 
      */
-    public ServicePenaltyType.FeeApplies createServicePenaltyTypeFeeApplies() {
-        return new ServicePenaltyType.FeeApplies();
+    public SearchType.DateInformation createSearchTypeDateInformation() {
+        return new SearchType.DateInformation();
     }
 
     /**
-     * Create an instance of {@link ServicePenaltyType.Cancel.Amount }
+     * Create an instance of {@link SearchType.AirlinePrefs }
      * 
      */
-    public ServicePenaltyType.Cancel.Amount createServicePenaltyTypeCancelAmount() {
-        return new ServicePenaltyType.Cancel.Amount();
+    public SearchType.AirlinePrefs createSearchTypeAirlinePrefs() {
+        return new SearchType.AirlinePrefs();
     }
 
     /**
-     * Create an instance of {@link ServicePenaltyType.Change.Amount }
+     * Create an instance of {@link SearchType.VehicleInformation }
      * 
      */
-    public ServicePenaltyType.Change.Amount createServicePenaltyTypeChangeAmount() {
-        return new ServicePenaltyType.Change.Amount();
+    public SearchType.VehicleInformation createSearchTypeVehicleInformation() {
+        return new SearchType.VehicleInformation();
     }
 
     /**
-     * Create an instance of {@link ShoppingResponseIDsType.AssociatedIDs.OfferGroup }
+     * Create an instance of {@link SearchType.AirlineIBEIntegration }
      * 
      */
-    public ShoppingResponseIDsType.AssociatedIDs.OfferGroup createShoppingResponseIDsTypeAssociatedIDsOfferGroup() {
-        return new ShoppingResponseIDsType.AssociatedIDs.OfferGroup();
+    public SearchType.AirlineIBEIntegration createSearchTypeAirlineIBEIntegration() {
+        return new SearchType.AirlineIBEIntegration();
     }
 
     /**
-     * Create an instance of {@link ShoppingResponseIDsType.AssociatedIDs.ServiceGroup }
+     * Create an instance of {@link SearchType.Passengers.ChildAges }
      * 
      */
-    public ShoppingResponseIDsType.AssociatedIDs.ServiceGroup createShoppingResponseIDsTypeAssociatedIDsServiceGroup() {
-        return new ShoppingResponseIDsType.AssociatedIDs.ServiceGroup();
+    public SearchType.Passengers.ChildAges createSearchTypePassengersChildAges() {
+        return new SearchType.Passengers.ChildAges();
+    }
+
+    /**
+     * Create an instance of {@link SearchType.Passengers.InfantAges }
+     * 
+     */
+    public SearchType.Passengers.InfantAges createSearchTypePassengersInfantAges() {
+        return new SearchType.Passengers.InfantAges();
+    }
+
+    /**
+     * Create an instance of {@link SearchType.Passengers.AdultFareBreakdown }
+     * 
+     */
+    public SearchType.Passengers.AdultFareBreakdown createSearchTypePassengersAdultFareBreakdown() {
+        return new SearchType.Passengers.AdultFareBreakdown();
+    }
+
+    /**
+     * Create an instance of {@link SearchType.Passengers.ChildFareBreakdown }
+     * 
+     */
+    public SearchType.Passengers.ChildFareBreakdown createSearchTypePassengersChildFareBreakdown() {
+        return new SearchType.Passengers.ChildFareBreakdown();
+    }
+
+    /**
+     * Create an instance of {@link SearchType.Passengers.InfantFareBreakdown }
+     * 
+     */
+    public SearchType.Passengers.InfantFareBreakdown createSearchTypePassengersInfantFareBreakdown() {
+        return new SearchType.Passengers.InfantFareBreakdown();
+    }
+
+    /**
+     * Create an instance of {@link SearchType.OriginDestinationInformation.Origin }
+     * 
+     */
+    public SearchType.OriginDestinationInformation.Origin createSearchTypeOriginDestinationInformationOrigin() {
+        return new SearchType.OriginDestinationInformation.Origin();
+    }
+
+    /**
+     * Create an instance of {@link SearchType.OriginDestinationInformation.Destination }
+     * 
+     */
+    public SearchType.OriginDestinationInformation.Destination createSearchTypeOriginDestinationInformationDestination() {
+        return new SearchType.OriginDestinationInformation.Destination();
+    }
+
+    /**
+     * Create an instance of {@link SearchType.OriginDestinationInformation.FlightDetails.FlightSegment }
+     * 
+     */
+    public SearchType.OriginDestinationInformation.FlightDetails.FlightSegment createSearchTypeOriginDestinationInformationFlightDetailsFlightSegment() {
+        return new SearchType.OriginDestinationInformation.FlightDetails.FlightSegment();
+    }
+
+    /**
+     * Create an instance of {@link SearchType.HotelInformation.RoomInformation.ChildAges }
+     * 
+     */
+    public SearchType.HotelInformation.RoomInformation.ChildAges createSearchTypeHotelInformationRoomInformationChildAges() {
+        return new SearchType.HotelInformation.RoomInformation.ChildAges();
+    }
+
+    /**
+     * Create an instance of {@link JourneyControlType.JCDFlight.JCDDeparture }
+     * 
+     */
+    public JourneyControlType.JCDFlight.JCDDeparture createJourneyControlTypeJCDFlightJCDDeparture() {
+        return new JourneyControlType.JCDFlight.JCDDeparture();
+    }
+
+    /**
+     * Create an instance of {@link JourneyControlType.JCDFlight.JCDArrival }
+     * 
+     */
+    public JourneyControlType.JCDFlight.JCDArrival createJourneyControlTypeJCDFlightJCDArrival() {
+        return new JourneyControlType.JCDFlight.JCDArrival();
+    }
+
+    /**
+     * Create an instance of {@link JourneyControlType.JCDFlight.JCDDate }
+     * 
+     */
+    public JourneyControlType.JCDFlight.JCDDate createJourneyControlTypeJCDFlightJCDDate() {
+        return new JourneyControlType.JCDFlight.JCDDate();
+    }
+
+    /**
+     * Create an instance of {@link JourneyControlType.JCDFlight.Carrier }
+     * 
+     */
+    public JourneyControlType.JCDFlight.Carrier createJourneyControlTypeJCDFlightCarrier() {
+        return new JourneyControlType.JCDFlight.Carrier();
+    }
+
+    /**
+     * Create an instance of {@link JourneyControlType.JCDFlight.OperatingCarrier }
+     * 
+     */
+    public JourneyControlType.JCDFlight.OperatingCarrier createJourneyControlTypeJCDFlightOperatingCarrier() {
+        return new JourneyControlType.JCDFlight.OperatingCarrier();
+    }
+
+    /**
+     * Create an instance of {@link CorporateHierarchiesType.CorporateHierarchy }
+     * 
+     */
+    public CorporateHierarchiesType.CorporateHierarchy createCorporateHierarchiesTypeCorporateHierarchy() {
+        return new CorporateHierarchiesType.CorporateHierarchy();
+    }
+
+    /**
+     * Create an instance of {@link SeatDataType.Size }
+     * 
+     */
+    public SeatDataType.Size createSeatDataTypeSize() {
+        return new SeatDataType.Size();
+    }
+
+    /**
+     * Create an instance of {@link SeatDataType.Marketing.Images }
+     * 
+     */
+    public SeatDataType.Marketing.Images createSeatDataTypeMarketingImages() {
+        return new SeatDataType.Marketing.Images();
+    }
+
+    /**
+     * Create an instance of {@link SeatDataType.Marketing.Links }
+     * 
+     */
+    public SeatDataType.Marketing.Links createSeatDataTypeMarketingLinks() {
+        return new SeatDataType.Marketing.Links();
+    }
+
+    /**
+     * Create an instance of {@link SeatDataType.Marketing.Message }
+     * 
+     */
+    public SeatDataType.Marketing.Message createSeatDataTypeMarketingMessage() {
+        return new SeatDataType.Marketing.Message();
+    }
+
+    /**
+     * Create an instance of {@link SaleInfoType.CityCode }
+     * 
+     */
+    public SaleInfoType.CityCode createSaleInfoTypeCityCode() {
+        return new SaleInfoType.CityCode();
+    }
+
+    /**
+     * Create an instance of {@link SaleInfoType.CountryCode }
+     * 
+     */
+    public SaleInfoType.CountryCode createSaleInfoTypeCountryCode() {
+        return new SaleInfoType.CountryCode();
+    }
+
+    /**
+     * Create an instance of {@link SaleInfoType.RequestTime }
+     * 
+     */
+    public SaleInfoType.RequestTime createSaleInfoTypeRequestTime() {
+        return new SaleInfoType.RequestTime();
+    }
+
+    /**
+     * Create an instance of {@link SaleInfoType.Identification.AggregatorInfo }
+     * 
+     */
+    public SaleInfoType.Identification.AggregatorInfo createSaleInfoTypeIdentificationAggregatorInfo() {
+        return new SaleInfoType.Identification.AggregatorInfo();
+    }
+
+    /**
+     * Create an instance of {@link SaleInfoType.Identification.RequestorInfo.OtherAgencyID }
+     * 
+     */
+    public SaleInfoType.Identification.RequestorInfo.OtherAgencyID createSaleInfoTypeIdentificationRequestorInfoOtherAgencyID() {
+        return new SaleInfoType.Identification.RequestorInfo.OtherAgencyID();
+    }
+
+    /**
+     * Create an instance of {@link SaleInfoType.Identification.RequestorInfo.AccountInfo }
+     * 
+     */
+    public SaleInfoType.Identification.RequestorInfo.AccountInfo createSaleInfoTypeIdentificationRequestorInfoAccountInfo() {
+        return new SaleInfoType.Identification.RequestorInfo.AccountInfo();
+    }
+
+    /**
+     * Create an instance of {@link CommissionType.CommissionableAmount }
+     * 
+     */
+    public CommissionType.CommissionableAmount createCommissionTypeCommissionableAmount() {
+        return new CommissionType.CommissionableAmount();
+    }
+
+    /**
+     * Create an instance of {@link CommissionType.PrepaidAmount }
+     * 
+     */
+    public CommissionType.PrepaidAmount createCommissionTypePrepaidAmount() {
+        return new CommissionType.PrepaidAmount();
+    }
+
+    /**
+     * Create an instance of {@link CommissionType.FlatCommission }
+     * 
+     */
+    public CommissionType.FlatCommission createCommissionTypeFlatCommission() {
+        return new CommissionType.FlatCommission();
+    }
+
+    /**
+     * Create an instance of {@link CommissionType.CommissionPayableAmount }
+     * 
+     */
+    public CommissionType.CommissionPayableAmount createCommissionTypeCommissionPayableAmount() {
+        return new CommissionType.CommissionPayableAmount();
+    }
+
+    /**
+     * Create an instance of {@link DestActivityDescriptions.Renovation.Text }
+     * 
+     */
+    public DestActivityDescriptions.Renovation.Text createDestActivityDescriptionsRenovationText() {
+        return new DestActivityDescriptions.Renovation.Text();
+    }
+
+    /**
+     * Create an instance of {@link FlightTableType.Flight.Departure }
+     * 
+     */
+    public FlightTableType.Flight.Departure createFlightTableTypeFlightDeparture() {
+        return new FlightTableType.Flight.Departure();
+    }
+
+    /**
+     * Create an instance of {@link FlightTableType.Flight.Arrival }
+     * 
+     */
+    public FlightTableType.Flight.Arrival createFlightTableTypeFlightArrival() {
+        return new FlightTableType.Flight.Arrival();
+    }
+
+    /**
+     * Create an instance of {@link FlightTableType.Flight.OnTimeInfo }
+     * 
+     */
+    public FlightTableType.Flight.OnTimeInfo createFlightTableTypeFlightOnTimeInfo() {
+        return new FlightTableType.Flight.OnTimeInfo();
+    }
+
+    /**
+     * Create an instance of {@link FlightTableType.Flight.Classes }
+     * 
+     */
+    public FlightTableType.Flight.Classes createFlightTableTypeFlightClasses() {
+        return new FlightTableType.Flight.Classes();
+    }
+
+    /**
+     * Create an instance of {@link ServiceProcessInfoType.CreationTimeStamp }
+     * 
+     */
+    public ServiceProcessInfoType.CreationTimeStamp createServiceProcessInfoTypeCreationTimeStamp() {
+        return new ServiceProcessInfoType.CreationTimeStamp();
+    }
+
+    /**
+     * Create an instance of {@link SupplierSpecificInfosType.SupplierSpecificInfo }
+     * 
+     */
+    public SupplierSpecificInfosType.SupplierSpecificInfo createSupplierSpecificInfosTypeSupplierSpecificInfo() {
+        return new SupplierSpecificInfosType.SupplierSpecificInfo();
     }
 
     /**
@@ -25417,22 +26081,6 @@ public class ObjectFactory {
      */
     public com.airchina.datacenter.spnr.sdk.entity.Extras.Extra.Rooms.Room createExtrasExtraRoomsRoom() {
         return new com.airchina.datacenter.spnr.sdk.entity.Extras.Extra.Rooms.Room();
-    }
-
-    /**
-     * Create an instance of {@link TktInExchangeForType.TicketNumber }
-     * 
-     */
-    public TktInExchangeForType.TicketNumber createTktInExchangeForTypeTicketNumber() {
-        return new TktInExchangeForType.TicketNumber();
-    }
-
-    /**
-     * Create an instance of {@link PromotionsType.Promotion }
-     * 
-     */
-    public PromotionsType.Promotion createPromotionsTypePromotion() {
-        return new PromotionsType.Promotion();
     }
 
     /**
@@ -25502,27 +26150,18 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SeatDataType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "SeatData")
-    public JAXBElement<SeatDataType> createSeatData(SeatDataType value) {
-        return new JAXBElement<SeatDataType>(_SeatData_QNAME, SeatDataType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SeatDataType }{@code >}}
-     * 
-     */
     @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "SectionSeatData")
     public JAXBElement<SeatDataType> createSectionSeatData(SeatDataType value) {
         return new JAXBElement<SeatDataType>(_SectionSeatData_QNAME, SeatDataType.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AttributesType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SeatDataType }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "Attributes")
-    public JAXBElement<AttributesType> createAttributes(AttributesType value) {
-        return new JAXBElement<AttributesType>(_Attributes_QNAME, AttributesType.class, null, value);
+    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "SeatData")
+    public JAXBElement<SeatDataType> createSeatData(SeatDataType value) {
+        return new JAXBElement<SeatDataType>(_SeatData_QNAME, SeatDataType.class, null, value);
     }
 
     /**
@@ -25532,6 +26171,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "Commission")
     public JAXBElement<CommissionType> createCommission(CommissionType value) {
         return new JAXBElement<CommissionType>(_Commission_QNAME, CommissionType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AttributesType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "Attributes")
+    public JAXBElement<AttributesType> createAttributes(AttributesType value) {
+        return new JAXBElement<AttributesType>(_Attributes_QNAME, AttributesType.class, null, value);
     }
 
     /**
@@ -26120,21 +26768,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "DepartureDate")
-    public JAXBElement<XMLGregorianCalendar> createDepartureDate(XMLGregorianCalendar value) {
-        return new JAXBElement<XMLGregorianCalendar>(_DepartureDate_QNAME, XMLGregorianCalendar.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SegmentIDRefType }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "SegmentIDRef")
     public JAXBElement<SegmentIDRefType> createSegmentIDRef(SegmentIDRefType value) {
         return new JAXBElement<SegmentIDRefType>(_SegmentIDRef_QNAME, SegmentIDRefType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "DepartureDate")
+    public JAXBElement<XMLGregorianCalendar> createDepartureDate(XMLGregorianCalendar value) {
+        return new JAXBElement<XMLGregorianCalendar>(_DepartureDate_QNAME, XMLGregorianCalendar.class, null, value);
     }
 
     /**
@@ -26372,6 +27020,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TravelerIDRefType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "TravelerIDRef")
+    public JAXBElement<TravelerIDRefType> createTravelerIDRef(TravelerIDRefType value) {
+        return new JAXBElement<TravelerIDRefType>(_TravelerIDRef_QNAME, TravelerIDRefType.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
@@ -26387,15 +27044,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "ExchangeInfo")
     public JAXBElement<AutoExchangeType> createExchangeInfo(AutoExchangeType value) {
         return new JAXBElement<AutoExchangeType>(_ExchangeInfo_QNAME, AutoExchangeType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TravelerIDRefType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "TravelerIDRef")
-    public JAXBElement<TravelerIDRefType> createTravelerIDRef(TravelerIDRefType value) {
-        return new JAXBElement<TravelerIDRefType>(_TravelerIDRef_QNAME, TravelerIDRefType.class, null, value);
     }
 
     /**
@@ -26462,30 +27110,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MultimediaObjectType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "Description", scope = ServicesDescriptionType.class)
-    public JAXBElement<MultimediaObjectType> createServicesDescriptionTypeDescription(MultimediaObjectType value) {
-        return new JAXBElement<MultimediaObjectType>(_ServicesDescriptionTypeDescription_QNAME, MultimediaObjectType.class, ServicesDescriptionType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link MultimediaObjectType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "Description", scope = RoomAmenityMixedType.class)
-    public JAXBElement<MultimediaObjectType> createRoomAmenityMixedTypeDescription(MultimediaObjectType value) {
-        return new JAXBElement<MultimediaObjectType>(_ServicesDescriptionTypeDescription_QNAME, MultimediaObjectType.class, RoomAmenityMixedType.class, value);
-    }
-
-    /**
      * Create an instance of {@link PhonesType.Phone.PhoneNumberFromHotelCommon }}
      * 
      */
     @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "PhoneNumber", scope = PhonesType.Phone.class)
     public PhonesType.Phone.PhoneNumberFromHotelCommon createPhonesTypePhonePhoneNumberFromHotelCommon(String value) {
         return new PhonesType.Phone.PhoneNumberFromHotelCommon(value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MultimediaObjectType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "Description", scope = ServicesDescriptionType.class)
+    public JAXBElement<MultimediaObjectType> createServicesDescriptionTypeDescription(MultimediaObjectType value) {
+        return new JAXBElement<MultimediaObjectType>(_ServicesDescriptionTypeDescription_QNAME, MultimediaObjectType.class, ServicesDescriptionType.class, value);
     }
 
     /**
@@ -26549,6 +27188,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "CancellationPenalties", scope = ProductBase.Insurance.class)
     public JAXBElement<CancelPenaltiesType> createProductBaseInsuranceCancellationPenalties(CancelPenaltiesType value) {
         return new JAXBElement<CancelPenaltiesType>(_ProductBaseInsuranceCancellationPenalties_QNAME, CancelPenaltiesType.class, ProductBase.Insurance.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MultimediaObjectType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.opentravel.org/OTA/2003/05", name = "Description", scope = RoomAmenityMixedType.class)
+    public JAXBElement<MultimediaObjectType> createRoomAmenityMixedTypeDescription(MultimediaObjectType value) {
+        return new JAXBElement<MultimediaObjectType>(_ServicesDescriptionTypeDescription_QNAME, MultimediaObjectType.class, RoomAmenityMixedType.class, value);
     }
 
 }

@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -95,6 +95,15 @@ import javax.xml.bind.annotation.XmlValue;
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
+ *         &lt;element name="ProcessingStatus" maxOccurs="unbounded" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;attribute name="State" type="{http://www.opentravel.org/OTA/2003/05}ProcessingStatusType" />
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *         &lt;element name="ArchivalStatus" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
@@ -119,8 +128,8 @@ import javax.xml.bind.annotation.XmlValue;
  *                     &lt;complexType>
  *                       &lt;simpleContent>
  *                         &lt;extension base="&lt;http://www.opentravel.org/OTA/2003/05>OperatingAirlineType">
- *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OJ_PayloadExtAttributes"/>
  *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DocRqdGroup"/>
+ *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OJ_PayloadExtAttributes"/>
  *                           &lt;attribute name="PromotionType" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                           &lt;attribute name="TicketNumber" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                           &lt;attribute name="EncryptedTicketNumber" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -280,6 +289,17 @@ import javax.xml.bind.annotation.XmlValue;
  *         &lt;/element>
  *         &lt;element name="UniqueIDs" type="{http://www.opentravel.org/OTA/2003/05}UniqueIDsType" minOccurs="0"/>
  *         &lt;element name="AgentID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="Agent" maxOccurs="unbounded" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                 &lt;attribute name="AdministrativeGroup" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                 &lt;attribute name="CreatorID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *         &lt;element name="Loyalty" type="{http://www.opentravel.org/OTA/2003/05}LoyaltyProductType" minOccurs="0"/>
  *         &lt;element name="RefundApplicationTimeSpan" minOccurs="0">
  *           &lt;complexType>
@@ -404,7 +424,6 @@ import javax.xml.bind.annotation.XmlValue;
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
  *                   &lt;/element>
- *                   &lt;element name="RequestorID" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -547,6 +566,7 @@ import javax.xml.bind.annotation.XmlValue;
  *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                                     &lt;sequence>
  *                                       &lt;element name="OriginDestinationOption" type="{http://www.opentravel.org/OTA/2003/05}VerificationODOType" maxOccurs="unbounded" minOccurs="0"/>
+ *                                       &lt;element name="TourCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to16" maxOccurs="unbounded" minOccurs="0"/>
  *                                     &lt;/sequence>
  *                                   &lt;/restriction>
  *                                 &lt;/complexContent>
@@ -587,6 +607,24 @@ import javax.xml.bind.annotation.XmlValue;
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
  *                   &lt;/element>
+ *                   &lt;element name="SendTimeSpan" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                   &lt;element name="ArrivalTimeSpan" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
  *                 &lt;/sequence>
  *                 &lt;attribute name="State" type="{http://www.w3.org/2001/XMLSchema}string" />
  *               &lt;/restriction>
@@ -616,7 +654,20 @@ import javax.xml.bind.annotation.XmlValue;
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="Reason" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                           &lt;attribute name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                 &lt;/sequence>
  *                 &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                 &lt;attribute name="freeDateChange" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                 &lt;attribute name="CrossChannel" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -625,6 +676,64 @@ import javax.xml.bind.annotation.XmlValue;
  *         &lt;element name="EncryptedPhone" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="EncryptedEmail" type="{http://www.opentravel.org/OTA/2003/05}EmailType" minOccurs="0"/>
  *         &lt;element name="AssociatedBookings" type="{http://www.opentravel.org/OTA/2003/05}AssociatedBookingsType" minOccurs="0"/>
+ *         &lt;element name="SupplierNotes" maxOccurs="unbounded" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="Note" maxOccurs="unbounded" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;simpleContent>
+ *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                           &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                         &lt;/extension>
+ *                       &lt;/simpleContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="ItinRemarks" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="ItinRemark" maxOccurs="unbounded" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                           &lt;attribute name="Value" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="SpecialServiceRequests" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="SpecialServiceRequest" maxOccurs="unbounded" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -639,12 +748,14 @@ import javax.xml.bind.annotation.XmlValue;
     "travelStatus",
     "paymentStatus",
     "bookingStatus",
+    "processingStatus",
     "archivalStatus",
     "product",
     "coupons",
     "remarks",
     "uniqueIDs",
     "agentID",
+    "agent",
     "loyalty",
     "refundApplicationTimeSpan",
     "refundReviewTimeSpan",
@@ -681,7 +792,10 @@ import javax.xml.bind.annotation.XmlValue;
     "modifyType",
     "encryptedPhone",
     "encryptedEmail",
-    "associatedBookings"
+    "associatedBookings",
+    "supplierNotes",
+    "itinRemarks",
+    "specialServiceRequests"
 })
 public class VerificationPNR
     extends VerificationType
@@ -695,6 +809,8 @@ public class VerificationPNR
     protected VerificationPNR.PaymentStatus paymentStatus;
     @XmlElement(name = "BookingStatus")
     protected List<VerificationPNR.BookingStatus> bookingStatus;
+    @XmlElement(name = "ProcessingStatus")
+    protected List<VerificationPNR.ProcessingStatus> processingStatus;
     @XmlElement(name = "ArchivalStatus")
     protected VerificationPNR.ArchivalStatus archivalStatus;
     @XmlElement(name = "Product")
@@ -707,6 +823,8 @@ public class VerificationPNR
     protected UniqueIDsType uniqueIDs;
     @XmlElement(name = "AgentID")
     protected String agentID;
+    @XmlElement(name = "Agent")
+    protected List<VerificationPNR.Agent> agent;
     @XmlElement(name = "Loyalty")
     protected LoyaltyProductType loyalty;
     @XmlElement(name = "RefundApplicationTimeSpan")
@@ -781,6 +899,12 @@ public class VerificationPNR
     protected EmailType encryptedEmail;
     @XmlElement(name = "AssociatedBookings")
     protected AssociatedBookingsType associatedBookings;
+    @XmlElement(name = "SupplierNotes")
+    protected List<VerificationPNR.SupplierNotes> supplierNotes;
+    @XmlElement(name = "ItinRemarks")
+    protected VerificationPNR.ItinRemarks itinRemarks;
+    @XmlElement(name = "SpecialServiceRequests")
+    protected VerificationPNR.SpecialServiceRequests specialServiceRequests;
 
     /**
      * 获取saleTimeSpan属性的值。
@@ -881,6 +1005,35 @@ public class VerificationPNR
             bookingStatus = new ArrayList<VerificationPNR.BookingStatus>();
         }
         return this.bookingStatus;
+    }
+
+    /**
+     * Gets the value of the processingStatus property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the processingStatus property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getProcessingStatus().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link VerificationPNR.ProcessingStatus }
+     * 
+     * 
+     */
+    public List<VerificationPNR.ProcessingStatus> getProcessingStatus() {
+        if (processingStatus == null) {
+            processingStatus = new ArrayList<VerificationPNR.ProcessingStatus>();
+        }
+        return this.processingStatus;
     }
 
     /**
@@ -1025,6 +1178,35 @@ public class VerificationPNR
      */
     public void setAgentID(String value) {
         this.agentID = value;
+    }
+
+    /**
+     * Gets the value of the agent property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the agent property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getAgent().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link VerificationPNR.Agent }
+     * 
+     * 
+     */
+    public List<VerificationPNR.Agent> getAgent() {
+        if (agent == null) {
+            agent = new ArrayList<VerificationPNR.Agent>();
+        }
+        return this.agent;
     }
 
     /**
@@ -1935,6 +2117,83 @@ public class VerificationPNR
         this.associatedBookings = value;
     }
 
+    /**
+     * Gets the value of the supplierNotes property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the supplierNotes property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getSupplierNotes().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link VerificationPNR.SupplierNotes }
+     * 
+     * 
+     */
+    public List<VerificationPNR.SupplierNotes> getSupplierNotes() {
+        if (supplierNotes == null) {
+            supplierNotes = new ArrayList<VerificationPNR.SupplierNotes>();
+        }
+        return this.supplierNotes;
+    }
+
+    /**
+     * 获取itinRemarks属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link VerificationPNR.ItinRemarks }
+     *     
+     */
+    public VerificationPNR.ItinRemarks getItinRemarks() {
+        return itinRemarks;
+    }
+
+    /**
+     * 设置itinRemarks属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link VerificationPNR.ItinRemarks }
+     *     
+     */
+    public void setItinRemarks(VerificationPNR.ItinRemarks value) {
+        this.itinRemarks = value;
+    }
+
+    /**
+     * 获取specialServiceRequests属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link VerificationPNR.SpecialServiceRequests }
+     *     
+     */
+    public VerificationPNR.SpecialServiceRequests getSpecialServiceRequests() {
+        return specialServiceRequests;
+    }
+
+    /**
+     * 设置specialServiceRequests属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link VerificationPNR.SpecialServiceRequests }
+     *     
+     */
+    public void setSpecialServiceRequests(VerificationPNR.SpecialServiceRequests value) {
+        this.specialServiceRequests = value;
+    }
+
 
     /**
      * <p>anonymous complex type的 Java 类。
@@ -2086,6 +2345,111 @@ public class VerificationPNR
          */
         public void setSearchTimeZone(String value) {
             this.searchTimeZone = value;
+        }
+
+    }
+
+
+    /**
+     * <p>anonymous complex type的 Java 类。
+     * 
+     * <p>以下模式片段指定包含在此类中的预期内容。
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *       &lt;attribute name="AdministrativeGroup" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *       &lt;attribute name="CreatorID" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "")
+    public static class Agent {
+
+        @XmlAttribute(name = "ID")
+        protected String id;
+        @XmlAttribute(name = "AdministrativeGroup")
+        protected String administrativeGroup;
+        @XmlAttribute(name = "CreatorID")
+        protected String creatorID;
+
+        /**
+         * 获取id属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getID() {
+            return id;
+        }
+
+        /**
+         * 设置id属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setID(String value) {
+            this.id = value;
+        }
+
+        /**
+         * 获取administrativeGroup属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getAdministrativeGroup() {
+            return administrativeGroup;
+        }
+
+        /**
+         * 设置administrativeGroup属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setAdministrativeGroup(String value) {
+            this.administrativeGroup = value;
+        }
+
+        /**
+         * 获取creatorID属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getCreatorID() {
+            return creatorID;
+        }
+
+        /**
+         * 设置creatorID属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setCreatorID(String value) {
+            this.creatorID = value;
         }
 
     }
@@ -2527,6 +2891,153 @@ public class VerificationPNR
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="ItinRemark" maxOccurs="unbounded" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *                 &lt;attribute name="Value" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "itinRemark"
+    })
+    public static class ItinRemarks {
+
+        @XmlElement(name = "ItinRemark")
+        protected List<VerificationPNR.ItinRemarks.ItinRemark> itinRemark;
+
+        /**
+         * Gets the value of the itinRemark property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the itinRemark property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getItinRemark().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link VerificationPNR.ItinRemarks.ItinRemark }
+         * 
+         * 
+         */
+        public List<VerificationPNR.ItinRemarks.ItinRemark> getItinRemark() {
+            if (itinRemark == null) {
+                itinRemark = new ArrayList<VerificationPNR.ItinRemarks.ItinRemark>();
+            }
+            return this.itinRemark;
+        }
+
+
+        /**
+         * <p>anonymous complex type的 Java 类。
+         * 
+         * <p>以下模式片段指定包含在此类中的预期内容。
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+         *       &lt;attribute name="Value" type="{http://www.w3.org/2001/XMLSchema}string" />
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "")
+        public static class ItinRemark {
+
+            @XmlAttribute(name = "Type")
+            protected String type;
+            @XmlAttribute(name = "Value")
+            protected String value;
+
+            /**
+             * 获取type属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getType() {
+                return type;
+            }
+
+            /**
+             * 设置type属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setType(String value) {
+                this.type = value;
+            }
+
+            /**
+             * 获取value属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getValue() {
+                return value;
+            }
+
+            /**
+             * 设置value属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setValue(String value) {
+                this.value = value;
+            }
+
+        }
+
+    }
+
+
+    /**
+     * <p>anonymous complex type的 Java 类。
+     * 
+     * <p>以下模式片段指定包含在此类中的预期内容。
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -2760,7 +3271,20 @@ public class VerificationPNR
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="Reason" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *                 &lt;attribute name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *       &lt;/sequence>
      *       &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *       &lt;attribute name="freeDateChange" type="{http://www.w3.org/2001/XMLSchema}string" />
      *       &lt;attribute name="CrossChannel" type="{http://www.w3.org/2001/XMLSchema}boolean" />
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -2770,13 +3294,43 @@ public class VerificationPNR
      * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "")
+    @XmlType(name = "", propOrder = {
+        "reason"
+    })
     public static class ModifyType {
 
+        @XmlElement(name = "Reason")
+        protected VerificationPNR.ModifyType.Reason reason;
         @XmlAttribute(name = "Type")
         protected String type;
+        @XmlAttribute(name = "freeDateChange")
+        protected String freeDateChange;
         @XmlAttribute(name = "CrossChannel")
         protected Boolean crossChannel;
+
+        /**
+         * 获取reason属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link VerificationPNR.ModifyType.Reason }
+         *     
+         */
+        public VerificationPNR.ModifyType.Reason getReason() {
+            return reason;
+        }
+
+        /**
+         * 设置reason属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link VerificationPNR.ModifyType.Reason }
+         *     
+         */
+        public void setReason(VerificationPNR.ModifyType.Reason value) {
+            this.reason = value;
+        }
 
         /**
          * 获取type属性的值。
@@ -2803,6 +3357,30 @@ public class VerificationPNR
         }
 
         /**
+         * 获取freeDateChange属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getFreeDateChange() {
+            return freeDateChange;
+        }
+
+        /**
+         * 设置freeDateChange属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setFreeDateChange(String value) {
+            this.freeDateChange = value;
+        }
+
+        /**
          * 获取crossChannel属性的值。
          * 
          * @return
@@ -2824,6 +3402,84 @@ public class VerificationPNR
          */
         public void setCrossChannel(Boolean value) {
             this.crossChannel = value;
+        }
+
+
+        /**
+         * <p>anonymous complex type的 Java 类。
+         * 
+         * <p>以下模式片段指定包含在此类中的预期内容。
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+         *       &lt;attribute name="SubType" type="{http://www.w3.org/2001/XMLSchema}string" />
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "")
+        public static class Reason {
+
+            @XmlAttribute(name = "Type")
+            protected String type;
+            @XmlAttribute(name = "SubType")
+            protected String subType;
+
+            /**
+             * 获取type属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getType() {
+                return type;
+            }
+
+            /**
+             * 设置type属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setType(String value) {
+                this.type = value;
+            }
+
+            /**
+             * 获取subType属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getSubType() {
+                return subType;
+            }
+
+            /**
+             * 设置subType属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setSubType(String value) {
+                this.subType = value;
+            }
+
         }
 
     }
@@ -3162,13 +3818,64 @@ public class VerificationPNR
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;attribute name="State" type="{http://www.opentravel.org/OTA/2003/05}ProcessingStatusType" />
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "")
+    public static class ProcessingStatus {
+
+        @XmlAttribute(name = "State")
+        protected ProcessingStatusType state;
+
+        /**
+         * 获取state属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link ProcessingStatusType }
+         *     
+         */
+        public ProcessingStatusType getState() {
+            return state;
+        }
+
+        /**
+         * 设置state属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link ProcessingStatusType }
+         *     
+         */
+        public void setState(ProcessingStatusType value) {
+            this.state = value;
+        }
+
+    }
+
+
+    /**
+     * <p>anonymous complex type的 Java 类。
+     * 
+     * <p>以下模式片段指定包含在此类中的预期内容。
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
      *         &lt;element name="Air" minOccurs="0">
      *           &lt;complexType>
      *             &lt;simpleContent>
      *               &lt;extension base="&lt;http://www.opentravel.org/OTA/2003/05>OperatingAirlineType">
-     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OJ_PayloadExtAttributes"/>
      *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DocRqdGroup"/>
+     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OJ_PayloadExtAttributes"/>
      *                 &lt;attribute name="PromotionType" type="{http://www.w3.org/2001/XMLSchema}string" />
      *                 &lt;attribute name="TicketNumber" type="{http://www.w3.org/2001/XMLSchema}string" />
      *                 &lt;attribute name="EncryptedTicketNumber" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -4023,8 +4730,8 @@ public class VerificationPNR
          * &lt;complexType>
          *   &lt;simpleContent>
          *     &lt;extension base="&lt;http://www.opentravel.org/OTA/2003/05>OperatingAirlineType">
-         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OJ_PayloadExtAttributes"/>
          *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DocRqdGroup"/>
+         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}OJ_PayloadExtAttributes"/>
          *       &lt;attribute name="PromotionType" type="{http://www.w3.org/2001/XMLSchema}string" />
          *       &lt;attribute name="TicketNumber" type="{http://www.w3.org/2001/XMLSchema}string" />
          *       &lt;attribute name="EncryptedTicketNumber" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -4056,6 +4763,12 @@ public class VerificationPNR
             protected String start;
             @XmlAttribute(name = "End")
             protected String end;
+            @XmlAttribute(name = "DocumentationRequired")
+            protected String documentationRequired;
+            @XmlAttribute(name = "DocReqExclCountries")
+            protected List<String> docReqExclCountries;
+            @XmlAttribute(name = "DocReqInclCountries")
+            protected List<String> docReqInclCountries;
             @XmlAttribute(name = "State")
             protected String state;
             @XmlAttribute(name = "BookingChannel")
@@ -4070,12 +4783,6 @@ public class VerificationPNR
             protected Boolean isLoggedIn;
             @XmlAttribute(name = "SuperPNR_ID")
             protected String superPNRID;
-            @XmlAttribute(name = "DocumentationRequired")
-            protected String documentationRequired;
-            @XmlAttribute(name = "DocReqExclCountries")
-            protected List<String> docReqExclCountries;
-            @XmlAttribute(name = "DocReqInclCountries")
-            protected List<String> docReqInclCountries;
 
             /**
              * 获取promotionType属性的值。
@@ -4219,6 +4926,88 @@ public class VerificationPNR
              */
             public void setEnd(String value) {
                 this.end = value;
+            }
+
+            /**
+             * 获取documentationRequired属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getDocumentationRequired() {
+                return documentationRequired;
+            }
+
+            /**
+             * 设置documentationRequired属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setDocumentationRequired(String value) {
+                this.documentationRequired = value;
+            }
+
+            /**
+             * Gets the value of the docReqExclCountries property.
+             * 
+             * <p>
+             * This accessor method returns a reference to the live list,
+             * not a snapshot. Therefore any modification you make to the
+             * returned list will be present inside the JAXB object.
+             * This is why there is not a <CODE>set</CODE> method for the docReqExclCountries property.
+             * 
+             * <p>
+             * For example, to add a new item, do as follows:
+             * <pre>
+             *    getDocReqExclCountries().add(newItem);
+             * </pre>
+             * 
+             * 
+             * <p>
+             * Objects of the following type(s) are allowed in the list
+             * {@link String }
+             * 
+             * 
+             */
+            public List<String> getDocReqExclCountries() {
+                if (docReqExclCountries == null) {
+                    docReqExclCountries = new ArrayList<String>();
+                }
+                return this.docReqExclCountries;
+            }
+
+            /**
+             * Gets the value of the docReqInclCountries property.
+             * 
+             * <p>
+             * This accessor method returns a reference to the live list,
+             * not a snapshot. Therefore any modification you make to the
+             * returned list will be present inside the JAXB object.
+             * This is why there is not a <CODE>set</CODE> method for the docReqInclCountries property.
+             * 
+             * <p>
+             * For example, to add a new item, do as follows:
+             * <pre>
+             *    getDocReqInclCountries().add(newItem);
+             * </pre>
+             * 
+             * 
+             * <p>
+             * Objects of the following type(s) are allowed in the list
+             * {@link String }
+             * 
+             * 
+             */
+            public List<String> getDocReqInclCountries() {
+                if (docReqInclCountries == null) {
+                    docReqInclCountries = new ArrayList<String>();
+                }
+                return this.docReqInclCountries;
             }
 
             /**
@@ -4387,88 +5176,6 @@ public class VerificationPNR
              */
             public void setSuperPNRID(String value) {
                 this.superPNRID = value;
-            }
-
-            /**
-             * 获取documentationRequired属性的值。
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getDocumentationRequired() {
-                return documentationRequired;
-            }
-
-            /**
-             * 设置documentationRequired属性的值。
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setDocumentationRequired(String value) {
-                this.documentationRequired = value;
-            }
-
-            /**
-             * Gets the value of the docReqExclCountries property.
-             * 
-             * <p>
-             * This accessor method returns a reference to the live list,
-             * not a snapshot. Therefore any modification you make to the
-             * returned list will be present inside the JAXB object.
-             * This is why there is not a <CODE>set</CODE> method for the docReqExclCountries property.
-             * 
-             * <p>
-             * For example, to add a new item, do as follows:
-             * <pre>
-             *    getDocReqExclCountries().add(newItem);
-             * </pre>
-             * 
-             * 
-             * <p>
-             * Objects of the following type(s) are allowed in the list
-             * {@link String }
-             * 
-             * 
-             */
-            public List<String> getDocReqExclCountries() {
-                if (docReqExclCountries == null) {
-                    docReqExclCountries = new ArrayList<String>();
-                }
-                return this.docReqExclCountries;
-            }
-
-            /**
-             * Gets the value of the docReqInclCountries property.
-             * 
-             * <p>
-             * This accessor method returns a reference to the live list,
-             * not a snapshot. Therefore any modification you make to the
-             * returned list will be present inside the JAXB object.
-             * This is why there is not a <CODE>set</CODE> method for the docReqInclCountries property.
-             * 
-             * <p>
-             * For example, to add a new item, do as follows:
-             * <pre>
-             *    getDocReqInclCountries().add(newItem);
-             * </pre>
-             * 
-             * 
-             * <p>
-             * Objects of the following type(s) are allowed in the list
-             * {@link String }
-             * 
-             * 
-             */
-            public List<String> getDocReqInclCountries() {
-                if (docReqInclCountries == null) {
-                    docReqInclCountries = new ArrayList<String>();
-                }
-                return this.docReqInclCountries;
             }
 
         }
@@ -5402,6 +6109,8 @@ public class VerificationPNR
             protected String hotelCode;
             @XmlAttribute(name = "HotelCityCode")
             protected String hotelCityCode;
+            @XmlAttribute(name = "HotelCityCodeContext")
+            protected String hotelCityCodeContext;
             @XmlAttribute(name = "HotelName")
             protected String hotelName;
             @XmlAttribute(name = "HotelCodeContext")
@@ -5410,8 +6119,12 @@ public class VerificationPNR
             protected String chainName;
             @XmlAttribute(name = "BrandName")
             protected String brandName;
+            @XmlAttribute(name = "InvoiceIssuer")
+            protected String invoiceIssuer;
             @XmlAttribute(name = "AreaID")
             protected String areaID;
+            @XmlAttribute(name = "StayType")
+            protected String stayType;
 
             /**
              * 获取state属性的值。
@@ -5702,6 +6415,30 @@ public class VerificationPNR
             }
 
             /**
+             * 获取hotelCityCodeContext属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getHotelCityCodeContext() {
+                return hotelCityCodeContext;
+            }
+
+            /**
+             * 设置hotelCityCodeContext属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setHotelCityCodeContext(String value) {
+                this.hotelCityCodeContext = value;
+            }
+
+            /**
              * 获取hotelName属性的值。
              * 
              * @return
@@ -5798,6 +6535,30 @@ public class VerificationPNR
             }
 
             /**
+             * 获取invoiceIssuer属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getInvoiceIssuer() {
+                return invoiceIssuer;
+            }
+
+            /**
+             * 设置invoiceIssuer属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setInvoiceIssuer(String value) {
+                this.invoiceIssuer = value;
+            }
+
+            /**
              * 获取areaID属性的值。
              * 
              * @return
@@ -5819,6 +6580,30 @@ public class VerificationPNR
              */
             public void setAreaID(String value) {
                 this.areaID = value;
+            }
+
+            /**
+             * 获取stayType属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getStayType() {
+                return stayType;
+            }
+
+            /**
+             * 设置stayType属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setStayType(String value) {
+                this.stayType = value;
             }
 
         }
@@ -6610,6 +7395,7 @@ public class VerificationPNR
      *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                           &lt;sequence>
      *                             &lt;element name="OriginDestinationOption" type="{http://www.opentravel.org/OTA/2003/05}VerificationODOType" maxOccurs="unbounded" minOccurs="0"/>
+     *                             &lt;element name="TourCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to16" maxOccurs="unbounded" minOccurs="0"/>
      *                           &lt;/sequence>
      *                         &lt;/restriction>
      *                       &lt;/complexContent>
@@ -6695,6 +7481,7 @@ public class VerificationPNR
          *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *                 &lt;sequence>
          *                   &lt;element name="OriginDestinationOption" type="{http://www.opentravel.org/OTA/2003/05}VerificationODOType" maxOccurs="unbounded" minOccurs="0"/>
+         *                   &lt;element name="TourCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to16" maxOccurs="unbounded" minOccurs="0"/>
          *                 &lt;/sequence>
          *               &lt;/restriction>
          *             &lt;/complexContent>
@@ -6875,6 +7662,7 @@ public class VerificationPNR
              *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
              *       &lt;sequence>
              *         &lt;element name="OriginDestinationOption" type="{http://www.opentravel.org/OTA/2003/05}VerificationODOType" maxOccurs="unbounded" minOccurs="0"/>
+             *         &lt;element name="TourCode" type="{http://www.opentravel.org/OTA/2003/05}StringLength1to16" maxOccurs="unbounded" minOccurs="0"/>
              *       &lt;/sequence>
              *     &lt;/restriction>
              *   &lt;/complexContent>
@@ -6885,12 +7673,15 @@ public class VerificationPNR
              */
             @XmlAccessorType(XmlAccessType.FIELD)
             @XmlType(name = "", propOrder = {
-                "originDestinationOption"
+                "originDestinationOption",
+                "tourCode"
             })
             public static class Air {
 
                 @XmlElement(name = "OriginDestinationOption")
                 protected List<VerificationODOType> originDestinationOption;
+                @XmlElement(name = "TourCode")
+                protected List<String> tourCode;
 
                 /**
                  * Gets the value of the originDestinationOption property.
@@ -6919,6 +7710,35 @@ public class VerificationPNR
                         originDestinationOption = new ArrayList<VerificationODOType>();
                     }
                     return this.originDestinationOption;
+                }
+
+                /**
+                 * Gets the value of the tourCode property.
+                 * 
+                 * <p>
+                 * This accessor method returns a reference to the live list,
+                 * not a snapshot. Therefore any modification you make to the
+                 * returned list will be present inside the JAXB object.
+                 * This is why there is not a <CODE>set</CODE> method for the tourCode property.
+                 * 
+                 * <p>
+                 * For example, to add a new item, do as follows:
+                 * <pre>
+                 *    getTourCode().add(newItem);
+                 * </pre>
+                 * 
+                 * 
+                 * <p>
+                 * Objects of the following type(s) are allowed in the list
+                 * {@link String }
+                 * 
+                 * 
+                 */
+                public List<String> getTourCode() {
+                    if (tourCode == null) {
+                        tourCode = new ArrayList<String>();
+                    }
+                    return this.tourCode;
                 }
 
             }
@@ -8897,7 +9717,6 @@ public class VerificationPNR
      *             &lt;/complexContent>
      *           &lt;/complexType>
      *         &lt;/element>
-     *         &lt;element name="RequestorID" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -8908,15 +9727,12 @@ public class VerificationPNR
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "locales",
-        "requestorID"
+        "locales"
     })
     public static class Source {
 
         @XmlElement(name = "Locales")
         protected VerificationPNR.Source.Locales locales;
-        @XmlElement(name = "RequestorID")
-        protected List<Object> requestorID;
 
         /**
          * 获取locales属性的值。
@@ -8940,35 +9756,6 @@ public class VerificationPNR
          */
         public void setLocales(VerificationPNR.Source.Locales value) {
             this.locales = value;
-        }
-
-        /**
-         * Gets the value of the requestorID property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the requestorID property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getRequestorID().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link Object }
-         * 
-         * 
-         */
-        public List<Object> getRequestorID() {
-            if (requestorID == null) {
-                requestorID = new ArrayList<Object>();
-            }
-            return this.requestorID;
         }
 
 
@@ -9109,6 +9896,125 @@ public class VerificationPNR
                     this.included = value;
                 }
 
+            }
+
+        }
+
+    }
+
+
+    /**
+     * <p>anonymous complex type的 Java 类。
+     * 
+     * <p>以下模式片段指定包含在此类中的预期内容。
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="SpecialServiceRequest" maxOccurs="unbounded" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "specialServiceRequest"
+    })
+    public static class SpecialServiceRequests {
+
+        @XmlElement(name = "SpecialServiceRequest")
+        protected List<VerificationPNR.SpecialServiceRequests.SpecialServiceRequest> specialServiceRequest;
+
+        /**
+         * Gets the value of the specialServiceRequest property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the specialServiceRequest property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getSpecialServiceRequest().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link VerificationPNR.SpecialServiceRequests.SpecialServiceRequest }
+         * 
+         * 
+         */
+        public List<VerificationPNR.SpecialServiceRequests.SpecialServiceRequest> getSpecialServiceRequest() {
+            if (specialServiceRequest == null) {
+                specialServiceRequest = new ArrayList<VerificationPNR.SpecialServiceRequests.SpecialServiceRequest>();
+            }
+            return this.specialServiceRequest;
+        }
+
+
+        /**
+         * <p>anonymous complex type的 Java 类。
+         * 
+         * <p>以下模式片段指定包含在此类中的预期内容。
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "")
+        public static class SpecialServiceRequest {
+
+            @XmlAttribute(name = "Type")
+            protected String type;
+
+            /**
+             * 获取type属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getType() {
+                return type;
+            }
+
+            /**
+             * 设置type属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setType(String value) {
+                this.type = value;
             }
 
         }
@@ -9281,7 +10187,172 @@ public class VerificationPNR
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
+     *         &lt;element name="Note" maxOccurs="unbounded" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;simpleContent>
+     *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                 &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *               &lt;/extension>
+     *             &lt;/simpleContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "note"
+    })
+    public static class SupplierNotes {
+
+        @XmlElement(name = "Note")
+        protected List<VerificationPNR.SupplierNotes.Note> note;
+
+        /**
+         * Gets the value of the note property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the note property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getNote().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link VerificationPNR.SupplierNotes.Note }
+         * 
+         * 
+         */
+        public List<VerificationPNR.SupplierNotes.Note> getNote() {
+            if (note == null) {
+                note = new ArrayList<VerificationPNR.SupplierNotes.Note>();
+            }
+            return this.note;
+        }
+
+
+        /**
+         * <p>anonymous complex type的 Java 类。
+         * 
+         * <p>以下模式片段指定包含在此类中的预期内容。
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;simpleContent>
+         *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *       &lt;attribute name="Type" type="{http://www.w3.org/2001/XMLSchema}string" />
+         *     &lt;/extension>
+         *   &lt;/simpleContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "value"
+        })
+        public static class Note {
+
+            @XmlValue
+            protected String value;
+            @XmlAttribute(name = "Type")
+            protected String type;
+
+            /**
+             * 获取value属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getValue() {
+                return value;
+            }
+
+            /**
+             * 设置value属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setValue(String value) {
+                this.value = value;
+            }
+
+            /**
+             * 获取type属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getType() {
+                return type;
+            }
+
+            /**
+             * 设置type属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setType(String value) {
+                this.type = value;
+            }
+
+        }
+
+    }
+
+
+    /**
+     * <p>anonymous complex type的 Java 类。
+     * 
+     * <p>以下模式片段指定包含在此类中的预期内容。
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
      *         &lt;element name="TimeSpan" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="SendTimeSpan" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="ArrivalTimeSpan" minOccurs="0">
      *           &lt;complexType>
      *             &lt;complexContent>
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -9301,12 +10372,18 @@ public class VerificationPNR
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "timeSpan"
+        "timeSpan",
+        "sendTimeSpan",
+        "arrivalTimeSpan"
     })
     public static class Ticketing {
 
         @XmlElement(name = "TimeSpan")
         protected VerificationPNR.Ticketing.TimeSpan timeSpan;
+        @XmlElement(name = "SendTimeSpan")
+        protected VerificationPNR.Ticketing.SendTimeSpan sendTimeSpan;
+        @XmlElement(name = "ArrivalTimeSpan")
+        protected VerificationPNR.Ticketing.ArrivalTimeSpan arrivalTimeSpan;
         @XmlAttribute(name = "State")
         protected String state;
 
@@ -9335,6 +10412,54 @@ public class VerificationPNR
         }
 
         /**
+         * 获取sendTimeSpan属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link VerificationPNR.Ticketing.SendTimeSpan }
+         *     
+         */
+        public VerificationPNR.Ticketing.SendTimeSpan getSendTimeSpan() {
+            return sendTimeSpan;
+        }
+
+        /**
+         * 设置sendTimeSpan属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link VerificationPNR.Ticketing.SendTimeSpan }
+         *     
+         */
+        public void setSendTimeSpan(VerificationPNR.Ticketing.SendTimeSpan value) {
+            this.sendTimeSpan = value;
+        }
+
+        /**
+         * 获取arrivalTimeSpan属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link VerificationPNR.Ticketing.ArrivalTimeSpan }
+         *     
+         */
+        public VerificationPNR.Ticketing.ArrivalTimeSpan getArrivalTimeSpan() {
+            return arrivalTimeSpan;
+        }
+
+        /**
+         * 设置arrivalTimeSpan属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link VerificationPNR.Ticketing.ArrivalTimeSpan }
+         *     
+         */
+        public void setArrivalTimeSpan(VerificationPNR.Ticketing.ArrivalTimeSpan value) {
+            this.arrivalTimeSpan = value;
+        }
+
+        /**
          * 获取state属性的值。
          * 
          * @return
@@ -9356,6 +10481,316 @@ public class VerificationPNR
          */
         public void setState(String value) {
             this.state = value;
+        }
+
+
+        /**
+         * <p>anonymous complex type的 Java 类。
+         * 
+         * <p>以下模式片段指定包含在此类中的预期内容。
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "")
+        public static class ArrivalTimeSpan {
+
+            @XmlAttribute(name = "Start")
+            protected String start;
+            @XmlAttribute(name = "Duration")
+            protected BigInteger duration;
+            @XmlAttribute(name = "End")
+            protected String end;
+            @XmlAttribute(name = "RangeNum")
+            protected BigInteger rangeNum;
+            @XmlAttribute(name = "SearchTimeZone")
+            protected String searchTimeZone;
+
+            /**
+             * 获取start属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getStart() {
+                return start;
+            }
+
+            /**
+             * 设置start属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setStart(String value) {
+                this.start = value;
+            }
+
+            /**
+             * 获取duration属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link BigInteger }
+             *     
+             */
+            public BigInteger getDuration() {
+                return duration;
+            }
+
+            /**
+             * 设置duration属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link BigInteger }
+             *     
+             */
+            public void setDuration(BigInteger value) {
+                this.duration = value;
+            }
+
+            /**
+             * 获取end属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getEnd() {
+                return end;
+            }
+
+            /**
+             * 设置end属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setEnd(String value) {
+                this.end = value;
+            }
+
+            /**
+             * 获取rangeNum属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link BigInteger }
+             *     
+             */
+            public BigInteger getRangeNum() {
+                return rangeNum;
+            }
+
+            /**
+             * 设置rangeNum属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link BigInteger }
+             *     
+             */
+            public void setRangeNum(BigInteger value) {
+                this.rangeNum = value;
+            }
+
+            /**
+             * 获取searchTimeZone属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getSearchTimeZone() {
+                return searchTimeZone;
+            }
+
+            /**
+             * 设置searchTimeZone属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setSearchTimeZone(String value) {
+                this.searchTimeZone = value;
+            }
+
+        }
+
+
+        /**
+         * <p>anonymous complex type的 Java 类。
+         * 
+         * <p>以下模式片段指定包含在此类中的预期内容。
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}DateTimeSpanGroup"/>
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "")
+        public static class SendTimeSpan {
+
+            @XmlAttribute(name = "Start")
+            protected String start;
+            @XmlAttribute(name = "Duration")
+            protected BigInteger duration;
+            @XmlAttribute(name = "End")
+            protected String end;
+            @XmlAttribute(name = "RangeNum")
+            protected BigInteger rangeNum;
+            @XmlAttribute(name = "SearchTimeZone")
+            protected String searchTimeZone;
+
+            /**
+             * 获取start属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getStart() {
+                return start;
+            }
+
+            /**
+             * 设置start属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setStart(String value) {
+                this.start = value;
+            }
+
+            /**
+             * 获取duration属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link BigInteger }
+             *     
+             */
+            public BigInteger getDuration() {
+                return duration;
+            }
+
+            /**
+             * 设置duration属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link BigInteger }
+             *     
+             */
+            public void setDuration(BigInteger value) {
+                this.duration = value;
+            }
+
+            /**
+             * 获取end属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getEnd() {
+                return end;
+            }
+
+            /**
+             * 设置end属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setEnd(String value) {
+                this.end = value;
+            }
+
+            /**
+             * 获取rangeNum属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link BigInteger }
+             *     
+             */
+            public BigInteger getRangeNum() {
+                return rangeNum;
+            }
+
+            /**
+             * 设置rangeNum属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link BigInteger }
+             *     
+             */
+            public void setRangeNum(BigInteger value) {
+                this.rangeNum = value;
+            }
+
+            /**
+             * 获取searchTimeZone属性的值。
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getSearchTimeZone() {
+                return searchTimeZone;
+            }
+
+            /**
+             * 设置searchTimeZone属性的值。
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setSearchTimeZone(String value) {
+                this.searchTimeZone = value;
+            }
+
         }
 
 

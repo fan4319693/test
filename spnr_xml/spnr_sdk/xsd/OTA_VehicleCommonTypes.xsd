@@ -3013,6 +3013,18 @@ Identifies the type of Vehicle Location information that is provided.  Refer to 
 							<xs:documentation xml:lang="en">The make and model of the vehicle (e.g.,  Ford Focus). The Code attribute may be used for the SIPP code.</xs:documentation>
 						</xs:annotation>
 						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Content" type="VehicleModelContent" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The vehicle model multi language content.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="DefaultContent" type="VehicleModelContent" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation xml:lang="en">The default vehicle model multi language content.</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
 							<xs:attributeGroup ref="VehicleMakeModelGroup"/>
 						</xs:complexType>
 					</xs:element>
@@ -3028,6 +3040,11 @@ Identifies the type of Vehicle Location information that is provided.  Refer to 
 						<xs:complexType>
 							<xs:attributeGroup ref="VehicleIdentityGroup"/>
 						</xs:complexType>
+					</xs:element>
+					<xs:element name="RentalRate" type="VehicleRentalRateType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Information on the rates associated with this vehicle.  Rate information can include the distance and the base rental cost, along with information on the various factors that may infuence this rate.  </xs:documentation>
+						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
 				<xs:attribute name="PassengerQuantity" type="StringLength1to8" use="optional">
@@ -3155,5 +3172,23 @@ Identifies the type of Vehicle Location information that is provided.  Refer to 
 				</xs:attribute>
 			</xs:extension>
 		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="VehicleModelContent">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The vehicle model content.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ModelName" type="StringLength1to64" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The model name.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ModelGroup" type="StringLength1to64" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The model group.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Language" type="xs:language" use="optional"/>
 	</xs:complexType>
 </xs:schema>

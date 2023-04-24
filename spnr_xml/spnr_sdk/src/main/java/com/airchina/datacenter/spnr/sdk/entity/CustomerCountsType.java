@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -36,8 +36,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}TravelerCountGroup"/>
  *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}BirthDateGroup"/>
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}TravelerCountGroup"/>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -98,8 +98,8 @@ public class CustomerCountsType {
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}TravelerCountGroup"/>
      *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}BirthDateGroup"/>
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}TravelerCountGroup"/>
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -111,6 +111,9 @@ public class CustomerCountsType {
     @XmlType(name = "")
     public static class CustomerCount {
 
+        @XmlAttribute(name = "BirthDate")
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar birthDate;
         @XmlAttribute(name = "Age")
         protected Integer age;
         @XmlAttribute(name = "Code")
@@ -127,9 +130,30 @@ public class CustomerCountsType {
         @XmlAttribute(name = "Quantity")
         @XmlSchemaType(name = "nonNegativeInteger")
         protected BigInteger quantity;
-        @XmlAttribute(name = "BirthDate")
-        @XmlSchemaType(name = "date")
-        protected XMLGregorianCalendar birthDate;
+
+        /**
+         * 获取birthDate属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public XMLGregorianCalendar getBirthDate() {
+            return birthDate;
+        }
+
+        /**
+         * 设置birthDate属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        public void setBirthDate(XMLGregorianCalendar value) {
+            this.birthDate = value;
+        }
 
         /**
          * 获取age属性的值。
@@ -297,30 +321,6 @@ public class CustomerCountsType {
          */
         public void setQuantity(BigInteger value) {
             this.quantity = value;
-        }
-
-        /**
-         * 获取birthDate属性的值。
-         * 
-         * @return
-         *     possible object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public XMLGregorianCalendar getBirthDate() {
-            return birthDate;
-        }
-
-        /**
-         * 设置birthDate属性的值。
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link XMLGregorianCalendar }
-         *     
-         */
-        public void setBirthDate(XMLGregorianCalendar value) {
-            this.birthDate = value;
         }
 
     }

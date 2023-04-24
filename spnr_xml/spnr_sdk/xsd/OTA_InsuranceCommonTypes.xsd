@@ -867,6 +867,8 @@
 					<xs:documentation xml:lang="en">Defines contact information for an individual or company (for example, the provider's callcenter number or claims hotline).</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="Content" type="InsuranceProductContentType" minOccurs="0"/>
+			<xs:element name="DefaultContent" type="InsuranceProductContentType" minOccurs="0"/>
 			<xs:element name="Description" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation>A description of the insurance plan</xs:documentation>
@@ -1056,5 +1058,18 @@
 			</xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="EffectiveExpireOptionalDateGroup"/>
+	</xs:complexType>
+	<xs:complexType name="InsuranceProductContentType">
+		<xs:complexContent>
+			<xs:extension base="ProductContentType">
+				<xs:sequence>
+					<xs:element name="PolicyURL" type="URL_Type" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Link to Insurance Policy Information.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 </xs:schema>

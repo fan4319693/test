@@ -2,7 +2,7 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
@@ -184,14 +184,40 @@ public class ServiceItemCoreType {
     protected AttributesType attributes;
     @XmlElement(name = "MediaReference")
     protected MediaReferenceType mediaReference;
-    @XmlAttribute(name = "CanUnbundle")
-    protected String canUnbundle;
-    @XmlAttribute(name = "FQTVCarrier")
-    protected String fqtvCarrier;
+    @XmlAttribute(name = "Icon")
+    protected String icon;
+    @XmlAttribute(name = "Source")
+    protected String source;
+    @XmlAttribute(name = "CanDeselect")
+    protected String canDeselect;
+    @XmlAttribute(name = "ReasonCode")
+    protected String reasonCode;
     @XmlAttribute(name = "FQTVNumber")
     protected String fqtvNumber;
     @XmlAttribute(name = "FQTVStatus")
     protected String fqtvStatus;
+    @XmlAttribute(name = "FQTVCarrier")
+    protected String fqtvCarrier;
+    @XmlAttribute(name = "ServiceType")
+    protected String serviceType;
+    @XmlAttribute(name = "ServiceCode")
+    protected String serviceCode;
+    @XmlAttribute(name = "SubCode")
+    protected String subCode;
+    @XmlAttribute(name = "Method", required = true)
+    protected String method;
+    @XmlAttribute(name = "MaxQuantity")
+    protected Integer maxQuantity;
+    @XmlAttribute(name = "Status")
+    protected String status;
+    @XmlAttribute(name = "ApplyToAll")
+    protected String applyToAll;
+    @XmlAttribute(name = "Bundle")
+    protected String bundle;
+    @XmlAttribute(name = "CanUnbundle")
+    protected String canUnbundle;
+    @XmlAttribute(name = "DisplayPriority")
+    protected SrvcDisplayPriorityType displayPriority;
     @XmlAttribute(name = "Type")
     protected String type;
     @XmlAttribute(name = "TypeValue")
@@ -210,32 +236,6 @@ public class ServiceItemCoreType {
     @XmlAttribute(name = "NotValidAfter")
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar notValidAfter;
-    @XmlAttribute(name = "ServiceType")
-    protected String serviceType;
-    @XmlAttribute(name = "ServiceCode")
-    protected String serviceCode;
-    @XmlAttribute(name = "SubCode")
-    protected String subCode;
-    @XmlAttribute(name = "ApplyToAll")
-    protected String applyToAll;
-    @XmlAttribute(name = "MaxQuantity")
-    protected Integer maxQuantity;
-    @XmlAttribute(name = "Source")
-    protected String source;
-    @XmlAttribute(name = "Icon")
-    protected String icon;
-    @XmlAttribute(name = "Bundle")
-    protected String bundle;
-    @XmlAttribute(name = "Method", required = true)
-    protected String method;
-    @XmlAttribute(name = "Status")
-    protected String status;
-    @XmlAttribute(name = "ReasonCode")
-    protected String reasonCode;
-    @XmlAttribute(name = "DisplayPriority")
-    protected SrvcDisplayPriorityType displayPriority;
-    @XmlAttribute(name = "CanDeselect")
-    protected String canDeselect;
 
     /**
      * 获取serviceID属性的值。
@@ -843,51 +843,99 @@ public class ServiceItemCoreType {
     }
 
     /**
-     * 获取canUnbundle属性的值。
+     * 获取icon属性的值。
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCanUnbundle() {
-        return canUnbundle;
+    public String getIcon() {
+        return icon;
     }
 
     /**
-     * 设置canUnbundle属性的值。
+     * 设置icon属性的值。
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCanUnbundle(String value) {
-        this.canUnbundle = value;
+    public void setIcon(String value) {
+        this.icon = value;
     }
 
     /**
-     * 获取fqtvCarrier属性的值。
+     * 获取source属性的值。
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getFQTVCarrier() {
-        return fqtvCarrier;
+    public String getSource() {
+        return source;
     }
 
     /**
-     * 设置fqtvCarrier属性的值。
+     * 设置source属性的值。
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setFQTVCarrier(String value) {
-        this.fqtvCarrier = value;
+    public void setSource(String value) {
+        this.source = value;
+    }
+
+    /**
+     * 获取canDeselect属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCanDeselect() {
+        return canDeselect;
+    }
+
+    /**
+     * 设置canDeselect属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCanDeselect(String value) {
+        this.canDeselect = value;
+    }
+
+    /**
+     * 获取reasonCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getReasonCode() {
+        return reasonCode;
+    }
+
+    /**
+     * 设置reasonCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReasonCode(String value) {
+        this.reasonCode = value;
     }
 
     /**
@@ -936,6 +984,270 @@ public class ServiceItemCoreType {
      */
     public void setFQTVStatus(String value) {
         this.fqtvStatus = value;
+    }
+
+    /**
+     * 获取fqtvCarrier属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFQTVCarrier() {
+        return fqtvCarrier;
+    }
+
+    /**
+     * 设置fqtvCarrier属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFQTVCarrier(String value) {
+        this.fqtvCarrier = value;
+    }
+
+    /**
+     * 获取serviceType属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    /**
+     * 设置serviceType属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setServiceType(String value) {
+        this.serviceType = value;
+    }
+
+    /**
+     * 获取serviceCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getServiceCode() {
+        return serviceCode;
+    }
+
+    /**
+     * 设置serviceCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setServiceCode(String value) {
+        this.serviceCode = value;
+    }
+
+    /**
+     * 获取subCode属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSubCode() {
+        return subCode;
+    }
+
+    /**
+     * 设置subCode属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSubCode(String value) {
+        this.subCode = value;
+    }
+
+    /**
+     * 获取method属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMethod() {
+        return method;
+    }
+
+    /**
+     * 设置method属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setMethod(String value) {
+        this.method = value;
+    }
+
+    /**
+     * 获取maxQuantity属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getMaxQuantity() {
+        return maxQuantity;
+    }
+
+    /**
+     * 设置maxQuantity属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setMaxQuantity(Integer value) {
+        this.maxQuantity = value;
+    }
+
+    /**
+     * 获取status属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * 设置status属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStatus(String value) {
+        this.status = value;
+    }
+
+    /**
+     * 获取applyToAll属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getApplyToAll() {
+        return applyToAll;
+    }
+
+    /**
+     * 设置applyToAll属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setApplyToAll(String value) {
+        this.applyToAll = value;
+    }
+
+    /**
+     * 获取bundle属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBundle() {
+        return bundle;
+    }
+
+    /**
+     * 设置bundle属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBundle(String value) {
+        this.bundle = value;
+    }
+
+    /**
+     * 获取canUnbundle属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCanUnbundle() {
+        return canUnbundle;
+    }
+
+    /**
+     * 设置canUnbundle属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCanUnbundle(String value) {
+        this.canUnbundle = value;
+    }
+
+    /**
+     * 获取displayPriority属性的值。
+     * 
+     * @return
+     *     possible object is
+     *     {@link SrvcDisplayPriorityType }
+     *     
+     */
+    public SrvcDisplayPriorityType getDisplayPriority() {
+        return displayPriority;
+    }
+
+    /**
+     * 设置displayPriority属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SrvcDisplayPriorityType }
+     *     
+     */
+    public void setDisplayPriority(SrvcDisplayPriorityType value) {
+        this.displayPriority = value;
     }
 
     /**
@@ -1128,318 +1440,6 @@ public class ServiceItemCoreType {
      */
     public void setNotValidAfter(XMLGregorianCalendar value) {
         this.notValidAfter = value;
-    }
-
-    /**
-     * 获取serviceType属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getServiceType() {
-        return serviceType;
-    }
-
-    /**
-     * 设置serviceType属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setServiceType(String value) {
-        this.serviceType = value;
-    }
-
-    /**
-     * 获取serviceCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getServiceCode() {
-        return serviceCode;
-    }
-
-    /**
-     * 设置serviceCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setServiceCode(String value) {
-        this.serviceCode = value;
-    }
-
-    /**
-     * 获取subCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSubCode() {
-        return subCode;
-    }
-
-    /**
-     * 设置subCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSubCode(String value) {
-        this.subCode = value;
-    }
-
-    /**
-     * 获取applyToAll属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getApplyToAll() {
-        return applyToAll;
-    }
-
-    /**
-     * 设置applyToAll属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setApplyToAll(String value) {
-        this.applyToAll = value;
-    }
-
-    /**
-     * 获取maxQuantity属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getMaxQuantity() {
-        return maxQuantity;
-    }
-
-    /**
-     * 设置maxQuantity属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setMaxQuantity(Integer value) {
-        this.maxQuantity = value;
-    }
-
-    /**
-     * 获取source属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSource() {
-        return source;
-    }
-
-    /**
-     * 设置source属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSource(String value) {
-        this.source = value;
-    }
-
-    /**
-     * 获取icon属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIcon() {
-        return icon;
-    }
-
-    /**
-     * 设置icon属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIcon(String value) {
-        this.icon = value;
-    }
-
-    /**
-     * 获取bundle属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getBundle() {
-        return bundle;
-    }
-
-    /**
-     * 设置bundle属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setBundle(String value) {
-        this.bundle = value;
-    }
-
-    /**
-     * 获取method属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMethod() {
-        return method;
-    }
-
-    /**
-     * 设置method属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMethod(String value) {
-        this.method = value;
-    }
-
-    /**
-     * 获取status属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStatus() {
-        return status;
-    }
-
-    /**
-     * 设置status属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStatus(String value) {
-        this.status = value;
-    }
-
-    /**
-     * 获取reasonCode属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getReasonCode() {
-        return reasonCode;
-    }
-
-    /**
-     * 设置reasonCode属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setReasonCode(String value) {
-        this.reasonCode = value;
-    }
-
-    /**
-     * 获取displayPriority属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link SrvcDisplayPriorityType }
-     *     
-     */
-    public SrvcDisplayPriorityType getDisplayPriority() {
-        return displayPriority;
-    }
-
-    /**
-     * 设置displayPriority属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SrvcDisplayPriorityType }
-     *     
-     */
-    public void setDisplayPriority(SrvcDisplayPriorityType value) {
-        this.displayPriority = value;
-    }
-
-    /**
-     * 获取canDeselect属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCanDeselect() {
-        return canDeselect;
-    }
-
-    /**
-     * 设置canDeselect属性的值。
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCanDeselect(String value) {
-        this.canDeselect = value;
     }
 
 

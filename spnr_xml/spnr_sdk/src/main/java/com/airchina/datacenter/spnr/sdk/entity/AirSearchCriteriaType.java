@@ -2,12 +2,13 @@
 // 此文件是由 JavaTM Architecture for XML Binding (JAXB) 引用实现 v2.2.8-b130911.1802 生成的
 // 请访问 <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // 在重新编译源模式时, 对此文件的所有修改都将丢失。
-// 生成时间: 2022.11.30 时间 04:39:33 PM CST 
+// 生成时间: 2023.02.28 时间 04:16:54 PM CST 
 //
 
 
 package com.airchina.datacenter.spnr.sdk.entity;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -29,21 +30,22 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="OriginDestinationOption" maxOccurs="unbounded">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;extension base="{http://www.opentravel.org/OTA/2003/05}OriginDestinationOptionType">
- *                 &lt;attribute name="RPH" type="{http://www.opentravel.org/OTA/2003/05}RPH_Type" />
- *               &lt;/extension>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
+ *         &lt;element name="AirItinerary" type="{http://www.opentravel.org/OTA/2003/05}AirItineraryType" minOccurs="0"/>
  *         &lt;element name="TravelerInfoSummary" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;extension base="{http://www.opentravel.org/OTA/2003/05}TravelerInfoSummaryType">
  *                 &lt;attribute name="TicketingCountryCode" type="{http://www.opentravel.org/OTA/2003/05}ISO3166" />
  *                 &lt;attribute name="SpecificPTC_Indicator" type="{http://www.w3.org/2001/XMLSchema}boolean" />
+ *               &lt;/extension>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="AirItineraryPricingInfo" maxOccurs="unbounded" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;extension base="{http://www.opentravel.org/OTA/2003/05}AirItineraryPricingInfoType">
+ *                 &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}AirItineraryPricingInfoGroup"/>
  *               &lt;/extension>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -58,43 +60,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AirSearchCriteriaType", propOrder = {
-    "originDestinationOption",
-    "travelerInfoSummary"
+    "airItinerary",
+    "travelerInfoSummary",
+    "airItineraryPricingInfo"
 })
 public class AirSearchCriteriaType {
 
-    @XmlElement(name = "OriginDestinationOption", required = true)
-    protected List<AirSearchCriteriaType.OriginDestinationOption> originDestinationOption;
+    @XmlElement(name = "AirItinerary")
+    protected AirItineraryType airItinerary;
     @XmlElement(name = "TravelerInfoSummary")
     protected AirSearchCriteriaType.TravelerInfoSummary travelerInfoSummary;
+    @XmlElement(name = "AirItineraryPricingInfo")
+    protected List<AirSearchCriteriaType.AirItineraryPricingInfo> airItineraryPricingInfo;
 
     /**
-     * Gets the value of the originDestinationOption property.
+     * 获取airItinerary属性的值。
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the originDestinationOption property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getOriginDestinationOption().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AirSearchCriteriaType.OriginDestinationOption }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link AirItineraryType }
+     *     
      */
-    public List<AirSearchCriteriaType.OriginDestinationOption> getOriginDestinationOption() {
-        if (originDestinationOption == null) {
-            originDestinationOption = new ArrayList<AirSearchCriteriaType.OriginDestinationOption>();
-        }
-        return this.originDestinationOption;
+    public AirItineraryType getAirItinerary() {
+        return airItinerary;
+    }
+
+    /**
+     * 设置airItinerary属性的值。
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AirItineraryType }
+     *     
+     */
+    public void setAirItinerary(AirItineraryType value) {
+        this.airItinerary = value;
     }
 
     /**
@@ -121,6 +121,35 @@ public class AirSearchCriteriaType {
         this.travelerInfoSummary = value;
     }
 
+    /**
+     * Gets the value of the airItineraryPricingInfo property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the airItineraryPricingInfo property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getAirItineraryPricingInfo().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link AirSearchCriteriaType.AirItineraryPricingInfo }
+     * 
+     * 
+     */
+    public List<AirSearchCriteriaType.AirItineraryPricingInfo> getAirItineraryPricingInfo() {
+        if (airItineraryPricingInfo == null) {
+            airItineraryPricingInfo = new ArrayList<AirSearchCriteriaType.AirItineraryPricingInfo>();
+        }
+        return this.airItineraryPricingInfo;
+    }
+
 
     /**
      * <p>anonymous complex type的 Java 类。
@@ -130,8 +159,8 @@ public class AirSearchCriteriaType {
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
-     *     &lt;extension base="{http://www.opentravel.org/OTA/2003/05}OriginDestinationOptionType">
-     *       &lt;attribute name="RPH" type="{http://www.opentravel.org/OTA/2003/05}RPH_Type" />
+     *     &lt;extension base="{http://www.opentravel.org/OTA/2003/05}AirItineraryPricingInfoType">
+     *       &lt;attGroup ref="{http://www.opentravel.org/OTA/2003/05}AirItineraryPricingInfoGroup"/>
      *     &lt;/extension>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -141,35 +170,113 @@ public class AirSearchCriteriaType {
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "")
-    public static class OriginDestinationOption
-        extends OriginDestinationOptionType
+    public static class AirItineraryPricingInfo
+        extends AirItineraryPricingInfoType
     {
 
-        @XmlAttribute(name = "RPH")
-        protected String rph;
+        @XmlAttribute(name = "FarefamilyCode")
+        protected String farefamilyCode;
+        @XmlAttribute(name = "FarefamilyName")
+        protected String farefamilyName;
+        @XmlAttribute(name = "CellingPrice")
+        protected String cellingPrice;
+        @XmlAttribute(name = "EstimatedMaxDiscountAmount")
+        protected BigDecimal estimatedMaxDiscountAmount;
 
         /**
-         * 获取rph属性的值。
+         * 获取farefamilyCode属性的值。
          * 
          * @return
          *     possible object is
          *     {@link String }
          *     
          */
-        public String getRPH() {
-            return rph;
+        public String getFarefamilyCode() {
+            return farefamilyCode;
         }
 
         /**
-         * 设置rph属性的值。
+         * 设置farefamilyCode属性的值。
          * 
          * @param value
          *     allowed object is
          *     {@link String }
          *     
          */
-        public void setRPH(String value) {
-            this.rph = value;
+        public void setFarefamilyCode(String value) {
+            this.farefamilyCode = value;
+        }
+
+        /**
+         * 获取farefamilyName属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getFarefamilyName() {
+            return farefamilyName;
+        }
+
+        /**
+         * 设置farefamilyName属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setFarefamilyName(String value) {
+            this.farefamilyName = value;
+        }
+
+        /**
+         * 获取cellingPrice属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getCellingPrice() {
+            return cellingPrice;
+        }
+
+        /**
+         * 设置cellingPrice属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setCellingPrice(String value) {
+            this.cellingPrice = value;
+        }
+
+        /**
+         * 获取estimatedMaxDiscountAmount属性的值。
+         * 
+         * @return
+         *     possible object is
+         *     {@link BigDecimal }
+         *     
+         */
+        public BigDecimal getEstimatedMaxDiscountAmount() {
+            return estimatedMaxDiscountAmount;
+        }
+
+        /**
+         * 设置estimatedMaxDiscountAmount属性的值。
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link BigDecimal }
+         *     
+         */
+        public void setEstimatedMaxDiscountAmount(BigDecimal value) {
+            this.estimatedMaxDiscountAmount = value;
         }
 
     }
