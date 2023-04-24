@@ -1,4 +1,4 @@
-package om.airchina.datacenter.parsejson;
+package com.airchina.datacenter.parsejson;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
