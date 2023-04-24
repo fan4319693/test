@@ -1,0 +1,385 @@
+<OJ_SuperPNR BookingDate="2023-02-16T03:15:02" BookingStatus="cancelled" CancelTimeLimit="2023-02-16T03:55:00" CryptoVersion="2" Destination="CTU" EndDate="2023-02-18T13:40:00" FullHistory="false" LastAuditID="9" LastModified="2023-02-16T03:21:26" ProcessingStatus="COMPLETED" SchemaVersion="2.12.6" SourceAddress="trp-order-db-service-733cce83-b8cc8f5c4-ktlcs/102.0.36.34" StartDate="2023-02-18T10:30:00" Summary="false" SuperPNR_ID="20230216111500348850" TSBookingStatus="ticketSuccess">
+      <POS>
+        <Source Channel="IBE" ISOCountry="US" Locale="en_US">
+          <RequestorID ID="AIRCHINA_WEBD">
+            <CompanyName/>
+          </RequestorID>
+        </Source>
+      </POS>
+      <ModularProduct BookedWith="1000" BookingChannel="TSDF" BookingStatus="cancelled" CancellationDate="2023-02-16T03:19:10" EndDate="2023-02-18T13:40:00" Historic="false" HistoryID="1000" LastModified="2023-02-16T03:19:10" MasterProductNumber="0" PrimaryLangID="en" ProductID="1000" ProductNumber="1007" ProductType="ancillary" ProductTypeCode="U" ServiceCode="DJKSC" StartDate="2023-02-18T10:30:00" TSBookingStatus="CANCELLED">
+        <AncillaryProduct Airport="PEK" BookingChannel="TSDF" BookingReferenceID="O2023021611150004409" BookingStatus="upgradeRefundFail" CabinClass="J" Carrier="CA" Category="segment" Code="I" Date="2023-02-18T10:30:00" Destination="CTU" FlightNumber="4186" FlightSegmentRPH="1" Name="" Origin="PEK" OriginDestinationRPH="1" ProductSequence="" Quantity="1" SeatNumber="2A" SellingProposition="" SubType="" SupplierCode="" SupplierProductCode="J" Tag="N/A" Type="CABIN_UPGR_BOARDING">
+          <Air BookingReferenceID="PBG8NJ">
+            <AirItinerary DirectionInd="OneWay" DocumentationRequired="None">
+              <OriginDestinationOptions>
+                <OriginDestinationOption BookingChannel="TDP" Duration="3:10" MajorityCarrier="CA" RPH="1">
+                  <FlightSegment ArrivalDateTime="2023-02-18T13:40:00" CabinCode="Y" DepartureDateTime="2023-02-18T10:30:00" Duration="3:10" FlightNumber="4186" InfoSource="Domestic" MealCode="M" RPH="1" ResBookDesigCode="Y" Status="RR" StopQuantity="0">
+                    <DepartureAirport CodeContext="IATA" CountryCode="CN" LocationCode="PEK" TS_CityCode="BJS" Terminal="T3"/>
+                    <ArrivalAirport CodeContext="IATA" CountryCode="CN" LocationCode="CTU" TS_CityCode="CTU" Terminal="T2"/>
+                    <OperatingAirline Code="CA" FlightNumber="4186"/>
+                    <Equipment AirEquipType="320"/>
+                    <MarketingAirline Code="CA"/>
+                    <BookingClassAvails>
+                      <BookingClassAvail RPH="1" ResBookDesigCode="Y" ResBookDesigQuantity="A" ResBookDesigStatusCode="Available"/>
+                    </BookingClassAvails>
+                  </FlightSegment>
+                </OriginDestinationOption>
+              </OriginDestinationOptions>
+            </AirItinerary>
+            <PriceInfo FareFamilyCode="DE1" FareFamilyName="经济全价" PricingSource="Published">
+              <FareInfos>
+                <FareInfo>
+                  <FareReference CabinCode="Y" ResBookDesigCode="Y"/>
+                  <FilingAirline Code="CA"/>
+                  <DepartureAirport CodeContext="IATA" LocationCode="PEK"/>
+                  <ArrivalAirport CodeContext="IATA" LocationCode="CTU"/>
+                  <FareInfo DisCount="1.00" FareBasis="Y/CESHI020926"/>
+                </FareInfo>
+              </FareInfos>
+            </PriceInfo>
+            <Ticketing ExpiryDateTime="2024-02-17T00:00:00" FlightSegmentRefNumber="1" IssuingAgentID="08385576" ItemNumber="1" Printed="false" TicketTime="2023-02-16T11:12:00" TicketingStatus="CHECKED IN" TravelerRefNumber="1" WaitlistStatus="OK" eTicketNumber="9992191105256">
+              <CheckInInfo AuditID="7" History="false" RPH="1" SeatNumber="" Status="39" TravelerSupplierRefNumber="0002">
+                <Notes>
+                  <Note CharSet="1" Type="ItinerayRefNumber"/>
+                  <Note CharSet="Y" Type="ResBookDesigSubCode"/>
+                  <Note CharSet="D" Type="DepartureCityCategory"/>
+                  <Note CharSet="D" Type="ArrivalCityCategory"/>
+                  <Note CharSet="22J" Type="ASRSeat"/>
+                  <Note CharSet="张七" Type="PassengerName"/>
+                  <Note CharSet="ZHANGQI" Type="PsrEnName"/>
+                </Notes>
+              </CheckInInfo>
+            </Ticketing>
+          </Air>
+          <CancellationPenalties>
+            <CancelPenalty>
+              <AmountPercent Amount="0"/>
+            </CancelPenalty>
+          </CancellationPenalties>
+          <TravelerInfo>
+            <AirTraveler BirthDate="1980-01-03" OJ_SuperPNR_RPH="1" PTCSubType="" PassengerTypeCode="ADT" VerifyADTAccompanierAge="true">
+              <PersonName>
+                <Surname>张七</Surname>
+              </PersonName>
+              <Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13804972039" PhoneTechType="5" PhoneUseType="10" RPH="0"/>
+              <Document BirthDate="1980-01-03" DocHolderNationality="CN" DocID="110101198001030118" DocType="5" ExpireDate="2035-10-10"/>
+              <TravelerRefNumber RPH="1"/>
+            </AirTraveler>
+          </TravelerInfo>
+          <Ticketing TicketTime="2023-02-16T03:15:55" eTicketNumber="9994551339857"/>
+          <Contact>
+            <PersonName>
+              <Surname>张二</Surname>
+            </PersonName>
+          </Contact>
+          <Prices>
+            <Price LoyaltyLevel="X" PassengerTypeCode="ADT">
+              <Base Amount="30" CurrencyCode="CNY"/>
+              <Total Adjusted="0" Amount="30" CurrencyCode="CNY"/>
+            </Price>
+          </Prices>
+        </AncillaryProduct>
+        <Pricing>
+          <PrePayTotal Amount="30" CurrencyCode="CNY" PrePayInd="true" UnitPrice="30"/>
+          <PriceAdjustments Amount="0" CurrencyCode="CNY"/>
+          <CancellationFees Amount="0" CurrencyCode="CNY">
+            <CancellationFee Amount="0" CurrencyCode="CNY" FlightSegmentRPH="1" OJ_SuperPNR_RPH="1" ProductNumber="1006"/>
+          </CancellationFees>
+          <CancellationRefunds Amount="-30" CurrencyCode="CNY">
+            <CancellationRefund AllowAuto="true" Amount="-30" CurrencyCode="CNY" FlightSegmentRPH="1" MasterProductNumber="0" OJ_SuperPNR_RPH="1" ProductNumber="1006"/>
+          </CancellationRefunds>
+          <TotalPrice Amount="0" CurrencyCode="CNY"/>
+        </Pricing>
+        <Remarks>
+          <Remark Active="true" AuditID="6" Code="superRefundAction" CodeContext="RR" Date="2023-02-16T03:17:31" LastModified="2023-02-16T03:19:10">
+            <Agent SourceAddress="" Timestamp="2023-02-16T03:19:10"/>
+            <RefundQualifiers>
+              <RefundQualifier QualifierDescription="reason" QualifierValue="111"/>
+              <RefundQualifier QualifierDescription="phone" QualifierValue="13804972039"/>
+              <RefundQualifier QualifierDescription="name" QualifierValue="测试"/>
+              <RefundQualifier QualifierDescription="email" QualifierValue="zhanghanyu@travelsky.com.cn"/>
+              <RefundQualifier QualifierDescription="fileType" QualifierValue="attachment">
+                <QualifierItem Name="materialID" Value="ZmxpZ2h0UmVmdW5kL29yZGVySUQvMjAyMzAyMTYxMTE1MDAzNDg4NTAvMS5kb2M="/>
+              </RefundQualifier>
+            </RefundQualifiers>
+          </Remark>
+          <Remark Active="true" AuditID="7" Code="refundApplication" CodeContext="RR" Date="2023-02-16T03:19:09" LastModified="2023-02-16T03:19:10" RPH="2">
+            <Agent Agent="ibe" SourceAddress="" Timestamp="2023-02-16T03:19:10"/>
+            <RefundQualifiers>
+              <RefundQualifier QualifierDescription="reasonType" QualifierValue="Personal"/>
+              <RefundQualifier QualifierDescription="name" QualifierValue="测试"/>
+              <RefundQualifier QualifierDescription="email" QualifierValue="zhanghanyu@travelsky.com.cn"/>
+              <RefundQualifier QualifierDescription="phone" QualifierValue="13804972039"/>
+              <RefundQualifier QualifierDescription="comment" QualifierValue="111"/>
+              <RefundQualifier QualifierDescription="automatedCancelFees" QualifierValue="0"/>
+              <RefundQualifier QualifierDescription="refundAmount" QualifierValue="30"/>
+              <RefundQualifier QualifierDescription="cancelPercent" QualifierValue="0"/>
+              <RefundQualifier QualifierDescription="isAirMPNoModify" QualifierValue="true"/>
+              <RefundQualifier QualifierDescription="cancelFeesSource" QualifierValue="RuleTable"/>
+              <RefundQualifier QualifierDescription="refundApplicationID" QualifierValue="02202302161119094029"/>
+              <RefundQualifier QualifierDescription="automaticCalculate" QualifierValue="true"/>
+            </RefundQualifiers>
+          </Remark>
+        </Remarks>
+        <Audits>
+          <Audit Action="Booking" Channel="AIRCHINA_WEBD" ID="1" RequestorID="AIRCHINA_WEBD" Timestamp="2023-02-16T03:15:00.258"/>
+          <Audit Action="PaymentAuthorization" Channel="IBE" ID="2" RequestorID="AIRCHINA_PMC" Timestamp="2023-02-16T03:15:27">
+            <Agent Agency="AIRCHINA_PMC"/>
+            <Events>
+              <Event Context="ModularProduct" ID="1000" OrigValue="23021611152653946129" RefId="Unpaid" Type="PaymentAuthorization"/>
+            </Events>
+          </Audit>
+          <Audit Action="PaymentConfirmation" Channel="IBE" ID="3" RequestorID="AIRCHINA_PMC" Timestamp="2023-02-16T03:15:30">
+            <Agent Agency="AIRCHINA_PMC"/>
+            <Events>
+              <Event Context="ModularProduct" ID="1000" OrigValue="23021611152653946129" RefId="Paid" Type="PaymentConfirmation"/>
+            </Events>
+          </Audit>
+          <Audit Action="Ticketing" ID="4" SourceAddress="TASK" Timestamp="2023-02-16T03:15:55"/>
+          <Audit Action="RESYNC" Channel="AIRCHINA_WEBD" ID="5" RequestorID="" SourceAddress="TASK" Timestamp="2023-02-16 11:15:49.720">
+            <Agent Agent="XDIST"/>
+          </Audit>
+          <Audit ID="6" SourceAddress=" 10.223.225.5" Timestamp="2023-02-16T03:17:31">
+            <Agent Agent="trc-test"/>
+          </Audit>
+          <Audit Action="RefundApplication" ID="7" RequestorID="trc-test" SourceAddress="" Timestamp="2023-02-16T03:19:09">
+            <Agent Agent=""/>
+          </Audit>
+        </Audits>
+        <Agent Agent="trc-test"/>
+        <Source Channel="AIRCHINA_WEBD">
+          <RequestorID ID="AIRCHINA_WEBD"/>
+          <Config IATANumber="08612345" ID="10000028" OfficeCode="PEK222" OperationType="A" Source="DOM"/>
+        </Source>
+        <ModifyTypes>
+          <ModifyType AuditID="7" Type="AddRemark"/>
+        </ModifyTypes>
+        <PTCs>
+          <PTC Code="ADT" Quantity="1"/>
+        </PTCs>
+        <PaymentRefs AuditID="3" PaymentState="FullyPaid">
+          <PaymentRef AuditID="2" ID="1" PaymentID="202302160315278654"/>
+          <PaymentRef AuditID="3" ID="2" PaymentID="202302160315278654"/>
+        </PaymentRefs>
+      </ModularProduct>
+      <Pricing>
+        <PostPayTotal Amount="0" CurrencyCode="CNY"/>
+        <PrePayTotal Amount="0" CurrencyCode="CNY"/>
+        <PriceAdjustments Amount="0" CurrencyCode="CNY"/>
+        <TotalPrice Amount="0" CurrencyCode="CNY"/>
+      </Pricing>
+      <Remarks>
+        <Remark Active="false" AuditID="7" Code="refundApplication" CodeContext="RR" Date="2023-02-16T03:19:09" HistoryRPH="1" LastModified="2023-02-16T03:19:12" LiveRPH="2" RPH="1" SeqNo="388240">
+          <Agent Agent="trc-test"/>
+          <RefundQualifiers>
+            <RefundQualifier QualifierDescription="name" QualifierValue="测试"/>
+            <RefundQualifier QualifierDescription="email" QualifierValue="zhanghanyu@travelsky.com.cn"/>
+            <RefundQualifier QualifierDescription="phone" QualifierValue="13804972039"/>
+            <RefundQualifier QualifierDescription="comment" QualifierValue="111"/>
+            <RefundQualifier QualifierDescription="refundApplicationID" QualifierValue="02202302161119094029"/>
+            <RefundQualifier QualifierDescription="businessType" QualifierValue="Refund"/>
+            <RefundQualifier QualifierDescription="triggerType" QualifierValue="superRefund"/>
+            <RefundQualifier QualifierDescription="refundChannel" QualifierValue="AIRCHINA_CC"/>
+            <RefundQualifier QualifierDescription="isRefundAncillaryOnly" QualifierValue="true"/>
+            <RefundQualifier QualifierDescription="reasonType" QualifierValue="Personal">
+              <QualifierItem Name="materialID" Value="ZmxpZ2h0UmVmdW5kL29yZGVySUQvMjAyMzAyMTYxMTE1MDAzNDg4NTAvMS5kb2M="/>
+            </RefundQualifier>
+            <RefundQualifier QualifierDescription="autoReview" QualifierValue="true"/>
+            <RefundQualifier QualifierDescription="nextActionCode" QualifierValue="refundRepayApplication"/>
+          </RefundQualifiers>
+        </Remark>
+        <Remark Active="false" AuditID="8" Code="refundRepayApplication" CodeContext="RR" Date="2023-02-16T03:19:12" HistoryRPH="1" LastModified="2023-02-16T03:21:26" LiveRPH="3" RPH="2" SeqNo="388243">
+          <Agent Agent="system"/>
+          <RefundQualifiers>
+            <RefundQualifier QualifierDescription="refundRepayApplicationDateTime" QualifierValue="2023-02-16 11:19:12"/>
+            <RefundQualifier QualifierDescription="refundApplicationID" QualifierValue="02202302161119094029"/>
+            <RefundQualifier QualifierDescription="reasonType" QualifierValue="Personal">
+              <QualifierItem Name="materialID" Value="ZmxpZ2h0UmVmdW5kL29yZGVySUQvMjAyMzAyMTYxMTE1MDAzNDg4NTAvMS5kb2M="/>
+            </RefundQualifier>
+            <RefundQualifier QualifierDescription="businessType" QualifierValue="Refund"/>
+            <RefundQualifier QualifierDescription="approved" QualifierValue="true"/>
+            <RefundQualifier QualifierDescription="nextActionCode" QualifierValue="refundRepayReview"/>
+            <RefundQualifier QualifierDescription="comment" QualifierValue="Auto refund repay"/>
+          </RefundQualifiers>
+        </Remark>
+        <Remark Active="true" AuditID="9" Code="refundRepay" CodeContext="RR" Date="2023-02-16T03:21:26" HistoryRPH="2" LastModified="2023-02-16T03:21:26" RPH="3" SeqNo="388248">
+          <Agent Agent="PayCenter"/>
+          <RefundQualifiers>
+            <RefundQualifier QualifierDescription="refundApplicationID" QualifierValue="02202302161119094029"/>
+            <RefundQualifier QualifierDescription="approved" QualifierValue="true"/>
+            <RefundQualifier QualifierDescription="comment" QualifierValue="Agree"/>
+            <RefundQualifier QualifierDescription="dateTime" QualifierValue="2022-06-14T06:56:00.000Z"/>
+            <RefundQualifier QualifierDescription="reasonType" QualifierValue="Personal">
+              <QualifierItem Name="materialID" Value="ZmxpZ2h0UmVmdW5kL29yZGVySUQvMjAyMzAyMTYxMTE1MDAzNDg4NTAvMS5kb2M="/>
+            </RefundQualifier>
+            <RefundQualifier QualifierDescription="businessType" QualifierValue="Refund"/>
+          </RefundQualifiers>
+        </Remark>
+      </Remarks>
+      <Audits>
+        <Audit Action="Booking" Channel="AIRCHINA_WEBD" ID="1" RequestorID="AIRCHINA_WEBD" SourceAddress="" Timestamp="2023-02-16T03:15:02" Version="1.15.0">
+          <Events/>
+        </Audit>
+        <Audit Action="PaymentAuthorization" Channel="IBE" ID="2" RequestorID="AIRCHINA_PMC" Timestamp="2023-02-16T03:15:27">
+          <Agent Agency="AIRCHINA_PMC"/>
+          <Events>
+            <Event Context="ModularProduct" ID="1000" OrigValue="23021611152653946129" RefId="Unpaid" Type="PaymentAuthorization"/>
+          </Events>
+        </Audit>
+        <Audit Action="PaymentConfirmation" Channel="IBE" ID="3" RequestorID="AIRCHINA_PMC" Timestamp="2023-02-16T03:15:30">
+          <Agent Agency="AIRCHINA_PMC"/>
+          <Events>
+            <Event Context="ModularProduct" ID="1000" OrigValue="23021611152653946129" RefId="Paid" Type="PaymentConfirmation"/>
+          </Events>
+        </Audit>
+        <Audit Action="Ticketing" ID="4" SourceAddress="" Timestamp="2023-02-16T03:15:55" Version="1.15.0">
+          <Agent Agent="TASK" SourceAddress="TASK" Timestamp="2023-02-16 11:15:49.720"/>
+          <Events/>
+        </Audit>
+        <Audit Action="RESYNC" Channel="AIRCHINA_WEBD" ID="5" RequestorID="" SourceAddress="102.0.36.168" Timestamp="2023-02-16T03:16:06" Version="1.15.0">
+          <Agent Agency="RESYNC" Agent="XDIST" URL="102.0.36.168"/>
+          <Events/>
+        </Audit>
+        <Audit Channel="" ID="6" RequestorID="CC" SourceAddress=" 10.223.225.5" Timestamp="2023-02-16T03:17:32" Version="1.15.0">
+          <Agent Agent="trc-test"/>
+          <Events/>
+        </Audit>
+        <Audit Action="RefundApplication" Channel="" ID="7" RequestorID="AIRCHINA_WEBD" SourceAddress="" Timestamp="2023-02-16T03:19:10" Version="1.15.0">
+          <Agent Agent=""/>
+          <Events/>
+        </Audit>
+        <Audit ID="8" RequestorID="AIRCHINA_WEBD" SourceAddress="" Timestamp="2023-02-16T03:19:12" Version="1.15.0">
+          <Events/>
+        </Audit>
+        <Audit ID="9" SourceAddress="" Timestamp="2023-02-16T03:21:26" Version="1.15.0">
+          <Events/>
+        </Audit>
+      </Audits>
+      <PaymentDetails LastModified="2023-02-16T03:21:26">
+        <Balance Amount="0" CurrencyCode="CNY"/>
+        <Payments ActualPayment="30" Amount="0" CurrencyCode="CNY" LastModified="2023-02-16T03:21:26">
+          <Payment Amount="30" AuditID="3" CurrencyCode="CNY" Historic="false" HistoryID="1" ID="2" PaymentDate="2023-02-16T03:15:30" PrePayInd="true" SeqNo="388231" Status="Paid" TransactionType="Debit">
+            <PaymentForm>
+              <Other Type="101">
+                <Ref Code="BillNo">23021611152653946129</Ref>
+                <Ref Code="PayDate">2023-02-16T03:15:26.337Z</Ref>
+                <Ref Code="PayChannel">AIRCHINA_WEBD</Ref>
+                <Ref Code="PaymentID">202302160315278654</Ref>
+                <Ref Code="PaymentType">Cash</Ref>
+                <Ref Code="PayProductCode">FDC</Ref>
+                <Ref Code="OutSysNo"/>
+                <Ref Code="ReceiptAcquirerCode">MOCK</Ref>
+                <Ref Code="MerchantNumber">20220821</Ref>
+                <Ref Code="BankID">MCBC</Ref>
+              </Other>
+            </PaymentForm>
+          </Payment>
+          <Payment Amount="30" AuditID="9" CurrencyCode="CNY" Historic="false" HistoryID="6" ID="7" LastModifed="2023-02-16T03:21:26" OrigPayID="2" PaymentDate="2023-02-16T03:19:10" PrePayInd="true" SeqNo="388247" Status="Paid" TransactionType="Credit">
+            <PaymentForm>
+              <Other Type="101">
+                <Ref Code="BillNo">23021611152653946129</Ref>
+                <Ref Code="PayChannel">AIRCHINA_WEBD</Ref>
+                <Ref Code="PaymentID">202302160315278654</Ref>
+                <Ref Code="PaymentType">Cash</Ref>
+                <Ref Code="PayProductCode">FDC</Ref>
+                <Ref Code="OutSysNo"/>
+                <Ref Code="ReceiptAcquirerCode">MOCK</Ref>
+                <Ref Code="MerchantNumber">20220821</Ref>
+                <Ref Code="BankID">MCBC</Ref>
+                <Ref Code="PayDate">2022-06-14T06:56:00.000Z</Ref>
+              </Other>
+            </PaymentForm>
+            <PaymentQualifiers>
+              <PaymentQualifier QualifierDescription="refundApplicationID" QualifierValue="02202302161119094029"/>
+              <PaymentQualifier QualifierDescription="sequenceNum" QualifierValue="1"/>
+              <PaymentQualifier QualifierDescription="referProductNumber" QualifierValue="1007"/>
+              <PaymentQualifier QualifierDescription="refundTradeNo" QualifierValue="2023021611194031"/>
+              <PaymentQualifier QualifierDescription="payCenterStatus" QualifierValue="success"/>
+              <PaymentQualifier QualifierDescription="bankRefundStatus" QualifierValue="paid"/>
+            </PaymentQualifiers>
+          </Payment>
+        </Payments>
+      </PaymentDetails>
+      <Queues>
+        <Queue Active="false" QueueID="6107" QueueName="Automatic Refund Queue">
+          <Action Action="Add" Agent="xDist" Date="2023-02-16T03:19:11" SeqNo="388241">
+            <Reason>Add to Automatic Refund Queue</Reason>
+          </Action>
+          <Action Action="Delete" Agent="SPNR_Connector" Date="2023-02-16T03:19:13" SeqNo="388244">
+            <Reason>Send To EasyPay Success, removing from Automatic Refund Queue</Reason>
+          </Action>
+        </Queue>
+        <Queue Active="false" QueueID="6404" QueueName="GateCabinUpgrade Supper Refund">
+          <Action Action="Add" Agent="agent" Date="2023-02-16T03:17:34" SeqNo="388238" Urgent="false">
+            <Reason>SuperRefund</Reason>
+          </Action>
+          <Action Action="Delete" Agent="trc-test" Date="2023-02-16T03:19:14" SeqNo="388245">
+            <Reason/>
+          </Action>
+        </Queue>
+        <Queue Active="false" QueueID="6026" QueueName="Pending Redirect Payment Queue">
+          <Action Action="Add" Agent="NDC" Date="2023-02-16T03:15:05" SeqNo="388228" Urgent="false">
+            <Reason>Redirect Payment Process. Adding SPNR with Payment Pending</Reason>
+          </Action>
+          <Action Action="Delete" Agent="xDist - CLCNTR - Super PNR Write" Date="2023-02-16T03:15:33" SeqNo="388232">
+            <Reason>Redirect Payment Successful</Reason>
+          </Action>
+        </Queue>
+        <Queue Active="false" QueueID="6077" QueueName="Prepare Cancel Queue">
+          <Action Action="Add" Agent="NDC" Date="2023-02-16T03:15:05" SeqNo="388229" Urgent="false">
+            <Reason>Booking Create Success Adding to Prepare Cancel Queue</Reason>
+          </Action>
+          <Action Action="Delete" Agent="xDist - CLCNTR - Super PNR Write" Date="2023-02-16T03:15:33" SeqNo="388233">
+            <Reason>Redirect Payment Successful</Reason>
+          </Action>
+        </Queue>
+        <Queue Active="false" QueueID="6320" QueueName="EMDticketing 1 Minute Queue">
+          <Action Action="Add" Agent="XDIST" Date="2023-02-16T03:15:34" SeqNo="388234">
+            <Reason>If additional services exist,add EMDticketing 1 Minute Queue.</Reason>
+          </Action>
+          <Action Action="Delete" Agent="xDist" Date="2023-02-16T03:16:09" SeqNo="388236">
+            <Reason>Removing</Reason>
+          </Action>
+        </Queue>
+      </Queues>
+      <Customer AuditID="1" CustomerID="100" Historic="false" SeqNo="388227">
+        <Primary AccountType="1" OJ_SuperPNR_RPH="2" PassengerTypeCode="ADT">
+          <PersonName>
+            <GivenName>test</GivenName>
+            <Surname>zhang</Surname>
+          </PersonName>
+          <Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13804972039" PhoneTechType="5" PhoneUseType="5" RPH="0" index="0"/>
+          <Email>zhanghanyu@travelsky.com.cn</Email>
+          <UniqueID ID="zhanghanyu" ID_Context="Profile"/>
+        </Primary>
+        <Additional BirthDate="1980-01-03" OJ_SuperPNR_RPH="1" PassengerTypeCode="ADT">
+          <PersonName>
+            <Surname>张七</Surname>
+          </PersonName>
+          <Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13804972039" PhoneTechType="5" PhoneUseType="10"/>
+          <CitizenCountryName Code="CN"/>
+          <Document DocHolderNationality="CN" DocID="110101198001030118" DocType="5" ExpireDate="2035-10-10"/>
+        </Additional>
+      </Customer>
+      <Attachments>
+        <Attachment Content-Description="1234" Content-Length="9216" Content-Location="1.doc" Key="ZmxpZ2h0UmVmdW5kL29yZGVySUQvMjAyMzAyMTYxMTE1MDAzNDg4NTAvMS5kb2M=" UploadDate="2023-02-16T11:17:00">
+          <Agent Agent="trc-test"/>
+        </Attachment>
+      </Attachments>
+      <CrossRefs/>
+      <AssociatedBookings>
+        <Booking AssociationType="HISTORY" SuperPNR_ID="20230216111128348848">
+          <Product HistoryID="1000" ProductID="1000" Status="TICKETED" SubType="air" Type="air">
+            <FlightSegment DepartureDate="2023-02-18T10:30:00" FlightNumber="4186" OriginDestination="PEKCTU" RPH="1"/>
+            <FlightTicketing FlightSegmentRPH="1" TicketingStatus="CHECKED IN" TravelerRPH="1" eTicketNumber="9992191105256"/>
+          </Product>
+          <Customer>
+            <Primary>
+              <Profile ID="zhanghanyu"/>
+            </Primary>
+          </Customer>
+        </Booking>
+      </AssociatedBookings>
+      <Category Code="">
+        <SubCategory Code=""/>
+      </Category>
+    </OJ_SuperPNR>

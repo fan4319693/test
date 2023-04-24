@@ -1,0 +1,446 @@
+<OJ_SuperPNR BookingDate="2023-02-20T09:02:56" BookingStatus="booked" CancelTimeLimit="2023-02-20T09:32:54" CryptoVersion="2" Destination="CTU" EndDate="2023-02-20T22:40:00" FullHistory="false" LastAuditID="5" LastModified="2023-02-20T09:03:51" ProcessingStatus="COMPLETED" SchemaVersion="2.12.6" SourceAddress="order-db-service-6e2b2466-66678b9498-kqhhn/10.150.8.71" StartDate="2023-02-20T19:30:00" Summary="false" SuperPNR_ID="20230220170254044376" TSBookingStatus="ticketSuccess">
+      <POS>
+        <Source AirlineVendorID="CA" Channel="IBE" EntryPoint="xSell" ISOCountry="CN" ISOCurrency="CNY" Locale="zh_CN">
+          <RequestorID ID="AIRCHINA_WEBD"/>
+        </Source>
+      </POS>
+      <ModularProduct BookingChannel="TSDF" BookingDate="2023-02-20T09:02:56" BookingStatus="booked" EndDate="2023-02-20T22:40:00" Historic="false" HistoryID="1000" LastModified="2023-02-20T09:04:08" MasterProductNumber="0" PrimaryLangID="zh" ProductID="1000" ProductNumber="1006" ProductType="air" ProductTypeCode="F" SearchID="153faa77-4daf-413b-a40b-36e0b1503b78" StartDate="2023-02-20T19:30:00" Synchronised="true" TSBookingStatus="TICKETED">
+        <Air BookingReferenceID="PVW6GJ">
+          <AirItinerary DirectionInd="OneWay" DocumentationRequired="None">
+            <OriginDestinationOptions>
+              <OriginDestinationOption BookingChannel="TDP" Duration="3:10" MajorityCarrier="CA" RPH="1">
+                <Baggage BaggageRPH="1" CabinCode="Y" FlightSegmentRPH="1" Pieces="6" PricingRPH="1">
+                  <Weight Unit="KG" Weight="55"/>
+                  <Size Code="PC" Description="555*666*777" Height="777" Length="555" LinearDimensions="," Width="666"/>
+                  <SpecialItem Code="PC" CodeContext="" URI=""/>
+                  <TPA_Extensions>
+                    <PassageType Code="ADT"/>
+                    <FareFamily CabinCode="Y" Code="DE5" ResBookDesigCode="T"/>
+                  </TPA_Extensions>
+                </Baggage>
+                <Baggage BaggageRPH="2" CabinCode="Y" FlightSegmentRPH="1" Pieces="6" PricingRPH="1">
+                  <Weight Unit="KG" Weight="55"/>
+                  <Size Code="PC" Description="555*666*777" Height="777" Length="555" LinearDimensions="," Width="666"/>
+                  <SpecialItem Code="PC" CodeContext="" URI=""/>
+                  <TPA_Extensions>
+                    <PassageType Code="CHD"/>
+                    <FareFamily CabinCode="Y" Code="DE5" ResBookDesigCode="T"/>
+                  </TPA_Extensions>
+                </Baggage>
+                <FlightSegment ArrivalDateTime="2023-02-20T22:40:00" CabinCode="Y" DepartureDateTime="2023-02-20T19:30:00" Duration="3:10" FlightNumber="4110" InfoSource="Domestic" MealCode="M" RPH="1" ResBookDesigCode="T" Status="RR" StopQuantity="0">
+                  <DepartureAirport CodeContext="IATA" CountryCode="CN" LocationCode="PEK" TS_CityCode="BJS" Terminal="T3"/>
+                  <ArrivalAirport CodeContext="IATA" CountryCode="CN" LocationCode="CTU" TS_CityCode="CTU" Terminal="T2"/>
+                  <OperatingAirline Code="CA" FlightNumber="4110"/>
+                  <Equipment AirEquipType="330"/>
+                  <MarketingAirline Code="CA"/>
+                  <BookingClassAvails>
+                    <BookingClassAvail RPH="1" ResBookDesigCode="T" ResBookDesigQuantity="A" ResBookDesigStatusCode="Available"/>
+                  </BookingClassAvails>
+                </FlightSegment>
+              </OriginDestinationOption>
+            </OriginDestinationOptions>
+          </AirItinerary>
+          <PriceInfo FareFamilyCode="DE5" FareFamilyName="超值特价" PricingSource="Published">
+            <ItinTotalFare>
+              <BaseFare Adjusted="1800" Amount="1800" CurrencyCode="CNY" OriginalAmount="1800" OriginalCurrencyCode="CNY"/>
+              <Taxes>
+                <Tax Amount="50" CurrencyCode="CNY" OriginalAmount="50" OriginalCurrencyCode="CNY" TaxCode="CN" TaxName="Airport Fee (Domestic)"/>
+                <Tax Amount="120" CurrencyCode="CNY" OriginalAmount="120" OriginalCurrencyCode="CNY" TaxCode="YQ" TaxName="Fuel Surcharge"/>
+              </Taxes>
+              <TotalFare Adjusted="1970" Amount="1970" CurrencyCode="CNY" OriginalAmount="1970" OriginalCurrencyCode="CNY"/>
+            </ItinTotalFare>
+            <PTC_FareBreakdowns>
+              <PTC_FareBreakdown>
+                <PassengerTypeQuantity Code="ADT" PTCSubType="" Quantity="1"/>
+                <PassengerFare>
+                  <BaseFare Adjusted="900" Amount="900" CurrencyCode="CNY" OriginalAmount="900" OriginalCurrencyCode="CNY"/>
+                  <Taxes>
+                    <Tax Amount="50" CurrencyCode="CNY" OriginalAmount="0" OriginalCurrencyCode="" TaxCode="CN" TaxName="Airport Fee (Domestic)"/>
+                    <Tax Amount="80" CurrencyCode="CNY" OriginalAmount="0" OriginalCurrencyCode="" TaxCode="YQ" TaxName="Fuel Surcharge"/>
+                  </Taxes>
+                  <TotalFare Adjusted="1030" Amount="1030" CurrencyCode="CNY" OriginalAmount="1030" OriginalCurrencyCode="CNY"/>
+                  <TPA_Extensions>
+                    <FcAVString>PEK CA CTU 900.00T/CA1L230168 CNY900.00END</FcAVString>
+                    <FnString PassengerRPHs="1">FN/M/FCNY0.00/SCNY0.00/C0.00/XCNY130.00/TCNY50.00CN/TCNY80.00YQ/ACNY130.00/P2</FnString>
+                    <FcPNRString PassengerRPHs="1">20FEB23PEK A-20FEB23 B-20FEB23 F-6PC CA CTU 0.00T/CA1L230168            CNY0.00END</FcPNRString>
+                    <FcString>PEK CA CTU 900.00T/CA1L230168 900.00END</FcString>
+                  </TPA_Extensions>
+                  <PriceAdjustments Amount="0" CurrencyCode="CNY"/>
+                </PassengerFare>
+                <Endorsements>
+                  <Endorsement CharSet=""/>
+                </Endorsements>
+              </PTC_FareBreakdown>
+              <PTC_FareBreakdown>
+                <PassengerTypeQuantity Code="CHD" Quantity="1"/>
+                <PassengerFare>
+                  <BaseFare Adjusted="900" Amount="900" CurrencyCode="CNY" OriginalAmount="900" OriginalCurrencyCode="CNY"/>
+                  <Taxes>
+                    <Tax Amount="40" CurrencyCode="CNY" OriginalAmount="0" OriginalCurrencyCode="" TaxCode="YQ" TaxName="Fuel Surcharge"/>
+                  </Taxes>
+                  <TotalFare Adjusted="940" Amount="940" CurrencyCode="CNY" OriginalAmount="940" OriginalCurrencyCode="CNY"/>
+                  <TPA_Extensions>
+                    <FcAVString>PEK CA CTU 900.00T/CA1L230168 CNY900.00END</FcAVString>
+                    <FnString PassengerRPHs="2">FN/M/FCNY0.00/SCNY0.00/C0.00/XCNY40.00/TEXEMPTCN/TCNY40.00YQ/ACNY40.00/P1</FnString>
+                    <FcPNRString PassengerRPHs="2">20FEB23PEK A-20FEB23 B-20FEB23 F-6PC CA CTU 0.00T/CA1L230168            CNY0.00END</FcPNRString>
+                    <FcString>PEK CA CTU 900.00T/CA1L230168 900.00END</FcString>
+                  </TPA_Extensions>
+                  <PriceAdjustments Amount="0" CurrencyCode="CNY"/>
+                </PassengerFare>
+                <Endorsements>
+                  <Endorsement CharSet=""/>
+                </Endorsements>
+              </PTC_FareBreakdown>
+            </PTC_FareBreakdowns>
+            <FareInfos>
+              <FareInfo FlightSegmentRPH="1" OriginDestinationRPH="1">
+                <FareReference CabinCode="Y" ResBookDesigCode="T"/>
+                <FareReference CabinCode="Y" ResBookDesigCode="T"/>
+                <FilingAirline Code="CA"/>
+                <DepartureAirport CodeContext="IATA" LocationCode="PEK"/>
+                <ArrivalAirport CodeContext="IATA" LocationCode="CTU"/>
+                <FareInfo DisCount="1.00" FC_PriceInd="false" FC_RPH="1" FareBasis="T/CA1L230168" FareBasisCode="T/CA1L230168">
+                  <Fare BaseAmount="900" CurrencyCode="CNY" TaxAmount="130" TotalFare="1030" yFareAmount="2950">
+                    <Taxes>
+                      <Tax Amount="50" CurrencyCode="CNY" TaxCode="CN" TaxName="Airport Fee (Domestic)"/>
+                      <Tax Amount="80" CurrencyCode="CNY" TaxCode="YQ" TaxName="Fuel Surcharge"/>
+                    </Taxes>
+                  </Fare>
+                  <PTC PTCSubType="" PassengerTypeCode="ADT" Quantity="1"/>
+                </FareInfo>
+                <FareInfo DisCount="1.00" FC_PriceInd="false" FC_RPH="2" FareBasis="T/CA1L230168" FareBasisCode="T/CA1L230168">
+                  <Fare BaseAmount="900" CurrencyCode="CNY" TaxAmount="40" TotalFare="940" yFareAmount="2950">
+                    <Taxes>
+                      <Tax Amount="40" CurrencyCode="CNY" TaxCode="YQ" TaxName="Fuel Surcharge"/>
+                    </Taxes>
+                  </Fare>
+                  <PTC PTCSubType="" PassengerTypeCode="CHD" Quantity="1"/>
+                </FareInfo>
+                <FareFamily Code="DE5" Name="超值特价">
+                  <AddOns>
+                    <AddOn>
+                      <Description Name="提前预订座位">
+                        <Text CharSet="提前预选座位权益">提前预选座位权益</Text>
+                      </Description>
+                    </AddOn>
+                  </AddOns>
+                </FareFamily>
+                <TPA_Extensions>
+                  <MarketingData>
+                    <LowestFare Amount="900.0" Cabin="Y"/>
+                  </MarketingData>
+                  <FareFamilyInfo ADTDescription="0" CHDDescription="0" CabinCode="Y" FareFamilyCode="DE5" FareFamilyName="超值特价" ResBookDesigCode="T">
+                    <Datechange AfterDepartureRate="30.00" BeforeDepartureRate="20.00" Currency="CNY" Limit="0" PassengerTypeCode="ADT" TimeThreshold="-336" Type="Percent"/>
+                    <Datechange AfterDepartureRate="50.00" BeforeDepartureRate="30.00" Currency="CNY" Limit="0" PassengerTypeCode="ADT" TimeThreshold="-48" Type="Percent"/>
+                    <Datechange AfterDepartureRate="60.00" BeforeDepartureRate="50.00" Currency="CNY" Limit="0" PassengerTypeCode="ADT" TimeThreshold="-4" Type="Percent"/>
+                    <Datechange AfterDepartureRate="60.00" BeforeDepartureRate="60.00" Currency="CNY" Limit="0" PassengerTypeCode="ADT" TimeThreshold="0" Type="Percent"/>
+                    <ChangeRestriction Currency="CNY" PassengerTypeCode="ADT" Type="Percent" end_time="-336" free_change="0" rate="20.00" start_time="*"/>
+                    <ChangeRestriction Currency="CNY" PassengerTypeCode="ADT" Type="Percent" end_time="-48" free_change="0" rate="30.00" start_time="-336"/>
+                    <ChangeRestriction Currency="CNY" PassengerTypeCode="ADT" Type="Percent" end_time="-4" free_change="0" rate="50.00" start_time="-48"/>
+                    <ChangeRestriction Currency="CNY" PassengerTypeCode="ADT" Type="Percent" end_time="0" free_change="0" rate="60.00" start_time="-4"/>
+                    <ChangeRestriction Currency="CNY" PassengerTypeCode="ADT" Type="Percent" end_time="*" free_change="0" rate="60.00" start_time="0"/>
+                    <Refund AfterDepartureRate="60.00" BeforeDepartureRate="40.00" Currency="CNY" Eligible="true" PassengerTypeCode="ADT" TimeThreshold="-336" Type="Percent"/>
+                    <Refund AfterDepartureRate="90.00" BeforeDepartureRate="60.00" Currency="CNY" Eligible="true" PassengerTypeCode="ADT" TimeThreshold="-48" Type="Percent"/>
+                    <Refund AfterDepartureRate="100.00" BeforeDepartureRate="90.00" Currency="CNY" Eligible="true" PassengerTypeCode="ADT" TimeThreshold="-4" Type="Percent"/>
+                    <Refund AfterDepartureRate="100.00" BeforeDepartureRate="100.00" Currency="CNY" Eligible="true" PassengerTypeCode="ADT" TimeThreshold="0" Type="Percent"/>
+                    <CancelRestriction Currency="CNY" PassengerTypeCode="ADT" Type="Percent" end_time="-336" rate="40.00" start_time="*"/>
+                    <CancelRestriction Currency="CNY" PassengerTypeCode="ADT" Type="Percent" end_time="-48" rate="60.00" start_time="-336"/>
+                    <CancelRestriction Currency="CNY" PassengerTypeCode="ADT" Type="Percent" end_time="-4" rate="90.00" start_time="-48"/>
+                    <CancelRestriction Currency="CNY" PassengerTypeCode="ADT" Type="Percent" end_time="0" rate="100.00" start_time="-4"/>
+                    <CancelRestriction Currency="CNY" PassengerTypeCode="ADT" Type="Percent" end_time="*" rate="100.00" start_time="0"/>
+                    <Datechange AfterDepartureRate="30.00" BeforeDepartureRate="20.00" Currency="CNY" Limit="0" PassengerTypeCode="CHD" TimeThreshold="-336" Type="Percent"/>
+                    <Datechange AfterDepartureRate="50.00" BeforeDepartureRate="30.00" Currency="CNY" Limit="0" PassengerTypeCode="CHD" TimeThreshold="-48" Type="Percent"/>
+                    <Datechange AfterDepartureRate="60.00" BeforeDepartureRate="50.00" Currency="CNY" Limit="0" PassengerTypeCode="CHD" TimeThreshold="-4" Type="Percent"/>
+                    <Datechange AfterDepartureRate="60.00" BeforeDepartureRate="60.00" Currency="CNY" Limit="0" PassengerTypeCode="CHD" TimeThreshold="0" Type="Percent"/>
+                    <ChangeRestriction Currency="CNY" PassengerTypeCode="CHD" Type="Percent" end_time="-336" free_change="0" rate="20.00" start_time="*"/>
+                    <ChangeRestriction Currency="CNY" PassengerTypeCode="CHD" Type="Percent" end_time="-48" free_change="0" rate="30.00" start_time="-336"/>
+                    <ChangeRestriction Currency="CNY" PassengerTypeCode="CHD" Type="Percent" end_time="-4" free_change="0" rate="50.00" start_time="-48"/>
+                    <ChangeRestriction Currency="CNY" PassengerTypeCode="CHD" Type="Percent" end_time="0" free_change="0" rate="60.00" start_time="-4"/>
+                    <ChangeRestriction Currency="CNY" PassengerTypeCode="CHD" Type="Percent" end_time="*" free_change="0" rate="60.00" start_time="0"/>
+                    <Refund AfterDepartureRate="60.00" BeforeDepartureRate="40.00" Currency="CNY" Eligible="true" PassengerTypeCode="CHD" TimeThreshold="-336" Type="Percent"/>
+                    <Refund AfterDepartureRate="90.00" BeforeDepartureRate="60.00" Currency="CNY" Eligible="true" PassengerTypeCode="CHD" TimeThreshold="-48" Type="Percent"/>
+                    <Refund AfterDepartureRate="100.00" BeforeDepartureRate="90.00" Currency="CNY" Eligible="true" PassengerTypeCode="CHD" TimeThreshold="-4" Type="Percent"/>
+                    <Refund AfterDepartureRate="100.00" BeforeDepartureRate="100.00" Currency="CNY" Eligible="true" PassengerTypeCode="CHD" TimeThreshold="0" Type="Percent"/>
+                    <CancelRestriction Currency="CNY" PassengerTypeCode="CHD" Type="Percent" end_time="-336" rate="40.00" start_time="*"/>
+                    <CancelRestriction Currency="CNY" PassengerTypeCode="CHD" Type="Percent" end_time="-48" rate="60.00" start_time="-336"/>
+                    <CancelRestriction Currency="CNY" PassengerTypeCode="CHD" Type="Percent" end_time="-4" rate="90.00" start_time="-48"/>
+                    <CancelRestriction Currency="CNY" PassengerTypeCode="CHD" Type="Percent" end_time="0" rate="100.00" start_time="-4"/>
+                    <CancelRestriction Currency="CNY" PassengerTypeCode="CHD" Type="Percent" end_time="*" rate="100.00" start_time="0"/>
+                  </FareFamilyInfo>
+                </TPA_Extensions>
+              </FareInfo>
+            </FareInfos>
+          </PriceInfo>
+          <TravelerInfo>
+            <AirTraveler BirthDate="1984-10-11" OJ_SuperPNR_RPH="1" PTCSubType="" PassengerTypeCode="ADT">
+              <PersonName>
+                <Surname>杨洋</Surname>
+              </PersonName>
+              <Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13521599951" PhoneTechType="5" PhoneUseType="10" RPH="0"/>
+              <Document BirthDate="1984-10-11" DocHolderNationality="CN" DocID="110106198410112765" DocType="5"/>
+              <TravelerRefNumber RPH="1"/>
+            </AirTraveler>
+            <AirTraveler BirthDate="2012-10-19" OJ_SuperPNR_RPH="2" PTCSubType="" PassengerTypeCode="CHD">
+              <PersonName>
+                <Surname>杨儿童</Surname>
+              </PersonName>
+              <Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13521599951" PhoneTechType="5" PhoneUseType="10"/>
+              <Document BirthDate="2012-10-19" DocHolderNationality="CN" DocID="110106201210190616" DocType="5"/>
+              <TravelerRefNumber RPH="2"/>
+            </AirTraveler>
+            <SpecialReqDetails/>
+          </TravelerInfo>
+          <Ticketing ExpiryDateTime="2024-01-04T00:00:00" FlightSegmentRefNumber="1" IssuingAgentID="08385576" ItemNumber="1" Printed="false" TicketTime="2023-01-03T17:04:00" TicketingStatus="OPEN FOR USE" TravelerRefNumber="2" WaitlistStatus="OK" eTicketNumber="9992191807295"/>
+          <Ticketing ExpiryDateTime="2024-01-04T00:00:00" FlightSegmentRefNumber="1" IssuingAgentID="08385576" ItemNumber="1" Printed="false" TicketTime="2023-01-03T17:04:00" TicketingStatus="OPEN FOR USE" TravelerRefNumber="1" WaitlistStatus="OK" eTicketNumber="9992191807296"/>
+          <BookingReferenceID CreateDateTime="2024-01-03T09:02:00" ID="PVW6GJ">
+            <CompanyName Code="TDP"/>
+          </BookingReferenceID>
+          <SupplierNotes>
+            <Note Type="BookingEngine">TDP</Note>
+            <Note Type="RiskControlValue">0.0</Note>
+          </SupplierNotes>
+        </Air>
+        <Pricing>
+          <PrePayTotal Amount="1970" CurrencyCode="CNY" PrePayInd="true"/>
+          <PriceAdjustments Amount="0" CurrencyCode="CNY"/>
+          <TotalPrice Amount="1970" CurrencyCode="CNY"/>
+        </Pricing>
+        <Audits>
+          <Audit Action="Booking" Channel="AIRCHINA_WEBD" ID="1" Timestamp="2023-02-20T09:02:54">
+            <Agent Agent="24b62d7f5f344fbd8c9046c22fbbd880" AgentInitials="PC" SourceAddress="192.168.0.142"/>
+            <Events>
+              <Event OrigValue="20230220170254044376"/>
+              <Event Context="ModularProduct" ID="1000" OrigValue="1000" Type="ProductId"/>
+            </Events>
+          </Audit>
+          <Audit Action="RESYNC" Channel="AIRCHINA_WEBD" ID="2" RequestorID="AIRCHINA_WEBD" SourceAddress="" Timestamp="">
+            <Agent Agent="XDIST"/>
+          </Audit>
+          <Audit Action="PaymentAuthorization" Channel="IBE" ID="3" RequestorID="AIRCHINA_PMC" Timestamp="2023-02-20T09:03:35">
+            <Agent Agency="AIRCHINA_PMC"/>
+            <Events>
+              <Event Context="ModularProduct" ID="1000" OrigValue="23022017033452963089" RefId="Unpaid" Type="PaymentAuthorization"/>
+            </Events>
+          </Audit>
+          <Audit Action="PaymentConfirmation" Channel="IBE" ID="4" RequestorID="AIRCHINA_PMC" Timestamp="2023-02-20T09:03:51">
+            <Agent Agency="AIRCHINA_PMC"/>
+            <Events>
+              <Event Context="ModularProduct" ID="1000" OrigValue="23022017033452963089" RefId="Paid" Type="PaymentConfirmation"/>
+            </Events>
+          </Audit>
+          <Audit Action="Ticketing" Channel="系统" ID="5" RequestorID="WEB" SourceAddress="" Timestamp="">
+            <Agent Agent="XDIST"/>
+            <Events>
+              <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OrigValue="HK" Path="/Air/AirItinerary/OriginDestinationOptions/OriginDestinationOption/FlightSegment" RefId="RR" RefPath="/@Status" Type="Status"/>
+              <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="1" OrigValue="" Path="/Air/Ticketing" RefId="9992191807296" RefPath="/@eTicketNumber" Type="eTicketNumber"/>
+              <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="1" OrigValue="" Path="/Air/Ticketing" RefId="OPEN FOR USE" RefPath="/@TicketingStatus" Type="TicketingStatus"/>
+              <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="1" OrigValue="" Path="/Air/Ticketing" RefId="2024-01-04T00:00:00" RefPath="/@ExpiryDateTime" Type="ExpiryDateTime"/>
+              <Event Context="ModularProduct" ID="1006" OrigValue="PVW6GJ" Path="/Air" RefId="" RefPath="/@BookingReferenceID" Type="TicketSuccess"/>
+              <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="2" OrigValue="" Path="/Air/Ticketing" RefId="9992191807295" RefPath="/@eTicketNumber" Type="eTicketNumber"/>
+              <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="2" OrigValue="" Path="/Air/Ticketing" RefId="OPEN FOR USE" RefPath="/@TicketingStatus" Type="TicketingStatus"/>
+              <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="2" OrigValue="" Path="/Air/Ticketing" RefId="2024-01-04T00:00:00" RefPath="/@ExpiryDateTime" Type="ExpiryDateTime"/>
+              <Event Context="ModularProduct" ID="1006" OrigValue="PVW6GJ" Path="/Air" RefId="" RefPath="/@BookingReferenceID" Type="TicketSuccess"/>
+              <Event Context="ModularProduct" ID="1006" OrigValue="1000" Type="ProductId"/>
+            </Events>
+          </Audit>
+        </Audits>
+        <Source Channel="AIRCHINA_WEBD">
+          <RequestorID ID="AIRCHINA_WEBD"/>
+          <Config IATANumber="08612345" ID="10000048" OfficeCode="PEK222" OperationType="A" PrinterNo="39" Source="DOM"/>
+        </Source>
+        <PTCs>
+          <PTC Code="ADT" Quantity="1" RPH_List="1"/>
+          <PTC Code="CHD" Quantity="1" RPH_List="2"/>
+        </PTCs>
+        <PaymentRefs AuditID="4" PaymentState="FullyPaid">
+          <PaymentRef AuditID="3" ID="3" PaymentID="202302200903354360"/>
+          <PaymentRef AuditID="4" ID="4" PaymentID="202302200903354360"/>
+        </PaymentRefs>
+      </ModularProduct>
+      <Pricing>
+        <PostPayTotal Amount="0" CurrencyCode="CNY"/>
+        <PrePayTotal Amount="1970" CurrencyCode="CNY" OriginalAmount="170" OriginalCurrencyCode="CNY"/>
+        <PriceAdjustments Amount="0" CurrencyCode="CNY"/>
+        <TotalPrice Amount="1970" CurrencyCode="CNY" OriginalAmount="170" OriginalCurrencyCode="CNY"/>
+      </Pricing>
+      <Remarks/>
+      <Audits>
+        <Audit Action="Booking" Channel="AIRCHINA_WEBD" ID="1" RequestorID="AIRCHINA_WEBD" SourceAddress="" Timestamp="2023-02-20T09:02:56" Version="1.15.0">
+          <Agent Agent="24b62d7f5f344fbd8c9046c22fbbd880" AgentInitials="PC" SourceAddress="192.168.0.142"/>
+          <Events>
+            <Event OrigValue="20230220170254044376"/>
+            <Event Context="ModularProduct" ID="1000" OrigValue="1000" Type="ProductId"/>
+          </Events>
+        </Audit>
+        <Audit Action="RESYNC" Channel="AIRCHINA_WEBD" ID="2" RequestorID="AIRCHINA_WEBD" SourceAddress="10.150.8.68" Timestamp="2023-02-20T09:02:59" Version="1.15.0">
+          <Agent Agency="RESYNC" Agent="XDIST" URL="10.150.8.68"/>
+          <Events/>
+        </Audit>
+        <Audit Action="PaymentAuthorization" Channel="IBE" ID="3" RequestorID="AIRCHINA_PMC" Timestamp="2023-02-20T09:03:35">
+          <Agent Agency="AIRCHINA_PMC"/>
+          <Events>
+            <Event Context="ModularProduct" ID="1000" OrigValue="23022017033452963089" RefId="Unpaid" Type="PaymentAuthorization"/>
+          </Events>
+        </Audit>
+        <Audit Action="PaymentConfirmation" Channel="IBE" ID="4" RequestorID="AIRCHINA_PMC" Timestamp="2023-02-20T09:03:51">
+          <Agent Agency="AIRCHINA_PMC"/>
+          <Events>
+            <Event Context="ModularProduct" ID="1000" OrigValue="23022017033452963089" RefId="Paid" Type="PaymentConfirmation"/>
+          </Events>
+        </Audit>
+        <Audit Action="Ticketing" Channel="AIRCHINA_WEBD" ID="5" RequestorID="WEB" SourceAddress="10.150.8.68" Timestamp="2023-02-20T09:04:08" Version="1.15.0">
+          <Agent Agent="Ticketing" URL="10.150.8.68"/>
+          <Events>
+            <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OrigValue="HK" Path="/Air/AirItinerary/OriginDestinationOptions/OriginDestinationOption/FlightSegment" RefId="RR" RefPath="/@Status" Type="Status"/>
+            <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="1" OrigValue="" Path="/Air/Ticketing" RefId="9992191807296" RefPath="/@eTicketNumber" Type="eTicketNumber"/>
+            <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="1" OrigValue="" Path="/Air/Ticketing" RefId="OPEN FOR USE" RefPath="/@TicketingStatus" Type="TicketingStatus"/>
+            <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="1" OrigValue="" Path="/Air/Ticketing" RefId="2024-01-04T00:00:00" RefPath="/@ExpiryDateTime" Type="ExpiryDateTime"/>
+            <Event Context="ModularProduct" ID="1006" OrigValue="PVW6GJ" Path="/Air" RefId="" RefPath="/@BookingReferenceID" Type="TicketSuccess"/>
+            <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="2" OrigValue="" Path="/Air/Ticketing" RefId="9992191807295" RefPath="/@eTicketNumber" Type="eTicketNumber"/>
+            <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="2" OrigValue="" Path="/Air/Ticketing" RefId="OPEN FOR USE" RefPath="/@TicketingStatus" Type="TicketingStatus"/>
+            <Event Context="ModularProduct" FlightSegmentRPH="1" ID="1006" OJ_SuperPNR_RPH="2" OrigValue="" Path="/Air/Ticketing" RefId="2024-01-04T00:00:00" RefPath="/@ExpiryDateTime" Type="ExpiryDateTime"/>
+            <Event Context="ModularProduct" ID="1006" OrigValue="PVW6GJ" Path="/Air" RefId="" RefPath="/@BookingReferenceID" Type="TicketSuccess"/>
+            <Event Context="ModularProduct" ID="1006" OrigValue="1000" Type="ProductId"/>
+          </Events>
+        </Audit>
+      </Audits>
+      <PaymentDetails LastModified="2023-02-20T09:03:51" TimeLimit="2023-02-20T09:22:54">
+        <Balance Amount="0" CurrencyCode="CNY"/>
+        <Payments ActualPayment="170" Amount="1970" CurrencyCode="CNY" LastModified="2023-02-20T09:03:51">
+          <Payment Amount="900" AuditID="0" CurrencyCode="CNY" Historic="false" ID="1" PaymentDate="2023-02-20T09:02:54" SeqNo="359987" Status="Paid" TransactionType="Debit">
+            <PaymentForm>
+              <Voucher EffectiveDate="2023-01-01T00:00:00" ExpireDate="2023-02-28T00:00:00" FaceValue="900" Origin="coupon" Scope="coupon" SeriesCode="1"/>
+              <Other Type="212">
+                <Ref Code="PassengerRPH">2</Ref>
+                <Ref Code="CouponNo">1615933059574665216</Ref>
+                <Ref Code="PromotionCode"/>
+                <Ref Code="DisplayPromotionCodeInd">false</Ref>
+                <Ref Code="CouponType">PC</Ref>
+                <Ref Code="CouponName">国内暗码券</Ref>
+                <Ref Code="ResourceApplicable">PLANE_TICKET_PURCHASE</Ref>
+                <Ref Code="DiscountType">FULL_MINUS</Ref>
+                <Ref Code="DisplayDiscountInd">true</Ref>
+                <Ref Code="DiscountValue">2000.0</Ref>
+                <Ref Code="RuleRemark"><p>111111</p></Ref>
+                <Ref Code="EI">QE88f8</Ref>
+                <Ref Code="CouponDetailsId">1627594634039529472</Ref>
+              </Other>
+            </PaymentForm>
+            <PaymentQualifiers>
+              <PaymentQualifier FlightSegmentRPH="1" OJ_SuperPNR_RPH="2" QualifierDescription="SegmentUseCouponAmount" QualifierValue="900"/>
+            </PaymentQualifiers>
+          </Payment>
+          <Payment Amount="900" AuditID="0" CurrencyCode="CNY" Historic="false" ID="2" PaymentDate="2023-02-20T09:02:54" SeqNo="359988" Status="Paid" TransactionType="Debit">
+            <PaymentForm>
+              <Voucher EffectiveDate="2023-01-01T00:00:00" ExpireDate="2023-02-28T00:00:00" FaceValue="900" Origin="coupon" Scope="coupon" SeriesCode="2"/>
+              <Other Type="212">
+                <Ref Code="PassengerRPH">1</Ref>
+                <Ref Code="CouponNo">1615933059574665216</Ref>
+                <Ref Code="PromotionCode"/>
+                <Ref Code="DisplayPromotionCodeInd">false</Ref>
+                <Ref Code="CouponType">PC</Ref>
+                <Ref Code="CouponName">国内暗码券</Ref>
+                <Ref Code="ResourceApplicable">PLANE_TICKET_PURCHASE</Ref>
+                <Ref Code="DiscountType">FULL_MINUS</Ref>
+                <Ref Code="DisplayDiscountInd">true</Ref>
+                <Ref Code="DiscountValue">2000.0</Ref>
+                <Ref Code="RuleRemark"><p>111111</p></Ref>
+                <Ref Code="EI">QE88f8</Ref>
+                <Ref Code="CouponDetailsId">1627594634026946560</Ref>
+              </Other>
+            </PaymentForm>
+            <PaymentQualifiers>
+              <PaymentQualifier FlightSegmentRPH="1" OJ_SuperPNR_RPH="1" QualifierDescription="SegmentUseCouponAmount" QualifierValue="900"/>
+            </PaymentQualifiers>
+          </Payment>
+          <Payment Amount="170" AuditID="4" CurrencyCode="CNY" Historic="false" HistoryID="3" ID="4" PaymentDate="2023-02-20T09:03:51" PrePayInd="true" SeqNo="359993" Status="Paid" TransactionType="Debit">
+            <PaymentForm>
+              <Other Type="101">
+                <Ref Code="BillNo">23022017033452963089</Ref>
+                <Ref Code="PayDate">2023-02-20T09:03:34.000Z</Ref>
+                <Ref Code="PayChannel">AIRCHINA_WEBD</Ref>
+                <Ref Code="PaymentID">202302200903354360</Ref>
+                <Ref Code="PaymentType">Cash</Ref>
+                <Ref Code="PayProductCode">FDC</Ref>
+                <Ref Code="OutSysNo">23022017033452963089</Ref>
+                <Ref Code="ReceiptAcquirerCode">99BILL</Ref>
+                <Ref Code="MerchantNumber">999351045110009</Ref>
+                <Ref Code="BankID">CCB</Ref>
+              </Other>
+            </PaymentForm>
+          </Payment>
+        </Payments>
+      </PaymentDetails>
+      <Queues>
+        <Queue Active="false" QueueID="6026" QueueName="Pending Redirect Payment Queue">
+          <Action Action="Add" Agent="NDC" Date="2023-02-20T09:02:57" SeqNo="359990" Urgent="false">
+            <Reason>Redirect Payment Process. Adding SPNR with Payment Pending</Reason>
+          </Action>
+          <Action Action="Delete" Agent="xDist - CLCNTR - Super PNR Write" Date="2023-02-20T09:03:52" SeqNo="359994">
+            <Reason>Redirect Payment Successful</Reason>
+          </Action>
+        </Queue>
+        <Queue Active="false" QueueID="6029" QueueName="Air Ticket 1 Minute Queue">
+          <Action Action="Add" Agent="XDIST" Date="2023-02-20T09:04:03" SeqNo="359997">
+            <Reason>Asynch Air Ticketing</Reason>
+          </Action>
+          <Action Action="Delete" Agent="xDist - CLCNTR - Super PNR Write" Date="2023-02-20T09:04:08" SeqNo="359998">
+            <Reason>Booking has been ticketed, remove from ticketing queues</Reason>
+          </Action>
+        </Queue>
+        <Queue Active="false" QueueID="6077" QueueName="Prepare Cancel Queue">
+          <Action Action="Add" Agent="NDC" Date="2023-02-20T09:02:57" SeqNo="359991" Urgent="false">
+            <Reason>Booking Create Success Adding to Prepare Cancel Queue</Reason>
+          </Action>
+          <Action Action="Delete" Agent="xDist - CLCNTR - Super PNR Write" Date="2023-02-20T09:03:52" SeqNo="359995">
+            <Reason>Redirect Payment Successful</Reason>
+          </Action>
+        </Queue>
+        <Queue Active="false" QueueID="6059" QueueName="Automatic Synchronization">
+          <Action Action="Add" Agent="XDIST" Date="2023-02-20T09:04:03" SeqNo="359996">
+            <Reason>Queue for Automatic Synchronization</Reason>
+          </Action>
+          <Action Action="Delete" Agent="XDIST" Date="2023-02-20T09:04:09" SeqNo="359999">
+            <Reason>spnr read synchronise ticked  success delete queue</Reason>
+          </Action>
+          <Action Action="Delete" Agent="xDist - CLCNTR - Super PNR Write" Date="2023-02-20T09:04:09" SeqNo="360000">
+            <Reason>Booking has been ticketed, remove from ticketing queues</Reason>
+          </Action>
+          <Action Action="Delete" Agent="XDIST" Date="2023-02-20T09:04:09" SeqNo="360001">
+            <Reason>spnr read synchronise ticked  success delete queue</Reason>
+          </Action>
+        </Queue>
+      </Queues>
+      <Customer AuditID="1" CustomerID="100" Historic="false" SeqNo="359989">
+        <Primary AccountType="1" OJ_SuperPNR_RPH="3" PassengerTypeCode="ADT">
+          <PersonName>
+            <Surname>YY</Surname>
+          </PersonName>
+          <Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13521599951" PhoneTechType="5" PhoneUseType="5" RPH="0" index="0"/>
+          <UniqueID ID="24b62d7f5f344fbd8c9046c22fbbd880" ID_Context="Profile"/>
+        </Primary>
+        <Additional BirthDate="1984-10-11" Gender="F" OJ_SuperPNR_RPH="1" PassengerTypeCode="ADT">
+          <PersonName>
+            <Surname>杨洋</Surname>
+          </PersonName>
+          <Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13521599951" PhoneTechType="5" PhoneUseType="10"/>
+          <CitizenCountryName Code="CN"/>
+          <Document DocHolderNationality="CN" DocID="110106198410112765" DocType="5"/>
+        </Additional>
+        <Additional BirthDate="2012-10-19" Gender="M" OJ_SuperPNR_RPH="2" PassengerTypeCode="CHD">
+          <PersonName>
+            <Surname>杨儿童</Surname>
+          </PersonName>
+          <Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13521599951" PhoneTechType="5" PhoneUseType="10"/>
+          <CitizenCountryName Code="CN"/>
+          <Document DocHolderNationality="CN" DocID="110106201210190616" DocType="5"/>
+        </Additional>
+      </Customer>
+      <CrossRefs/>
+      <AssociatedBookings>
+        <Booking AssociationType="HISTORY" SuperPNR_ID="20230220170254044376"/>
+      </AssociatedBookings>
+      <Category Code="Flight">
+        <SubCategory Code="FlightSale"/>
+      </Category>
+    </OJ_SuperPNR>

@@ -1,0 +1,8 @@
+com\airchina\datacenter\spnr\udf\rubbish\utils\KafkaDao.class
+com\airchina\datacenter\spnr\udf\rubbish\pojo\KafkaLogs.class
+com\airchina\datacenter\spnr\udf\rubbish\utils\Arguments.class
+com\airchina\datacenter\spnr\udf\rubbish\utils\ClassMapper.class
+com\airchina\datacenter\spnr\udf\rubbish\processor\XmlProcessor.class
+com\airchina\datacenter\spnr\udf\rubbish\processor\Dispatcher.class
+com\airchina\datacenter\spnr\udf\rubbish\pojo\XmlParserEx.class
+com\airchina\datacenter\spnr\udf\XmlTabUDTFTest.class

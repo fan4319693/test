@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<OJ_SuperPNRWriteRQ Target="SPNR_WRITE" TransactionIdentifier="unpaidPreCancel" Version="1.0" xmlns="http://www.opentravel.org/OTA/2003/05">
+	<POS>
+		<Source Channel="" ISOCountry="IE" ISOCurrency="EUR" PseudoCityCode="CLCNTR"/>
+		<Agent Agent=""/>
+	</POS>
+	<OJ_SuperPNRActions>
+		<OJ_SuperPNRAction Action="SPNR_WRITE"/>
+	</OJ_SuperPNRActions>
+	<OJ_SuperPNR BookingDate="2022-12-23T09:54:39" BookingStatus="booked" CancelTimeLimit="2022-12-23T10:09:39" Destination="CAN" EndDate="2023-01-11T14:20:00" FullHistory="true" LastAuditID="2" LastModified="2022-12-23T10:05:23" ProcessingStatus="PRE_CANCEL" SchemaVersion="2.12.6" SourceAddress="order-db-service-6e2b2466-78d6577c5c-jfn8z/10.150.5.155" StartDate="2023-01-11T11:00:00" Summary="false" SuperPNR_ID="20221223175439025103" TSBookingStatus="cancelled">
+		<POS>
+			<Source Channel="IBE" EntryPoint="PostSell" ISOCountry="CN" Locale="zh_CN">
+				<RequestorID ID="AIRCHINA_WEBD">
+					<CompanyName/>
+				</RequestorID>
+			</Source>
+		</POS>
+		<ModularProduct BookedWith="1000" BookingChannel="TSDF" BookingDate="2022-12-23T09:54:39" BookingStatus="booked" EndDate="2023-01-11T11:00:00" Historic="false" HistoryID="1000" LastModified="2022-12-23T10:05:23" MasterProductNumber="0" PrimaryLangID="zh" ProductID="1000" ProductNumber="1001" ProductType="ancillary" ProductTypeCode="A" ServiceCode="ZYXXS" StartDate="2023-01-11T11:00:00" TSBookingStatus="PRE_CANCEL">
+			<AncillaryProduct Airport="PEK" BookingReferenceID="981" BookingStatus="BOOKED" CabinClass="" Carrier="" Code="ZYXXS202209220731" Date="2023-01-11T11:00:00" Destination="CAN" FlightNumber="1315" FlightSegmentRPH="1" Name="" Origin="PEK" OriginDestinationRPH="1" PoolID="13" ProductSequence="" Quantity="1" REF="ZYXXS202209220731$2023-01-11T11:00:00$airport$PEK$CAN$1007$1315" Refundable="true" SellingProposition="" SubType="" SupplierCode="CA" SupplierProductCode="" Tag="" Terminal="T3" Type="ZYXXS">
+				<Air BookingReferenceID="NTM7QT">
+					<AirItinerary DirectionInd="OneWay" DocumentationRequired="NONE">
+						<OriginDestinationOptions>
+							<OriginDestinationOption BookingChannel="TDP" Duration="3:20" MajorityCarrier="CA" RPH="1">
+								<FlightSegment ArrivalDateTime="2023-01-11T14:20:00" CabinCode="G" DepartureDateTime="2023-01-11T11:00:00" Duration="3:20" FlightNumber="1315" InfantAvailQuantity="20" InfoSource="Domestic" RPH="1" ResBookDesigCode="G" Status="RR" StopQuantity="0">
+									<DepartureAirport CodeContext="IATA" CountryCode="CN" LocationCode="PEK" TS_CityCode="BJS" Terminal="T3"/>
+									<ArrivalAirport CodeContext="IATA" CountryCode="CN" LocationCode="CAN" TS_CityCode="CAN" Terminal="T1"/>
+									<OperatingAirline Code="CA" FlightNumber="1315"/>
+									<Equipment AirEquipType="747"/>
+									<MarketingAirline Code="CA"/>
+									<BookingClassAvails>
+										<BookingClassAvail RPH="1" ResBookDesigCode="G" ResBookDesigQuantity="A" ResBookDesigStatusCode="Available"/>
+									</BookingClassAvails>
+								</FlightSegment>
+							</OriginDestinationOption>
+						</OriginDestinationOptions>
+					</AirItinerary>
+					<PriceInfo FareFamilyCode="DP1" FareFamilyName="超经全价" PricingSource="Published">
+						<FareInfos>
+							<FareInfo>
+								<FareReference CabinCode="G" ResBookDesigCode="G"/>
+								<FilingAirline Code="CA"/>
+								<DepartureAirport CodeContext="IATA" LocationCode="PEK"/>
+								<ArrivalAirport CodeContext="IATA" LocationCode="CAN"/>
+								<FareInfo DisCount="1.00" FareBasis="G"/>
+							</FareInfo>
+						</FareInfos>
+					</PriceInfo>
+					<Ticketing ExpiryDateTime="2023-06-29T00:00:00" FlightSegmentRefNumber="1" IssuingAgentID="08385576" ItemNumber="1" Printed="false" TicketTime="2022-06-28T17:07:00" TicketingStatus="OPEN FOR USE" TravelerRefNumber="1" WaitlistStatus="OK" eTicketNumber="9992187222109"/>
+				</Air>
+				<Content Language="zh-CN">
+					<ProductName>北京休息室</ProductName>
+					<ShortContent>北京T3休息室</ShortContent>
+					<LongContent>北京T3休息室</LongContent>
+				</Content>
+				<CancellationPenalties>
+					<CancelPenalty>
+						<Deadline OffsetTimeUnit="DAY" OffsetUnitMultiplier="365"/>
+					</CancelPenalty>
+					<CancelPenalty>
+						<AmountPercent Amount="0"/>
+					</CancelPenalty>
+				</CancellationPenalties>
+				<TravelerInfo>
+					<AirTraveler AccompanierRPH="4" BirthDate="1984-02-25" OJ_SuperPNR_RPH="1" PTCSubType="" PassengerTypeCode="ADT">
+						<PersonName>
+							<Surname>马培</Surname>
+						</PersonName>
+						<Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13702128172" PhoneTechType="5" PhoneUseType="10" RPH="0"/>
+						<CustLoyalty LoyalLevel="B" MembershipID="056005326010" SingleVendorInd="CA" VendorCode="USER"/>
+						<Document BirthCountry="CN" DocHolderNationality="CN" DocID="120106198402255020" DocIssueCountry="CN" DocIssueLocation="CN" DocType="5"/>
+						<TravelerRefNumber RPH="1"/>
+					</AirTraveler>
+				</TravelerInfo>
+				<Ticketing TicketingStatus=""/>
+				<Prices>
+					<Price LoyaltyLevel="B" PassengerTypeCode="ADT">
+						<Base Amount="10" CurrencyCode="CNY"/>
+						<PriceAdjustments>
+							<PriceAdjustment Amount="10" Code="ZYXXS" CodeContext="AAMS" CurrencyCode="CNY" Date="2022-12-23" Description="Match the rule LoyalTier: *, PassengerType: ADT."/>
+						</PriceAdjustments>
+						<Total Adjusted="20" Amount="20" CurrencyCode="CNY"/>
+					</Price>
+				</Prices>
+				<Lounge>
+					<CheckInTime OffsetDropTime="BeforeDeparture" OffsetTimeUnit="Hour" OffsetUnitMultiplier="3"/>
+					<Rooms>
+						<Room AreaSubType="1" AreaType="1" Capacity="336" Code="PEK3DC1">
+							<OpenTimes>
+								<OpenTime Language="zh-CN">
+									<DescriptiveText>04:30-24:00</DescriptiveText>
+								</OpenTime>
+							</OpenTimes>
+							<Gates>
+								<Gate>约5分钟内可到达C27-33，C06-10,C60-61；
+									约10分钟内可到达C01-05,C11-18,C19-26,C34-37,C51-53,C55-56,C57-59
+									约5分钟内可到达C27-33，C06-10,C60-61；
+									约10分钟内可到达C01-05,C11-18,C19-26,C34-37,C51-53,C55-56,C57-59</Gate>
+							</Gates>
+							<Content Language="zh-CN">
+								<DisplayName>浮岛贵宾会员休息室</DisplayName>
+								<AirportName>北京</AirportName>
+								<ShortContent>休息区、行李寄存、餐饮区、商务区、VIP间、卫生间、睡眠间</ShortContent>
+								<LocationDescription>T3-C三层浮岛</LocationDescription>
+								<OfficialName>T3C国航贵宾会员休息室</OfficialName>
+								<Image/>
+							</Content>
+						</Room>
+					</Rooms>
+				</Lounge>
+			</AncillaryProduct>
+			<Pricing>
+				<PrePayTotal Amount="0" CurrencyCode="CNY" PrePayInd="true" UnitPrice="0"/>
+				<PriceAdjustments Amount="0" CurrencyCode="CNY"/>
+				<TotalPrice Amount="0" CurrencyCode="CNY" OriginalAmount="20"/>
+				<Loyalty>
+					<Redemption>
+						<Redeem AmountRedeemed="20" CurrencyCode="CNY" Quantity="10">
+							<Partner ID="1-5AX3UZY">
+								<Description Language="en">zyxxs</Description>
+								<Description Language="zh">自营休息室</Description>
+							</Partner>
+						</Redeem>
+					</Redemption>
+				</Loyalty>
+			</Pricing>
+			<Audits>
+				<Audit Action="Booking" Channel="AIRCHINA_WEBD" ID="1" RequestorID="AIRCHINA_WEBD" Timestamp="2022-12-23T09:54:39.717"/>
+				<Audit Action="PreCancel" ID="2" SourceAddress="Scheduler" Timestamp="2022-12-23T10:05:22"/>
+			</Audits>
+			<Source AgentDutyCode="PEK222" ERSP_UserID="08612345">
+				<RequestorID ID="AIRCHINA_WEBD">
+					<CompanyName Code="AIRCHINA_WEBD" CodeContext="A"/>
+				</RequestorID>
+			</Source>
+			<PTCs>
+				<PTC Code="ADT" Quantity="1"/>
+			</PTCs>
+		</ModularProduct>
+		<Pricing>
+			<PostPayTotal Amount="0" CurrencyCode="CNY"/>
+			<PrePayTotal Amount="0" CurrencyCode="CNY" OriginalAmount="0" OriginalCurrencyCode="CNY"/>
+			<PriceAdjustments Amount="0" CurrencyCode="CNY"/>
+			<TotalPrice Amount="0" CurrencyCode="CNY" OriginalAmount="0" OriginalCurrencyCode="CNY"/>
+			<Loyalty>
+				<Redemption>
+					<Redeem Quantity="10">
+						<Rule Code="ANCILLARY" CodeContext="1000" Date="2022-12-23T09:54:39" Description="Rule to represent the redemption quantity of products and/or amendment fees within the SuperPNR" Manual="false" Quantity="10" QuantityPerPassenger="10" Sequence="1"/>
+					</Redeem>
+				</Redemption>
+				<Earn Quantity="0"/>
+			</Loyalty>
+		</Pricing>
+		<Remarks/>
+		<Audits>
+			<Audit Action="Booking" Channel="AIRCHINA_WEBD" ID="1" RequestorID="AIRCHINA_WEBD" SourceAddress="" Timestamp="2022-12-23T09:54:39" Version="1.15.0">
+				<Events/>
+			</Audit>
+			<Audit Action="PreCancel" ID="2" SourceAddress="" Timestamp="2022-12-23T10:05:23" Version="1.15.0">
+				<Agent Agent=""/>
+				<Events/>
+			</Audit>
+		</Audits>
+		<PaymentDetails TimeLimit="2022-12-23T10:04:39">
+			<Balance Amount="0" CurrencyCode="CNY" Quantity="10.0"/>
+			<Payments ActualPayment="0" Amount="0" CurrencyCode="CNY"/>
+		</PaymentDetails>
+		<Queues>
+			<Queue Active="true" QueueID="6026" QueueName="Pending Redirect Payment Queue">
+				<Action Action="Add" Agent="NDC" Date="2022-12-23T09:54:40" SeqNo="276090" Urgent="false">
+					<Reason>Redirect Payment Process. Adding SPNR with Payment Pending</Reason>
+				</Action>
+			</Queue>
+			<Queue Active="true" QueueID="6077" QueueName="Prepare Cancel Queue">
+				<Action Action="Add" Agent="NDC" Date="2022-12-23T09:54:40" SeqNo="276091" Urgent="false">
+					<Reason>Booking Create Success Adding to Prepare Cancel Queue</Reason>
+				</Action>
+			</Queue>
+		</Queues>
+		<Customer AuditID="1" CustomerID="100" Historic="false" SeqNo="276089">
+			<Primary AccountType="1" OJ_SuperPNR_RPH="5" PassengerTypeCode="ADT">
+				<PersonName>
+					<GivenName/>
+					<Surname>杨凤喜</Surname>
+				</PersonName>
+				<Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="18522979188" PhoneTechType="5" PhoneUseType="5" RPH="0" index="0"/>
+				<Email/>
+				<CustLoyalty MembershipID="008900002429"/>
+				<UniqueID ID="efafb00577824f94abbf285290e866f1" ID_Context="Profile"/>
+				<Profile>
+					<UserID ID="1-5B4LERH"/>
+				</Profile>
+			</Primary>
+			<Additional BirthDate="1984-02-25" Gender="F" OJ_SuperPNR_RPH="1" PassengerTypeCode="ADT">
+				<PersonName>
+					<Surname>马培</Surname>
+				</PersonName>
+				<Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13702128172" PhoneTechType="5" PhoneUseType="10"/>
+				<CitizenCountryName Code="CN"/>
+				<Document BirthCountry="CN" DocHolderNationality="CN" DocID="120106198402255020" DocIssueCountry="CN" DocIssueLocation="CN" DocType="5"/>
+				<CustLoyalty MembershipID="056005326010" ProgramID="CA"/>
+			</Additional>
+			<Additional BirthDate="1981-12-03" Gender="F" OJ_SuperPNR_RPH="2" PassengerTypeCode="ADT">
+				<PersonName>
+					<Surname>陆先生</Surname>
+				</PersonName>
+				<Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13702128171" PhoneTechType="5" PhoneUseType="10"/>
+				<CitizenCountryName Code="CN"/>
+				<Document BirthCountry="CN" DocHolderNationality="CN" DocID="110113198112030001" DocIssueCountry="CN" DocIssueLocation="CN" DocType="5"/>
+			</Additional>
+			<Additional BirthDate="2016-12-19" Gender="F" OJ_SuperPNR_RPH="3" PassengerTypeCode="CHD">
+				<PersonName>
+					<Surname>陆小宝</Surname>
+				</PersonName>
+				<Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneNumber="13702128172" PhoneTechType="5" PhoneUseType="10"/>
+				<CitizenCountryName Code="CN"/>
+				<Document BirthCountry="CN" DocHolderNationality="CN" DocID="120106201612190207" DocIssueCountry="CN" DocIssueLocation="CN" DocType="5"/>
+			</Additional>
+			<Additional BirthDate="2021-12-03" Gender="F" OJ_SuperPNR_RPH="4" PassengerTypeCode="INF">
+				<PersonName>
+					<Surname>陆二宝</Surname>
+				</PersonName>
+				<Telephone CountryAccessCode="+86" PhoneLocationType="8" PhoneTechType="5" PhoneUseType="10"/>
+				<CitizenCountryName Code="CN"/>
+				<Document DocHolderNationality="CN"/>
+			</Additional>
+		</Customer>
+		<CrossRefs/>
+		<AssociatedBookings>
+			<Booking AssociationType="HISTORY" SuperPNR_ID="20221223170322025099">
+				<Product HistoryID="1000" ProductID="1000" Status="TICKETED" SubType="air" Type="air">
+					<FlightSegment DepartureDate="2023-01-11T11:00:00" FlightNumber="1315" OriginDestination="PEKCAN" RPH="1"/>
+					<FlightTicketing FlightSegmentRPH="1" TicketingStatus="OPEN FOR USE" TravelerRPH="1" eTicketNumber="9992187222109"/>
+					<FlightTicketing FlightSegmentRPH="1" TicketingStatus="OPEN FOR USE" TravelerRPH="2" eTicketNumber="9992187222107"/>
+					<FlightTicketing FlightSegmentRPH="1" TicketingStatus="OPEN FOR USE" TravelerRPH="3" eTicketNumber="9992187222108"/>
+					<FlightTicketing FlightSegmentRPH="1" TicketingStatus="OPEN FOR USE" TravelerRPH="4" eTicketNumber="9992187222110"/>
+				</Product>
+				<Customer>
+					<Primary>
+						<Profile ID="efafb00577824f94abbf285290e866f1"/>
+					</Primary>
+				</Customer>
+			</Booking>
+		</AssociatedBookings>
+		<Category Code="">
+			<SubCategory Code=""/>
+		</Category>
+	</OJ_SuperPNR>
+</OJ_SuperPNRWriteRQ>
