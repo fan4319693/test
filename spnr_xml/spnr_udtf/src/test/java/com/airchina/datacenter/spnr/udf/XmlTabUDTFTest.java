@@ -67,11 +67,6 @@ public class XmlTabUDTFTest {
         doc = reader.read(IOUtils.toInputStream(debugXml, Charset.defaultCharset()));
         String xmlContent = doc.selectSingleNode(XmlPath).asXML();
 
-        //SPNRContext obj = SuperPNRJAXBProcessor.getInstance().process(spnr.asXML());
-
-//        Map<String, List> map = Dispatcher.convertContext(obj);
-//        List pos = map.get("SPNR_PricingPo".toLowerCase());
-
         Set<String> allTableNames = ParserProvider.getAllTableNames();
 
         for (String tableName : allTableNames) {
