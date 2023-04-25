@@ -96,7 +96,20 @@ public class MpAirPriceInfoFareInfosParser extends AbstractParser {
                                             po.setTaxesAmt(Utils.number2String(f.getTaxAmount()));
                                             po.setTotalFare(Utils.number2String(f.getTotalFare()));
                                             Optional.ofNullable(f.getTaxes())
-                                                    .ifPresent(t -> po.setTaxDetails(Commons.getTaxDetails(t.getTax())));
+                                                    .ifPresent(t -> {
+                                                       t.getTax().forEach(tax -> {
+                                                           // 机建费用
+                                                           if ("CN".equals(tax.getTaxCode())) {
+                                                               po.setTaxAirportFee(tax.getAmount().toString());
+                                                               po.setTaxAirportCurrencyCode(tax.getCurrencyCode());
+                                                           // 燃油费用
+                                                           } else if ("YQ".equals(tax.getTaxCode())) {
+                                                               po.setTaxFuelFee(tax.getAmount().toString());
+                                                               po.setTaxFuelCurrencyCode(tax.getCurrencyCode());
+                                                           }
+                                                       });
+                                                        po.setTaxDetails(Commons.getTaxDetails(t.getTax()));
+                                                    });
                                         });
 
                                 po.setFareBasisCode(info.getFareBasisCode());

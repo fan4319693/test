@@ -61,7 +61,7 @@ public class XmlPathUDF extends GenericUDF {
     public Object evaluate(DeferredObject[] arguments) throws HiveException {
         String xmlContent = soi.getPrimitiveJavaObject(arguments[0].get());
         // remove namespace or may select node with null
-        xmlContent = xmlContent.replaceAll("xmlns=[^>,^\\s]+", "");
+        xmlContent = xmlContent.replaceAll("xmlns=\"[^>,^\\s]+\"", "");
         Document doc = null;
         try {
             doc = this.reader.read(IOUtils.toInputStream(xmlContent));
