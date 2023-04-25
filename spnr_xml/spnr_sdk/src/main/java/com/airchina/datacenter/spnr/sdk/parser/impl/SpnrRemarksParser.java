@@ -70,10 +70,7 @@ public class SpnrRemarksParser extends AbstractParser {
                                         po.setLastModified(xmlDate2StringWithShanghaiTimezone(rmk.getLastModified()));
                                         po.setRph(Utils.toWrapperLong(rmk.getRPH()));
                                         po.setSeqNo(Utils.toWrapperLong(rmk.getSeqNo()));
-
-                                        Optional.ofNullable(rmk.getAgent())
-                                                .ifPresent(a -> po.setAgent(a.getAgent()));
-
+                                        po.setAgent(Utils.applyOrNull(rmk.getAgent(), a -> a.getAgent()));
                                         po.setQualifierDescription(qualifier.getQualifierDescription());
                                         po.setQualifierValue(qualifier.getQualifierValue());
                                         po.setFlightSegmentRph(Utils.toWrapperLong(qualifier.getFlightSegmentRPH()));
@@ -83,6 +80,7 @@ public class SpnrRemarksParser extends AbstractParser {
                                         po.setHistoryId(Utils.toWrapperLong(qualifier.getHistoryID()));
                                         po.setProductNumber(Utils.toWrapperLong(qualifier.getProductNumber()));
 
+                                        //暂时格式如下, 以后可能还要改:
                                         String qualifierItems = Utils.collection2String(qualifier.getQualifierItem(), t ->
                                                         t.getName() + ":" + Strings.nullToEmpty(t.getValue()),
                                                 Constants.JoinByPipeNull2Empty);
