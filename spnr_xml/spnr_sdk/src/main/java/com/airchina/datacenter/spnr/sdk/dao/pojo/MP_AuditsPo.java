@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AuditsPo </p>
  * <p>Description: 存储MP发生修改时所关联的Audit ID </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class MP_AuditsPo {
 
     /**
@@ -119,149 +122,4 @@ public class MP_AuditsPo {
      */
     private String eventInfo;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public String getPnr() {
-        return pnr;
-    }
-
-    public void setPnr(String pnr) {
-        this.pnr = pnr;
-    }
-
-    public Long getAuditId() {
-        return auditId;
-    }
-
-    public void setAuditId(Long auditId) {
-        this.auditId = auditId;
-    }
-
-    public String getRequestorId() {
-        return requestorId;
-    }
-
-    public void setRequestorId(String requestorId) {
-        this.requestorId = requestorId;
-    }
-
-    public String getChannel() {
-        return channel;
-    }
-
-    public void setChannel(String channel) {
-        this.channel = channel;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public String getInTimestamp() {
-        return inTimestamp;
-    }
-
-    public void setInTimestamp(String inTimestamp) {
-        this.inTimestamp = inTimestamp;
-    }
-
-    public String getSourceAddress() {
-        return sourceAddress;
-    }
-
-    public void setSourceAddress(String sourceAddress) {
-        this.sourceAddress = sourceAddress;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public String getAgent() {
-        return agent;
-    }
-
-    public void setAgent(String agent) {
-        this.agent = agent;
-    }
-
-    public String getAgentUrl() {
-        return agentUrl;
-    }
-
-    public void setAgentUrl(String agentUrl) {
-        this.agentUrl = agentUrl;
-    }
-
-    public String getAgency() {
-        return agency;
-    }
-
-    public void setAgency(String agency) {
-        this.agency = agency;
-    }
-
-    public String getEventInfo() {
-        return eventInfo;
-    }
-
-    public void setEventInfo(String eventInfo) {
-        this.eventInfo = eventInfo;
-    }
-
-    public String getAgentId() {
-        return agentId;
-    }
-
-    public void setAgentId(String agentId) {
-        this.agentId = agentId;
-    }
-
-    public String getAgentFunctionalGroup() {
-        return agentFunctionalGroup;
-    }
-
-    public void setAgentFunctionalGroup(String agentFunctionalGroup) {
-        this.agentFunctionalGroup = agentFunctionalGroup;
-    }
-
-    public String getAgentAdministrativeGroup() {
-        return agentAdministrativeGroup;
-    }
-
-    public void setAgentAdministrativeGroup(String agentAdministrativeGroup) {
-        this.agentAdministrativeGroup = agentAdministrativeGroup;
-    }
 }

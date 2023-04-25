@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_Pricing_AmendmentFeePo </p>
  * <p>Description: 存储MP的手续费信息</p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class MP_Pricing_AmendmentFeePo {
 
     /**
@@ -53,61 +56,4 @@ public class MP_Pricing_AmendmentFeePo {
      */
     private String date;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public String getPnr() {
-        return pnr;
-    }
-
-    public void setPnr(String pnr) {
-        this.pnr = pnr;
-    }
-
-    public String getAmt() {
-        return amt;
-    }
-
-    public void setAmt(String amt) {
-        this.amt = amt;
-    }
-
-    public String getCurrencyCode() {
-        return currencyCode;
-    }
-
-    public void setCurrencyCode(String currencyCode) {
-        this.currencyCode = currencyCode;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 }

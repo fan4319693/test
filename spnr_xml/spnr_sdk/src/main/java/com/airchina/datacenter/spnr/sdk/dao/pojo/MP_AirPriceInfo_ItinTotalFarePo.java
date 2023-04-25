@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AirPriceInfo_ItinTotalFarePo </p>
  * <p>Description: 存储MP的行程总价 </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class MP_AirPriceInfo_ItinTotalFarePo {
 
     /**
@@ -125,157 +128,4 @@ public class MP_AirPriceInfo_ItinTotalFarePo {
      */
     private String totalFareOriCurrencyCode;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public String getPnr() {
-        return pnr;
-    }
-
-    public void setPnr(String pnr) {
-        this.pnr = pnr;
-    }
-
-    public String getPricingSource() {
-        return pricingSource;
-    }
-
-    public void setPricingSource(String pricingSource) {
-        this.pricingSource = pricingSource;
-    }
-
-    public String getFareFamilyCode() {
-        return fareFamilyCode;
-    }
-
-    public void setFareFamilyCode(String fareFamilyCode) {
-        this.fareFamilyCode = fareFamilyCode;
-    }
-
-    public String getFareFamilyName() {
-        return fareFamilyName;
-    }
-
-    public void setFareFamilyName(String fareFamilyName) {
-        this.fareFamilyName = fareFamilyName;
-    }
-
-    public String getPriceQuoteDate() {
-        return priceQuoteDate;
-    }
-
-    public void setPriceQuoteDate(String priceQuoteDate) {
-        this.priceQuoteDate = priceQuoteDate;
-    }
-
-    public String getBaseFareAdjusted() {
-        return baseFareAdjusted;
-    }
-
-    public void setBaseFareAdjusted(String baseFareAdjusted) {
-        this.baseFareAdjusted = baseFareAdjusted;
-    }
-
-    public String getBaseFareAmt() {
-        return baseFareAmt;
-    }
-
-    public void setBaseFareAmt(String baseFareAmt) {
-        this.baseFareAmt = baseFareAmt;
-    }
-
-    public String getBaseFareCurrencyCode() {
-        return baseFareCurrencyCode;
-    }
-
-    public void setBaseFareCurrencyCode(String baseFareCurrencyCode) {
-        this.baseFareCurrencyCode = baseFareCurrencyCode;
-    }
-
-    public String getBaseFareOriAmt() {
-        return baseFareOriAmt;
-    }
-
-    public void setBaseFareOriAmt(String baseFareOriAmt) {
-        this.baseFareOriAmt = baseFareOriAmt;
-    }
-
-    public String getBaseFareOriCurrencyCode() {
-        return baseFareOriCurrencyCode;
-    }
-
-    public void setBaseFareOriCurrencyCode(String baseFareOriCurrencyCode) {
-        this.baseFareOriCurrencyCode = baseFareOriCurrencyCode;
-    }
-
-    public String getTaxDetails() {
-        return taxDetails;
-    }
-
-    public void setTaxDetails(String taxDetails) {
-        this.taxDetails = taxDetails;
-    }
-
-    public String getTotalFareAdjusted() {
-        return totalFareAdjusted;
-    }
-
-    public void setTotalFareAdjusted(String totalFareAdjusted) {
-        this.totalFareAdjusted = totalFareAdjusted;
-    }
-
-    public String getTotalFareAmt() {
-        return totalFareAmt;
-    }
-
-    public void setTotalFareAmt(String totalFareAmt) {
-        this.totalFareAmt = totalFareAmt;
-    }
-
-    public String getTotalFareCurrencyCode() {
-        return totalFareCurrencyCode;
-    }
-
-    public void setTotalFareCurrencyCode(String totalFareCurrencyCode) {
-        this.totalFareCurrencyCode = totalFareCurrencyCode;
-    }
-
-    public String getTotalFareOriAmt() {
-        return totalFareOriAmt;
-    }
-
-    public void setTotalFareOriAmt(String totalFareOriAmt) {
-        this.totalFareOriAmt = totalFareOriAmt;
-    }
-
-    public String getTotalFareOriCurrencyCode() {
-        return totalFareOriCurrencyCode;
-    }
-
-    public void setTotalFareOriCurrencyCode(String totalFareOriCurrencyCode) {
-        this.totalFareOriCurrencyCode = totalFareOriCurrencyCode;
-    }
 }

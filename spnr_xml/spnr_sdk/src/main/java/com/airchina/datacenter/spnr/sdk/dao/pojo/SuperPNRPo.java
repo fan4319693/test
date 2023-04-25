@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.SuperPNRPo </p>
  * <p>Description: 存储SuperPNR接口基础属性 </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class SuperPNRPo {
 
     /**
@@ -119,149 +122,4 @@ public class SuperPNRPo {
      */
     private String cryptoVersion;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getBookingDate() {
-        return bookingDate;
-    }
-
-    public void setBookingDate(String bookingDate) {
-        this.bookingDate = bookingDate;
-    }
-
-    public String getProcessingStatus() {
-        return processingStatus;
-    }
-
-    public void setProcessingStatus(String processingStatus) {
-        this.processingStatus = processingStatus;
-    }
-
-    public String getBookingStatus() {
-        return bookingStatus;
-    }
-
-    public void setBookingStatus(String bookingStatus) {
-        this.bookingStatus = bookingStatus;
-    }
-
-    public String getTsBookingStatus() {
-        return tsBookingStatus;
-    }
-
-    public void setTsBookingStatus(String tsBookingStatus) {
-        this.tsBookingStatus = tsBookingStatus;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public String getTkCancelType() {
-        return tkCancelType;
-    }
-
-    public void setTkCancelType(String tkCancelType) {
-        this.tkCancelType = tkCancelType;
-    }
-
-    public String getCancellationDate() {
-        return cancellationDate;
-    }
-
-    public void setCancellationDate(String cancellationDate) {
-        this.cancellationDate = cancellationDate;
-    }
-
-    public String getFullHistory() {
-        return fullHistory;
-    }
-
-    public void setFullHistory(String fullHistory) {
-        this.fullHistory = fullHistory;
-    }
-
-    public Long getLastAuditId() {
-        return lastAuditId;
-    }
-
-    public void setLastAuditId(Long lastAuditId) {
-        this.lastAuditId = lastAuditId;
-    }
-
-    public String getLastModified() {
-        return lastModified;
-    }
-
-    public void setLastModified(String lastModified) {
-        this.lastModified = lastModified;
-    }
-
-    public String getSchemaVersion() {
-        return schemaVersion;
-    }
-
-    public void setSchemaVersion(String schemaVersion) {
-        this.schemaVersion = schemaVersion;
-    }
-
-    public String getSourceAddress() {
-        return sourceAddress;
-    }
-
-    public void setSourceAddress(String sourceAddress) {
-        this.sourceAddress = sourceAddress;
-    }
-
-    public String getCancelTimeLimit() {
-        return cancelTimeLimit;
-    }
-
-    public void setCancelTimeLimit(String cancelTimeLimit) {
-        this.cancelTimeLimit = cancelTimeLimit;
-    }
-
-    public String getCryptoVersion() {
-        return cryptoVersion;
-    }
-
-    public void setCryptoVersion(String cryptoVersion) {
-        this.cryptoVersion = cryptoVersion;
-    }
 }

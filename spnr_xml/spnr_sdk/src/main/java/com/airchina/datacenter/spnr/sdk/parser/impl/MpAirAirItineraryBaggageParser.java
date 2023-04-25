@@ -1,6 +1,6 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
-import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AirAirItinerary_baggagePo;
+import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AirAirItinerary_BaggagePo;
 import com.airchina.datacenter.spnr.sdk.entity.*;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.parser.bean.AirMetaInfo;
@@ -18,18 +18,31 @@ import java.util.Optional;
 
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.parser.impl.MpAirAirItineraryBaggageParser </p>
- * <p>Description: MP_AirAirItinerary_baggagePo 的转换器 </p>
- * <p>Sample:  new MpAirAirItineraryBaggageParser(new FieldsArrayStrategy(MP_AirAirItinerary_baggagePo.class)) </p>
+ * <p>Description: MP_AirAirItinerary_BaggagePo 的转换器 </p>
+ * <p>Sample:  new MpAirAirItineraryBaggageParser(new FieldsArrayStrategy(MP_AirAirItinerary_BaggagePo.class)) </p>
  * <p>Author: FanShuai </p>
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
 public class MpAirAirItineraryBaggageParser extends AbstractParser {
 
+    /**
+     * Description: 有参构造器
+     * Parameter:
+     *  @param strategy: 实体对象解析策略
+     * Throws: 无
+     */
     public MpAirAirItineraryBaggageParser(SerdeStrategy strategy) {
         super(strategy);
     }
 
+    /**
+     * Description: 将xml的OJSuperPNR解析为MP_AirAirItinerary_BaggagePo
+     * Parameter:
+     *  @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
+     * Return: 解析的实体对象集合, 不会为null, 可能为空集合
+     * Throws: 无
+     */
     @Override
     public List<? extends Object> parse(OJSuperPNR spnr) {
         List<Object> result = Lists.newLinkedList();
@@ -52,7 +65,7 @@ public class MpAirAirItineraryBaggageParser extends AbstractParser {
                     .ifPresent(odList -> {
                         odList.forEach(od -> {
                             // 解析MP_AirAirItineraryBaggagePo
-                            List<MP_AirAirItinerary_baggagePo> po = parseMpAirAirItineraryBaggage(od, mpMetaInfo, airMetaInfo);
+                            List<MP_AirAirItinerary_BaggagePo> po = parseMpAirAirItineraryBaggage(od, mpMetaInfo, airMetaInfo);
                             result.addAll(po);
                         });
                     });
@@ -70,7 +83,7 @@ public class MpAirAirItineraryBaggageParser extends AbstractParser {
      * Return: 解析出的MP_AirAirItinerary_baggagePo集合
      * Throws: 无
      */
-    private List<MP_AirAirItinerary_baggagePo> parseMpAirAirItineraryBaggage(
+    private List<MP_AirAirItinerary_BaggagePo> parseMpAirAirItineraryBaggage(
             AirItineraryType.OriginDestinationOptions.OriginDestinationOption od,
             final ModularProductMetaInfo mpMetaInfo,
             final AirMetaInfo airMetaInfo) {
@@ -78,9 +91,9 @@ public class MpAirAirItineraryBaggageParser extends AbstractParser {
         if (CollectionUtils.isEmpty(od.getBaggage())) {
             return Collections.emptyList();
         }
-        List<MP_AirAirItinerary_baggagePo> results = new LinkedList<>();
+        List<MP_AirAirItinerary_BaggagePo> results = new LinkedList<>();
         od.getBaggage().forEach(baggage -> {
-            MP_AirAirItinerary_baggagePo po = new MP_AirAirItinerary_baggagePo();
+            MP_AirAirItinerary_BaggagePo po = new MP_AirAirItinerary_BaggagePo();
             po.setSuperPnrId(mpMetaInfo.getSpnrId());
             po.setSearchId(mpMetaInfo.getSearchId());
             po.setProductNumber(mpMetaInfo.getProductNumber());

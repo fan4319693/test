@@ -1,6 +1,6 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
-import com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_passengersPo;
+import com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_PassengersPo;
 import com.airchina.datacenter.spnr.sdk.entity.OJCustomerPrimaryAdditionalType;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
@@ -17,18 +17,31 @@ import static com.airchina.datacenter.spnr.sdk.utils.Utils.xmlDate2StringWithSha
 
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.parser.impl.SpnrPassengersParser </p>
- * <p>Description: Spnr_passengersPo 的转换器 </p>
- * <p>Sample:  new SpnrPassengersParser(new FieldsArrayStrategy(Spnr_passengersPo.class)) </p>
+ * <p>Description: Spnr_PassengersPo 的转换器 </p>
+ * <p>Sample:  new SpnrPassengersParser(new FieldsArrayStrategy(Spnr_PassengersPo.class)) </p>
  * <p>Author: FanShuai </p>
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
 public class SpnrPassengersParser extends AbstractParser {
 
+    /**
+     * Description: 有参构造器
+     * Parameter:
+     *  @param strategy: 实体对象解析策略
+     * Throws: 无
+     */
     public SpnrPassengersParser(SerdeStrategy strategy) {
         super(strategy);
     }
 
+    /**
+     * Description: 将xml的OJSuperPNR解析为Spnr_PassengersPo
+     * Parameter:
+     *  @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
+     * Return: 解析的实体对象集合, 不会为null, 可能为空集合
+     * Throws: 无
+     */
     @Override
     public List<? extends Object> parse(OJSuperPNR spnr) {
         List<Object> result = Lists.newLinkedList();
@@ -41,7 +54,7 @@ public class SpnrPassengersParser extends AbstractParser {
                             continue;
                         }
                         additionals.forEach(additional -> {
-                            Spnr_passengersPo po = new Spnr_passengersPo();
+                            Spnr_PassengersPo po = new Spnr_PassengersPo();
 
                             po.setSuperPnrId(spnr.getSuperPNRID());
                             po.setAuditId(Utils.toWrapperLong(customer.getAuditID()));

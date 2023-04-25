@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_AssociatedBookingPo </p>
  * <p>Description: 存储关联订单信息 </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class Spnr_AssociatedBookingPo {
 
     /**
@@ -137,173 +140,4 @@ public class Spnr_AssociatedBookingPo {
      */
     private String profileType;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getAssociateSuperPnrId() {
-        return associateSuperPnrId;
-    }
-
-    public void setAssociateSuperPnrId(String associateSuperPnrId) {
-        this.associateSuperPnrId = associateSuperPnrId;
-    }
-
-    public String getBookingStatus() {
-        return bookingStatus;
-    }
-
-    public void setBookingStatus(String bookingStatus) {
-        this.bookingStatus = bookingStatus;
-    }
-
-    public String getAssociationType() {
-        return associationType;
-    }
-
-    public void setAssociationType(String associationType) {
-        this.associationType = associationType;
-    }
-
-    public Long getHistoryId() {
-        return historyId;
-    }
-
-    public void setHistoryId(Long historyId) {
-        this.historyId = historyId;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public String getRefundApplyId() {
-        return refundApplyId;
-    }
-
-    public void setRefundApplyId(String refundApplyId) {
-        this.refundApplyId = refundApplyId;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getReshopId() {
-        return reshopId;
-    }
-
-    public void setReshopId(String reshopId) {
-        this.reshopId = reshopId;
-    }
-
-    public String getRefundApplyTime() {
-        return refundApplyTime;
-    }
-
-    public void setRefundApplyTime(String refundApplyTime) {
-        this.refundApplyTime = refundApplyTime;
-    }
-
-    public String getRph() {
-        return rph;
-    }
-
-    public void setRph(String rph) {
-        this.rph = rph;
-    }
-
-    public String getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setDepartureDate(String departureDate) {
-        this.departureDate = departureDate;
-    }
-
-    public String getFlightNumber() {
-        return flightNumber;
-    }
-
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
-    }
-
-    public String getOriginDestination() {
-        return originDestination;
-    }
-
-    public void setOriginDestination(String originDestination) {
-        this.originDestination = originDestination;
-    }
-
-    public String getFlightSegmentRph() {
-        return flightSegmentRph;
-    }
-
-    public void setFlightSegmentRph(String flightSegmentRph) {
-        this.flightSegmentRph = flightSegmentRph;
-    }
-
-    public String getTicketingStatus() {
-        return ticketingStatus;
-    }
-
-    public void setTicketingStatus(String ticketingStatus) {
-        this.ticketingStatus = ticketingStatus;
-    }
-
-    public String geteTicketNumber() {
-        return eTicketNumber;
-    }
-
-    public void seteTicketNumber(String eTicketNumber) {
-        this.eTicketNumber = eTicketNumber;
-    }
-
-    public String getTravelerRph() {
-        return travelerRph;
-    }
-
-    public void setTravelerRph(String travelerRph) {
-        this.travelerRph = travelerRph;
-    }
-
-    public String getProfileId() {
-        return profileId;
-    }
-
-    public void setProfileId(String profileId) {
-        this.profileId = profileId;
-    }
-
-    public String getProfileType() {
-        return profileType;
-    }
-
-    public void setProfileType(String profileType) {
-        this.profileType = profileType;
-    }
 }

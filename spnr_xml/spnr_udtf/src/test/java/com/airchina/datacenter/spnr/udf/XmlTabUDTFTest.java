@@ -61,7 +61,7 @@ public class XmlTabUDTFTest {
         String debugXml = FileUtils.readFileToString(FileUtils.getFile(path.concat("\\变更后.xml")), Charset.defaultCharset());
         String XmlPath = "/OJ_SuperPNRWriteRQ/OJ_SuperPNR";
 
-        debugXml = debugXml.replaceAll("xmlns=[^>,^\\s]+", "");
+        debugXml = debugXml.replaceAll("xmlns=\"[^>,^\\s]+\"", "");
         Document doc;
         SAXReader reader = new SAXReader();
         doc = reader.read(IOUtils.toInputStream(debugXml, Charset.defaultCharset()));

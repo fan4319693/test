@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_POSPo </p>
  * <p>Description: 存储订单的POS信息（在SPNR内有且仅有一个，其节点用于表明该SPNR所属的航空公司、预定渠道等。） </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class Spnr_POSPo {
 
     /**
@@ -77,93 +80,4 @@ public class Spnr_POSPo {
      */
     private String companyDivision;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getAirlineVendorId() {
-        return airlineVendorId;
-    }
-
-    public void setAirlineVendorId(String airlineVendorId) {
-        this.airlineVendorId = airlineVendorId;
-    }
-
-    public String getChannel() {
-        return channel;
-    }
-
-    public void setChannel(String channel) {
-        this.channel = channel;
-    }
-
-    public String getIsoCountry() {
-        return isoCountry;
-    }
-
-    public void setIsoCountry(String isoCountry) {
-        this.isoCountry = isoCountry;
-    }
-
-    public String getIsoCurrency() {
-        return isoCurrency;
-    }
-
-    public void setIsoCurrency(String isoCurrency) {
-        this.isoCurrency = isoCurrency;
-    }
-
-    public String getLocale() {
-        return locale;
-    }
-
-    public void setLocale(String locale) {
-        this.locale = locale;
-    }
-
-    public String getEntryPoint() {
-        return entryPoint;
-    }
-
-    public void setEntryPoint(String entryPoint) {
-        this.entryPoint = entryPoint;
-    }
-
-    public String getRequestorId() {
-        return requestorId;
-    }
-
-    public void setRequestorId(String requestorId) {
-        this.requestorId = requestorId;
-    }
-
-    public String getCompanyShortName() {
-        return companyShortName;
-    }
-
-    public void setCompanyShortName(String companyShortName) {
-        this.companyShortName = companyShortName;
-    }
-
-    public String getCompanyNameCode() {
-        return companyNameCode;
-    }
-
-    public void setCompanyNameCode(String companyNameCode) {
-        this.companyNameCode = companyNameCode;
-    }
-
-    public String getCompanyDivision() {
-        return companyDivision;
-    }
-
-    public void setCompanyDivision(String companyDivision) {
-        this.companyDivision = companyDivision;
-    }
 }

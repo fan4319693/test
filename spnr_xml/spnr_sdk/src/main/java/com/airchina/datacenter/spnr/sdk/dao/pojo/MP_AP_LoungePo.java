@@ -9,6 +9,8 @@
  */
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AP_LoungePo </p>
  * <p>Description: 存储辅营休息室信息 </p>
@@ -17,6 +19,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class MP_AP_LoungePo {
 
     /**
@@ -139,165 +142,4 @@ public class MP_AP_LoungePo {
      */
     private String imageUrl;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public String getCheckinOffsetDropTime() {
-        return checkinOffsetDropTime;
-    }
-
-    public void setCheckinOffsetDropTime(String checkinOffsetDropTime) {
-        this.checkinOffsetDropTime = checkinOffsetDropTime;
-    }
-
-    public String getCheckinOffsetTimeUnit() {
-        return checkinOffsetTimeUnit;
-    }
-
-    public void setCheckinOffsetTimeUnit(String checkinOffsetTimeUnit) {
-        this.checkinOffsetTimeUnit = checkinOffsetTimeUnit;
-    }
-
-    public String getCheckinOffsetUnitMultiplier() {
-        return checkinOffsetUnitMultiplier;
-    }
-
-    public void setCheckinOffsetUnitMultiplier(String checkinOffsetUnitMultiplier) {
-        this.checkinOffsetUnitMultiplier = checkinOffsetUnitMultiplier;
-    }
-
-    public String getAreaSubType() {
-        return areaSubType;
-    }
-
-    public void setAreaSubType(String areaSubType) {
-        this.areaSubType = areaSubType;
-    }
-
-    public String getAreaType() {
-        return areaType;
-    }
-
-    public void setAreaType(String areaType) {
-        this.areaType = areaType;
-    }
-
-    public Long getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Long capacity) {
-        this.capacity = capacity;
-    }
-
-    public String getRoomCode() {
-        return roomCode;
-    }
-
-    public void setRoomCode(String roomCode) {
-        this.roomCode = roomCode;
-    }
-
-    public String getRoomOpentimeLanguage() {
-        return roomOpentimeLanguage;
-    }
-
-    public void setRoomOpentimeLanguage(String roomOpentimeLanguage) {
-        this.roomOpentimeLanguage = roomOpentimeLanguage;
-    }
-
-    public String getDescriptiveText() {
-        return descriptiveText;
-    }
-
-    public void setDescriptiveText(String descriptiveText) {
-        this.descriptiveText = descriptiveText;
-    }
-
-    public String getGate() {
-        return gate;
-    }
-
-    public void setGate(String gate) {
-        this.gate = gate;
-    }
-
-    public String getRoomLanguage() {
-        return roomLanguage;
-    }
-
-    public void setRoomLanguage(String roomLanguage) {
-        this.roomLanguage = roomLanguage;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public String getAirportName() {
-        return airportName;
-    }
-
-    public void setAirportName(String airportName) {
-        this.airportName = airportName;
-    }
-
-    public String getShortContent() {
-        return shortContent;
-    }
-
-    public void setShortContent(String shortContent) {
-        this.shortContent = shortContent;
-    }
-
-    public String getLocationDescription() {
-        return locationDescription;
-    }
-
-    public void setLocationDescription(String locationDescription) {
-        this.locationDescription = locationDescription;
-    }
-
-    public String getOfficialName() {
-        return officialName;
-    }
-
-    public void setOfficialName(String officialName) {
-        this.officialName = officialName;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
 }

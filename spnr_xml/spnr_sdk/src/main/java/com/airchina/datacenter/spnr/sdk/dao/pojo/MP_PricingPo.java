@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_PricingPo </p>
  * <p>Description: 存储MP内产品的价格信息汇总 </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class MP_PricingPo {
 
     /**
@@ -119,149 +122,4 @@ public class MP_PricingPo {
      */
     private String amountRedeemedCurrencyCode;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public String getPnr() {
-        return pnr;
-    }
-
-    public void setPnr(String pnr) {
-        this.pnr = pnr;
-    }
-
-    public String getPreAmt() {
-        return preAmt;
-    }
-
-    public void setPreAmt(String preAmt) {
-        this.preAmt = preAmt;
-    }
-
-    public String getPreCurrencyCode() {
-        return preCurrencyCode;
-    }
-
-    public void setPreCurrencyCode(String preCurrencyCode) {
-        this.preCurrencyCode = preCurrencyCode;
-    }
-
-    public String getPrePayInd() {
-        return prePayInd;
-    }
-
-    public void setPrePayInd(String prePayInd) {
-        this.prePayInd = prePayInd;
-    }
-
-    public String getAdjustmentsAmt() {
-        return adjustmentsAmt;
-    }
-
-    public void setAdjustmentsAmt(String adjustmentsAmt) {
-        this.adjustmentsAmt = adjustmentsAmt;
-    }
-
-    public String getAdjustmentsCurrencyCode() {
-        return adjustmentsCurrencyCode;
-    }
-
-    public void setAdjustmentsCurrencyCode(String adjustmentsCurrencyCode) {
-        this.adjustmentsCurrencyCode = adjustmentsCurrencyCode;
-    }
-
-    public String getTotalAmt() {
-        return totalAmt;
-    }
-
-    public void setTotalAmt(String totalAmt) {
-        this.totalAmt = totalAmt;
-    }
-
-    public String getTotalCurrencyCode() {
-        return totalCurrencyCode;
-    }
-
-    public void setTotalCurrencyCode(String totalCurrencyCode) {
-        this.totalCurrencyCode = totalCurrencyCode;
-    }
-
-    public String getCancellationFees() {
-        return cancellationFees;
-    }
-
-    public void setCancellationFees(String cancellationFees) {
-        this.cancellationFees = cancellationFees;
-    }
-
-    public String getCancellationFeesCurrencyCode() {
-        return cancellationFeesCurrencyCode;
-    }
-
-    public void setCancellationFeesCurrencyCode(String cancellationFeesCurrencyCode) {
-        this.cancellationFeesCurrencyCode = cancellationFeesCurrencyCode;
-    }
-
-    public String getCancellationRefunds() {
-        return cancellationRefunds;
-    }
-
-    public void setCancellationRefunds(String cancellationRefunds) {
-        this.cancellationRefunds = cancellationRefunds;
-    }
-
-    public String getCancellationRefundsCurrencyCode() {
-        return cancellationRefundsCurrencyCode;
-    }
-
-    public void setCancellationRefundsCurrencyCode(String cancellationRefundsCurrencyCode) {
-        this.cancellationRefundsCurrencyCode = cancellationRefundsCurrencyCode;
-    }
-
-    public String getAmountRedeemQuantity() {
-        return amountRedeemQuantity;
-    }
-
-    public void setAmountRedeemQuantity(String amountRedeemQuantity) {
-        this.amountRedeemQuantity = amountRedeemQuantity;
-    }
-
-    public String getAmountRedeemed() {
-        return amountRedeemed;
-    }
-
-    public void setAmountRedeemed(String amountRedeemed) {
-        this.amountRedeemed = amountRedeemed;
-    }
-
-    public String getAmountRedeemedCurrencyCode() {
-        return amountRedeemedCurrencyCode;
-    }
-
-    public void setAmountRedeemedCurrencyCode(String amountRedeemedCurrencyCode) {
-        this.amountRedeemedCurrencyCode = amountRedeemedCurrencyCode;
-    }
 }

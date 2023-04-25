@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_PaymentRefsPo </p>
  * <p>Description: 存储MP产品所关联的支付记录</p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class MP_PaymentRefsPo {
 
     /**
@@ -65,77 +68,4 @@ public class MP_PaymentRefsPo {
      */
     private Long paymentRefAuditId;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public String getPnr() {
-        return pnr;
-    }
-
-    public void setPnr(String pnr) {
-        this.pnr = pnr;
-    }
-
-    public Long getPaymentRefsAuditId() {
-        return paymentRefsAuditId;
-    }
-
-    public void setPaymentRefsAuditId(Long paymentRefsAuditId) {
-        this.paymentRefsAuditId = paymentRefsAuditId;
-    }
-
-    public String getPaymentState() {
-        return paymentState;
-    }
-
-    public void setPaymentState(String paymentState) {
-        this.paymentState = paymentState;
-    }
-
-    public Long getPaymentRefId() {
-        return paymentRefId;
-    }
-
-    public void setPaymentRefId(Long paymentRefId) {
-        this.paymentRefId = paymentRefId;
-    }
-
-    public Long getPaymentId() {
-        return paymentId;
-    }
-
-    public void setPaymentId(Long paymentId) {
-        this.paymentId = paymentId;
-    }
-
-    public Long getPaymentRefAuditId() {
-        return paymentRefAuditId;
-    }
-
-    public void setPaymentRefAuditId(Long paymentRefAuditId) {
-        this.paymentRefAuditId = paymentRefAuditId;
-    }
 }

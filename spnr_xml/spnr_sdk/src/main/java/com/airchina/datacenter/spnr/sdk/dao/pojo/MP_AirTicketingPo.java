@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AirTicketingPo </p>
  * <p>Description: 存储MP的票面信息 </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class MP_AirTicketingPo {
 
     /**
@@ -118,151 +121,5 @@ public class MP_AirTicketingPo {
      * 最后修改时间: 2023/04/20
      */
     private String refundInfo;
-
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public String getPnr() {
-        return pnr;
-    }
-
-    public void setPnr(String pnr) {
-        this.pnr = pnr;
-    }
-
-    public Long getFlightSegmentRefNumber() {
-        return flightSegmentRefNumber;
-    }
-
-    public void setFlightSegmentRefNumber(Long flightSegmentRefNumber) {
-        this.flightSegmentRefNumber = flightSegmentRefNumber;
-    }
-
-    public String getIrr() {
-        return irr;
-    }
-
-    public void setIrr(String irr) {
-        this.irr = irr;
-    }
-
-    public String getIrrReason() {
-        return irrReason;
-    }
-
-    public void setIrrReason(String irrReason) {
-        this.irrReason = irrReason;
-    }
-
-    public String getIssuingAgentId() {
-        return issuingAgentId;
-    }
-
-    public void setIssuingAgentId(String issuingAgentId) {
-        this.issuingAgentId = issuingAgentId;
-    }
-
-    public String getItemNumber() {
-        return itemNumber;
-    }
-
-    public void setItemNumber(String itemNumber) {
-        this.itemNumber = itemNumber;
-    }
-
-    public String getPrinted() {
-        return printed;
-    }
-
-    public void setPrinted(String printed) {
-        this.printed = printed;
-    }
-
-    public String getTicketTime() {
-        return ticketTime;
-    }
-
-    public void setTicketTime(String ticketTime) {
-        this.ticketTime = ticketTime;
-    }
-
-    public String getTicketingStatus() {
-        return ticketingStatus;
-    }
-
-    public void setTicketingStatus(String ticketingStatus) {
-        this.ticketingStatus = ticketingStatus;
-    }
-
-    public Long getTravelerRefNumber() {
-        return travelerRefNumber;
-    }
-
-    public void setTravelerRefNumber(Long travelerRefNumber) {
-        this.travelerRefNumber = travelerRefNumber;
-    }
-
-    public String geteTicketNumber() {
-        return eTicketNumber;
-    }
-
-    public void seteTicketNumber(String eTicketNumber) {
-        this.eTicketNumber = eTicketNumber;
-    }
-
-    public String getTicketTimeLimit() {
-        return ticketTimeLimit;
-    }
-
-    public void setTicketTimeLimit(String ticketTimeLimit) {
-        this.ticketTimeLimit = ticketTimeLimit;
-    }
-
-    public String getExpiryDateTime() {
-        return expiryDateTime;
-    }
-
-    public void setExpiryDateTime(String expiryDateTime) {
-        this.expiryDateTime = expiryDateTime;
-    }
-
-    public String getWaitlistStatus() {
-        return waitlistStatus;
-    }
-
-    public void setWaitlistStatus(String waitlistStatus) {
-        this.waitlistStatus = waitlistStatus;
-    }
-
-    public String getRefundInfo() {
-        return refundInfo;
-    }
-
-    public void setRefundInfo(String refundInfo) {
-        this.refundInfo = refundInfo;
-    }
 
 }

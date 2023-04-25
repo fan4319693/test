@@ -65,17 +65,30 @@ public class FieldsArrayStrategy implements SerdeStrategy {
                 getStandardStructObjectInspector(fieldNameList, inspectorList);
     }
 
+    /**
+     * Description: 获取输出字段的元数据, 个数,顺序,名称,类型等根据实体类的属性列表确定
+     * Parameter: 无
+     * Return: 元数据
+     * Throws: 无
+     */
     @Override
     public StructObjectInspector getStructObjectInspector() {
         return structObjectInspector;
     }
 
+    /**
+     * Description: 将实体对象解析为Object数组
+     * Parameter:
+     *  @param target: 待解析的实体对象, 不能为null
+     * Return: 实体对象解析出的字段数据
+     * Throws: IllegalAccessException, 反射抛出的异常, 能导致任务失败
+     */
     @Override
     public Object inspectObject(Object target) throws IllegalAccessException {
-        if(target == null){
+        if (target == null) {
             return null;
         }
-        if(!this.cls.isAssignableFrom(target.getClass())){
+        if (!this.cls.isAssignableFrom(target.getClass())) {
             throw new IllegalArgumentException("Wrong input class:" + target.getClass() + ", the input type should be " + cls.getName());
         }
         //使用反射获取字段值
