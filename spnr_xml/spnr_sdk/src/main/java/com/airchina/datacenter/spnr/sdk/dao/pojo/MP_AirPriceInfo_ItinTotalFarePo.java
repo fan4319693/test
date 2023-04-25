@@ -89,6 +89,31 @@ public class MP_AirPriceInfo_ItinTotalFarePo {
      */
     private String baseFareOriCurrencyCode;
 
+
+    /**
+     * 功能说明: 机建费用
+     * 最后修改时间: 2023/04/24
+     */
+    private String taxAirportFee;
+
+    /**
+     * 功能说明: 燃油费用
+     * 最后修改时间: 2023/04/24
+     */
+    private String taxFuelFee;
+
+    /**
+     * 功能说明: 机建费用的单位
+     * 最后修改时间: 2023/04/24
+     */
+    private String taxAirportCurrencyCode;
+
+    /**
+     * 功能说明: 燃油费用的单位
+     * 最后修改时间: 2023/04/24
+     */
+    private String taxFuelCurrencyCode;
+
     /**
      * 功能说明: 税收详情
      * 最后修改时间: 2023/04/20
@@ -277,5 +302,37 @@ public class MP_AirPriceInfo_ItinTotalFarePo {
 
     public void setTotalFareOriCurrencyCode(String totalFareOriCurrencyCode) {
         this.totalFareOriCurrencyCode = totalFareOriCurrencyCode;
+    }
+
+    public String getTaxAirportFee() {
+        return taxAirportFee;
+    }
+
+    public void setTaxAirportFee(String taxAirportFee) {
+        this.taxAirportFee = taxAirportFee;
+    }
+
+    public String getTaxFuelFee() {
+        return taxFuelFee;
+    }
+
+    public void setTaxFuelFee(String taxFuelFee) {
+        this.taxFuelFee = taxFuelFee;
+    }
+
+    public String getTaxAirportCurrencyCode() {
+        return taxAirportCurrencyCode;
+    }
+
+    public void setTaxAirportCurrencyCode(String taxAirportCurrencyCode) {
+        this.taxAirportCurrencyCode = taxAirportCurrencyCode;
+    }
+
+    public String getTaxFuelCurrencyCode() {
+        return taxFuelCurrencyCode;
+    }
+
+    public void setTaxFuelCurrencyCode(String taxFuelCurrencyCode) {
+        this.taxFuelCurrencyCode = taxFuelCurrencyCode;
     }
 }
