@@ -10,6 +10,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AP_GroundTransportPo </p>
  * <p>Description: 存储辅营空轨信息 </p>
@@ -18,6 +20,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class MP_AP_GroundTransportPo {
 
     /**
@@ -140,165 +143,4 @@ public class MP_AP_GroundTransportPo {
      */
     private String basicFareCurrencyCode;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public Long getFlightSegmentRph() {
-        return flightSegmentRph;
-    }
-
-    public void setFlightSegmentRph(Long flightSegmentRph) {
-        this.flightSegmentRph = flightSegmentRph;
-    }
-
-    public Long getTravelerRph() {
-        return travelerRph;
-    }
-
-    public void setTravelerRph(Long travelerRph) {
-        this.travelerRph = travelerRph;
-    }
-
-    public Long getRph() {
-        return rph;
-    }
-
-    public void setRph(Long rph) {
-        this.rph = rph;
-    }
-
-    public String getdStationType() {
-        return dStationType;
-    }
-
-    public void setdStationType(String dStationType) {
-        this.dStationType = dStationType;
-    }
-
-    public String getdStationCode() {
-        return dStationCode;
-    }
-
-    public void setdStationCode(String dStationCode) {
-        this.dStationCode = dStationCode;
-    }
-
-    public String getdStationName() {
-        return dStationName;
-    }
-
-    public void setdStationName(String dStationName) {
-        this.dStationName = dStationName;
-    }
-
-    public String getaStationType() {
-        return aStationType;
-    }
-
-    public void setaStationType(String aStationType) {
-        this.aStationType = aStationType;
-    }
-
-    public String getaStationCode() {
-        return aStationCode;
-    }
-
-    public void setaStationCode(String aStationCode) {
-        this.aStationCode = aStationCode;
-    }
-
-    public String getaStationName() {
-        return aStationName;
-    }
-
-    public void setaStationName(String aStationName) {
-        this.aStationName = aStationName;
-    }
-
-    public String getStartPeriod() {
-        return startPeriod;
-    }
-
-    public void setStartPeriod(String startPeriod) {
-        this.startPeriod = startPeriod;
-    }
-
-    public String getEndPeriod() {
-        return endPeriod;
-    }
-
-    public void setEndPeriod(String endPeriod) {
-        this.endPeriod = endPeriod;
-    }
-
-    public String getSeatType() {
-        return seatType;
-    }
-
-    public void setSeatType(String seatType) {
-        this.seatType = seatType;
-    }
-
-    public String getClazz() {
-        return clazz;
-    }
-
-    public void setClazz(String clazz) {
-        this.clazz = clazz;
-    }
-
-    public String getBasicFareAmount() {
-        return basicFareAmount;
-    }
-
-    public void setBasicFareAmount(String basicFareAmount) {
-        this.basicFareAmount = basicFareAmount;
-    }
-
-    public String getBasicFareCurrencyCode() {
-        return basicFareCurrencyCode;
-    }
-
-    public void setBasicFareCurrencyCode(String basicFareCurrencyCode) {
-        this.basicFareCurrencyCode = basicFareCurrencyCode;
-    }
-
-    public String getTotalFareAmount() {
-        return totalFareAmount;
-    }
-
-    public void setTotalFareAmount(String totalFareAmount) {
-        this.totalFareAmount = totalFareAmount;
-    }
-
-    public String getTotalFareCurrencyCode() {
-        return totalFareCurrencyCode;
-    }
-
-    public void setTotalFareCurrencyCode(String totalFareCurrencyCode) {
-        this.totalFareCurrencyCode = totalFareCurrencyCode;
-    }
 }

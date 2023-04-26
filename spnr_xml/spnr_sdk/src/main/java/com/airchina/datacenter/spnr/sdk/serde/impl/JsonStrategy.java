@@ -41,11 +41,24 @@ public class JsonStrategy implements SerdeStrategy {
                 getStandardStructObjectInspector(names, inspectors);
     }
 
+    /**
+     * Description: 获取输出字段的元数据, 个数,顺序,名称,类型等根据实体类的属性列表确定
+     * Parameter: 无
+     * Return: 元数据
+     * Throws: 无
+     */
     @Override
     public StructObjectInspector getStructObjectInspector() {
         return structObjectInspector;
     }
 
+    /**
+     * Description: 将实体对象解析为json字符串
+     * Parameter:
+     *  @param target: 待解析的实体对象, 不能为null
+     * Return: 实体对象解析出的json
+     * Throws: 无
+     */
     @Override
     public Object inspectObject(Object target) {
         //使用FastJson序列化为字符串

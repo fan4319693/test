@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_PaymentDetailsPo </p>
  * <p>Description: 存储订单的收支总信息（用于记录整笔订单的支付、退款、里程支付、银行直减等和支付相关的信息） </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class Spnr_PaymentDetailsPo {
 
     /**
@@ -53,61 +56,4 @@ public class Spnr_PaymentDetailsPo {
      */
     private String lastModified;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getBalanceAmt() {
-        return balanceAmt;
-    }
-
-    public void setBalanceAmt(String balanceAmt) {
-        this.balanceAmt = balanceAmt;
-    }
-
-    public String getBalanceCurrency() {
-        return balanceCurrency;
-    }
-
-    public void setBalanceCurrency(String balanceCurrency) {
-        this.balanceCurrency = balanceCurrency;
-    }
-
-    public String getPaymentsAmt() {
-        return paymentsAmt;
-    }
-
-    public void setPaymentsAmt(String paymentsAmt) {
-        this.paymentsAmt = paymentsAmt;
-    }
-
-    public String getPaymentsCurrency() {
-        return paymentsCurrency;
-    }
-
-    public void setPaymentsCurrency(String paymentsCurrency) {
-        this.paymentsCurrency = paymentsCurrency;
-    }
-
-    public String getActualAmt() {
-        return actualAmt;
-    }
-
-    public void setActualAmt(String actualAmt) {
-        this.actualAmt = actualAmt;
-    }
-
-    public String getLastModified() {
-        return lastModified;
-    }
-
-    public void setLastModified(String lastModified) {
-        this.lastModified = lastModified;
-    }
 }

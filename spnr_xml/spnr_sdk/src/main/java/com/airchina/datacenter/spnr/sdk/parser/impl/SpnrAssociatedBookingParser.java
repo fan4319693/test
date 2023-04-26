@@ -27,10 +27,23 @@ import static com.airchina.datacenter.spnr.sdk.utils.Utils.xmlDate2StringWithUtc
  */
 public class SpnrAssociatedBookingParser extends AbstractParser {
 
+    /**
+     * Description: 有参构造器
+     * Parameter:
+     *  @param strategy: 实体对象解析策略
+     * Throws: 无
+     */
     public SpnrAssociatedBookingParser(SerdeStrategy strategy) {
         super(strategy);
     }
 
+    /**
+     * Description: 将xml的OJSuperPNR解析为Spnr_AssociatedBookingPo
+     * Parameter:
+     *  @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
+     * Return: 解析的实体对象集合, 不会为null, 可能为空集合
+     * Throws: 无
+     */
     @Override
     public List<? extends Object> parse(OJSuperPNR spnr) {
         List<Object> result = Lists.newLinkedList();
@@ -79,7 +92,7 @@ public class SpnrAssociatedBookingParser extends AbstractParser {
                             po.setTicketingStatus(Utils.collection2String(product.getFlightTicketing(),
                                     AssociatedBookingProductType.FlightTicketing::getTicketingStatus));
 
-                            po.seteTicketNumber(Utils.collection2String(product.getFlightTicketing(),
+                            po.setETicketNumber(Utils.collection2String(product.getFlightTicketing(),
                                     AssociatedBookingProductType.FlightTicketing::getETicketNumber));
 
                             //TODO 原来将List<String>转化为String,格式如: [1,2,3],[4,5,6],[7,8,9]

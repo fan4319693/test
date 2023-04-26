@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_AuditsPo </p>
  * <p>Description: 存储订单的操作日志详情（SPNR每发生一次修改，Audits下都会新增一个子节点Audit,用于存储此次修改的发生时间、操作IP等信息） </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class Spnr_AuditsPo {
 
     /**
@@ -149,189 +152,4 @@ public class Spnr_AuditsPo {
      */
     private String eventRefPath;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public Long getAuditId() {
-        return auditId;
-    }
-
-    public void setAuditId(Long auditId) {
-        this.auditId = auditId;
-    }
-
-    public String getRequestorId() {
-        return requestorId;
-    }
-
-    public void setRequestorId(String requestorId) {
-        this.requestorId = requestorId;
-    }
-
-    public String getChannel() {
-        return channel;
-    }
-
-    public void setChannel(String channel) {
-        this.channel = channel;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public String getOpsTimestamp() {
-        return opsTimestamp;
-    }
-
-    public void setOpsTimestamp(String opsTimestamp) {
-        this.opsTimestamp = opsTimestamp;
-    }
-
-    public String getSourceAddress() {
-        return sourceAddress;
-    }
-
-    public void setSourceAddress(String sourceAddress) {
-        this.sourceAddress = sourceAddress;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public String getAgent() {
-        return agent;
-    }
-
-    public void setAgent(String agent) {
-        this.agent = agent;
-    }
-
-    public String getAgentUrl() {
-        return agentUrl;
-    }
-
-    public void setAgentUrl(String agentUrl) {
-        this.agentUrl = agentUrl;
-    }
-
-    public String getAgency() {
-        return agency;
-    }
-
-    public void setAgency(String agency) {
-        this.agency = agency;
-    }
-
-    public String getAgentId() {
-        return agentId;
-    }
-
-    public void setAgentId(String agentId) {
-        this.agentId = agentId;
-    }
-
-    public String getAgentFunctionalGroup() {
-        return agentFunctionalGroup;
-    }
-
-    public void setAgentFunctionalGroup(String agentFunctionalGroup) {
-        this.agentFunctionalGroup = agentFunctionalGroup;
-    }
-
-    public String getAgentAdministrativeGroup() {
-        return agentAdministrativeGroup;
-    }
-
-    public void setAgentAdministrativeGroup(String agentAdministrativeGroup) {
-        this.agentAdministrativeGroup = agentAdministrativeGroup;
-    }
-
-    public String getEventContext() {
-        return eventContext;
-    }
-
-    public void setEventContext(String eventContext) {
-        this.eventContext = eventContext;
-    }
-
-    public Long getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(Long eventId) {
-        this.eventId = eventId;
-    }
-
-    public Long getEventOjSuperPnrRph() {
-        return eventOjSuperPnrRph;
-    }
-
-    public void setEventOjSuperPnrRph(Long eventOjSuperPnrRph) {
-        this.eventOjSuperPnrRph = eventOjSuperPnrRph;
-    }
-
-    public String getEventOrigValue() {
-        return eventOrigValue;
-    }
-
-    public void setEventOrigValue(String eventOrigValue) {
-        this.eventOrigValue = eventOrigValue;
-    }
-
-    public String getEventRefId() {
-        return eventRefId;
-    }
-
-    public void setEventRefId(String eventRefId) {
-        this.eventRefId = eventRefId;
-    }
-
-    public String getEventPath() {
-        return eventPath;
-    }
-
-    public void setEventPath(String eventPath) {
-        this.eventPath = eventPath;
-    }
-
-    public String getEventType() {
-        return eventType;
-    }
-
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
-    }
-
-    public Long getEventFltSegRph() {
-        return eventFltSegRph;
-    }
-
-    public void setEventFltSegRph(Long eventFltSegRph) {
-        this.eventFltSegRph = eventFltSegRph;
-    }
-
-    public String getEventRefPath() {
-        return eventRefPath;
-    }
-
-    public void setEventRefPath(String eventRefPath) {
-        this.eventRefPath = eventRefPath;
-    }
 }

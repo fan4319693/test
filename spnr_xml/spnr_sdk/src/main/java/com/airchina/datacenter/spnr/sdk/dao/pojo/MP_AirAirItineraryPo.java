@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AirAirItineraryPo </p>
  * <p>Description: 存储了MP内所有行程的信息 </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class MP_AirAirItineraryPo {
 
     /**
@@ -89,109 +92,4 @@ public class MP_AirAirItineraryPo {
      */
     private String marketingFlightNum;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public String getPnr() {
-        return pnr;
-    }
-
-    public void setPnr(String pnr) {
-        this.pnr = pnr;
-    }
-
-    public String getDirectionInd() {
-        return directionInd;
-    }
-
-    public void setDirectionInd(String directionInd) {
-        this.directionInd = directionInd;
-    }
-
-    public String getDocRequired() {
-        return docRequired;
-    }
-
-    public void setDocRequired(String docRequired) {
-        this.docRequired = docRequired;
-    }
-
-    public Long getOdRph() {
-        return odRph;
-    }
-
-    public void setOdRph(Long odRph) {
-        this.odRph = odRph;
-    }
-
-    public String getOdMajorityCarrier() {
-        return odMajorityCarrier;
-    }
-
-    public void setOdMajorityCarrier(String odMajorityCarrier) {
-        this.odMajorityCarrier = odMajorityCarrier;
-    }
-
-    public String getBookingChannel() {
-        return bookingChannel;
-    }
-
-    public void setBookingChannel(String bookingChannel) {
-        this.bookingChannel = bookingChannel;
-    }
-
-    public String getOdOpenjaw() {
-        return odOpenjaw;
-    }
-
-    public void setOdOpenjaw(String odOpenjaw) {
-        this.odOpenjaw = odOpenjaw;
-    }
-
-    public String getOdDuration() {
-        return odDuration;
-    }
-
-    public void setOdDuration(String odDuration) {
-        this.odDuration = odDuration;
-    }
-
-    public Long getInfantAvailQuantity() {
-        return infantAvailQuantity;
-    }
-
-    public void setInfantAvailQuantity(Long infantAvailQuantity) {
-        this.infantAvailQuantity = infantAvailQuantity;
-    }
-
-    public String getMarketingFlightNum() {
-        return marketingFlightNum;
-    }
-
-    public void setMarketingFlightNum(String marketingFlightNum) {
-        this.marketingFlightNum = marketingFlightNum;
-    }
 }

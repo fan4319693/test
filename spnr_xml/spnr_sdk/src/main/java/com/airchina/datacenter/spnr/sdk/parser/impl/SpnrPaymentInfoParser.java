@@ -1,6 +1,6 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
-import com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_PaymentinfoPo;
+import com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_PaymentInfoPo;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
@@ -17,18 +17,31 @@ import static com.airchina.datacenter.spnr.sdk.utils.Utils.xmlDate2StringWithSha
 
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.parser.impl.SpnrPaymentInfoParser </p>
- * <p>Description: Spnr_PaymentinfoPo 的转换器 </p>
- * <p>Sample:  new SpnrPaymentInfoParser(new FieldsArrayStrategy(Spnr_PaymentinfoPo.class)) </p>
+ * <p>Description: Spnr_PaymentInfoPo 的转换器 </p>
+ * <p>Sample:  new SpnrPaymentInfoParser(new FieldsArrayStrategy(Spnr_PaymentInfoPo.class)) </p>
  * <p>Author: FanShuai </p>
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
 public class SpnrPaymentInfoParser extends AbstractParser {
 
+    /**
+     * Description: 有参构造器
+     * Parameter:
+     *  @param strategy: 实体对象解析策略
+     * Throws: 无
+     */
     public SpnrPaymentInfoParser(SerdeStrategy strategy) {
         super(strategy);
     }
 
+    /**
+     * Description: 将xml的OJSuperPNR解析为Spnr_PaymentInfoPo
+     * Parameter:
+     *  @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
+     * Return: 解析的实体对象集合, 不会为null, 可能为空集合
+     * Throws: 无
+     */
     @Override
     public List<? extends Object> parse(OJSuperPNR spnr) {
         List<Object> result = Lists.newLinkedList();
@@ -39,7 +52,7 @@ public class SpnrPaymentInfoParser extends AbstractParser {
                 .filter(CollectionUtils::isNotEmpty)
                 .ifPresent(ps -> {
                     ps.forEach(payment -> {
-                        Spnr_PaymentinfoPo po = new Spnr_PaymentinfoPo();
+                        Spnr_PaymentInfoPo po = new Spnr_PaymentInfoPo();
 
                         po.setSuperPnrId(spnr.getSuperPNRID());
                         po.setId(Utils.toWrapperLong(payment.getID()));

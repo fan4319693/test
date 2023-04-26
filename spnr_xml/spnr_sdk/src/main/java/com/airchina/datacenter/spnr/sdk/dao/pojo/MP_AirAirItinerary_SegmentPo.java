@@ -4,15 +4,15 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
 import lombok.Data;
 
 /**
- * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_Baggage_SegmentPo </p>
- * <p>Description: 存储付费行李的航段信息 </p>
- * <p>Sample: new MP_Baggage_SegmentPo() </p>
+ * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AirAirItinerary_SegmentPo </p>
+ * <p>Description: 存储了MP内所有行程航段信息、AV信息、航班经停信息等 </p>
+ * <p>Sample: new MP_AirAirItinerary_SegmentPo() </p>
  * <p>Author: FanShuai </p>
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
 @Data
-public class MP_Baggage_SegmentPo {
+public class MP_AirAirItinerary_SegmentPo {
 
     /**
      * 功能说明: SPNR ID,唯一标识
@@ -63,12 +63,6 @@ public class MP_Baggage_SegmentPo {
     private String modType;
 
     /**
-     * 功能说明:
-     * 最后修改时间: 2023/04/20
-     */
-    private String flightNumber;
-
-    /**
      * 功能说明: 原始航段RPH序号
      * 最后修改时间: 2023/04/20
      */
@@ -81,10 +75,58 @@ public class MP_Baggage_SegmentPo {
     private String dport;
 
     /**
+     * 功能说明: 标识识别码的上下文,例如 IATA、LocationId 或内部代码等。
+     * 最后修改时间: 2023/04/20
+     */
+    private String dportContext;
+
+    /**
+     * 功能说明: 出发机场航站楼
+     * 最后修改时间: 2023/04/20
+     */
+    private String dportTerminal;
+
+    /**
+     * 功能说明: 出发城市代码
+     * 最后修改时间: 2023/04/20
+     */
+    private String dcity;
+
+    /**
+     * 功能说明: 出发机场国家码
+     * 最后修改时间: 2023/04/20
+     */
+    private String dcountry;
+
+    /**
      * 功能说明: 到达机场三字码
      * 最后修改时间: 2023/04/20
      */
     private String aport;
+
+    /**
+     * 功能说明: 标识识别码的上下文,例如 IATA、ARC 或内部代码等。
+     * 最后修改时间: 2023/04/20
+     */
+    private String aportContext;
+
+    /**
+     * 功能说明: 到达机场航站楼
+     * 最后修改时间: 2023/04/20
+     */
+    private String aportTerminal;
+
+    /**
+     * 功能说明: 到达城市代码
+     * 最后修改时间: 2023/04/20
+     */
+    private String acity;
+
+    /**
+     * 功能说明: 到达机场国家码
+     * 最后修改时间: 2023/04/20
+     */
+    private String acountry;
 
     /**
      * 功能说明: 航班出发时间
@@ -210,7 +252,7 @@ public class MP_Baggage_SegmentPo {
      * 功能说明: 经停机场
      * 最后修改时间: 2023/04/20
      */
-    private String stopPoint;
+    private String stoppoint;
 
     /**
      * 功能说明: 经停地点code类型
@@ -225,26 +267,9 @@ public class MP_Baggage_SegmentPo {
     private String stopTime;
 
     /**
-     * 功能说明: availableRails信息
+     * 功能说明: json数组, av_rph: AV序号;av_subclass:预订的子舱;av_subclass_quantity:子舱剩余数（不代表实时数值;av_subclass_status: 子舱舱位开放状态
      * 最后修改时间: 2023/04/20
      */
     private String avInfo;
 
-    /**
-     * 功能说明: 航程类型
-     * 最后修改时间: 2023/04/20
-     */
-    private String directionInd;
-
-    /**
-     * 功能说明: 是否缺口程
-     * 最后修改时间: 2023/04/20
-     */
-    private String odOpenJaw;
-
-    /**
-     * 功能说明: 机票票号
-     * 最后修改时间: 2023/04/20
-     */
-    private String eTicketNumber;
 }

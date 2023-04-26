@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_ModifyTypesPo </p>
  * <p>Description: 存储MP产品经历了哪些变更操作（改升、改不定期、退票、分离PNR等操作） </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class MP_ModifyTypesPo {
 
     /**
@@ -95,117 +98,4 @@ public class MP_ModifyTypesPo {
      */
     private String reshopId;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public String getPnr() {
-        return pnr;
-    }
-
-    public void setPnr(String pnr) {
-        this.pnr = pnr;
-    }
-
-    public Long getAuditId() {
-        return auditId;
-    }
-
-    public void setAuditId(Long auditId) {
-        this.auditId = auditId;
-    }
-
-    public String getOriginalHistoryId() {
-        return originalHistoryId;
-    }
-
-    public void setOriginalHistoryId(String originalHistoryId) {
-        this.originalHistoryId = originalHistoryId;
-    }
-
-    public Long getRph() {
-        return rph;
-    }
-
-    public void setRph(Long rph) {
-        this.rph = rph;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getFreeDateChange() {
-        return freeDateChange;
-    }
-
-    public void setFreeDateChange(String freeDateChange) {
-        this.freeDateChange = freeDateChange;
-    }
-
-    public Long getOldMpNum() {
-        return oldMpNum;
-    }
-
-    public void setOldMpNum(Long oldMpNum) {
-        this.oldMpNum = oldMpNum;
-    }
-
-    public String getSplitRequired() {
-        return splitRequired;
-    }
-
-    public void setSplitRequired(String splitRequired) {
-        this.splitRequired = splitRequired;
-    }
-
-    public String getNeedCancel() {
-        return needCancel;
-    }
-
-    public void setNeedCancel(String needCancel) {
-        this.needCancel = needCancel;
-    }
-
-    public String getOldPnr() {
-        return oldPnr;
-    }
-
-    public void setOldPnr(String oldPnr) {
-        this.oldPnr = oldPnr;
-    }
-
-    public String getReshopId() {
-        return reshopId;
-    }
-
-    public void setReshopId(String reshopId) {
-        this.reshopId = reshopId;
-    }
 }

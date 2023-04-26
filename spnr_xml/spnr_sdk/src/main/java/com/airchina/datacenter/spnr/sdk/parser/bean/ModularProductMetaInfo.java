@@ -1,5 +1,9 @@
 package com.airchina.datacenter.spnr.sdk.parser.bean;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.parser.bean.ModularProductMetaInfo </p>
  * <p>Description: 自定义的Bean, ModularProduct节点的公共属性 </p>
@@ -8,6 +12,9 @@ package com.airchina.datacenter.spnr.sdk.parser.bean;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ModularProductMetaInfo {
 
     /**
@@ -28,29 +35,4 @@ public class ModularProductMetaInfo {
      */
     private Long productNumber;
 
-    /**
-     * Description: 有参构造器
-     * @param spnrId
-     * @param searchId
-     * @param productNumber
-     */
-    public ModularProductMetaInfo(String spnrId, String searchId, Long productNumber) {
-        this.spnrId = spnrId;
-        this.searchId = searchId;
-        this.productNumber = productNumber;
-    }
-
-    //*********************************Getter方法*********************************
-
-    public String getSpnrId() {
-        return spnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
 }
