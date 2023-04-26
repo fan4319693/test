@@ -101,6 +101,18 @@ public class MpApTravelerParser extends AbstractParser {
                                 po.setSingleVendorInd(t.getSingleVendorInd());
                             });
 
+
+                            Utils.getFirstNonNullConsume(traveler.getAddress(), addr -> {
+                                po.setCityName(addr.getCityName());
+                                Optional.ofNullable(addr.getStateProv())
+                                        .ifPresent(stateProvType -> {
+                                            //此处原来取得是getValue,Excel为准
+                                            po.setStateProv(stateProvType.getStateCode());
+                                        });
+                                Optional.ofNullable(addr.getCountryName())
+                                        .ifPresent(n -> po.setCountryName(n.getCode()));
+                            });
+
                             result.add(po);
                         });
                     });

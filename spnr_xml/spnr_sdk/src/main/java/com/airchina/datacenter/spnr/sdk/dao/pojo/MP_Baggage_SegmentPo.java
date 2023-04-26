@@ -227,6 +227,24 @@ public class MP_Baggage_SegmentPo {
      */
     private String avInfo;
 
+    /**
+     * 功能说明: 航程类型
+     * 最后修改时间: 2023/04/20
+     */
+    private String directionInd;
+
+    /**
+     * 功能说明: 是否缺口程
+     * 最后修改时间: 2023/04/20
+     */
+    private String odOpenJaw;
+
+    /**
+     * 功能说明: 机票票号
+     * 最后修改时间: 2023/04/20
+     */
+    private String eTicketNumber;
+
     //============================Getter and Setter===============================
 
     public String getSuperPnrId() {
@@ -515,5 +533,29 @@ public class MP_Baggage_SegmentPo {
 
     public void setAvInfo(String avInfo) {
         this.avInfo = avInfo;
+    }
+
+    public String getDirectionInd() {
+        return directionInd;
+    }
+
+    public void setDirectionInd(String directionInd) {
+        this.directionInd = directionInd;
+    }
+
+    public String getOdOpenJaw() {
+        return odOpenJaw;
+    }
+
+    public void setOdOpenJaw(String odOpenJaw) {
+        this.odOpenJaw = odOpenJaw;
+    }
+
+    public String geteTicketNumber() {
+        return eTicketNumber;
+    }
+
+    public void seteTicketNumber(String eTicketNumber) {
+        this.eTicketNumber = eTicketNumber;
     }
 }

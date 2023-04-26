@@ -179,6 +179,24 @@ public class MP_Baggage_TravelerPo {
      */
     private String singleVendorInd;
 
+    /**
+     * 功能说明: 城市
+     * 最后修改时间: 2023/04/26
+     */
+    private String cityName;
+
+    /**
+     * 功能说明: 省份
+     * 最后修改时间: 2023/04/26
+     */
+    private String stateProv;
+
+    /**
+     * 功能说明: 国家
+     * 最后修改时间: 2023/04/26
+     */
+    private String countryName;
+
     //============================Getter and Setter===============================
 
     public String getSuperPnrId() {
@@ -403,5 +421,29 @@ public class MP_Baggage_TravelerPo {
 
     public void setSingleVendorInd(String singleVendorInd) {
         this.singleVendorInd = singleVendorInd;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getStateProv() {
+        return stateProv;
+    }
+
+    public void setStateProv(String stateProv) {
+        this.stateProv = stateProv;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 }
