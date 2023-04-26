@@ -75,6 +75,17 @@ public class MpAirPriceInfoItinTotalFareParser extends AbstractParser {
 
                             Optional.ofNullable(itinTotalFare.getTaxes())
                                     .ifPresent(t -> {
+                                        t.getTax().forEach(tax -> {
+                                            // 机建费用
+                                            if ("CN".equals(tax.getTaxCode())) {
+                                                po.setTaxAirportFee(tax.getAmount().toString());
+                                                po.setTaxAirportCurrencyCode(tax.getCurrencyCode());
+                                                // 燃油费用
+                                            } else if ("YQ".equals(tax.getTaxCode())) {
+                                                po.setTaxFuelFee(tax.getAmount().toString());
+                                                po.setTaxFuelCurrencyCode(tax.getCurrencyCode());
+                                            }
+                                        });
                                         po.setTaxDetails(Commons.getTaxDetails(t.getTax()));
                                     });
 
