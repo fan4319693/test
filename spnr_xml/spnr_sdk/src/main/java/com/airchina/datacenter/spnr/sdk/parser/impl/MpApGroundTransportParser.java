@@ -26,10 +26,23 @@ import java.util.stream.Stream;
  */
 public class MpApGroundTransportParser extends AbstractParser {
 
+    /**
+     * Description: 有参构造器
+     * Parameter:
+     *  @param strategy: 实体对象解析策略
+     * Throws: 无
+     */
     public MpApGroundTransportParser(SerdeStrategy strategy) {
         super(strategy);
     }
 
+    /**
+     * Description: 将xml的OJSuperPNR解析为MP_AP_GroundTransportPo
+     * Parameter:
+     *  @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
+     * Return: 解析的实体对象集合, 不会为null, 可能为空集合
+     * Throws: 无
+     */
     @Override
     public List<? extends Object> parse(OJSuperPNR spnr) {
         List<Object> result = Lists.newLinkedList();
@@ -60,17 +73,17 @@ public class MpApGroundTransportParser extends AbstractParser {
                                 Optional.ofNullable(trainSegment.getDepartureStation())
                                         .map(t -> t.getDetails())
                                         .ifPresent(t -> {
-                                            po.setdStationType(t.getLocationCategory());
-                                            po.setdStationCode(t.getLocationCode());
-                                            po.setdStationName(t.getName());
+                                            po.setDStationType(t.getLocationCategory());
+                                            po.setDStationCode(t.getLocationCode());
+                                            po.setDStationName(t.getName());
                                         });
 
                                 Optional.ofNullable(trainSegment.getArrivalStation())
                                         .map(t -> t.getDetails())
                                         .ifPresent(t -> {
-                                            po.setaStationType(t.getLocationCategory());
-                                            po.setaStationCode(t.getLocationCode());
-                                            po.setaStationName(t.getName());
+                                            po.setAStationType(t.getLocationCategory());
+                                            po.setAStationCode(t.getLocationCode());
+                                            po.setAStationName(t.getName());
                                         });
 
                                 Optional.ofNullable(trainSegment.getTrainInfo())

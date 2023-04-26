@@ -61,11 +61,7 @@ public class XmlTabUDTFTest {
         String debugXml = FileUtils.readFileToString(FileUtils.getFile(root.concat("\\xml\\1.xml")), Charset.defaultCharset());
         String XmlPath = "/OJ_SuperPNRWriteRQ/OJ_SuperPNR";
 
-        System.out.println(debugXml);
         debugXml = debugXml.replaceAll("xmlns=\"[^>,^\\s]+\"", "");
-
-
-        System.out.println(debugXml);
         Document doc;
         SAXReader reader = new SAXReader();
         doc = reader.read(IOUtils.toInputStream(debugXml, Charset.defaultCharset()));

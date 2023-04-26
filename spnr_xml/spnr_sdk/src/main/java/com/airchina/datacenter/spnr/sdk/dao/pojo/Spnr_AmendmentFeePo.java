@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_AmendmentFeePo </p>
  * <p>Description: 存储订单的手续费（一般改期升舱需要手续费时，会在此节点下加入。每增加一次手续费，子节点增加一次。） </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class Spnr_AmendmentFeePo {
 
     /**
@@ -65,77 +68,4 @@ public class Spnr_AmendmentFeePo {
      */
     private String replacedBy;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public String getAmt() {
-        return amt;
-    }
-
-    public void setAmt(String amt) {
-        this.amt = amt;
-    }
-
-    public String getCurrencyCode() {
-        return currencyCode;
-    }
-
-    public void setCurrencyCode(String currencyCode) {
-        this.currencyCode = currencyCode;
-    }
-
-    public String getOpsDate() {
-        return opsDate;
-    }
-
-    public void setOpsDate(String opsDate) {
-        this.opsDate = opsDate;
-    }
-
-    public Long getAuditId() {
-        return auditId;
-    }
-
-    public void setAuditId(Long auditId) {
-        this.auditId = auditId;
-    }
-
-    public String getManual() {
-        return manual;
-    }
-
-    public void setManual(String manual) {
-        this.manual = manual;
-    }
-
-    public Long getMasterProductNumber() {
-        return masterProductNumber;
-    }
-
-    public void setMasterProductNumber(Long masterProductNumber) {
-        this.masterProductNumber = masterProductNumber;
-    }
-
-    public String getReplacedBy() {
-        return replacedBy;
-    }
-
-    public void setReplacedBy(String replacedBy) {
-        this.replacedBy = replacedBy;
-    }
 }

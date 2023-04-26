@@ -25,10 +25,23 @@ import static com.airchina.datacenter.spnr.sdk.utils.Utils.xmlDate2StringWithSha
  */
 public class MpApTicketingParser extends AbstractParser {
 
+    /**
+     * Description: 有参构造器
+     * Parameter:
+     *  @param strategy: 实体对象解析策略
+     * Throws: 无
+     */
     public MpApTicketingParser(SerdeStrategy strategy) {
         super(strategy);
     }
 
+    /**
+     * Description: 将xml的OJSuperPNR解析为MP_AP_TicketingPo
+     * Parameter:
+     *  @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
+     * Return: 解析的实体对象集合, 不会为null, 可能为空集合
+     * Throws: 无
+     */
     @Override
     public List<? extends Object> parse(OJSuperPNR spnr) {
         List<Object> result = Lists.newLinkedList();
@@ -47,7 +60,7 @@ public class MpApTicketingParser extends AbstractParser {
                 po.setSuperPnrId(spnr.getSuperPNRID());
                 po.setSearchId(mp.getSearchID());
                 po.setProductNumber(Utils.toWrapperLong(mp.getProductNumber()));
-                po.seteTicketNumber(ticketing.getETicketNumber());
+                po.setETicketNumber(ticketing.getETicketNumber());
                 //TODO 集合，未决定取哪个，取首个
                 po.setTravelerRph(Utils.getFirstNonNullApply(ticketing.getTravelerRefNumber(), Utils::toWrapperLong));
                 po.setFlightSegmentRph(Utils.collection2String(ticketing.getFlightSegmentRefNumber()));

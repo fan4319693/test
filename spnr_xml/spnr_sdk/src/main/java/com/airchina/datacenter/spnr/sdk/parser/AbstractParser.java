@@ -37,10 +37,10 @@ public abstract class AbstractParser {
     }
 
     /**
-     * Description: 将xml的OJSuperPNR的特定节点解析为实体类集合(子类实现)
+     * Description: 将xml的OJSuperPNR解析为实体类集合(子类实现)
      * Parameter:
      *  @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
-     * Return: 解析的实体类集合, 不会为null, 可能为空集合
+     * Return: 解析的实体对象集合, 不会为null, 可能为空集合
      * Throws: 无
      */
     public abstract List<? extends Object> parse(OJSuperPNR spnr);

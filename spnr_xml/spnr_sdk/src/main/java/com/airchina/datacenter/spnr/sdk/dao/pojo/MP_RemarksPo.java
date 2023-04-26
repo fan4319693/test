@@ -1,6 +1,8 @@
 package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 
+import lombok.Data;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_RemarksPo </p>
  * <p>Description: 存储MP产品退后审核信息 </p>
@@ -9,6 +11,7 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
+@Data
 public class MP_RemarksPo {
 
     /**
@@ -95,117 +98,4 @@ public class MP_RemarksPo {
      */
     private String qualifierInfo;
 
-    //============================Getter and Setter===============================
-
-    public String getSuperPnrId() {
-        return superPnrId;
-    }
-
-    public void setSuperPnrId(String superPnrId) {
-        this.superPnrId = superPnrId;
-    }
-
-    public String getSearchId() {
-        return searchId;
-    }
-
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
-    }
-
-    public Long getProductNumber() {
-        return productNumber;
-    }
-
-    public void setProductNumber(Long productNumber) {
-        this.productNumber = productNumber;
-    }
-
-    public String getActive() {
-        return active;
-    }
-
-    public void setActive(String active) {
-        this.active = active;
-    }
-
-    public Long getAuditId() {
-        return auditId;
-    }
-
-    public void setAuditId(Long auditId) {
-        this.auditId = auditId;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getCodeContext() {
-        return codeContext;
-    }
-
-    public void setCodeContext(String codeContext) {
-        this.codeContext = codeContext;
-    }
-
-    public String getOpsDate() {
-        return opsDate;
-    }
-
-    public void setOpsDate(String opsDate) {
-        this.opsDate = opsDate;
-    }
-
-    public String getLastModified() {
-        return lastModified;
-    }
-
-    public void setLastModified(String lastModified) {
-        this.lastModified = lastModified;
-    }
-
-    public Long getRph() {
-        return rph;
-    }
-
-    public void setRph(Long rph) {
-        this.rph = rph;
-    }
-
-    public String getAgent() {
-        return agent;
-    }
-
-    public void setAgent(String agent) {
-        this.agent = agent;
-    }
-
-    public String getAgentSourceAddress() {
-        return agentSourceAddress;
-    }
-
-    public void setAgentSourceAddress(String agentSourceAddress) {
-        this.agentSourceAddress = agentSourceAddress;
-    }
-
-    public String getInTimestamp() {
-        return inTimestamp;
-    }
-
-    public void setInTimestamp(String inTimestamp) {
-        this.inTimestamp = inTimestamp;
-    }
-
-    public String getQualifierInfo() {
-        return qualifierInfo;
-    }
-
-    public void setQualifierInfo(String qualifierInfo) {
-        this.qualifierInfo = qualifierInfo;
-    }
 }

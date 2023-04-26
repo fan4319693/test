@@ -1,6 +1,6 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
-import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_PtcsPo;
+import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_PTCsPo;
 import com.airchina.datacenter.spnr.sdk.entity.ModularProductType;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
@@ -15,18 +15,31 @@ import java.util.Optional;
 
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.parser.impl.MpPTCsParser </p>
- * <p>Description: MP_PtcsPo 的转换器 </p>
- * <p>Sample:  new MpPTCsParser(new FieldsArrayStrategy(MP_PtcsPo.class)) </p>
+ * <p>Description: MP_PTCsPo 的转换器 </p>
+ * <p>Sample:  new MpPTCsParser(new FieldsArrayStrategy(MP_PTCsPo.class)) </p>
  * <p>Author: FanShuai </p>
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
 public class MpPTCsParser extends AbstractParser {
 
+    /**
+     * Description: 有参构造器
+     * Parameter:
+     *  @param strategy: 实体对象解析策略
+     * Throws: 无
+     */
     public MpPTCsParser(SerdeStrategy strategy) {
         super(strategy);
     }
 
+    /**
+     * Description: 将xml的OJSuperPNR解析为MP_PTCsPo
+     * Parameter:
+     *  @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
+     * Return: 解析的实体对象集合, 不会为null, 可能为空集合
+     * Throws: 无
+     */
     @Override
     public List<? extends Object> parse(OJSuperPNR spnr) {
         List<Object> result = Lists.newLinkedList();
@@ -35,7 +48,7 @@ public class MpPTCsParser extends AbstractParser {
                     .map(ptcs -> ptcs.getPTC())
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(ptcs -> ptcs.forEach(ptc -> {
-                        MP_PtcsPo po = new MP_PtcsPo();
+                        MP_PTCsPo po = new MP_PTCsPo();
 
                         po.setSuperPnrId(spnr.getSuperPNRID());
                         po.setSearchId(mp.getSearchID());

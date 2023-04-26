@@ -16,7 +16,7 @@ import org.dom4j.io.SAXReader;
 
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.udf.XmlPathUDF </p>
- * <p>Description: 清洗国航原始的xml, 提取必要的节点 </p>
+ * <p>Description: 清洗国航原始的xml, 提取目标节点 </p>
  * <p>Sample: new XmlPathUDF() </p>
  * <p>Author: FanShuai </p>
  * <p>Date: 2023/4/20 </p>
@@ -44,11 +44,19 @@ public class XmlPathUDF extends GenericUDF {
      */
     private StringObjectInspector soi;
 
+    /**
+     * Description: UDF函数的初始化方法, 读取器
+     * Parameter:
+     *  @param arguments: UDF函数入参的解析器
+     * Return: String类型的解析器
+     * Throws: 无
+     */
     @Override
     public ObjectInspector initialize(ObjectInspector[] arguments) {
         this.reader = new SAXReader();
 
-        //该UDF默认只传一个参数, xml的文本, 提取的节点路径使用默认值, 若有第2个参数, 则用传入的节点路径
+        //该UDF默认只传一个参数, xml的文本, 提取的节点路径使用默认值,
+        //若有2个参数, 则用传入的节点路径
         if (arguments.length == 2) {
             this.XmlPath = arguments[1].toString();
         }
@@ -57,16 +65,38 @@ public class XmlPathUDF extends GenericUDF {
         return PrimitiveObjectInspectorFactory.javaStringObjectInspector;
     }
 
+    /**
+     * Description: 清除xml文本中的无关内容(namespace, 格式为: xmlns="xxx")
+     * Parameter:
+     *  @param xmlContent: 待清理的xml文本, 不能为null
+     * Return: 清理后的xml文本
+     * Throws: 无
+     */
+    private String filter(String xmlContent) {
+        return xmlContent.replaceAll("xmlns=\"[^>,^\\s]+\"", "");
+    }
+
+    /**
+     * Description: UDF函数的主方法
+     * Parameter:
+     *  @param arguments: UDF方法的入参, 默认一个, 第二个参数可选, 为待解析Xml的节点路径
+     * Return: 选取原始xml的目标节点, 并清理后的xml文本
+     * Throws: HiveException, xml解析失败时抛出, 能导致任务失败
+     */
     @Override
     public Object evaluate(DeferredObject[] arguments) throws HiveException {
         String xmlContent = soi.getPrimitiveJavaObject(arguments[0].get());
-        // remove namespace or may select node with null
-        xmlContent = xmlContent.replaceAll("xmlns=\"[^>,^\\s]+\"", "");
-        Document doc = null;
+        if (xmlContent == null){
+            return null;
+        }
+        //清除xml中的无关内容
+        xmlContent = filter(xmlContent);
         try {
-            doc = this.reader.read(IOUtils.toInputStream(xmlContent));
+            //获取业务相关节点
+            Document doc = this.reader.read(IOUtils.toInputStream(xmlContent));
             Node spnr = doc.selectSingleNode(this.XmlPath);
             if (spnr != null) {
+                //返回合法xml文本
                 return spnr.asXML();
             }
         } catch (DocumentException e) {
@@ -76,8 +106,16 @@ public class XmlPathUDF extends GenericUDF {
         return null;
     }
 
+    /**
+     * Description: UDF函数的显示信息
+     * Parameter:
+     *  @param children:
+     * Return: 显示信息
+     * Throws: 无
+     */
     @Override
     public String getDisplayString(String[] children) {
-        return null;
+        return "spnr_node";
     }
+
 }

@@ -21,7 +21,8 @@ import java.util.function.Function;
  * <p>Author: FanShuai </p>
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
- */public class Commons {
+ */
+public class Commons {
 
     //*********************************公共业务处理************************************
 
@@ -387,7 +388,7 @@ import java.util.function.Function;
     }
 
 
-    //*********************************解析字段的元信息*********************************
+    //*********************************解析公共属性*********************************
 
     /**
      * Description: 从Air节点获取AirMetaInfo

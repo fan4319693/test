@@ -81,6 +81,13 @@ public class XmlTabUDTF extends GenericUDTF {
         }
     }
 
+    /**
+     * Description: UDTF的初始化方法
+     * Parameter:
+     *  @param argOIs: 入参元数据, 名称，顺序，类型, 个数等, 不能为null
+     * Return: UDTF函数输出的元数据
+     * Throws: UDFArgumentException, 参数错误时抛出, 能导致任务失败
+     */
     @Override
     public StructObjectInspector initialize(StructObjectInspector argOIs) throws UDFArgumentException {
         List<? extends StructField> fieldRefs = argOIs.getAllStructFieldRefs();
@@ -99,10 +106,16 @@ public class XmlTabUDTF extends GenericUDTF {
         } else {
             throw new UDFArgumentException("We need 2 params:xml content and corresponding table name.");
         }
-
         return parser.getStructObjectInspector();
     }
 
+    /**
+     * Description: UDTF的具体解析方法
+     * Parameter:
+     *  @param args: 执行UDTF时的入参, 2个参数, 第一个为xml文本, 第二个为待解析的hive表对应的实体类名称
+     * Return: 无
+     * Throws: HiveException, 解析失败时抛出, 能导致任务失败
+     */
     @Override
     public void process(Object[] args) throws HiveException {
         //待解析的xml文本
@@ -116,6 +129,12 @@ public class XmlTabUDTF extends GenericUDTF {
         }
     }
 
+    /**
+     * Description: UDTF执行结束后调用
+     * Parameter: 无
+     * Return: 无
+     * Throws: 无
+     */
     @Override
     public void close() {}
 
