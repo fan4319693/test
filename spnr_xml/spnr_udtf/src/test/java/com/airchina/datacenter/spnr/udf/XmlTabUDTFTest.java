@@ -55,10 +55,10 @@ public class XmlTabUDTFTest {
 
     @Test
     public void originMine() throws IOException, DocumentException {
-        String path = "C:\\Users\\LPT014812\\Desktop\\udf\\spnr_xml\\spnr_udtf\\src\\test\\resources\\xml";
+//        String path = "C:\\Users\\LPT014812\\Desktop\\udf\\spnr_xml\\spnr_udtf\\src\\test\\resources\\xml";
 
-        //String root = Objects.requireNonNull(this.getClass().getResource("/")).getPath();
-        String debugXml = FileUtils.readFileToString(FileUtils.getFile(path.concat("\\变更后.xml")), Charset.defaultCharset());
+        String root = Objects.requireNonNull(this.getClass().getResource("/")).getPath();
+        String debugXml = FileUtils.readFileToString(FileUtils.getFile(root.concat("\\xml\\1.xml")), Charset.defaultCharset());
         String XmlPath = "/OJ_SuperPNRWriteRQ/OJ_SuperPNR";
 
         debugXml = debugXml.replaceAll("xmlns=\"[^>,^\\s]+\"", "");

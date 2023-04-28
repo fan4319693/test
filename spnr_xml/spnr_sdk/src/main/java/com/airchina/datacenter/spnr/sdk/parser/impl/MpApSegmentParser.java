@@ -5,6 +5,7 @@ import com.airchina.datacenter.spnr.sdk.entity.*;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Commons;
+import com.airchina.datacenter.spnr.sdk.utils.Constants;
 import com.airchina.datacenter.spnr.sdk.utils.Utils;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections4.CollectionUtils;
@@ -114,6 +115,10 @@ public class MpApSegmentParser extends AbstractParser {
                                     po.setStopTime(Utils.number2String(t.getStopTime()));
                                 });
                                 po.setAvInfo(Commons.getAvInfoJson(segment.getBookingClassAvails()));
+
+                                po.setDirectionInd(air.getAirItinerary().getDirectionInd().toString());
+                                po.setOdOpenJaw(option.getOpenjaw());
+                                po.seteTicketNumber(Utils.stream2String(Utils.streamNullable(air.getTicketing()), TicketingInfoType::getETicketNumber,  Constants.JoinByCommaNull2Empty));
 
                                 result.add(po);
                             });

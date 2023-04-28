@@ -182,4 +182,23 @@ public class MP_AP_TravelerPo {
      */
     private String singleVendorInd;
 
+
+    /**
+     * 功能说明: 城市
+     * 最后修改时间: 2023/04/26
+     */
+    private String cityName;
+
+    /**
+     * 功能说明: 省份
+     * 最后修改时间: 2023/04/26
+     */
+    private String stateProv;
+
+    /**
+     * 功能说明: 国家
+     * 最后修改时间: 2023/04/26
+     */
+    private String countryName;
+
 }

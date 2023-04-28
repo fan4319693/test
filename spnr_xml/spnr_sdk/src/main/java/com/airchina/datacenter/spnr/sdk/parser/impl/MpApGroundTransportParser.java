@@ -103,18 +103,18 @@ public class MpApGroundTransportParser extends AbstractParser {
                                                     .ifPresent(c -> po.setClazz(c.value()));
                                         });
 
-                                //TODO 取数逻辑不明,先用逗号分隔,待确定
-                                po.setBasicFareAmount(Utils.stream2String(Utils.streamNullable(fareOption.getPriceDetail())
-                                                .map(t -> t.getPriceBreakdown())
-                                                .map(t -> t.getBasicFare()),
-                                        t -> Utils.number2String(t.getAmount()),
-                                        Constants.JoinByCommaNull2Empty));
-
+                                //TODO 目前直接加和可能出现问题，目前待定
+                                po.setBasicFareAmount(Utils.number2String(Utils.streamNullable(fareOption.getPriceDetail())
+                                        .map(t -> t.getPriceBreakdown())
+                                        .map(t -> t.getBasicFare())
+                                        .mapToDouble(t -> t.getAmount()).sum()));
                                 po.setBasicFareCurrencyCode(Utils.stream2String(Utils.streamNullable(fareOption.getPriceDetail())
                                                 .map(t -> t.getPriceBreakdown())
                                                 .map(t -> t.getBasicFare()),
                                         t -> t.getCurrencyCode(),
                                         Constants.JoinByCommaNull2Empty));
+                                po.setTotalFareAmount(Utils.number2String(fareOption.getTotalFare().getAmount()));
+                                po.setTotalFareCurrencyCode(fareOption.getTotalFare().getCurrencyCode());
                             });
 
                             result.add(po);
