@@ -50,6 +50,7 @@ public class MpBaggageParser extends AbstractParser {
             if (baggage == null) {
                 continue;
             }
+
             Optional.ofNullable(baggage.getTicketing())
                     .ifPresent(ticketingInfoTypes -> ticketingInfoTypes.forEach(
                             ticketing -> {
@@ -97,6 +98,7 @@ public class MpBaggageParser extends AbstractParser {
                                                         po.setFlightSegmentNumber(Utils.collection2String(service.getFlightSegmentNumber()));
                                                     });
                                         });
+
                                 // TODO: 这里虽然是数组但是xds上显示的确实attribute，取第一条，而且观察数据，如果一个票对应多个航段会生成多条数据相同的
                                 Utils.getFirstNonNullConsume(ticketing.getTravelerRefNumber(), num -> {
                                     po.setTravelerRph(Utils.toWrapperLong(num));
