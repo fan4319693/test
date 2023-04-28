@@ -120,6 +120,18 @@ public class MP_AP_GroundTransportPo {
     private String clazz;
 
     /**
+     * 功能说明: 总价
+     * 最后修改时间: 2023/04/25
+     */
+    private String totalFareAmount;
+
+    /**
+     * 功能说明: 总价的单位
+     * 最后修改时间: 2023/04/25
+     */
+    private String totalFareCurrencyCode;
+
+    /**
      * 功能说明: 成本价格
      * 最后修改时间: 2023/04/20
      */
