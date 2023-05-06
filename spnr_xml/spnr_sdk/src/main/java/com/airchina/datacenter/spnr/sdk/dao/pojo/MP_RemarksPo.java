@@ -93,7 +93,31 @@ public class MP_RemarksPo {
     private String inTimestamp;
 
     /**
-     * 功能说明: qualifier_item_name与qualifier_item_value组合成了qualifier_item, 如k1:v1|k2:v2|k3:v3
+     * 功能说明:
+     * 最后修改时间: 2023/04/20
+     */
+    private String cancelFeesSource;
+
+    /**
+     * 功能说明: 退款申请Id
+     * 最后修改时间: 2023/04/20
+     */
+    private String refundApplicationId;
+
+    /**
+     * 功能说明:
+     * 最后修改时间: 2023/04/20
+     */
+    private String automaticCalculate;
+
+    /**
+     * 功能说明:
+     * 最后修改时间: 2023/04/20
+     */
+    private String seatReleaseType;
+
+    /**
+     * 功能说明: qualifier的Json信息
      * 最后修改时间: 2023/04/20
      */
     private String qualifierInfo;
