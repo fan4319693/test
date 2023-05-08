@@ -116,7 +116,7 @@ public class MpBaggageSegmentParser extends AbstractParser {
 
                                 po.setDirectionInd(air.getAirItinerary().getDirectionInd().toString());
                                 po.setOdOpenJaw(option.getOpenjaw());
-                                po.seteTicketNumber(Utils.stream2String(Utils.streamNullable(air.getTicketing()), TicketingInfoType::getETicketNumber,  Constants.JoinByCommaNull2Empty));
+                                po.setETicketNumber(Utils.stream2String(Utils.streamNullable(air.getTicketing()), TicketingInfoType::getETicketNumber,  Constants.JoinByCommaNull2Empty));
 
                                 result.add(po);
                             });
