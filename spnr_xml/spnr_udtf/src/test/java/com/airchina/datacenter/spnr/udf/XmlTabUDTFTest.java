@@ -41,9 +41,8 @@ public class XmlTabUDTFTest {
 //        Map<String, List> map = Dispatcher.convertContext(obj);
 //        List pos = map.get("SPNR_PricingPo".toLowerCase());
 
-        AbstractParser parser = ParserProvider.provide("Spnr_AuditsPo");
+        AbstractParser parser = ParserProvider.provide("MP_RemarksPo");
         List<?> res = UdtfFacade.process(xmlContent, parser);
-
 
         //Gson gson = new Gson();
         for (Object re : res) {
