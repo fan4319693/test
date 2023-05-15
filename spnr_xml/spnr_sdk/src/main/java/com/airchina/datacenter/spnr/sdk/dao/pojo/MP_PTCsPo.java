@@ -63,4 +63,9 @@ public class MP_PTCsPo {
      */
     private String rphList;
 
+    /**
+     * 功能说明: 旅客子类型
+     * 最后修改时间: 2023/04/20
+     */
+    private String ptcSubType;
 }

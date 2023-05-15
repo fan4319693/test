@@ -60,7 +60,7 @@ public class SpnrAmendmentFeeParser extends AbstractParser {
                         po.setManual(Utils.boolean2String(fee.isManual()));
                         po.setMasterProductNumber(Utils.toWrapperLong(fee.getMasterProductNumber()));
                         po.setReplacedBy(fee.getReplacedBy());
-
+                        po.setDescription(fee.getDescription());
                         result.add(po);
                     });
                 });

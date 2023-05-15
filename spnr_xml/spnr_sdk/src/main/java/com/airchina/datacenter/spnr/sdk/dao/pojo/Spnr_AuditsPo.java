@@ -152,4 +152,9 @@ public class Spnr_AuditsPo {
      */
     private String eventRefPath;
 
+    /**
+     * 功能说明: 标识event的序号，无特殊意义，主要是为了做质量监控使用
+     * 最后修改时间: 2023/05/11
+     */
+    private Integer eventRph;
 }
