@@ -68,4 +68,9 @@ public class Spnr_AmendmentFeePo {
      */
     private String replacedBy;
 
+    /**
+     * 功能说明: 费用描述
+     * 最后修改时间: 2023/05/12
+     */
+    private String description;
 }

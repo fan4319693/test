@@ -57,7 +57,7 @@ public class MpPTCsParser extends AbstractParser {
                         po.setPtcCode(ptc.getCode());
                         po.setPtcQuantity(Utils.toWrapperLong(ptc.getQuantity()));
                         po.setRphList(Utils.collection2String(ptc.getRPHList()));
-
+                        po.setPtcSubType(ptc.getPTCSubType());
                         result.add(po);
                     }));
         }

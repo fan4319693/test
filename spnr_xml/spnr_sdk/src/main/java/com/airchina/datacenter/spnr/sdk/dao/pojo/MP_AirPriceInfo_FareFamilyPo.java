@@ -278,4 +278,15 @@ public class MP_AirPriceInfo_FareFamilyPo {
      */
     private String refundPolicyRbd;
 
+    /**
+     * 功能说明: 航段序号
+     * 最后修改时间: 2023/05/11
+     */
+    private Long flightSegmentRph;
+
+    /**
+     * 功能说明: OD序号
+     * 最后修改时间: 2023/05/11
+     */
+    private Long odRph;
 }

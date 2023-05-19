@@ -130,6 +130,8 @@ public class MpAirPriceInfoFareFamilyParser extends AbstractParser {
                                             po.setRefundPolicyRbd(elementList.stream().map(r -> r.getAttribute("PolicyRbd")).collect(Collectors.joining(",")));
                                         }
                                     });
+                            po.setFlightSegmentRph(Utils.toWrapperLong(fareInfo.getFlightSegmentRPH()));
+                            po.setOdRph(Utils.toWrapperLong(fareInfo.getOriginDestinationRPH()));
 
                             result.add(po);
                         });
