@@ -140,4 +140,16 @@ public class Spnr_PaymentInfoPo {
      */
     private String refCode;
 
+    /**
+     * 功能说明: 优惠券的使用范围及退款详情
+     * 最后修改时间: 2023/05/25
+     */
+    private String paymentQualifier;
+
+    /**
+     * 功能说明: 优惠券的使用规则
+     * 最后修改时间: 2023/05/25
+     */
+    private String voucher;
+
 }
