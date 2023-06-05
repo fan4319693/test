@@ -80,6 +80,16 @@ public class ParserProvider {
             .put(formalizeKey("MP_AP_TravelerPo"), new MpApTravelerParser(new FieldsArrayStrategy(MP_AP_TravelerPo.class)))
             //如果要解析新的Hive表,在这里注册
 
+            .put(formalizeKey("MP_AP_Carbon_OffsetPo"), new MpApCarbonOffsetParser(new FieldsArrayStrategy(MP_AP_Carbon_OffsetPo.class)))
+            .put(formalizeKey("MP_AP_GroundTransport_BusPo"), new MpApGroundTransportBusParser(new FieldsArrayStrategy(MP_AP_GroundTransport_BusPo.class)))
+            .put(formalizeKey("MP_AP_Original_SegmentPo"), new MpApOrignalSegmentParser(new FieldsArrayStrategy(MP_AP_Original_SegmentPo.class)))
+            .put(formalizeKey("MP_CouplesPo"), new MpCouplesParser(new FieldsArrayStrategy(MP_CouplesPo.class)))
+            .put(formalizeKey("Mp_Hotel_Air_TicketingPo"), new MpHotelAirTicketingParser(new FieldsArrayStrategy(Mp_Hotel_Air_TicketingPo.class)))
+            .put(formalizeKey("MP_Hotel_GuestPo"), new MpHotelGuestParser(new FieldsArrayStrategy(MP_Hotel_GuestPo.class)))
+            .put(formalizeKey("MP_Hotel_RatesPo"), new MpHotelRatesParser(new FieldsArrayStrategy(MP_Hotel_RatesPo.class)))
+            .put(formalizeKey("MP_Hotel_RoomTypePo"), new MpHotelRoomTypeParser(new FieldsArrayStrategy(MP_Hotel_RoomTypePo.class)))
+            .put(formalizeKey("MP_HotelPo"), new MpHotelParser(new FieldsArrayStrategy(MP_HotelPo.class)))
+
             .build();
 
     /**

@@ -116,7 +116,8 @@ public class MpApSegmentParser extends AbstractParser {
                                 });
                                 po.setAvInfo(Commons.getAvInfoJson(segment.getBookingClassAvails()));
 
-                                po.setDirectionInd(air.getAirItinerary().getDirectionInd().toString());
+                                Optional.ofNullable(air.getAirItinerary().getDirectionInd())
+                                                .ifPresent(d -> po.setDirectionInd(d.value()));
                                 po.setOdOpenJaw(option.getOpenjaw());
                                 po.setETicketNumber(Utils.stream2String(Utils.streamNullable(air.getTicketing()), TicketingInfoType::getETicketNumber,  Constants.JoinByCommaNull2Empty));
 

@@ -89,6 +89,30 @@ public class Commons {
     }
 
     /**
+     * Description: 获取酒店电话号码
+     * Parameter:
+     *
+     * @param telephone: xml的PhonesType.Phone节点, 不能为null
+     *                   Return: PhoneLocationType|PhoneTechType|PhoneUseType|CountryAccessCode-AreaCityCode-PhoneNumber
+     *                   例: 6|1|4|86-1-13811111111
+     *                   Throws: 无
+     */
+    public static String getHotelTelephone(PhonesType.Phone telephone) {
+        ArrayList<String> list = Lists.newArrayList(
+                telephone.getPhoneLocationType(),
+                telephone.getPhoneTechType(),
+                telephone.getPhoneUseType(),
+                telephone.getCountryAccessCode()
+        );
+        String part1 = Utils.collection2String(list, Function.identity(),
+                Constants.JoinByPipeNull2Empty);
+        String part2 = Strings.nullToEmpty(telephone.getAreaCityCode());
+        String part3 = Strings.nullToEmpty(telephone.getPhoneNumberAttr());
+
+        return part1 + Constants.HYPHEN + part2 +  Constants.HYPHEN + part3;
+    }
+
+    /**
      * Description: 获取联系人电话号码
      * Parameter:
      *
