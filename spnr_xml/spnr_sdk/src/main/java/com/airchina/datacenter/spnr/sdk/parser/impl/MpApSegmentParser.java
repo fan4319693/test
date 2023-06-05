@@ -12,6 +12,7 @@ import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static com.airchina.datacenter.spnr.sdk.utils.Utils.xmlDate2StringWithUtcTimezone;
 
@@ -81,8 +82,25 @@ public class MpApSegmentParser extends AbstractParser {
                                 po.setModType(segment.getModType());
                                 po.setFlightNumber(segment.getFlightNumber());
                                 po.setOriginalRph(Utils.toWrapperLong(segment.getOriginalRPH()));
-                                Utils.consumeOrNull(segment.getDepartureAirport(), t -> po.setDport(t.getLocationCode()));
-                                Utils.consumeOrNull(segment.getArrivalAirport(), t -> po.setAport(t.getLocationCode()));
+
+                                Optional.ofNullable(segment.getDepartureAirport())
+                                        .ifPresent(d -> {
+                                            po.setDport(d.getLocationCode());
+                                            po.setDportContext(d.getCodeContext());
+                                            po.setDportTerminal(d.getTerminal());
+                                            po.setDcity(d.getTSCityCode());
+                                            po.setDcountry(d.getCountryCode());
+                                        });
+
+                                Optional.ofNullable(segment.getArrivalAirport())
+                                        .ifPresent(a -> {
+                                            po.setAport(a.getLocationCode());
+                                            po.setAportContext(a.getCodeContext());
+                                            po.setAportTerminal(a.getTerminal());
+                                            po.setAcity(a.getTSCityCode());
+                                            po.setAcountry(a.getCountryCode());
+                                        });
+
                                 po.setDepartureTime(xmlDate2StringWithUtcTimezone(segment.getDepartureDateTime()));
                                 po.setOriDepartureTime(segment.getOriginalDepartureDateTime());
                                 po.setArrivalTime(xmlDate2StringWithUtcTimezone(segment.getArrivalDateTime()));
@@ -119,7 +137,10 @@ public class MpApSegmentParser extends AbstractParser {
                                 Optional.ofNullable(air.getAirItinerary().getDirectionInd())
                                                 .ifPresent(d -> po.setDirectionInd(d.value()));
                                 po.setOdOpenJaw(option.getOpenjaw());
-                                po.setETicketNumber(Utils.stream2String(Utils.streamNullable(air.getTicketing()), TicketingInfoType::getETicketNumber,  Constants.JoinByCommaNull2Empty));
+                                List<TicketingFullInfoType> collect = Utils.streamNullable(air.getTicketing()).filter(t -> Utils.getFirstNonNullApply(t.getFlightSegmentRefNumber(), Utils::toWrapperLong) == po.getFlightSegmentRph()).collect(Collectors.toList());
+                                po.setETicketNumber(Utils.getFirstNonNull(collect).getETicketNumber());
+                                po.setTicketingStatus(Utils.getFirstNonNull(collect).getTicketingStatus());
+                                po.setTicketTime(xmlDate2StringWithUtcTimezone(Utils.getFirstNonNull(collect).getTicketTime()));
 
                                 result.add(po);
                             });

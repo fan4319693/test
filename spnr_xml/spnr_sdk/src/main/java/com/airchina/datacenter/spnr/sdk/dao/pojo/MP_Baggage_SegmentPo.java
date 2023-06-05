@@ -247,4 +247,77 @@ public class MP_Baggage_SegmentPo {
      * 最后修改时间: 2023/04/20
      */
     private String eTicketNumber;
+
+    /**
+     * 功能说明: 机票状态
+     * 最后修改时间: 2023/05/15
+     */
+    private String ticketingStatus;
+
+    /**
+     * 功能说明: 机票出票时间
+     * 最后修改时间: 2023/05/15
+     */
+    private String ticketTime;
+
+    /**
+     * 功能说明: 航司
+     * 最后修改时间: 2023/05/15
+     */
+    private String odMajorityCarrier;
+
+    /**
+     * 功能说明: 基础运价
+     * 最后修改时间: 2023/05/15
+     */
+    private String etFareBasis;
+
+
+    /**
+     * 功能说明: 标识识别码的上下文,例如 IATA、LocationId 或内部代码等。
+     * 最后修改时间: 2023/04/20
+     */
+    private String dportContext;
+
+    /**
+     * 功能说明: 出发机场航站楼
+     * 最后修改时间: 2023/04/20
+     */
+    private String dportTerminal;
+
+    /**
+     * 功能说明: 出发城市代码
+     * 最后修改时间: 2023/04/20
+     */
+    private String dcity;
+
+    /**
+     * 功能说明: 出发机场国家码
+     * 最后修改时间: 2023/04/20
+     */
+    private String dcountry;
+
+    /**
+     * 功能说明: 标识识别码的上下文,例如 IATA、ARC 或内部代码等。
+     * 最后修改时间: 2023/04/20
+     */
+    private String aportContext;
+
+    /**
+     * 功能说明: 到达机场航站楼
+     * 最后修改时间: 2023/04/20
+     */
+    private String aportTerminal;
+
+    /**
+     * 功能说明: 到达城市代码
+     * 最后修改时间: 2023/04/20
+     */
+    private String acity;
+
+    /**
+     * 功能说明: 到达机场国家码
+     * 最后修改时间: 2023/04/20
+     */
+    private String acountry;
 }
