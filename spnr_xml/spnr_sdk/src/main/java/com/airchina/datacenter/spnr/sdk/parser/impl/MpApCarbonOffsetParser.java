@@ -58,8 +58,15 @@ public class MpApCarbonOffsetParser extends AbstractParser {
                             po.setSuperPnrId(spnr.getSuperPNRID());
                             po.setProductNumber(Utils.toWrapperLong(mp.getProductNumber()));
 
-                            po.setQuantity(Utils.number2String(offset.getAmount()));
-                            po.setQuantity(offset.getUnit().value());
+                            po.setTotalOffsetAmount(Utils.number2String(ancillaryProduct.getCarbonOffsets().getTotalAmount()));
+                            po.setTotalOffsetUnit(ancillaryProduct.getCarbonOffsets().getUnit() != null ? ancillaryProduct.getCarbonOffsets().getUnit().value() : "");
+
+
+                            po.setFlightSegmentRph(Utils.toWrapperLong(offset.getFlightSegmentRPH()));
+                            po.setAmount(Utils.number2String(offset.getAmount()));
+                            po.setQuantity(Utils.number2String(offset.getQuantity()));
+                            po.setUnit(offset.getUnit() != null ? offset.getUnit().value() : "");
+
 
                             Optional.ofNullable(offset.getPrice())
                                     .map(CarbonOffsetType.Price::getBase)
@@ -83,7 +90,7 @@ public class MpApCarbonOffsetParser extends AbstractParser {
                                     .map(LoyaltyProductType.Redemption::getRedeem)
                                     .ifPresent(t -> {
                                         po.setRedeemedAmount(Utils.number2String(t.getAmountRedeemed()));
-                                        po.setQuantity(Utils.number2String(t.getQuantity()));
+                                        po.setRedeemedQuantity(t.getQuantity());
                                         po.setRedeemedAmountCurrencyCode(t.getCurrencyCode());
                                     });
                             result.add(po);

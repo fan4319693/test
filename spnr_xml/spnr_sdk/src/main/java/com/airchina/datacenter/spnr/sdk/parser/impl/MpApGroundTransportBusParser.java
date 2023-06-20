@@ -49,10 +49,14 @@ public class MpApGroundTransportBusParser extends AbstractParser {
                 continue;
             }
             Optional.ofNullable(ancillaryProduct.getGroundTransportService())
-                    .map(t -> t.getJourneySegment())
+                    .map(GroundTransportServiceType::getJourneySegment)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(segmentList -> {
                         segmentList.forEach(segment -> {
+                            // 是空轨联运，不放在空巴联运里面
+                            if (segment.getBusSegment() == null) {
+                                return;
+                            }
                             MP_AP_GroundTransport_BusPo po = new MP_AP_GroundTransport_BusPo();
 
                             po.setSuperPnrId(spnr.getSuperPNRID());
@@ -75,7 +79,24 @@ public class MpApGroundTransportBusParser extends AbstractParser {
                                             po.setDStationName(t.getName());
                                         });
 
-                                po.setDuration(busSegment.getDepartureStation().getOperationSchedules().getDuration().toString());
+                                Optional.ofNullable(busSegment.getMarketingCompany())
+                                                .ifPresent(t -> {
+                                                    po.setBusCompanyCode(t.getCode());
+                                                    po.setBusCompanyType(t.getCompanyType());
+                                                    po.setBusCompanyShortName(t.getCompanyShortName());
+                                                });
+
+                                po.setArrivalTimestamp(Utils.xmlDate2StringWithShanghaiTimezone(busSegment.getArrivalDateTime()));
+                                po.setDepartmentTimestamp(Utils.xmlDate2StringWithShanghaiTimezone(busSegment.getDepartureDateTime()));
+                                Optional.ofNullable(busSegment.getJourneyDuration())
+                                                .ifPresent(t -> po.setJourneyDuration(t.toString()));
+
+                                Optional.ofNullable(busSegment.getBusInfo())
+                                        .map(BusInfoType::getBus)
+                                        .ifPresent(t ->
+                                            po.setBusNumber(t.getBusNumber())
+                                        );
+
 
                                 Optional.ofNullable(busSegment.getArrivalStation())
                                         .map(StationDetailsType::getDetails)

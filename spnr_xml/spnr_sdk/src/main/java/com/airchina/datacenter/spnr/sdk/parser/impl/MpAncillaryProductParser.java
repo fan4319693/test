@@ -140,6 +140,9 @@ public class MpAncillaryProductParser extends AbstractParser {
                         });
                     });
 
+            Optional.ofNullable(ancillaryProduct.getSupplierBookingReferenceID())
+                            .ifPresent(t -> po.setSupplierId(t.getID()));
+
             Optional.ofNullable(ancillaryProduct.getPrices())
                     .map(prices -> Utils.getFirstNonNull(prices.getPrice()))
                     .ifPresent(priceType -> {

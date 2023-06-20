@@ -236,7 +236,12 @@ public class Commons {
                 .map(list -> deriveRawPnr(list))
                 .filter(StringUtils::isNotEmpty);
 
-        return Utils.coalesce(var1, var2);
+        Optional<String> var3 = Optional.ofNullable(mp.getAncillaryProduct())
+                .map(b -> b.getAir())
+                .map(air -> air.getBookingReferenceIDAttr())
+                .filter(StringUtils::isNotEmpty);
+
+        return Utils.coalesce(var1, var2, var3);
     }
 
     /**

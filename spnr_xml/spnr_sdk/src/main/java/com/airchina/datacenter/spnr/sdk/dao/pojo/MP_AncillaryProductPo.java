@@ -338,4 +338,10 @@ public class MP_AncillaryProductPo implements Cloneable{
      */
     private String totalCurrencyCode;
 
+    /**
+     * 功能说明: 供应商接收的操作账号
+     * 最后修改时间: 2023/04/20
+     */
+    private String supplierId;
+
 }

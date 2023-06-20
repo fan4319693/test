@@ -58,18 +58,9 @@ public class MpHotelRoomTypeParser extends AbstractParser {
                                             po.setProductNumber(Utils.toWrapperLong(mp.getProductNumber()));
                                             po.setSearchId(mp.getSearchID());
                                             po.setRoomStayRph(Utils.toWrapperLong(roomStay.getIndexNumber()));
-                                            po.setSourceOfBusiness(roomStay.getSourceOfBusiness());
                                             po.setRoomRph(roomType.getRoomRPH() != null ? roomType.getRoomRPH() : roomType.getAltRoomTypeNames().getAltRoomTypeName().get(0).getRPH());
                                             po.setRoomTypeCode(roomType.getRoomTypeCode());
                                             po.setRoomTypeName(roomType.getRoomTypeName());
-                                            Optional.ofNullable(roomStay.getResGuestRPHs())
-                                                    .ifPresent(resGuestRPHS -> {
-                                                        for (ResGuestRPHsType.ResGuestRPH resGuestRPH : resGuestRPHS.getResGuestRPH()) {
-                                                            if (Objects.equals(resGuestRPH.getRoomRPH(), po.getGuestRph())) {
-                                                                po.setGuestRph(resGuestRPH.getRPH());
-                                                            }
-                                                        }
-                                                    });
                                             result.add(po);
                                         }});
                         }

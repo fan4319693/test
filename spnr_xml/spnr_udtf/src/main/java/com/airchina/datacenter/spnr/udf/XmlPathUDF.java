@@ -73,7 +73,7 @@ public class XmlPathUDF extends GenericUDF {
      * Throws: 无
      */
     private String filter(String xmlContent) {
-        return xmlContent.replaceAll("xmlns=\"[^>,^\\s]+\"", "");
+        return xmlContent.replaceAll("xmlns=\"[^>,^\\s]+\"", "").replace("&", "&amp;");
     }
 
     /**

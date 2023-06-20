@@ -120,7 +120,7 @@ public class MpApTravelerParser extends AbstractParser {
                                 Optional.ofNullable(addr.getStateProv())
                                         .ifPresent(stateProvType -> {
                                             //此处原来取得是getValue,Excel为准
-                                            po.setStateProv(stateProvType.getStateCode());
+                                            po.setStateProv(stateProvType.getValue());
                                         });
                                 Optional.ofNullable(addr.getCountryName())
                                         .ifPresent(n -> po.setCountryName(n.getCode()));

@@ -106,11 +106,9 @@ public class AirAncillaryOffsetProductType {
 
     /**
      * 获取totalAmount属性的值。
-     * 
-     * @return
-     *     possible object is
-     *     {@link Float }
-     *     
+     *
+     * @return possible object is
+     * {@link Float }
      */
     public Float getTotalAmount() {
         return totalAmount;

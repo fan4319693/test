@@ -12,6 +12,8 @@ package com.airchina.datacenter.spnr.sdk.dao.pojo;
 
 import lombok.Data;
 
+import java.math.BigInteger;
+
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AP_GroundTransportPo </p>
  * <p>Description: 存储辅营空巴联运信息 </p>
@@ -34,6 +36,31 @@ public class MP_AP_Carbon_OffsetPo {
      * 最后修改时间: 2023/04/20
      */
     private Long productNumber;
+
+    /**
+     * 功能说明: 碳排放抵消总金额
+     * 最后修改时间: 2023/06/02
+     */
+    private String totalOffsetAmount;
+
+    /**
+     * 功能说明: 碳排放抵消总数量的单位
+     * 最后修改时间: 2023/06/02
+     */
+    private String totalOffsetUnit;
+
+    /**
+     * 功能说明: 航段序号
+     * 最后修改时间: 2023/06/13
+     */
+    private Long flightSegmentRph;
+
+    /**
+     * 功能说明: 碳排放抵消花费金额
+     * 最后修改时间: 2023/06/02
+     */
+    private String amount;
+
 
     /**
      * 功能说明: 碳排放抵消数量
@@ -99,5 +126,5 @@ public class MP_AP_Carbon_OffsetPo {
      * 功能说明: 支付里程数
      * 最后修改时间: 2023/06/02
      */
-    private String redeemedQuantity;
+    private Double redeemedQuantity;
 }

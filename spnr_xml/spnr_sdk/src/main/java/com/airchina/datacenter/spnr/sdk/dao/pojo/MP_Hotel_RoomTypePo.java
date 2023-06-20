@@ -47,13 +47,6 @@ public class MP_Hotel_RoomTypePo {
      */
     private Long roomStayRph;
 
-
-    /**
-     * 功能说明:来源渠道
-     * 最后修改时间: 2023/06/02
-     */
-    private String sourceOfBusiness;
-
     /**
      * 功能说明: 房间类型
      * 最后修改时间: 2023/06/02
@@ -71,11 +64,4 @@ public class MP_Hotel_RoomTypePo {
      * 最后修改时间: 2023/06/02
      */
     private String roomRph;
-
-    /**
-     * 功能说明: 顾客序号
-     * 最后修改时间: 2023/06/02
-     */
-    private String guestRph;
-
 }
