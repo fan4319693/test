@@ -23,8 +23,9 @@ public class SpnrPOSParser extends AbstractParser {
     /**
      * Description: 有参构造器
      * Parameter:
-     *  @param strategy: 实体对象解析策略
-     * Throws: 无
+     *
+     * @param strategy: 实体对象解析策略
+     *                  Throws: 无
      */
     public SpnrPOSParser(SerdeStrategy strategy) {
         super(strategy);
@@ -33,9 +34,10 @@ public class SpnrPOSParser extends AbstractParser {
     /**
      * Description: 将xml的OJSuperPNR解析为Spnr_POSPo
      * Parameter:
-     *  @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
-     * Return: 解析的实体对象集合, 不会为null, 可能为空集合
-     * Throws: 无
+     *
+     * @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
+     *              Return: 解析的实体对象集合, 不会为null, 可能为空集合
+     *              Throws: 无
      */
     @Override
     public List<? extends Object> parse(OJSuperPNR spnr) {
@@ -64,6 +66,16 @@ public class SpnrPOSParser extends AbstractParser {
                             po.setCompanyDivision(c.getDivision());
                         });
                     });
+
+                    Optional.ofNullable(spnr.getPOS())
+                            .map(t -> t.getAgent())
+                            .ifPresent(a -> {
+                                //2023-06-21添加
+                                po.setCallSeatUid(a.getAgency());
+                                po.setCallSeatCid(a.getID());
+                                po.setCallSkillTeam(a.getFunctionalGroup());
+                                po.setCallAdsTeam(a.getAdministrativeGroup());
+                            });
 
                     result.add(po);
                 });

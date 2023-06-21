@@ -99,6 +99,11 @@ public class MpRemarkParser extends AbstractParser {
                                         po.setAgent(a.getAgent());
                                         po.setAgentSourceAddress(a.getSourceAddress());
                                         po.setInTimestamp(a.getTimestamp());
+                                        //2023-06-21添加
+                                        po.setCallSeatUid(a.getAgency());
+                                        po.setCallSeatCid(a.getID());
+                                        po.setCallSkillTeam(a.getFunctionalGroup());
+                                        po.setCallAdsTeam(a.getAdministrativeGroup());
                                     });
 
                                     po.setCancelFeesSource(cancelFeesSource);

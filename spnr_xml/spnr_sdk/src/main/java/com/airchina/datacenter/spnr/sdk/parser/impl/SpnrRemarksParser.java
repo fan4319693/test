@@ -86,6 +86,15 @@ public class SpnrRemarksParser extends AbstractParser {
                                                 Constants.JoinByPipeNull2Empty);
 
                                         po.setQualifierItem(qualifierItems);
+
+                                        //2023-06-21添加
+                                        Utils.consumeOrNull(rmk.getAgent(), a -> {
+                                            po.setCallSeatUid(a.getAgency());
+                                            po.setCallSeatCid(a.getID());
+                                            po.setCallSkillTeam(a.getFunctionalGroup());
+                                            po.setCallAdsTeam(a.getAdministrativeGroup());
+                                        });
+
                                         result.add(po);
                                     });
                                 });
