@@ -80,4 +80,28 @@ public class Spnr_POSPo {
      */
     private String companyDivision;
 
+    /**
+     * 功能说明: 渠道名或坐席UID
+     * 最后修改时间: 2023/06/21
+     */
+    private String callSeatUid;
+
+    /**
+     * 功能说明: 填入此次操作的坐席CID
+     * 最后修改时间: 2023/06/21
+     */
+    private String callSeatCid;
+
+    /**
+     * 功能说明: 记录发起此次操作的坐席技能组
+     * 最后修改时间: 2023/06/21
+     */
+    private String callSkillTeam;
+
+    /**
+     * 功能说明: 记录发起此次操作的坐席行政组
+     * 最后修改时间: 2023/06/21
+     */
+    private String callAdsTeam;
+
 }

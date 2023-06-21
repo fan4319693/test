@@ -272,4 +272,12 @@ public class MP_AirPriceInfo_FareInfosPo implements Cloneable{
      */
     private String addOnCharSet;
 
+    /**
+     * 功能说明: 以竖线分隔的字符串, 每个片段包含4个字段,
+     *  格式 surchargeAmt: surchargeCode @ surchargeCode: surchargeNucAmt
+     *  例 amount:22@code:Q|amount:32@code:Q
+     * 最后修改时间: 2023/06/21
+     */
+    private String surchargeInfo;
+
 }

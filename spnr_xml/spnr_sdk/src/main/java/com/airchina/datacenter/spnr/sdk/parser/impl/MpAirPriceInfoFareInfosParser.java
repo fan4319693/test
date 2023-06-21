@@ -7,6 +7,8 @@ import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Commons;
 import com.airchina.datacenter.spnr.sdk.utils.Constants;
 import com.airchina.datacenter.spnr.sdk.utils.Utils;
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections4.CollectionUtils;
 import org.w3c.dom.Element;
@@ -123,6 +125,29 @@ public class MpAirPriceInfoFareInfosParser extends AbstractParser {
                                                        });
                                                         po.setTaxDetails(Commons.getTaxDetails(t.getTax()));
                                                     });
+
+                                            //2023-06-21添加
+                                            Optional.ofNullable(f.getSurcharges())
+                                                    .map(s -> s.getSurcharge())
+                                                    .filter(CollectionUtils::isNotEmpty)
+                                                    .ifPresent(surchargeList -> {
+                                                        String surchargeInfo = Utils.collection2String(surchargeList, s -> {
+                                                            String surchargeAmt = Utils.number2String(s.getAmount());
+                                                            String surchargeCode = s.getCode();
+                                                            String surchargeCurrencyCode = s.getCurrencyCode();
+                                                            String surchargeNucAmt = Utils.number2String(s.getNUCAmount());
+                                                            //以竖线分隔的JSON串
+                                                            JSONObject json = new JSONObject();
+                                                            json.put("surchargeAmt", surchargeAmt);
+                                                            json.put("surchargeCode", surchargeCode);
+                                                            json.put("surchargeCurrencyCode", surchargeCurrencyCode);
+                                                            json.put("surchargeNucAmt", surchargeNucAmt);
+                                                            return json.toJSONString();
+                                                        }, Constants.JoinByPipeNull2Empty);
+
+                                                        po.setSurchargeInfo(surchargeInfo);
+                                                    });
+
                                         });
 
                                 po.setFareBasisCode(info.getFareBasisCode());
