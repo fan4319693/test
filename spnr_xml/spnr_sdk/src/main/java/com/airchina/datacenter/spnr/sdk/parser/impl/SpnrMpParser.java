@@ -122,6 +122,15 @@ public class SpnrMpParser extends AbstractParser {
                     );
 
             mpPo.setServiceCode(mp.getServiceCode());
+
+            //2023-06-21添加
+            Utils.consumeOrNull(mp.getAgent(), a -> {
+                mpPo.setCallSeatUid(a.getAgency());
+                mpPo.setCallSeatCid(a.getID());
+                mpPo.setCallSkillTeam(a.getFunctionalGroup());
+                mpPo.setCallAdsTeam(a.getAdministrativeGroup());
+            });
+
             result.add(mpPo);
         }
         return result;
