@@ -94,7 +94,7 @@ public class Utils {
      * Throws: 无
      */
     public static Long toWrapperLong(Object num) {
-        if (num == null) {
+        if (num == null || num == "") {
             return null;
         }
         if (Number.class.isAssignableFrom(num.getClass())) {

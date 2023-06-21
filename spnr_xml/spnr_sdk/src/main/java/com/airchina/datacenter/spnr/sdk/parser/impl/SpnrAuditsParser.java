@@ -10,6 +10,7 @@ import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.parser.impl.SpnrAuditsParser </p>
@@ -41,6 +42,7 @@ public class SpnrAuditsParser extends AbstractParser {
     @Override
     public List<? extends Object> parse(OJSuperPNR spnr) {
         List<Object> result = Lists.newLinkedList();
+        AtomicInteger ref = new AtomicInteger();
         Optional
                 .ofNullable(spnr.getAudits())
                 .map(a -> a.getAudit())
@@ -80,7 +82,7 @@ public class SpnrAuditsParser extends AbstractParser {
                                         po.setEventType(event.getType());
                                         po.setEventFltSegRph(Utils.toWrapperLong(event.getFlightSegmentRPH()));
                                         po.setEventRefPath(event.getRefPath());
-
+                                        po.setEventRph(ref.getAndIncrement());
                                         result.add(po);
                                     }));
                         })
