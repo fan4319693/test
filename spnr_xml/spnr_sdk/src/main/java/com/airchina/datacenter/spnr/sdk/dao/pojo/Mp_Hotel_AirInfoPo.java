@@ -20,7 +20,7 @@ import lombok.Data;
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
 @Data
-public class Mp_Hotel_Air_TicketingPo {
+public class Mp_Hotel_AirInfoPo {
     /**
      * 功能说明: SPNR ID，唯一标识
      * 最后修改时间: 2023/06/02

@@ -59,8 +59,8 @@ public class MpBaggageSegmentParser extends AbstractParser {
             String pnr = Commons.getMpPnr(mp);
 
             Optional.ofNullable(air.getAirItinerary())
-                    .map(t -> t.getOriginDestinationOptions())
-                    .map(t -> t.getOriginDestinationOption())
+                    .map(AirItineraryType::getOriginDestinationOptions)
+                    .map(AirItineraryType.OriginDestinationOptions::getOriginDestinationOption)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(optionList -> {
                         for (AirItineraryType.OriginDestinationOptions.OriginDestinationOption option : optionList) {
@@ -131,13 +131,15 @@ public class MpBaggageSegmentParser extends AbstractParser {
 
                                 po.setAvInfo(Commons.getAvInfoJson(segment.getBookingClassAvails()));
 
-                                po.setDirectionInd(air.getAirItinerary().getDirectionInd().toString());
+                                po.setDirectionInd(Utils.applyOrNull(air.getAirItinerary().getDirectionInd(), Enum::toString));
                                 po.setOdOpenJaw(option.getOpenjaw());
                                 List<TicketingFullInfoType> collect = Utils.streamNullable(air.getTicketing()).filter(t -> Utils.getFirstNonNullApply(t.getFlightSegmentRefNumber(), Utils::toWrapperLong) == po.getFlightSegmentRph()).collect(Collectors.toList());
-                                po.setETicketNumber(Utils.getFirstNonNull(collect).getETicketNumber());
-                                po.setTicketingStatus(Utils.getFirstNonNull(collect).getTicketingStatus());
-                                po.setTicketTime(xmlDate2StringWithUtcTimezone(Utils.getFirstNonNull(collect).getTicketTime()));
+                                Utils.getFirstNonNullConsume(collect, t -> {
+                                    po.setETicketNumber(t.getETicketNumber());
+                                    po.setTicketingStatus(t.getTicketingStatus());
+                                    po.setTicketTime(xmlDate2StringWithUtcTimezone(t.getTicketTime()));
 
+                                });
                                 po.setOdMajorityCarrier(option.getMajorityCarrier());
 
                                 Utils.getFirstNonNullOptional(air.getPriceInfo()).map(p -> p.getFareInfos().getFareInfo()).filter(CollectionUtils::isNotEmpty)

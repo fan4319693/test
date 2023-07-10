@@ -76,7 +76,7 @@ public class MpAncillaryProductParser extends AbstractParser {
             //TODO 此处原来是逗号拼接,改为了取首个乘客,否则类型不兼容
             Optional.ofNullable(ancillaryProduct.getTravelerInfo())
                     .map(t -> Utils.getFirstNonNull(t.getAirTraveler()))
-                    .map(t -> t.getTravelerRefNumber())
+                    .map(AirTravelerType::getTravelerRefNumber)
                     .ifPresent(t -> po.setTravelerRefNumberRph(Utils.toWrapperLong(t.getRPH())));
 
             Optional.ofNullable(ancillaryProduct.getContact())

@@ -115,11 +115,11 @@ public class MpAirPriceInfoFareInfosParser extends AbstractParser {
                                                        t.getTax().forEach(tax -> {
                                                            // 机建费用
                                                            if ("CN".equals(tax.getTaxCode())) {
-                                                               po.setTaxAirportFee(tax.getAmount().toString());
+                                                               po.setTaxAirportFee(Utils.number2String(tax.getAmount()));
                                                                po.setTaxAirportCurrencyCode(tax.getCurrencyCode());
                                                            // 燃油费用
                                                            } else if ("YQ".equals(tax.getTaxCode())) {
-                                                               po.setTaxFuelFee(tax.getAmount().toString());
+                                                               po.setTaxFuelFee(Utils.number2String(tax.getAmount()));
                                                                po.setTaxFuelCurrencyCode(tax.getCurrencyCode());
                                                            }
                                                        });
@@ -128,7 +128,7 @@ public class MpAirPriceInfoFareInfosParser extends AbstractParser {
 
                                             //2023-06-21添加
                                             Optional.ofNullable(f.getSurcharges())
-                                                    .map(s -> s.getSurcharge())
+                                                    .map(FareSurchargesType::getSurcharge)
                                                     .filter(CollectionUtils::isNotEmpty)
                                                     .ifPresent(surchargeList -> {
                                                         String surchargeInfo = Utils.collection2String(surchargeList, s -> {

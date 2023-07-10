@@ -1,15 +1,12 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
-import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_HotelPo;
 import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_Hotel_GuestPo;
 import com.airchina.datacenter.spnr.sdk.entity.*;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
-import com.airchina.datacenter.spnr.sdk.utils.Commons;
 import com.airchina.datacenter.spnr.sdk.utils.Utils;
 import com.google.common.collect.Lists;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,11 +48,22 @@ public class MpHotelGuestParser extends AbstractParser {
                         MP_Hotel_GuestPo guestPo = new MP_Hotel_GuestPo();
                         guestPo.setSuperPnrId(spnr.getSuperPNRID());
                         guestPo.setProductNumber(Utils.toWrapperLong(mp.getProductNumber()));
-                        guestPo.setRph(Utils.toWrapperLong(resGuest.getResGuestRPH()));
+                        guestPo.setGuestRph(Utils.toWrapperLong(resGuest.getResGuestRPH()));
                         guestPo.setAgeCode(resGuest.getAgeQualifyingCode());
                         guestPo.setOjSuperPnrRph(Utils.toWrapperLong(resGuest.getOJSuperPNRRPH()));
                         guestPo.setArrivalTimestamp(Utils.xmlDate2StringWithShanghaiTimezone(resGuest.getArrivalTime()));
                         guestPo.setDepartmentTimestamp(Utils.xmlDate2StringWithShanghaiTimezone(resGuest.getDepartureTime()));
+
+                        Optional.ofNullable(resGuest.getSpecialRequests())
+                                .map(SpecialRequestType::getSpecialRequest)
+                                .ifPresent(t -> {
+                                    for (SpecialRequestType.SpecialRequest specialRequest : t) {
+                                        if (specialRequest.getRequestCode().equals("GuestStatus")) {
+                                            guestPo.setGuestStatus(specialRequest.getCodeContext());
+                                        }
+                                    }
+                                });
+                        result.add(guestPo);
                     }
                 });
         }

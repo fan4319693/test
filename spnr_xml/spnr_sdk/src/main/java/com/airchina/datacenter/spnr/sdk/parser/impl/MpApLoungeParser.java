@@ -1,10 +1,7 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AP_LoungePo;
-import com.airchina.datacenter.spnr.sdk.entity.AirAncillaryLoungeProductType;
-import com.airchina.datacenter.spnr.sdk.entity.ModularProductType;
-import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
-import com.airchina.datacenter.spnr.sdk.entity.ProductBase;
+import com.airchina.datacenter.spnr.sdk.entity.*;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Utils;
@@ -55,7 +52,7 @@ public class MpApLoungeParser extends AbstractParser {
                 continue;
             }
             Optional.ofNullable(lounge.getRooms())
-                    .map(t -> t.getRoom())
+                    .map(AirAncillaryLoungeProductType.Rooms::getRoom)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(roomList -> {
                         roomList.forEach(room -> {
@@ -77,7 +74,7 @@ public class MpApLoungeParser extends AbstractParser {
                             po.setRoomCode(room.getCode());
 
                             Optional.ofNullable(room.getOpenTimes())
-                                    .map(t -> t.getOpenTime())
+                                    .map(AirAncillaryLoungeRoomType.OpenTimes::getOpenTime)
                                     .ifPresent(o -> {
                                         po.setRoomOpentimeLanguage(o.getLanguage());
                                         po.setDescriptiveText(o.getDescriptiveText());
@@ -94,8 +91,7 @@ public class MpApLoungeParser extends AbstractParser {
                                 po.setShortContent(content.getShortContent());
                                 po.setLocationDescription(content.getLocationDescription());
                                 po.setOfficialName(content.getOfficialName());
-                                po.setImageUrl(Utils.collection2String(content.getImage(), t ->
-                                        t.getImageURL())
+                                po.setImageUrl(Utils.collection2String(content.getImage(), AncillaryImage::getImageURL)
                                 );
                             });
 

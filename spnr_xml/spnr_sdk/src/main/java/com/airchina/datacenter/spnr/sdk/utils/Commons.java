@@ -35,6 +35,9 @@ public class Commons {
      *               Throws: 无
      */
     public static String getName(PersonNameType pName) {
+        if (pName == null) {
+            return "";
+        }
         String surName = null;
         if (pName.getSurname() != null) {
             surName = pName.getSurname().getValue();
@@ -459,7 +462,7 @@ public class Commons {
 
         AirItineraryType airItinerary = air.getAirItinerary();
         if (airItinerary != null) {
-            directionId = Utils.applyOrNull(airItinerary.getDirectionInd(), t -> t.value());
+            directionId = Utils.applyOrNull(airItinerary.getDirectionInd(), AirTripType::value);
             docRequired = airItinerary.getDocumentationRequired();
         }
         return new AirMetaInfo(pnr, directionId, docRequired);

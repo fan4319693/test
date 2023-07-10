@@ -1,10 +1,7 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AirPriceInfo_FareFamilyPo;
-import com.airchina.datacenter.spnr.sdk.entity.ModularProductType;
-import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
-import com.airchina.datacenter.spnr.sdk.entity.ProductBase;
-import com.airchina.datacenter.spnr.sdk.entity.TPAExtensionsType;
+import com.airchina.datacenter.spnr.sdk.entity.*;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Commons;
@@ -54,8 +51,8 @@ public class MpAirPriceInfoFareFamilyParser extends AbstractParser {
                 continue;
             }
             Utils.getFirstNonNullOptional(air.getPriceInfo())
-                    .map(p -> p.getFareInfos())
-                    .map(infos -> infos.getFareInfo())
+                    .map(AirItineraryPricingInfoType::getFareInfos)
+                    .map(AirItineraryPricingInfoType.FareInfos::getFareInfo)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(fareInfoList -> {
                         fareInfoList.forEach(fareInfo -> {

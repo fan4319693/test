@@ -21,7 +21,7 @@ import lombok.Data;
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
 @Data
-public class MP_Hotel_GuestPo {
+public class MP_Hotel_Rates_BasePo {
 
     /**
      * 功能说明: SPNR ID,唯一标识
@@ -42,44 +42,16 @@ public class MP_Hotel_GuestPo {
     private Long productNumber;
 
     /**
-     * 功能说明: 订单内旅客的唯一序号
+     * 功能说明: 序号
      * 最后修改时间: 2023/06/02
      */
-    private Long ojSuperPnrRph;
+    private Long roomStayRph;
+
 
     /**
-     * 功能说明: 旅客的年龄范围，如Chind,Adult等
+     * 功能说明:来源渠道
      * 最后修改时间: 2023/06/02
      */
-    private String ageCode;
+    private String sourceOfBusiness;
 
-    /**
-     * 功能说明: 标识旅客是否VIP
-     * 最后修改时间: 2023/06/02
-     */
-    private String vip;
-
-    /**
-     * 功能说明: 到店时间
-     * 最后修改时间: 2023/06/02
-     */
-    private String arrivalTimestamp;
-
-    /**
-     * 功能说明: 离店时间
-     * 最后修改时间: 2023/06/02
-     */
-    private String departmentTimestamp;
-
-    /**
-     * 功能说明: 顾客序号
-     * 最后修改时间: 2023/06/02
-     */
-    private Long guestRph;
-
-    /**
-     * 功能说明: 顾客状态
-     * 最后修改时间: 2023/06/02
-     */
-    private String guestStatus;
 }

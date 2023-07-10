@@ -40,65 +40,38 @@ public class MP_HotelPo {
      * 最后修改时间: 2023/06/02
      */
     private Long productNumber;
+    private String start;
+    private String end;
+    private Long duration;
 
     /**
-     * 功能说明: 序号
+     * 功能说明: 税后价格
      * 最后修改时间: 2023/06/02
      */
-    private Long roomStayRph;
-
-
-    /**
-     * 功能说明:来源渠道
-     * 最后修改时间: 2023/06/02
-     */
-    private String sourceOfBusiness;
+    private String amountAfterTax;
 
     /**
-     * 功能说明:  酒店的code值
+     * 功能说明: 税前价格
      * 最后修改时间: 2023/06/02
      */
-    private String hotelCode;
+    private String amountBeforeTax;
 
     /**
-     * 功能说明: 酒店的名称
+     * 功能说明: 税后价格
      * 最后修改时间: 2023/06/02
      */
-    private String hotelName;
+    private String oriAmountAfterTax;
 
     /**
-     * 功能说明: 酒店的类型
+     * 功能说明: 税前价格
      * 最后修改时间: 2023/06/02
      */
-    private String stayType;
+    private String oriAmountBeforeTax;
 
     /**
-     * 功能说明: 酒店所处城市
+     * 功能说明: 购买价格
      * 最后修改时间: 2023/06/02
      */
-    private String hotelCityCode;
+    private String currencyCode;
 
-    /**
-     * 功能说明: 酒店所处区域的时区
-     * 最后修改时间: 2023/06/02
-     */
-    private String timeZone;
-
-    /**
-     * 功能说明: 入住时间
-     * 最后修改时间: 2023/06/02
-     */
-    private String checkInTime;
-
-    /**
-     * 功能说明: 退房时间
-     * 最后修改时间: 2023/06/02
-     */
-    private String CheckOutTime;
-
-    /**
-     * 功能说明: 酒店电话
-     * 最后修改时间: 2023/06/02
-     */
-    private String hotelTelephone;
 }

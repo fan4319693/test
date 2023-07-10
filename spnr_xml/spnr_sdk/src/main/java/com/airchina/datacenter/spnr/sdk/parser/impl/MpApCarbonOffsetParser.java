@@ -58,12 +58,12 @@ public class MpApCarbonOffsetParser extends AbstractParser {
                             po.setSuperPnrId(spnr.getSuperPNRID());
                             po.setProductNumber(Utils.toWrapperLong(mp.getProductNumber()));
 
-                            po.setTotalOffsetAmount(Utils.number2String(ancillaryProduct.getCarbonOffsets().getTotalAmount()));
+                            po.setTotalOffsetCnt(Utils.number2String(ancillaryProduct.getCarbonOffsets().getTotalAmount()));
                             po.setTotalOffsetUnit(ancillaryProduct.getCarbonOffsets().getUnit() != null ? ancillaryProduct.getCarbonOffsets().getUnit().value() : "");
 
 
                             po.setFlightSegmentRph(Utils.toWrapperLong(offset.getFlightSegmentRPH()));
-                            po.setAmount(Utils.number2String(offset.getAmount()));
+                            po.setCnt(Utils.number2String(offset.getAmount()));
                             po.setQuantity(Utils.number2String(offset.getQuantity()));
                             po.setUnit(offset.getUnit() != null ? offset.getUnit().value() : "");
 

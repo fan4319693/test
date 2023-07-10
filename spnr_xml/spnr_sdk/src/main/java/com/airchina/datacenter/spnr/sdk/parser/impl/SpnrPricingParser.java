@@ -1,6 +1,7 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_PricingPo;
+import com.airchina.datacenter.spnr.sdk.entity.LoyaltyProductType;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
@@ -81,8 +82,8 @@ public class SpnrPricingParser extends AbstractParser {
                             });
 
                     Optional.ofNullable(pricing.getLoyalty())
-                            .map(l -> l.getRedemption())
-                            .map(r -> r.getRedeem())
+                            .map(LoyaltyProductType::getRedemption)
+                            .map(LoyaltyProductType.Redemption::getRedeem)
                             .ifPresent(t -> {
                                 po.setRedeemQuantity(Utils.number2String(t.getQuantity()));
                                 po.setAmountRedeemed(Utils.number2String(t.getAmountRedeemed()));

@@ -2,6 +2,7 @@ package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_POSPo;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
+import com.airchina.datacenter.spnr.sdk.entity.POSType;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Utils;
@@ -43,7 +44,7 @@ public class SpnrPOSParser extends AbstractParser {
     public List<? extends Object> parse(OJSuperPNR spnr) {
         List<Object> result = Lists.newLinkedList();
         Optional.ofNullable(spnr.getPOS())
-                .map(t -> t.getSource())
+                .map(POSType::getSource)
                 //TODO 使用了getFirst, 不知为何
                 .map(Utils::getFirstNonNull)
                 .ifPresent(source -> {

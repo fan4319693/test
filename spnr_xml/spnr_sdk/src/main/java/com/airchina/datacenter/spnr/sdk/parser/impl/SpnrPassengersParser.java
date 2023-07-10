@@ -82,11 +82,11 @@ public class SpnrPassengersParser extends AbstractParser {
 
                             Utils.getFirstNonNullConsume(additional.getDocument(), d -> {
                                 po.setDocId(d.getDocID());
-                                po.setDocType(Utils.toWrapperLong(d.getDocType()));
+                                po.setDocType(d.getDocType() == null ? "" : d.getDocType());
                                 po.setDocNationality(d.getDocHolderNationality());
                                 po.setDocExpireDate(xmlDate2StringWithShanghaiTimezone(d.getExpireDate()));
                             });
-
+                            po.setHistoric(Utils.boolean2String(customer.isHistoric()));
                             result.add(po);
                         });
                     }

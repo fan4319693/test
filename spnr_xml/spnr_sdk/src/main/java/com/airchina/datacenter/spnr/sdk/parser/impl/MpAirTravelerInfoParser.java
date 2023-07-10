@@ -4,6 +4,7 @@ import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AirTravelerInfoPo;
 import com.airchina.datacenter.spnr.sdk.entity.ModularProductType;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
 import com.airchina.datacenter.spnr.sdk.entity.ProductBase;
+import com.airchina.datacenter.spnr.sdk.entity.TravelerInfoType;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Commons;
@@ -51,9 +52,11 @@ public class MpAirTravelerInfoParser extends AbstractParser {
             if (air == null) {
                 continue;
             }
+
+
             String pnr = Commons.getMpPnr(mp);
             Optional.ofNullable(air.getTravelerInfo())
-                    .map(t -> t.getAirTraveler())
+                    .map(TravelerInfoType::getAirTraveler)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(travelerList -> {
                         travelerList.forEach(airTraveler -> {
@@ -80,11 +83,11 @@ public class MpAirTravelerInfoParser extends AbstractParser {
                                 po.setNamePrefix(Utils.collection2String(pName.getNamePrefix()));
                             });
 
-                            po.setTelephone(Utils.collection2String(airTraveler.getTelephone(), t -> Commons.getTelephone(t)));
+                            po.setTelephone(Utils.collection2String(airTraveler.getTelephone(), Commons::getTelephone));
 
                             Utils.getFirstNonNullConsume(airTraveler.getDocument(), doc -> {
                                 po.setDocId(doc.getDocID());
-                                po.setDocType(Utils.toWrapperLong(doc.getDocType()));
+                                po.setDocType(doc.getDocType() == null ? "" : doc.getDocType());
                                 po.setDocNationality(doc.getDocHolderNationality());
                                 po.setDocExpireDate(xmlDate2StringWithShanghaiTimezone(doc.getExpireDate()));
                                 po.setBirthCountry(doc.getBirthCountry());

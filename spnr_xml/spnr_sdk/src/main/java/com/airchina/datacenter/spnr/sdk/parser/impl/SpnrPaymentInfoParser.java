@@ -49,8 +49,8 @@ public class SpnrPaymentInfoParser extends AbstractParser {
         List<Object> result = Lists.newLinkedList();
 
         Optional.ofNullable(spnr.getPaymentDetails())
-                .map(t -> t.getPayments())
-                .map(t -> t.getPayment())
+                .map(PaymentDetailsType::getPayments)
+                .map(PaymentsType::getPayment)
                 .filter(CollectionUtils::isNotEmpty)
                 .ifPresent(ps -> {
                     ps.forEach(payment -> {
@@ -121,7 +121,7 @@ public class SpnrPaymentInfoParser extends AbstractParser {
 
                         JSONObject paymentQualifierJson = new JSONObject();
                         Optional.ofNullable(payment.getPaymentQualifiers())
-                                .map(t -> t.getPaymentQualifier())
+                                .map(PaymentType.PaymentQualifiers::getPaymentQualifier)
                                 .ifPresent(t -> {
                                     t.forEach(item -> {
                                         String flightSegmentRPH = item.getFlightSegmentRPH();
@@ -139,6 +139,7 @@ public class SpnrPaymentInfoParser extends AbstractParser {
                                 });
 
                         po.setPaymentQualifier(paymentQualifierJson.toJSONString());
+                        po.setQuantity(payment.getQuantity());
 
                         result.add(po);
                     });

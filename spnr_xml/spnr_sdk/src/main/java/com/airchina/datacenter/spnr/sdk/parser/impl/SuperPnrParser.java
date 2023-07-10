@@ -45,6 +45,12 @@ public class SuperPnrParser extends AbstractParser {
         SuperPNRPo po = new SuperPNRPo();
 
         po.setSuperPnrId(spnr.getSuperPNRID());
+
+        // 目前发现有部分数据请求失败了，没有交易信息，直接过滤掉
+        if (spnr.getSuperPNRID() == null) {
+            return result;
+        }
+
         po.setBookingDate(xmlDate2StringWithShanghaiTimezone(spnr.getBookingDate()));
         po.setProcessingStatus(Utils.applyOrNull(spnr.getProcessingStatus(), t -> t.value()));
         po.setBookingStatus(spnr.getBookingStatus());

@@ -71,7 +71,7 @@ public class SpnrAssociatedBookingParser extends AbstractParser {
                             po.setRefundApplyTime(xmlDate2StringWithShanghaiTimezone(product.getRefundApplicationDateTime()));
 
                             po.setRph(Utils.collection2String(product.getFlightSegment(),
-                                    t -> t.getRPH()));
+                                    AssociatedBookingProductType.FlightSegment::getRPH));
                             po.setDepartureDate(Utils.collection2String(product.getFlightSegment(),
                                     t -> xmlDate2StringWithUtcTimezone(t.getDepartureDate())
                             ));

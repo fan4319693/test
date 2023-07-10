@@ -12,7 +12,7 @@ import lombok.Data;
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
 @Data
-public class MP_RemarksPo {
+public class MP_RemarksPo implements Cloneable {
 
     /**
      * 功能说明: SPNR ID,唯一标识
@@ -146,4 +146,25 @@ public class MP_RemarksPo {
      */
     private String callAdsTeam;
 
+    /**
+     * 功能说明: qualifierInfo的序号，自增
+     * 最后修改时间: 2023/06/27
+     */
+    private Integer qualifierRef;
+
+
+    @Override
+    /**
+     * Description：对类进行拷贝
+     * Return：com.airchina.datacenter.spnr.sdk.dao.pojo.MP_RemarksPo ：
+     * Exception： 无
+     * Modified History: zml 1.0 2023-06-28
+     */
+    public MP_RemarksPo clone() {
+        try {
+            return (MP_RemarksPo) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 }

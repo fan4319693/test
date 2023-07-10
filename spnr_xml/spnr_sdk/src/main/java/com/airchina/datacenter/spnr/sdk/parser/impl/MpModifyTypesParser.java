@@ -1,6 +1,7 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_ModifyTypesPo;
+import com.airchina.datacenter.spnr.sdk.entity.ModifyTypesType;
 import com.airchina.datacenter.spnr.sdk.entity.ModularProductType;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
@@ -45,7 +46,7 @@ public class MpModifyTypesParser extends AbstractParser {
         List<Object> result = Lists.newLinkedList();
         for (ModularProductType mp : spnr.getModularProduct()) {
             Optional.ofNullable(mp.getModifyTypes())
-                    .map(modifyTypes -> modifyTypes.getModifyType())
+                    .map(ModifyTypesType::getModifyType)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(mType -> mType.forEach(modifyType -> {
                         MP_ModifyTypesPo po = new MP_ModifyTypesPo();

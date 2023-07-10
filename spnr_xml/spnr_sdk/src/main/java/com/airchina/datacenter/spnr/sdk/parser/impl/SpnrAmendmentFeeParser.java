@@ -1,7 +1,9 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_AmendmentFeePo;
+import com.airchina.datacenter.spnr.sdk.entity.AmendmentFeesType;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
+import com.airchina.datacenter.spnr.sdk.entity.ProductPricingType;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Utils;
@@ -44,8 +46,8 @@ public class SpnrAmendmentFeeParser extends AbstractParser {
     public List<? extends Object> parse(OJSuperPNR spnr) {
         List<Object> result = Lists.newLinkedList();
         Optional.ofNullable(spnr.getPricing())
-                .map(t -> t.getAmendmentFees())
-                .map(t -> t.getAmendmentFee())
+                .map(ProductPricingType::getAmendmentFees)
+                .map(AmendmentFeesType::getAmendmentFee)
                 .filter(CollectionUtils::isNotEmpty)
                 .ifPresent(feeList -> {
                     feeList.forEach(fee -> {

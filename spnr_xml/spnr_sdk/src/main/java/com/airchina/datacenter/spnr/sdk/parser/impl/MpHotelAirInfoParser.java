@@ -1,15 +1,12 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
-import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_CouplesPo;
-import com.airchina.datacenter.spnr.sdk.dao.pojo.Mp_Hotel_Air_TicketingPo;
+import com.airchina.datacenter.spnr.sdk.dao.pojo.Mp_Hotel_AirInfoPo;
 import com.airchina.datacenter.spnr.sdk.entity.*;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Commons;
 import com.airchina.datacenter.spnr.sdk.utils.Utils;
 import com.google.common.collect.Lists;
-import com.google.gson.JsonObject;
-import org.checkerframework.checker.nullness.Opt;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +22,7 @@ import static com.airchina.datacenter.spnr.sdk.utils.Utils.xmlDate2StringWithSha
  * <p>Date: 2023/4/20 </p>
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
-public class MpHotelAirTicketingParser extends AbstractParser {
+public class MpHotelAirInfoParser extends AbstractParser {
 
     /**
      * Description: 有参构造器
@@ -33,7 +30,7 @@ public class MpHotelAirTicketingParser extends AbstractParser {
      *  @param strategy: 实体对象解析策略
      * Throws: 无
      */
-    public MpHotelAirTicketingParser(SerdeStrategy strategy) {
+    public MpHotelAirInfoParser(SerdeStrategy strategy) {
         super(strategy);
     }
 
@@ -61,7 +58,7 @@ public class MpHotelAirTicketingParser extends AbstractParser {
                                 .ifPresent( o -> {
                                     for (OriginDestinationOptionType.FlightSegment seg : o.getFlightSegment()) {
                                         for (TravelerInfoType.AirTraveler traveler : a.getTravelerInfo().getAirTraveler()) {
-                                            Mp_Hotel_Air_TicketingPo po = new Mp_Hotel_Air_TicketingPo();
+                                            Mp_Hotel_AirInfoPo po = new Mp_Hotel_AirInfoPo();
                                             po.setSuperPnrId(spnr.getSuperPNRID());
                                             po.setSearchId(mp.getSearchID());
                                             po.setProductNumber(Utils.toWrapperLong(mp.getProductNumber()));
@@ -136,21 +133,21 @@ public class MpHotelAirTicketingParser extends AbstractParser {
                                                     po.setCustomerValue(custLoyalty.getCustomerValue());
                                                     po.setLoyalLevel(custLoyalty.getLoyalLevel());
                                                 });
-
-                                                TicketingFullInfoType ticketingInfoType = ticketingMap.get(seg.getFlightNumber() + traveler.getTravelerRefNumber());
-                                                Optional.ofNullable(ticketingInfoType)
-                                                        .ifPresent(
-                                                                t -> {
-                                                                    po.setIssuingAgentId(t.getIssuingAgentID());
-                                                                    po.setPrinted(Utils.boolean2String(t.isPrinted()));
-                                                                    po.setTicketTimestamp(xmlDate2StringWithShanghaiTimezone(t.getTicketTime()));
-                                                                    po.setTicketingStatus(t.getTicketingStatus());
-                                                                    po.setETicketNumber(t.getETicketNumber());
-                                                                    po.setTicketTimeLimitTimestamp(xmlDate2StringWithShanghaiTimezone(t.getTicketTimeLimit()));
-                                                                    po.setExpiryDateTimestamp(xmlDate2StringWithShanghaiTimezone(t.getExpiryDateTime()));
-                                                                }
-                                                        );
                                             });
+
+                                            TicketingFullInfoType ticketingInfoType = ticketingMap.get(seg.getRPH() + traveler.getTravelerRefNumber().getRPH());
+                                            Optional.ofNullable(ticketingInfoType)
+                                                    .ifPresent(
+                                                            t -> {
+                                                                po.setIssuingAgentId(t.getIssuingAgentID());
+                                                                po.setPrinted(Utils.boolean2String(t.isPrinted()));
+                                                                po.setTicketTimestamp(xmlDate2StringWithShanghaiTimezone(t.getTicketTime()));
+                                                                po.setTicketingStatus(t.getTicketingStatus());
+                                                                po.setETicketNumber(t.getETicketNumber());
+                                                                po.setTicketTimeLimitTimestamp(xmlDate2StringWithShanghaiTimezone(t.getTicketTimeLimit()));
+                                                                po.setExpiryDateTimestamp(xmlDate2StringWithShanghaiTimezone(t.getExpiryDateTime()));
+                                                            }
+                                                    );
                                             result.add(po);
                                         }
 

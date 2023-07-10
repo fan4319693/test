@@ -83,13 +83,19 @@ public class ParserProvider {
             .put(formalizeKey("MP_AP_Carbon_OffsetPo"), new MpApCarbonOffsetParser(new FieldsArrayStrategy(MP_AP_Carbon_OffsetPo.class)))
             .put(formalizeKey("MP_AP_GroundTransport_BusPo"), new MpApGroundTransportBusParser(new FieldsArrayStrategy(MP_AP_GroundTransport_BusPo.class)))
             .put(formalizeKey("MP_AP_Original_SegmentPo"), new MpApOrignalSegmentParser(new FieldsArrayStrategy(MP_AP_Original_SegmentPo.class)))
-            .put(formalizeKey("MP_CouplesPo"), new MpCouplesParser(new FieldsArrayStrategy(MP_CouplesPo.class)))
-            .put(formalizeKey("Mp_Hotel_Air_TicketingPo"), new MpHotelAirTicketingParser(new FieldsArrayStrategy(Mp_Hotel_Air_TicketingPo.class)))
+            .put(formalizeKey("MP_CouponsPo"), new MpCouplesParser(new FieldsArrayStrategy(MP_CouplesPo.class)))
+            .put(formalizeKey("Mp_Hotel_AirInfoPo"), new MpHotelAirInfoParser(new FieldsArrayStrategy(Mp_Hotel_AirInfoPo.class)))
             .put(formalizeKey("MP_Hotel_GuestPo"), new MpHotelGuestParser(new FieldsArrayStrategy(MP_Hotel_GuestPo.class)))
-            .put(formalizeKey("MP_Hotel_RatesPo"), new MpHotelRatesParser(new FieldsArrayStrategy(MP_Hotel_RatesPo.class)))
+            .put(formalizeKey("MP_Hotel_RoomPo"), new MpHotelRoomsParser(new FieldsArrayStrategy(MP_Hotel_RoomPo.class)))
             .put(formalizeKey("MP_Hotel_RoomTypePo"), new MpHotelRoomTypeParser(new FieldsArrayStrategy(MP_Hotel_RoomTypePo.class)))
-            .put(formalizeKey("MP_HotelPo"), new MpHotelParser(new FieldsArrayStrategy(MP_HotelPo.class)))
 
+            .put(formalizeKey("Mp_ActivityPo"), new MpActivityParser(new FieldsArrayStrategy(Mp_ActivityPo.class)))
+            .put(formalizeKey("Mp_Activity_VehiclePo"), new MpActivityVehicleParser(new FieldsArrayStrategy(Mp_Activity_VehiclePo.class)))
+            .put(formalizeKey("Mp_Activity_TravelerPo"), new MpActivityTravelerParser(new FieldsArrayStrategy(Mp_Activity_TravelerPo.class)))
+
+            .put(formalizeKey("Mp_Activity_InsurancePo"), new MpActivityInsuranceParser(new FieldsArrayStrategy(Mp_Activity_InsurancePo.class)))
+            .put(formalizeKey("Mp_Activity_AirInfoPo"), new MpActivityAirInfoParser(new FieldsArrayStrategy(Mp_Activity_AirInfoPo.class)))
+            .put(formalizeKey("Mp_Activity_Destination_ItemPo"), new MpActivityDestinationItemParser(new FieldsArrayStrategy(Mp_Activity_Destination_ItemPo.class)))
             .build();
 
     /**

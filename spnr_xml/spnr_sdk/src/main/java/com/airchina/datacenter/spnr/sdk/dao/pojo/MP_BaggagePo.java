@@ -12,7 +12,7 @@ import lombok.Data;
  * <p>Modified History: 修改记录，格式(Name) (Version) (Date) (Reason & Contents) </p>
  */
 @Data
-public class MP_BaggagePo {
+public class MP_BaggagePo implements Cloneable {
 
     /**
      * 功能说明: SPNR ID,唯一标识
@@ -200,4 +200,19 @@ public class MP_BaggagePo {
      */
     private String cancelAmount;
 
+    @Override
+    /**
+     * Description：对类进行拷贝
+     * Return：com.airchina.datacenter.spnr.sdk.dao.pojo.MP_BaggagePo ：
+     * Exception： 无
+     * Modified History: zml 1.0 2023-06-28
+     */
+    public MP_BaggagePo clone() {
+        try {
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return (MP_BaggagePo) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 }

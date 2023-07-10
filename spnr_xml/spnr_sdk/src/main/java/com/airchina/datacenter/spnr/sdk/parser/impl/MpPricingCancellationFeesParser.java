@@ -1,8 +1,10 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_Pricing_CancellationFeesPo;
+import com.airchina.datacenter.spnr.sdk.entity.CancellationFeesType;
 import com.airchina.datacenter.spnr.sdk.entity.ModularProductType;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
+import com.airchina.datacenter.spnr.sdk.entity.ProductPricingType;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Utils;
@@ -46,8 +48,8 @@ public class MpPricingCancellationFeesParser extends AbstractParser {
         List<Object> result = Lists.newLinkedList();
         for (ModularProductType mp : spnr.getModularProduct()) {
             Optional.ofNullable(mp.getPricing())
-                    .map(p -> p.getCancellationFees())
-                    .map(a -> a.getCancellationFee())
+                    .map(ProductPricingType::getCancellationFees)
+                    .map(CancellationFeesType::getCancellationFee)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(feeList -> feeList.forEach(fee -> {
                         MP_Pricing_CancellationFeesPo po = new MP_Pricing_CancellationFeesPo();

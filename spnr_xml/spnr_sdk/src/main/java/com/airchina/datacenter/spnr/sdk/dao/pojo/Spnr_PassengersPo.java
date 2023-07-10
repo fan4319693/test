@@ -96,7 +96,7 @@ public class Spnr_PassengersPo {
      * 功能说明: 乘机人证件类型
      * 最后修改时间: 2023/04/20
      */
-    private Long docType;
+    private String docType;
 
     /**
      * 功能说明: 乘机人证件签发国
@@ -109,5 +109,11 @@ public class Spnr_PassengersPo {
      * 最后修改时间: 2023/04/20
      */
     private String docExpireDate;
+
+    /**
+     * 功能说明: 是否历史节点
+     * 最后修改时间: 2023/04/20
+     */
+    private String historic;
 
 }

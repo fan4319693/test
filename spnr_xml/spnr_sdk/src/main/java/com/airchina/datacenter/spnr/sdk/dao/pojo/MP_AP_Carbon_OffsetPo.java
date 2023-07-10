@@ -38,10 +38,10 @@ public class MP_AP_Carbon_OffsetPo {
     private Long productNumber;
 
     /**
-     * 功能说明: 碳排放抵消总金额
+     * 功能说明: 碳排放抵消总数量
      * 最后修改时间: 2023/06/02
      */
-    private String totalOffsetAmount;
+    private String totalOffsetCnt;
 
     /**
      * 功能说明: 碳排放抵消总数量的单位
@@ -56,10 +56,10 @@ public class MP_AP_Carbon_OffsetPo {
     private Long flightSegmentRph;
 
     /**
-     * 功能说明: 碳排放抵消花费金额
+     * 功能说明: 碳排放抵消花费s数量
      * 最后修改时间: 2023/06/02
      */
-    private String amount;
+    private String cnt;
 
 
     /**

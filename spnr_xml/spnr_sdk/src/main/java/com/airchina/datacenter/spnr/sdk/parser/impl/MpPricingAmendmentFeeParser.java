@@ -1,8 +1,10 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_Pricing_AmendmentFeePo;
+import com.airchina.datacenter.spnr.sdk.entity.AmendmentFeesType;
 import com.airchina.datacenter.spnr.sdk.entity.ModularProductType;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
+import com.airchina.datacenter.spnr.sdk.entity.ProductPricingType;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Commons;
@@ -48,8 +50,8 @@ public class MpPricingAmendmentFeeParser extends AbstractParser {
         for (ModularProductType mp : spnr.getModularProduct()) {
             Optional
                     .ofNullable(mp.getPricing())
-                    .map(p -> p.getAmendmentFees())
-                    .map(a -> a.getAmendmentFee())
+                    .map(ProductPricingType::getAmendmentFees)
+                    .map(AmendmentFeesType::getAmendmentFee)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(fees -> fees.forEach(fee -> {
                         MP_Pricing_AmendmentFeePo po = new MP_Pricing_AmendmentFeePo();

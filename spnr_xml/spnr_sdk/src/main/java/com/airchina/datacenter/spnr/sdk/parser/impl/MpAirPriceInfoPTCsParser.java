@@ -1,6 +1,7 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AirPriceInfo_PTCsPo;
+import com.airchina.datacenter.spnr.sdk.entity.AirItineraryPricingInfoType;
 import com.airchina.datacenter.spnr.sdk.entity.ModularProductType;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
 import com.airchina.datacenter.spnr.sdk.entity.ProductBase;
@@ -50,8 +51,8 @@ public class MpAirPriceInfoPTCsParser extends AbstractParser {
                 continue;
             }
             Utils.getFirstNonNullOptional(air.getPriceInfo())
-                    .map(priceInfo -> priceInfo.getPTCFareBreakdowns())
-                    .map(b -> b.getPTCFareBreakdown())
+                    .map(AirItineraryPricingInfoType::getPTCFareBreakdowns)
+                    .map(AirItineraryPricingInfoType.PTCFareBreakdowns::getPTCFareBreakdown)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(ptcs -> {
                         ptcs.forEach(ptc -> {

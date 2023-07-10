@@ -60,7 +60,7 @@ public class MP_PaymentRefsPo {
      * 功能说明: 相关联的PaymentDetails/Payments/Payment的@PaymentID
      * 最后修改时间: 2023/04/20
      */
-    private Long paymentId;
+    private String paymentId;
 
     /**
      * 功能说明: 相关联的PaymentDetails/Payments/Payment的@AuditID
