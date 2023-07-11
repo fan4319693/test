@@ -48,6 +48,17 @@ public class MpActivityDestinationItemParser extends AbstractParser {
                             Mp_Activity_Destination_ItemPo po = new Mp_Activity_Destination_ItemPo();
                             po.setSuperPnrId(spnr.getSuperPNRID());
                             po.setProductNumber(Utils.toWrapperLong(mp.getProductNumber()));
+
+                            Optional.ofNullable(item.getPostResInfos())
+                                    .map(PostResType::getPostResInfo)
+                                    .ifPresent(postResInfos -> {
+                                        for (PostResType.PostResInfo postResInfo : postResInfos) {
+                                            Utils.consumeOrNull(postResInfo.getContactInfo(), t -> po.setContactProfileId(t.getContactProfileID()));
+                                            Utils.consumeOrNull(postResInfo.getVehicle(), t -> po.setActualServiceVehicleCode(t.getCode()));
+                                            break;
+                                        }
+                                    });
+
                             po.setServiceCode(mp.getServiceCode());
                             po.setFlightSegmentRph(Utils.toWrapperLong(mp.getActivity().getFlightSegmentRPH()));
                             po.setOdRph(Utils.toWrapperLong(mp.getActivity().getOriginDestinationRPH()));
@@ -60,7 +71,6 @@ public class MpActivityDestinationItemParser extends AbstractParser {
                                     });
 
                             po.setItemCode(item.getItemCode());
-                            po.setOptionCode(item.getOptionCode());
                             po.setQuantity(Utils.toWrapperLong(item.getQuantity()));
 
                             po.setSelectedDate(Utils.xmlDate2StringWithUtcTimezone(item.getSelectedDate()));
@@ -78,6 +88,21 @@ public class MpActivityDestinationItemParser extends AbstractParser {
                                                     .ifPresent(t -> {
 
                                                     });
+
+                            Optional.ofNullable(item.getPriceAdjustments())
+                                .map(ExPriceAdjustmentsType::getPriceAdjustment)
+                                .ifPresent(priceAdjustmentsType -> {
+
+                                    for (ExPriceAdjustmentsType.PriceAdjustment priceAdjustment : priceAdjustmentsType) {
+                                        if (priceAdjustment.getCode().equals("ExtraChargePenalty")) {
+                                            po.setSettleExtraAmt(Utils.number2String(priceAdjustment.getAmount()));
+                                        } else if (priceAdjustment.getCode().equals("SettlementPrice")) {
+                                            po.setSettleAmt(Utils.number2String(priceAdjustment.getAmount()));
+                                            po.setSettleDate(Utils.xmlDate2StringWithShanghaiTimezone(priceAdjustment.getDate()));
+                                            po.setSettleDescription(priceAdjustment.getDescription());
+                                        }
+                                    }
+                                });
 
                             result.add(po);
                         }

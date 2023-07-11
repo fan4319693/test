@@ -68,13 +68,13 @@ public class Mp_ActivityPo {
      * 功能说明：库存控制，默认false即可
      * 最后修改时间：2023/7/10
      */
-    private Boolean isInventoryControl;
+    private String isInventoryControl;
 
     /**
      * 功能说明：是否包含税，默认false即可
      * 最后修改时间：2023/7/10
      */
-    private Boolean isTaxIncluded;
+    private String isTaxIncluded;
 
     /**
      * 功能说明：目的地活动的类别，默认0即可

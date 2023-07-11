@@ -56,8 +56,8 @@ public class MpActivityParser extends AbstractParser {
 
                         po.setCurrencyCode(contentType.getCurrencyCode());
                         po.setAirport(contentType.getEventCityCode());
-                        po.setIsInventoryControl(contentType.isIsInventoryPerPTCType());
-                        po.setIsTaxIncluded(contentType.isIsTaxIncluded());
+                        po.setIsInventoryControl(String.valueOf(contentType.isIsInventoryPerPTCType()));
+                        po.setIsTaxIncluded(String.valueOf(contentType.isIsTaxIncluded()));
 
                         po.setDesItemType(String.valueOf(contentType.getItemType()));
 
