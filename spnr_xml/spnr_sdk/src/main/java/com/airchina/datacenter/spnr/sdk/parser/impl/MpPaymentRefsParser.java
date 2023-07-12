@@ -63,7 +63,7 @@ public class MpPaymentRefsParser extends AbstractParser {
                                 po.setPaymentRefsAuditId(Utils.toWrapperLong(paymentRefs.getAuditID()));
                                 Utils.consumeOrNull(paymentRefs.getPaymentState(), t -> po.setPaymentState(t.value()));
                                 po.setPaymentRefId(Utils.toWrapperLong(ref.getID()));
-                                po.setPaymentId(Utils.toWrapperLong(ref.getPaymentID()));
+                                po.setPaymentId(ref.getPaymentID());
                                 po.setPaymentRefAuditId(Utils.toWrapperLong(ref.getAuditID()));
 
                                 result.add(po);

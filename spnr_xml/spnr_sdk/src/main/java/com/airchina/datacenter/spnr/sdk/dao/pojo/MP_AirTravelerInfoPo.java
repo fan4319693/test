@@ -120,7 +120,7 @@ public class MP_AirTravelerInfoPo {
      * 功能说明: 证件类型:身份证【5】军官证【6】警官证【7】士兵证【3】有效护照【2】外国人永久居留身份证【91】其他证件【14】
      * 最后修改时间: 2023/04/20
      */
-    private Long docType;
+    private String docType;
 
     /**
      * 功能说明: 乘客国籍

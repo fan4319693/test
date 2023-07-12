@@ -1,10 +1,7 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_ContactPo;
-import com.airchina.datacenter.spnr.sdk.entity.AddressType;
-import com.airchina.datacenter.spnr.sdk.entity.EmailType;
-import com.airchina.datacenter.spnr.sdk.entity.OJCustomerPrimaryAdditionalType;
-import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
+import com.airchina.datacenter.spnr.sdk.entity.*;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Commons;
@@ -111,7 +108,7 @@ public class SpnrContactParser extends AbstractParser {
 
                                     });
                                     //后加的字段
-                                    po.setMembershipId(Utils.collection2String(p.getCustLoyalty(), l -> l.getMembershipID()));
+                                    po.setMembershipId(Utils.collection2String(p.getCustLoyalty(), CustomerType.CustLoyalty::getMembershipID));
 
                                     result.add(po);
                                 });

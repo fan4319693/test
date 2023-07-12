@@ -152,4 +152,10 @@ public class Spnr_PaymentInfoPo {
      */
     private String voucher;
 
+    /**
+     * 功能说明: 支付里程数
+     * 最后修改时间: 2023/05/25
+     */
+    private String quantity;
+
 }

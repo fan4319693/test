@@ -1,9 +1,7 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_BaggagePo;
-import com.airchina.datacenter.spnr.sdk.entity.ModularProductType;
-import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
-import com.airchina.datacenter.spnr.sdk.entity.ProductBase;
+import com.airchina.datacenter.spnr.sdk.entity.*;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Commons;
@@ -28,8 +26,9 @@ public class MpBaggageParser extends AbstractParser {
     /**
      * Description: 有参构造器
      * Parameter:
-     *  @param strategy: 实体对象解析策略
-     * Throws: 无
+     *
+     * @param strategy: 实体对象解析策略
+     *                  Throws: 无
      */
     public MpBaggageParser(SerdeStrategy strategy) {
         super(strategy);
@@ -38,9 +37,10 @@ public class MpBaggageParser extends AbstractParser {
     /**
      * Description: 将xml的OJSuperPNR解析为MP_BaggagePo
      * Parameter:
-     *  @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
-     * Return: 解析的实体对象集合, 不会为null, 可能为空集合
-     * Throws: 无
+     *
+     * @param spnr: 待解析的xml的OJSuperPNR节点, 不能为null
+     *              Return: 解析的实体对象集合, 不会为null, 可能为空集合
+     *              Throws: 无
      */
     @Override
     public List<? extends Object> parse(OJSuperPNR spnr) {
@@ -50,83 +50,81 @@ public class MpBaggageParser extends AbstractParser {
             if (baggage == null) {
                 continue;
             }
+            MP_BaggagePo po = new MP_BaggagePo();
 
-            Optional.ofNullable(baggage.getTicketing())
-                    .ifPresent(ticketingInfoTypes -> ticketingInfoTypes.forEach(
-                            ticketing -> {
-                                MP_BaggagePo po = new MP_BaggagePo();
+            po.setSuperPnrId(spnr.getSuperPNRID());
+            po.setSearchId(mp.getSearchID());
+            po.setProductNumber(Utils.toWrapperLong(mp.getProductNumber()));
+            po.setPnr(Commons.getMpPnr(mp));
 
-                                po.setSuperPnrId(spnr.getSuperPNRID());
-                                po.setSearchId(mp.getSearchID());
-                                po.setProductNumber(Utils.toWrapperLong(mp.getProductNumber()));
-                                po.setPnr(Commons.getMpPnr(mp));
+            po.setCancelable(Utils.boolean2String(baggage.isCancelable()));
+            po.setQuantity(Utils.toWrapperLong(baggage.getQuantity()));
+            po.setRefundable(Utils.boolean2String(baggage.isRefundable()));
+            po.setIsSegBind(Utils.boolean2String(baggage.isIsSegBind()));
 
-                                po.setCancelable(Utils.boolean2String(baggage.isCancelable()));
-                                po.setQuantity(Utils.toWrapperLong(baggage.getQuantity()));
-                                po.setRefundable(Utils.boolean2String(baggage.isRefundable()));
-                                po.setIsSegBind(Utils.boolean2String(baggage.isIsSegBind()));
+            Optional.ofNullable(baggage.getOriginDestination())
+                    .ifPresent(od -> {
+                        po.setDepartureCode(od.getDepartureCode());
+                        po.setArrivalCode(od.getArrivalCode());
 
-                                Optional.ofNullable(baggage.getOriginDestination())
-                                        .ifPresent(od -> {
-                                            po.setDepartureCode(od.getDepartureCode());
-                                            po.setArrivalCode(od.getArrivalCode());
+                        Optional.ofNullable(od.getService())
+                                .ifPresent(service -> {
+                                    Optional.ofNullable(service.getBaggage())
+                                            .ifPresent(bag -> {
+                                                Utils.getFirstNonNullConsume(bag.getMaxWeight(), t -> {
+                                                    po.setMaxWeight(Utils.number2String(t.getValue()));
+                                                    po.setMaxWeightUnit(Utils.applyOrNull(t.getUnit(), a -> a.value()));
+                                                });
+                                                Utils.getFirstNonNullConsume(bag.getMaxDimensions(), t -> {
+                                                    po.setMaxDimensionslCm(Utils.number2String(t.getLCM()));
+                                                    po.setMaxDimensionsUnits(Utils.applyOrNull(t.getUnits(), a -> a.value()));
+                                                });
+                                            });
 
-                                            Optional.ofNullable(od.getService())
-                                                    .ifPresent(service -> {
-                                                        Optional.ofNullable(service.getBaggage())
-                                                                .ifPresent(bag -> {
-                                                                    Utils.getFirstNonNullConsume(bag.getMaxWeight(), t -> {
-                                                                        po.setMaxWeight(Utils.number2String(t.getValue()));
-                                                                        po.setMaxWeightUnit(Utils.applyOrNull(t.getUnit(), a -> a.value()));
-                                                                    });
-                                                                    Utils.getFirstNonNullConsume(bag.getMaxDimensions(), t -> {
-                                                                        po.setMaxDimensionslCm(Utils.number2String(t.getLCM()));
-                                                                        po.setMaxDimensionsUnits(Utils.applyOrNull(t.getUnits(), a -> a.value()));
-                                                                    });
-                                                                });
-
-                                                        Utils.consumeOrNull(service.getTotalAmount(), totalAmount -> {
-                                                            po.setAdjusted(Utils.number2String(totalAmount.getAdjusted()));
-                                                            po.setAmt(Utils.number2String(totalAmount.getAmount()));
-                                                            po.setAmtBeforeTax(Utils.number2String(totalAmount.getAmountBeforeTax()));
-                                                            po.setCurrencyCode(totalAmount.getCurrencyCode());
-                                                            po.setDecimalPlaces(Utils.number2String(totalAmount.getDecimalPlaces()));
-                                                            po.setOriAmtAfterTax(Utils.number2String(totalAmount.getOriginalAmountAfterTax()));
-                                                            po.setOriCurrencyCode(totalAmount.getOriginalCurrencyCode());
-                                                        });
-                                                        //TODO 改为逗号拼接,原来是String.valueOf(List<String>)
-                                                        po.setFlightSegmentNumber(Utils.collection2String(service.getFlightSegmentNumber()));
-                                                    });
-                                        });
-
-                                // TODO: 这里虽然是数组但是xds上显示的确实attribute，取第一条，而且观察数据，如果一个票对应多个航段会生成多条数据相同的
-                                Utils.getFirstNonNullConsume(ticketing.getTravelerRefNumber(), num -> {
-                                    po.setTravelerRph(Utils.toWrapperLong(num));
+                                    Utils.consumeOrNull(service.getTotalAmount(), totalAmount -> {
+                                        po.setAdjusted(Utils.number2String(totalAmount.getAdjusted()));
+                                        po.setAmt(Utils.number2String(totalAmount.getAmount()));
+                                        po.setAmtBeforeTax(Utils.number2String(totalAmount.getAmountBeforeTax()));
+                                        po.setCurrencyCode(totalAmount.getCurrencyCode());
+                                        po.setDecimalPlaces(Utils.number2String(totalAmount.getDecimalPlaces()));
+                                        po.setOriAmtAfterTax(Utils.number2String(totalAmount.getOriginalAmountAfterTax()));
+                                        po.setOriCurrencyCode(totalAmount.getOriginalCurrencyCode());
+                                    });
+                                    //TODO 改为逗号拼接,原来是String.valueOf(List<String>)
+                                    po.setFlightSegmentNumber(Utils.collection2String(service.getFlightSegmentNumber()));
                                 });
-                                Utils.getFirstNonNullConsume(ticketing.getFlightSegmentRefNumber(), num -> {
-                                    po.setFlightSegmentRph(Utils.toWrapperLong(num));
-                                });
-                                po.setGeoIndicator(ticketing.getGeoIndicator());
-                                po.setSaleModel(ticketing.getSaleModel());
-                                po.setTicketTime(xmlDate2StringWithShanghaiTimezone(ticketing.getTicketTime()));
-                                po.setTicketingStatus(ticketing.getTicketingStatus());
-                                po.setETicketNumber(ticketing.getETicketNumber());
+                    });
+            Optional.ofNullable(baggage.getCancellationPenalties())
+                    .map(p -> Utils.getFirstNonNull(p.getCancelPenalty()))
+                    .map(CancelPenaltyType::getAmountPercent)
+                    .map(AmountPercentType::getAmount)
+                    .ifPresent(a -> po.setCancelAmount(Utils.number2String(a)));
 
-                                String advisory = Utils.collection2String(ticketing.getTicketAdvisory(),
-                                        t -> t.getValue());
-                                po.setTicketAdvisory(advisory);
+            if (baggage.getTicketing() == null) {
+                result.add(po);
+                return result;
+            }
 
-                                Optional.ofNullable(baggage.getCancellationPenalties())
-                                        .map(p -> Utils.getFirstNonNull(p.getCancelPenalty()))
-                                        .map(p -> p.getAmountPercent())
-                                        .map(p -> p.getAmount())
-                                        .ifPresent(a -> po.setCancelAmount(Utils.number2String(a)));
-
-                                result.add(po);
-                            }
-                    ));
+            baggage.getTicketing().forEach(
+                    ticketing -> {
+                        // TODO: 这里虽然是数组但是xds上显示的确实attribute，取第一条，而且观察数据，如果一个票对应多个航段会生成多条数据相同的
+                        Utils.getFirstNonNullConsume(ticketing.getTravelerRefNumber(), num -> {
+                            po.setTravelerRph(Utils.toWrapperLong(num));
+                        });
+                        Utils.getFirstNonNullConsume(ticketing.getFlightSegmentRefNumber(), num -> {
+                            po.setFlightSegmentRph(Utils.toWrapperLong(num));
+                        });
+                        po.setGeoIndicator(ticketing.getGeoIndicator());
+                        po.setSaleModel(ticketing.getSaleModel());
+                        po.setTicketTime(xmlDate2StringWithShanghaiTimezone(ticketing.getTicketTime()));
+                        po.setTicketingStatus(ticketing.getTicketingStatus());
+                        po.setETicketNumber(ticketing.getETicketNumber());
+                        String advisory = Utils.collection2String(ticketing.getTicketAdvisory(),
+                                FreeTextType::getValue);
+                        po.setTicketAdvisory(advisory);
+                        result.add(po.clone());
+                    });
         }
-
         return result;
     }
 }

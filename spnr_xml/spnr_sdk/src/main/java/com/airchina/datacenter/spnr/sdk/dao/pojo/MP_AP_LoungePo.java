@@ -141,5 +141,4 @@ public class MP_AP_LoungePo {
      * 最后修改时间: 2023/04/20
      */
     private String imageUrl;
-
 }

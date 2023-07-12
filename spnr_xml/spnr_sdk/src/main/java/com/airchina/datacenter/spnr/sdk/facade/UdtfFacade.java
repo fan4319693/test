@@ -3,6 +3,7 @@ package com.airchina.datacenter.spnr.sdk.facade;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.google.common.base.Preconditions;
+import org.apache.hadoop.hive.ql.metadata.HiveException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -47,7 +48,7 @@ public class UdtfFacade {
      * Return: 解析出的多条Hive记录对应的字段值
      * Throws: 无
      */
-    public static List<? extends Object> process(String xmlText, AbstractParser parser) {
+    public static List<? extends Object> process(String xmlText, AbstractParser parser) throws HiveException {
         Preconditions.checkNotNull(xmlText, "Null xmlText");
         Preconditions.checkNotNull(parser, "Null parser");
 
@@ -61,6 +62,7 @@ public class UdtfFacade {
                 return list;
             } catch (Exception e) {
                 e.printStackTrace();
+//                throw new HiveException("spnr xml parse fail");
             }
         }
         return null;

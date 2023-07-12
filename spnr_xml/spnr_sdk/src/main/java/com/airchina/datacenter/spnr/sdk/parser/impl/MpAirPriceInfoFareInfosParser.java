@@ -7,6 +7,8 @@ import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Commons;
 import com.airchina.datacenter.spnr.sdk.utils.Constants;
 import com.airchina.datacenter.spnr.sdk.utils.Utils;
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections4.CollectionUtils;
 import org.w3c.dom.Element;
@@ -113,16 +115,39 @@ public class MpAirPriceInfoFareInfosParser extends AbstractParser {
                                                        t.getTax().forEach(tax -> {
                                                            // 机建费用
                                                            if ("CN".equals(tax.getTaxCode())) {
-                                                               po.setTaxAirportFee(tax.getAmount().toString());
+                                                               po.setTaxAirportFee(Utils.number2String(tax.getAmount()));
                                                                po.setTaxAirportCurrencyCode(tax.getCurrencyCode());
                                                            // 燃油费用
                                                            } else if ("YQ".equals(tax.getTaxCode())) {
-                                                               po.setTaxFuelFee(tax.getAmount().toString());
+                                                               po.setTaxFuelFee(Utils.number2String(tax.getAmount()));
                                                                po.setTaxFuelCurrencyCode(tax.getCurrencyCode());
                                                            }
                                                        });
                                                         po.setTaxDetails(Commons.getTaxDetails(t.getTax()));
                                                     });
+
+                                            //2023-06-21添加
+                                            Optional.ofNullable(f.getSurcharges())
+                                                    .map(FareSurchargesType::getSurcharge)
+                                                    .filter(CollectionUtils::isNotEmpty)
+                                                    .ifPresent(surchargeList -> {
+                                                        String surchargeInfo = Utils.collection2String(surchargeList, s -> {
+                                                            String surchargeAmt = Utils.number2String(s.getAmount());
+                                                            String surchargeCode = s.getCode();
+                                                            String surchargeCurrencyCode = s.getCurrencyCode();
+                                                            String surchargeNucAmt = Utils.number2String(s.getNUCAmount());
+                                                            //以竖线分隔的JSON串
+                                                            JSONObject json = new JSONObject();
+                                                            json.put("surchargeAmt", surchargeAmt);
+                                                            json.put("surchargeCode", surchargeCode);
+                                                            json.put("surchargeCurrencyCode", surchargeCurrencyCode);
+                                                            json.put("surchargeNucAmt", surchargeNucAmt);
+                                                            return json.toJSONString();
+                                                        }, Constants.JoinByPipeNull2Empty);
+
+                                                        po.setSurchargeInfo(surchargeInfo);
+                                                    });
+
                                         });
 
                                 po.setFareBasisCode(info.getFareBasisCode());

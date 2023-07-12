@@ -92,7 +92,7 @@ public class MpApTravelerParser extends AbstractParser {
 
                             Utils.getFirstNonNullConsume(traveler.getDocument(), t -> {
                                 po.setDocId(t.getDocID());
-                                po.setDocType(Utils.toWrapperLong(t.getDocType()));
+                                po.setDocType(t.getDocType() == null ? "" : t.getDocType());
                                 po.setDocNationality(t.getDocHolderNationality());
                                 po.setDocExpireDate(xmlDate2StringWithShanghaiTimezone(t.getExpireDate()));
                                 po.setDocBirthCountry(t.getBirthCountry());
@@ -120,7 +120,7 @@ public class MpApTravelerParser extends AbstractParser {
                                 Optional.ofNullable(addr.getStateProv())
                                         .ifPresent(stateProvType -> {
                                             //此处原来取得是getValue,Excel为准
-                                            po.setStateProv(stateProvType.getStateCode());
+                                            po.setStateProv(stateProvType.getValue());
                                         });
                                 Optional.ofNullable(addr.getCountryName())
                                         .ifPresent(n -> po.setCountryName(n.getCode()));

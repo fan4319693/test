@@ -1,10 +1,7 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.Spnr_RemarksPo;
-import com.airchina.datacenter.spnr.sdk.entity.OJRemarkType;
-import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
-import com.airchina.datacenter.spnr.sdk.entity.RefundQualifiersType;
-import com.airchina.datacenter.spnr.sdk.entity.SuperPNRType;
+import com.airchina.datacenter.spnr.sdk.entity.*;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Constants;
@@ -15,6 +12,7 @@ import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.airchina.datacenter.spnr.sdk.utils.Utils.xmlDate2StringWithShanghaiTimezone;
 
@@ -53,24 +51,38 @@ public class SpnrRemarksParser extends AbstractParser {
                 .filter(CollectionUtils::isNotEmpty)
                 .ifPresent(remarks -> {
                     for (OJRemarkType rmk : remarks) {
+                        Spnr_RemarksPo po = new Spnr_RemarksPo();
+
+                        po.setSuperPnrId(spnr.getSuperPNRID());
+                        po.setActive(Utils.boolean2String(rmk.isActive()));
+                        po.setAuditId(Utils.toWrapperLong(rmk.getAuditID()));
+                        po.setCode(rmk.getCode());
+                        po.setCodeContext(rmk.getCodeContext());
+                        po.setRemarkDate(xmlDate2StringWithShanghaiTimezone(rmk.getDate()));
+                        po.setHistoryRph(Utils.toWrapperLong(rmk.getHistoryRPH()));
+                        po.setLastModified(xmlDate2StringWithShanghaiTimezone(rmk.getLastModified()));
+                        po.setRph(Utils.toWrapperLong(rmk.getRPH()));
+                        po.setSeqNo(Utils.toWrapperLong(rmk.getSeqNo()));
+                        po.setAgent(Utils.applyOrNull(rmk.getAgent(), AgentDetailsType::getAgent));
+                        //2023-06-21添加
+                        Utils.consumeOrNull(rmk.getAgent(), a -> {
+                            po.setCallSeatUid(a.getAgency());
+                            po.setCallSeatCid(a.getID());
+                            po.setCallSkillTeam(a.getFunctionalGroup());
+                            po.setCallAdsTeam(a.getAdministrativeGroup());
+                        });
+                        if (rmk.getRefundQualifiers() == null || rmk.getRefundQualifiers().getRefundQualifier() == null) {
+                            result.add(po);
+                            continue;
+                        }
+
                         Optional.ofNullable(rmk.getRefundQualifiers())
                                 .map(RefundQualifiersType::getRefundQualifier)
                                 .filter(CollectionUtils::isNotEmpty)
                                 .ifPresent(refundQualifiers -> {
+                                    AtomicInteger ref = new AtomicInteger();
                                     refundQualifiers.forEach(qualifier -> {
-                                        Spnr_RemarksPo po = new Spnr_RemarksPo();
 
-                                        po.setSuperPnrId(spnr.getSuperPNRID());
-                                        po.setActive(Utils.boolean2String(rmk.isActive()));
-                                        po.setAuditId(Utils.toWrapperLong(rmk.getAuditID()));
-                                        po.setCode(rmk.getCode());
-                                        po.setCodeContext(rmk.getCodeContext());
-                                        po.setRemarkDate(xmlDate2StringWithShanghaiTimezone(rmk.getDate()));
-                                        po.setHistoryRph(Utils.toWrapperLong(rmk.getHistoryRPH()));
-                                        po.setLastModified(xmlDate2StringWithShanghaiTimezone(rmk.getLastModified()));
-                                        po.setRph(Utils.toWrapperLong(rmk.getRPH()));
-                                        po.setSeqNo(Utils.toWrapperLong(rmk.getSeqNo()));
-                                        po.setAgent(Utils.applyOrNull(rmk.getAgent(), a -> a.getAgent()));
                                         po.setQualifierDescription(qualifier.getQualifierDescription());
                                         po.setQualifierValue(qualifier.getQualifierValue());
                                         po.setFlightSegmentRph(Utils.toWrapperLong(qualifier.getFlightSegmentRPH()));
@@ -84,9 +96,9 @@ public class SpnrRemarksParser extends AbstractParser {
                                         String qualifierItems = Utils.collection2String(qualifier.getQualifierItem(), t ->
                                                         t.getName() + ":" + Strings.nullToEmpty(t.getValue()),
                                                 Constants.JoinByPipeNull2Empty);
-
                                         po.setQualifierItem(qualifierItems);
-                                        result.add(po);
+                                        po.setQualifierRef(ref.getAndIncrement());
+                                        result.add(po.clone());
                                     });
                                 });
                     }

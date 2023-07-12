@@ -1,6 +1,7 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AuditsPo;
+import com.airchina.datacenter.spnr.sdk.entity.AuditsType;
 import com.airchina.datacenter.spnr.sdk.entity.ModularProductType;
 import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
@@ -45,7 +46,7 @@ public class MpAuditsParser extends AbstractParser {
         List<Object> result = Lists.newLinkedList();
         for (ModularProductType mp : spnr.getModularProduct()) {
             Optional.ofNullable(mp.getAudits())
-                    .map(a -> a.getAudit())
+                    .map(AuditsType::getAudit)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(audits -> audits.forEach(audit -> {
                         MP_AuditsPo po = new MP_AuditsPo();

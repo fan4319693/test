@@ -13,6 +13,7 @@ import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.airchina.datacenter.spnr.sdk.utils.Utils.xmlDate2StringWithShanghaiTimezone;
 
@@ -50,65 +51,76 @@ public class MpRemarkParser extends AbstractParser {
         List<Object> result = Lists.newLinkedList();
         for (ModularProductType mp : spnr.getModularProduct()) {
             Optional.ofNullable(mp.getRemarks())
-                    .map(r -> r.getRemark())
+                    .map(PackageProductType.Remarks::getRemark)
                     .ifPresent(rmks -> {
                         if (CollectionUtils.isNotEmpty(rmks)) {
                             for (OJRemarkType rmk : rmks) {
-                                RefundQualifiersType qualifiers = rmk.getRefundQualifiers();
-                                List<RefundQualifierType> refundQualifierList = qualifiers.getRefundQualifier();
-                                if (CollectionUtils.isEmpty(refundQualifierList)) {
+
+                                MP_RemarksPo po = new MP_RemarksPo();
+
+                                po.setSuperPnrId(spnr.getSuperPNRID());
+                                po.setSearchId(mp.getSearchID());
+                                po.setProductNumber(Utils.toWrapperLong(mp.getProductNumber()));
+                                po.setActive(Utils.boolean2String(rmk.isActive()));
+                                po.setAuditId(Utils.toWrapperLong(rmk.getAuditID()));
+                                po.setCode(rmk.getCode());
+                                po.setCodeContext(rmk.getCodeContext());
+                                po.setOpsDate(xmlDate2StringWithShanghaiTimezone(rmk.getDate()));
+                                po.setLastModified(xmlDate2StringWithShanghaiTimezone(rmk.getLastModified()));
+                                po.setRph(Utils.toWrapperLong(rmk.getRPH()));
+
+                                Utils.consumeOrNull(rmk.getAgent(), a -> {
+                                    po.setAgent(a.getAgent());
+                                    po.setAgentSourceAddress(a.getSourceAddress());
+                                    po.setInTimestamp(a.getTimestamp());
+                                    //2023-06-21添加
+                                    po.setCallSeatUid(a.getAgency());
+                                    po.setCallSeatCid(a.getID());
+                                    po.setCallSkillTeam(a.getFunctionalGroup());
+                                    po.setCallAdsTeam(a.getAdministrativeGroup());
+                                });
+                                //没有qualifier节点
+                                if (rmk.getRefundQualifiers() == null || rmk.getRefundQualifiers().getRefundQualifier() == null) {
+                                    result.add(po);
                                     continue;
                                 }
-                                String cancelFeesSource = null;
-                                String refundApplicationId = null;
-                                String automaticCalculate = null;
-                                String seatReleaseType = null;
+                                RefundQualifiersType qualifiers = rmk.getRefundQualifiers();
+
                                 //首先获取到公共字段
-                                for (RefundQualifierType qualifier : refundQualifierList) {
-                                    String desc = qualifier.getQualifierDescription();
-                                    String value = qualifier.getQualifierValue();
-                                    if ("cancelFeesSource".equals(desc) && cancelFeesSource == null) {
-                                        cancelFeesSource = value;
+                                List<RefundQualifierType> refundQualifierList = qualifiers.getRefundQualifier();
+                                if (!CollectionUtils.isEmpty(refundQualifierList)) {
+                                    String cancelFeesSource = null;
+                                    String refundApplicationId = null;
+                                    String automaticCalculate = null;
+                                    String seatReleaseType = null;
+                                    for (RefundQualifierType qualifier : refundQualifierList) {
+                                        String desc = qualifier.getQualifierDescription();
+                                        String value = qualifier.getQualifierValue();
+                                        if ("cancelFeesSource".equals(desc) && cancelFeesSource == null) {
+                                            cancelFeesSource = value;
+                                        }
+                                        if ("refundApplicationID".equals(desc) && refundApplicationId == null) {
+                                            refundApplicationId = value;
+                                        }
+                                        if ("automaticCalculate".equals(desc) && automaticCalculate == null) {
+                                            automaticCalculate = value;
+                                        }
+                                        if ("seatReleaseType".equals(desc) && seatReleaseType == null) {
+                                            seatReleaseType = value;
+                                        }
                                     }
-                                    if ("refundApplicationID".equals(desc) && refundApplicationId == null) {
-                                        refundApplicationId = value;
-                                    }
-                                    if ("automaticCalculate".equals(desc) && automaticCalculate == null) {
-                                        automaticCalculate = value;
-                                    }
-                                    if ("seatReleaseType".equals(desc) && seatReleaseType == null) {
-                                        seatReleaseType = value;
-                                    }
-                                }
-
-                                for (RefundQualifierType qualifier : refundQualifierList) {
-                                    MP_RemarksPo po = new MP_RemarksPo();
-
-                                    po.setSuperPnrId(spnr.getSuperPNRID());
-                                    po.setSearchId(mp.getSearchID());
-                                    po.setProductNumber(Utils.toWrapperLong(mp.getProductNumber()));
-                                    po.setActive(Utils.boolean2String(rmk.isActive()));
-                                    po.setAuditId(Utils.toWrapperLong(rmk.getAuditID()));
-                                    po.setCode(rmk.getCode());
-                                    po.setCodeContext(rmk.getCodeContext());
-                                    po.setOpsDate(xmlDate2StringWithShanghaiTimezone(rmk.getDate()));
-                                    po.setLastModified(xmlDate2StringWithShanghaiTimezone(rmk.getLastModified()));
-                                    po.setRph(Utils.toWrapperLong(rmk.getRPH()));
-
-                                    Utils.consumeOrNull(rmk.getAgent(), a -> {
-                                        po.setAgent(a.getAgent());
-                                        po.setAgentSourceAddress(a.getSourceAddress());
-                                        po.setInTimestamp(a.getTimestamp());
-                                    });
-
                                     po.setCancelFeesSource(cancelFeesSource);
                                     po.setRefundApplicationId(refundApplicationId);
                                     po.setAutomaticCalculate(automaticCalculate);
                                     po.setSeatReleaseType(seatReleaseType);
-                                    //设置qualifier的json串
-                                    po.setQualifierInfo(Commons.getQualifierInfo(qualifier));
+                                    AtomicInteger ref = new AtomicInteger();
 
-                                    result.add(po);
+                                    for (RefundQualifierType qualifier : refundQualifierList) {
+                                        //设置qualifier的json串
+                                        po.setQualifierInfo(Commons.getQualifierInfo(qualifier));
+                                        po.setQualifierRef(ref.getAndIncrement());
+                                        result.add(po.clone());
+                                    }
                                 }
                             }
                         }

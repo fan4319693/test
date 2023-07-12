@@ -102,7 +102,7 @@ public class MpItineraryReceiptParser extends AbstractParser {
                                         });
 
                                 Optional.ofNullable(Utils.getFirstNonNull(t.getPassengerInfo()))
-                                        .map(info -> info.getPassengerName())
+                                        .map(ItineraryReceiptProductType.ItineraryProduct.Ticketing.PassengerInfo::getPassengerName)
                                         .ifPresent(a -> {
                                             po.setProductPassengerName(Commons.getName(a));
                                         });

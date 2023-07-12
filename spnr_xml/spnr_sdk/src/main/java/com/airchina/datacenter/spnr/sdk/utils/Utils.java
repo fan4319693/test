@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 /**
  * <p>Class Name: com.airchina.datacenter.spnr.sdk.utils.Utils </p>
- * <p>Description: 本类封装了公共的,固定处理格式的,业务相关的逻辑 </p>
+ * <p>Description: 公共类,业务无关 </p>
  * <p>Sample: Utils.toWrapperLong("100") </p>
  * <p>Author: FanShuai </p>
  * <p>Date: 2023/4/20 </p>

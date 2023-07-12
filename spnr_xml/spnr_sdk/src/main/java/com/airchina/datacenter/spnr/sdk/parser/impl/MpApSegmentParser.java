@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.airchina.datacenter.spnr.sdk.utils.Utils.xmlDate2StringWithShanghaiTimezone;
 import static com.airchina.datacenter.spnr.sdk.utils.Utils.xmlDate2StringWithUtcTimezone;
 
 /**
@@ -59,8 +60,8 @@ public class MpApSegmentParser extends AbstractParser {
             String pnr = Commons.getMpPnr(mp);
 
             Optional.ofNullable(air.getAirItinerary())
-                    .map(t -> t.getOriginDestinationOptions())
-                    .map(t -> t.getOriginDestinationOption())
+                    .map(AirItineraryType::getOriginDestinationOptions)
+                    .map(AirItineraryType.OriginDestinationOptions::getOriginDestinationOption)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(optionList -> {
                         for (AirItineraryType.OriginDestinationOptions.OriginDestinationOption option : optionList) {
@@ -134,12 +135,15 @@ public class MpApSegmentParser extends AbstractParser {
                                 });
                                 po.setAvInfo(Commons.getAvInfoJson(segment.getBookingClassAvails()));
 
-                                po.setDirectionInd(air.getAirItinerary().getDirectionInd().toString());
+                                Optional.ofNullable(air.getAirItinerary().getDirectionInd())
+                                                .ifPresent(d -> po.setDirectionInd(d.value()));
                                 po.setOdOpenJaw(option.getOpenjaw());
                                 List<TicketingFullInfoType> collect = Utils.streamNullable(air.getTicketing()).filter(t -> Utils.getFirstNonNullApply(t.getFlightSegmentRefNumber(), Utils::toWrapperLong) == po.getFlightSegmentRph()).collect(Collectors.toList());
-                                po.setETicketNumber(Utils.getFirstNonNull(collect).getETicketNumber());
-                                po.setTicketingStatus(Utils.getFirstNonNull(collect).getTicketingStatus());
-                                po.setTicketTime(xmlDate2StringWithUtcTimezone(Utils.getFirstNonNull(collect).getTicketTime()));
+                                Utils.getFirstNonNullConsume(collect, t -> {
+                                    po.setETicketNumber(t.getETicketNumber());
+                                    po.setTicketingStatus(t.getTicketingStatus());
+                                    po.setTicketTime(xmlDate2StringWithShanghaiTimezone(t.getTicketTime()));
+                                });
 
                                 result.add(po);
                             });

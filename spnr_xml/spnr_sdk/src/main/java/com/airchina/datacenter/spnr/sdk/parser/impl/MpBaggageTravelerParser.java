@@ -86,7 +86,7 @@ public class MpBaggageTravelerParser extends AbstractParser {
 
                             Utils.getFirstNonNullConsume(traveler.getDocument(), t -> {
                                 po.setDocId(t.getDocID());
-                                po.setDocType(Utils.toWrapperLong(t.getDocType()));
+                                po.setDocType(t.getDocType() == null ? "" : t.getDocType());
                                 po.setDocNationality(t.getDocHolderNationality());
                                 po.setDocExpireDate(xmlDate2StringWithShanghaiTimezone(t.getExpireDate()));
                                 po.setBirthCountry(t.getBirthCountry());

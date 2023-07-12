@@ -1,10 +1,7 @@
 package com.airchina.datacenter.spnr.sdk.parser.impl;
 
 import com.airchina.datacenter.spnr.sdk.dao.pojo.MP_AP_GroundTransportPo;
-import com.airchina.datacenter.spnr.sdk.entity.ModularProductType;
-import com.airchina.datacenter.spnr.sdk.entity.OJSuperPNR;
-import com.airchina.datacenter.spnr.sdk.entity.ProductBase;
-import com.airchina.datacenter.spnr.sdk.entity.RailFareType;
+import com.airchina.datacenter.spnr.sdk.entity.*;
 import com.airchina.datacenter.spnr.sdk.parser.AbstractParser;
 import com.airchina.datacenter.spnr.sdk.serde.SerdeStrategy;
 import com.airchina.datacenter.spnr.sdk.utils.Constants;
@@ -52,10 +49,15 @@ public class MpApGroundTransportParser extends AbstractParser {
                 continue;
             }
             Optional.ofNullable(ancillaryProduct.getGroundTransportService())
-                    .map(t -> t.getJourneySegment())
+                    .map(GroundTransportServiceType::getJourneySegment)
                     .filter(CollectionUtils::isNotEmpty)
                     .ifPresent(segmentList -> {
                         segmentList.forEach(segment -> {
+
+                            // 是空巴联运，不放在空轨联运里面
+                            if (segment.getTrainSegment() == null) {
+                                return;
+                            }
                             MP_AP_GroundTransportPo po = new MP_AP_GroundTransportPo();
 
                             po.setSuperPnrId(spnr.getSuperPNRID());

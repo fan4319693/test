@@ -35,6 +35,9 @@ public class Commons {
      *               Throws: 无
      */
     public static String getName(PersonNameType pName) {
+        if (pName == null) {
+            return "";
+        }
         String surName = null;
         if (pName.getSurname() != null) {
             surName = pName.getSurname().getValue();
@@ -86,6 +89,30 @@ public class Commons {
                 Constants.JoinByPipeNull2Empty);
         String part2 = Strings.nullToEmpty(telephone.getPhoneNumberAttr());
         return part1 + Constants.HYPHEN + part2;
+    }
+
+    /**
+     * Description: 获取酒店电话号码
+     * Parameter:
+     *
+     * @param telephone: xml的PhonesType.Phone节点, 不能为null
+     *                   Return: PhoneLocationType|PhoneTechType|PhoneUseType|CountryAccessCode-AreaCityCode-PhoneNumber
+     *                   例: 6|1|4|86-1-13811111111
+     *                   Throws: 无
+     */
+    public static String getHotelTelephone(PhonesType.Phone telephone) {
+        ArrayList<String> list = Lists.newArrayList(
+                telephone.getPhoneLocationType(),
+                telephone.getPhoneTechType(),
+                telephone.getPhoneUseType(),
+                telephone.getCountryAccessCode()
+        );
+        String part1 = Utils.collection2String(list, Function.identity(),
+                Constants.JoinByPipeNull2Empty);
+        String part2 = Strings.nullToEmpty(telephone.getAreaCityCode());
+        String part3 = Strings.nullToEmpty(telephone.getPhoneNumberAttr());
+
+        return part1 + Constants.HYPHEN + part2 +  Constants.HYPHEN + part3;
     }
 
     /**
@@ -212,7 +239,12 @@ public class Commons {
                 .map(list -> deriveRawPnr(list))
                 .filter(StringUtils::isNotEmpty);
 
-        return Utils.coalesce(var1, var2);
+        Optional<String> var3 = Optional.ofNullable(mp.getAncillaryProduct())
+                .map(b -> b.getAir())
+                .map(air -> air.getBookingReferenceIDAttr())
+                .filter(StringUtils::isNotEmpty);
+
+        return Utils.coalesce(var1, var2, var3);
     }
 
     /**
@@ -430,7 +462,7 @@ public class Commons {
 
         AirItineraryType airItinerary = air.getAirItinerary();
         if (airItinerary != null) {
-            directionId = Utils.applyOrNull(airItinerary.getDirectionInd(), t -> t.value());
+            directionId = Utils.applyOrNull(airItinerary.getDirectionInd(), AirTripType::value);
             docRequired = airItinerary.getDocumentationRequired();
         }
         return new AirMetaInfo(pnr, directionId, docRequired);
